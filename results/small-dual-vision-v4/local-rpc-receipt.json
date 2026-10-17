@@ -1,0 +1,11 @@
+{
+  "change": "Exact parser regression: --rpc must register RPC0 BEFORE --device resolves it. Same model, image inputs and numeric settings.",
+  "source_revision": "ea0c4c2c85fb183ec0fbd30a1af4e4275a18a064",
+  "pid": 86857,
+  "owned_listener": "COMMAND     PID       USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME\nggml-rpc- 86857 jeremylien    3u  IPv4 0x6afc61c34cce234b      0t0  TCP 169.254.47.213:18560 (LISTEN)\n",
+  "remote_exit": 0,
+  "owned_rpc_reaped": true,
+  "rpc_exit": -15,
+  "listener_closed": true,
+  "rpc_log_sha256": "bbd798548c5f849e9c2225049917053ce8e0c46551f99d92334d33118f2ca1ca"
+}

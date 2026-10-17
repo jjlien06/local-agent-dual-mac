@@ -1,0 +1,54 @@
+{
+  "schema": "small-resource-policy-image-control-comparison-v1",
+  "status": "BOUNDED_IMAGE_CONTROL_PASSED_WITH_ASSURANCE_LIMITS",
+  "candidate_requests": 4,
+  "comparisons": [
+    {
+      "case_id": "red",
+      "content": "red",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "request_sha256": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+      "matches_all4_configurations": true
+    },
+    {
+      "case_id": "blue",
+      "content": "blue",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "request_sha256": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+      "matches_all4_configurations": true
+    }
+  ],
+  "requested_policy": {
+    "GGML_METAL_NO_RESIDENCY": "1",
+    "scope": "per-process only; no global/persistent setting"
+  },
+  "M2_runtime_policy_log_marker_observed": true,
+  "M4_runtime_policy_log_marker_observed": false,
+  "M4_policy_assurance": "Requested environment is bound by trusted recorded supervisor source and source/binary/library hashes; selected server logs omit early device-property initialization. Do not claim an independently observed M4 property or cryptographic loaded-artifact attestation.",
+  "local_controller_schema_caveat": "The copied load-controller wrapper retains inference_executed:false. That field is wrong as an aggregate statement for this image-control run; actual remote receipts prove two completed image requests. Original receipt is preserved; this comparison records the contradiction rather than rewriting it.",
+  "first_readback_failure": "Exact M4 device-property marker assertion failed after native files copied. Original partial ssh-readback retained. Fresh ssh-readback-v2 artifacts were independently hash checked; no old files overwritten.",
+  "local_RPC_graph_calls": 11,
+  "local_RPC_graph_tagged_trace_lines": 7260,
+  "limits": [
+    "Small0.8B only, not27B",
+    "Two128pixelcolorcasespermode, no screenshot/GUI/autonomy/latency claim",
+    "No token-ID/full-logit/cache parity",
+    "Fulltarget resource benefit and performance tradeoff untested"
+  ]
+}

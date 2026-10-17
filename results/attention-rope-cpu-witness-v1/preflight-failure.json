@@ -1,0 +1,10 @@
+{
+  "schema": "attention-witness-preflight-failure-v1",
+  "exit_code": 1,
+  "exception": "AssertionError",
+  "stage": "ordinary_SDPA_AST_selection",
+  "model_or_attention_executed": false,
+  "cause": "ast.walk order is not source order: calls[-1] selected the VLM TurboQuant dequantization branch instead of the ordinary terminal native call.",
+  "source_sha256": "af44ac34da4fcda3b80e4666c3bd4531ee76b5faaae2b3c2e80d1734e285e412",
+  "repair": "Select lexically last native SDPA call by lineno, then assert exact call AST. No tolerance or native function change."
+}

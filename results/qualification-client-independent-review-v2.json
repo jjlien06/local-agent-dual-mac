@@ -1,0 +1,748 @@
+{
+  "passed": true,
+  "security_concerns": [],
+  "logic_errors": [],
+  "suggestions": [
+    "Nonblocking: private HTTPResponse hooks need these exact-wire regressions rerun on every supported interpreter upgrade; only Python 3.13.2 was executed in this review.",
+    "Nonblocking: consider promoting the independent sequential/concurrent response-budget isolation and one-byte wire-fragmentation controls into the permanent test suite.",
+    "Prior finish_reason policy and strict manifest-version typing suggestions remain explicitly outside HTTP-CHUNK-FRAMING repair scope; neither was changed or treated as a blocker here."
+  ],
+  "test_results": {
+    "scope": "Independent fresh-reviewer fail-closed re-review of HTTP-CHUNK-FRAMING only, cycle 1 of at most 2; no implementation edits.",
+    "interpreter": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python",
+    "python_version": "3.13.2 (main, Feb  4 2025, 14:51:09) [Clang 16.0.0 (clang-1600.0.26.6)]",
+    "focused_pytest": {
+      "command": [
+        "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/test_qualification.py",
+        "-q",
+        "--tb=short",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp",
+        "/Users/jeremylien/.hermes/cache/scratch/chunk-review-v2-wbnohbe9/pytest"
+      ],
+      "exit_code": 0,
+      "stdout": "........................................................................ [ 85%]\n............                                                             [100%]\n84 passed in 39.15s\n",
+      "stderr": ""
+    },
+    "ruff": {
+      "command": [
+        "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python",
+        "-B",
+        "-m",
+        "ruff",
+        "check",
+        "--no-cache",
+        "qualification",
+        "tests/test_qualification.py"
+      ],
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    "independent_probe_count": 52,
+    "independent_subprocess_cli_probe_count": 50,
+    "independent_loopback_probes": [
+      {
+        "name": "valid_chunked",
+        "exit_code": 0,
+        "success": true,
+        "complete": true,
+        "completed_cases": 3,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0010372080141678452,
+        "request_count": 5,
+        "error": null
+      },
+      {
+        "name": "old_XX_separator",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.001073292049113661,
+        "request_count": 3,
+        "error": "ValueError: invalid or missing chunk data CRLF"
+      },
+      {
+        "name": "old_EOF_after_zero_CRLF",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0010154159972444177,
+        "request_count": 3,
+        "error": "ValueError: missing trailer-section CRLF or unsupported trailers"
+      },
+      {
+        "name": "multiple_zeros",
+        "exit_code": 0,
+        "success": true,
+        "complete": true,
+        "completed_cases": 3,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0011000419617630541,
+        "request_count": 5,
+        "error": null
+      },
+      {
+        "name": "zero_line_1024",
+        "exit_code": 0,
+        "success": true,
+        "complete": true,
+        "completed_cases": 3,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0012260830262675881,
+        "request_count": 5,
+        "error": null
+      },
+      {
+        "name": "signed_zero",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0010299999848939478,
+        "request_count": 3,
+        "error": "ValueError: unsupported or malformed chunk size; plain hex and CRLF required"
+      },
+      {
+        "name": "negative_zero",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0010493749869056046,
+        "request_count": 3,
+        "error": "ValueError: unsupported or malformed chunk size; plain hex and CRLF required"
+      },
+      {
+        "name": "hexprefix_zero",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0011141670402139425,
+        "request_count": 3,
+        "error": "ValueError: unsupported or malformed chunk size; plain hex and CRLF required"
+      },
+      {
+        "name": "whitespace_zero",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0014045420102775097,
+        "request_count": 3,
+        "error": "ValueError: unsupported or malformed chunk size; plain hex and CRLF required"
+      },
+      {
+        "name": "underscore_zero",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0010519170318730175,
+        "request_count": 3,
+        "error": "ValueError: unsupported or malformed chunk size; plain hex and CRLF required"
+      },
+      {
+        "name": "bareLF_zero",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0010646670125424862,
+        "request_count": 3,
+        "error": "ValueError: unsupported or malformed chunk size; plain hex and CRLF required"
+      },
+      {
+        "name": "doubleCR_zero",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.001362791983410716,
+        "request_count": 3,
+        "error": "ValueError: unsupported or malformed chunk size; plain hex and CRLF required"
+      },
+      {
+        "name": "NUL_zero",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0011259589809924364,
+        "request_count": 3,
+        "error": "ValueError: unsupported or malformed chunk size; plain hex and CRLF required"
+      },
+      {
+        "name": "EOF_in_zero",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0011577919940464199,
+        "request_count": 3,
+        "error": "ValueError: unsupported or malformed chunk size; plain hex and CRLF required"
+      },
+      {
+        "name": "extended_zero",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0010096670011989772,
+        "request_count": 3,
+        "error": "ValueError: unsupported or malformed chunk size; plain hex and CRLF required"
+      },
+      {
+        "name": "zero_line_1025",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0011775839957408607,
+        "request_count": 3,
+        "error": "ValueError: chunk size line byte limit exceeded"
+      },
+      {
+        "name": "nonempty_trailer",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0020617920090444386,
+        "request_count": 3,
+        "error": "ValueError: missing trailer-section CRLF or unsupported trailers"
+      },
+      {
+        "name": "huge_trailer",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0016066249809227884,
+        "request_count": 3,
+        "error": "ValueError: missing trailer-section CRLF or unsupported trailers"
+      },
+      {
+        "name": "partial_terminal_CR",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0012020000140182674,
+        "request_count": 3,
+        "error": "ValueError: missing trailer-section CRLF or unsupported trailers"
+      },
+      {
+        "name": "bare_terminal_LF",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.001184249995276332,
+        "request_count": 3,
+        "error": "ValueError: missing trailer-section CRLF or unsupported trailers"
+      },
+      {
+        "name": "size_line_1023",
+        "exit_code": 0,
+        "success": true,
+        "complete": true,
+        "completed_cases": 3,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0010948330163955688,
+        "request_count": 5,
+        "error": null
+      },
+      {
+        "name": "size_line_1024",
+        "exit_code": 0,
+        "success": true,
+        "complete": true,
+        "completed_cases": 3,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.001299833005759865,
+        "request_count": 5,
+        "error": null
+      },
+      {
+        "name": "size_line_1025",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 0,
+        "prefix_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "elapsed_seconds": 0.000983458012342453,
+        "request_count": 3,
+        "error": "ValueError: chunk size line byte limit exceeded"
+      },
+      {
+        "name": "framing_65535",
+        "exit_code": 0,
+        "success": true,
+        "complete": true,
+        "completed_cases": 3,
+        "prefix_bytes": 143,
+        "prefix_sha256": "0081501c387f9cb39f226d11824d551bfdd3b52082312082d3a75301933b0f6d",
+        "elapsed_seconds": 0.0029299999587237835,
+        "request_count": 5,
+        "error": null
+      },
+      {
+        "name": "framing_65536",
+        "exit_code": 0,
+        "success": true,
+        "complete": true,
+        "completed_cases": 3,
+        "prefix_bytes": 143,
+        "prefix_sha256": "0081501c387f9cb39f226d11824d551bfdd3b52082312082d3a75301933b0f6d",
+        "elapsed_seconds": 0.0032342500053346157,
+        "request_count": 5,
+        "error": null
+      },
+      {
+        "name": "framing_65537",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 143,
+        "prefix_sha256": "0081501c387f9cb39f226d11824d551bfdd3b52082312082d3a75301933b0f6d",
+        "elapsed_seconds": 0.0039703750517219305,
+        "request_count": 3,
+        "error": "ValueError: chunk framing byte limit exceeded"
+      },
+      {
+        "name": "per_response_budget_no_leakage",
+        "exit_code": 0,
+        "success": true,
+        "complete": true,
+        "completed_cases": 3,
+        "prefix_bytes": 143,
+        "prefix_sha256": "0081501c387f9cb39f226d11824d551bfdd3b52082312082d3a75301933b0f6d",
+        "elapsed_seconds": 0.0029664160101674497,
+        "request_count": 5,
+        "error": null
+      },
+      {
+        "name": "13106_tiny_chunks",
+        "exit_code": 0,
+        "success": true,
+        "complete": true,
+        "completed_cases": 3,
+        "prefix_bytes": 13106,
+        "prefix_sha256": "3dc55e4823fc5d506f519e35945a014bd70388ed85dc632d6530ed9e76b9c015",
+        "elapsed_seconds": 0.020204917003866285,
+        "request_count": 5,
+        "error": null
+      },
+      {
+        "name": "13107_tiny_chunks_over_budget",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 13107,
+        "prefix_sha256": "c7591a93d00045596ec942cb2311f74477504c7d1f65585d80a2605ad1c0bb32",
+        "elapsed_seconds": 0.01926249999087304,
+        "request_count": 3,
+        "error": "ValueError: chunk framing byte limit exceeded"
+      },
+      {
+        "name": "exact_entity_cap",
+        "exit_code": 0,
+        "success": true,
+        "complete": true,
+        "completed_cases": 3,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0011287920060567558,
+        "request_count": 5,
+        "error": null
+      },
+      {
+        "name": "over_entity_cap",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0012468750355765224,
+        "request_count": 3,
+        "error": "ValueError: response byte limit exceeded; retained bounded prefix"
+      },
+      {
+        "name": "truncated_chunk_data",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0010964999673888087,
+        "request_count": 3,
+        "error": "IncompleteRead: IncompleteRead(0 bytes read)"
+      },
+      {
+        "name": "truncated_later_chunk",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0010720000136643648,
+        "request_count": 3,
+        "error": "IncompleteRead: IncompleteRead(0 bytes read)"
+      },
+      {
+        "name": "partial_data_CR",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0010814170236699283,
+        "request_count": 3,
+        "error": "ValueError: invalid or missing chunk data CRLF"
+      },
+      {
+        "name": "ContentLength_control",
+        "exit_code": 0,
+        "success": true,
+        "complete": true,
+        "completed_cases": 3,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0010817500296980143,
+        "request_count": 5,
+        "error": null
+      },
+      {
+        "name": "ContentLength_truncated",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.000997666036710143,
+        "request_count": 3,
+        "error": "ValueError: truncated Content-Length response"
+      },
+      {
+        "name": "ContentLength_TE_conflict",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 0,
+        "prefix_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "elapsed_seconds": 0.0011335420422255993,
+        "request_count": 3,
+        "error": "ValueError: ambiguous or unsupported HTTP response framing"
+      },
+      {
+        "name": "watchdog_size",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 0,
+        "prefix_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "elapsed_seconds": 0.12216495798202232,
+        "request_count": 3,
+        "error": "TimeoutError: timed out"
+      },
+      {
+        "name": "watchdog_data_separator",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.12348679197020829,
+        "request_count": 3,
+        "error": "TimeoutError: timed out"
+      },
+      {
+        "name": "watchdog_trailer",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.12290670804213732,
+        "request_count": 3,
+        "error": "TimeoutError: timed out"
+      },
+      {
+        "name": "shared_deadline_size",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 0,
+        "prefix_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "elapsed_seconds": 0.21721400000387803,
+        "request_count": 3,
+        "error": "TimeoutError: request time budget exceeded"
+      },
+      {
+        "name": "concurrent_instance_state",
+        "count": 8,
+        "class_counter_after": 0,
+        "all_passed": true
+      },
+      {
+        "name": "IncompleteRead_partial_seam",
+        "all_passed": true,
+        "prefix_bytes": 43,
+        "error": "IncompleteRead: IncompleteRead(43 bytes read, 1 more expected)",
+        "note": "Injected exception after real socket read; separate natural truncation probes above are unmodified production."
+      },
+      {
+        "name": "one_byte_fragmentation_valid",
+        "exit_code": 0,
+        "success": true,
+        "complete": true,
+        "completed_cases": 3,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.25395720900269225,
+        "request_count": 5,
+        "error": null
+      },
+      {
+        "name": "watchdog_body_prefix",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 17,
+        "prefix_sha256": "e96025bda799bf9faa8d12009404f172fc4efb0ec3e731810794761d89f022f2",
+        "elapsed_seconds": 0.12300420796964318,
+        "request_count": 3,
+        "error": "TimeoutError: timed out"
+      },
+      {
+        "name": "huge_bounded_hex_size",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 43,
+        "prefix_sha256": "9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e",
+        "elapsed_seconds": 0.0012758339871652424,
+        "request_count": 3,
+        "error": "IncompleteRead: IncompleteRead(0 bytes read)"
+      },
+      {
+        "name": "two_chunks_bad_second_size",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 4,
+        "prefix_sha256": "67f6e382555898e988dc33ab685e1acad464cd2464a2492303f78489aee5f742",
+        "elapsed_seconds": 0.0013791669625788927,
+        "request_count": 3,
+        "error": "ValueError: unsupported or malformed chunk size; plain hex and CRLF required"
+      },
+      {
+        "name": "chunk_extension_rejected",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 0,
+        "prefix_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "elapsed_seconds": 0.0010907499818131328,
+        "request_count": 3,
+        "error": "ValueError: unsupported or malformed chunk size; plain hex and CRLF required"
+      },
+      {
+        "name": "duplicate_TE",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 0,
+        "prefix_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "elapsed_seconds": 0.0012175830197520554,
+        "request_count": 3,
+        "error": "ValueError: ambiguous or unsupported HTTP response framing"
+      },
+      {
+        "name": "unsupported_TE_list",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 0,
+        "prefix_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "elapsed_seconds": 0.0009862500010058284,
+        "request_count": 3,
+        "error": "ValueError: ambiguous or unsupported HTTP response framing"
+      },
+      {
+        "name": "duplicate_CL",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 0,
+        "prefix_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "elapsed_seconds": 0.001961583038792014,
+        "request_count": 3,
+        "error": "ValueError: ambiguous or unsupported HTTP response framing"
+      },
+      {
+        "name": "encoded_body",
+        "exit_code": 1,
+        "success": false,
+        "complete": false,
+        "completed_cases": 0,
+        "prefix_bytes": 0,
+        "prefix_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "elapsed_seconds": 0.0011016250355169177,
+        "request_count": 3,
+        "error": "ValueError: encoded HTTP bodies are unsupported"
+      }
+    ],
+    "probe_method": "Fresh raw TCP fixtures bound only to 127.0.0.1; no tests/test_qualification.py helpers imported. Production subprocess CLI used the existing frozen three-case manifest. Asserted real exit status, overall/case success, completed counts, response completeness and artifact bytes/count/SHA-256 on every CLI case. HTTP_PROXY and ALL_PROXY pointed at nonloopback documentation address with NO_PROXY empty; controls still used direct loopback. Direct same-process concurrent exchanges exercised separate per-response budgets. One explicitly marked IncompleteRead.partial seam injection followed a real socket read; all natural truncation/CLI probes used unmodified production behavior.",
+    "verified_boundaries": [
+      "Exact old XX data separator and EOF immediately after 0 CRLF both exit 1, unsuccessful/incomplete receipts, zero completed cases, full 43-byte JSON entity retained with SHA-256 9780091058b8c4022b350a2083dd4d6f5f77ddd4afa70ecb548fe09f7031b85e; valid chunked control exits 0 with three completed cases.",
+      "Plain hexadecimal sizes, uppercase/leading zeros, and multi-zero terminal chunks accepted; signs, hex prefixes, whitespace, underscores, NUL, bare LF, extensions and incomplete CRLF rejected. Nonempty/100000-byte trailers rejected without copying trailers to entity evidence.",
+      "1023/1024-byte size lines accepted; 1025 rejected. Terminal zero-size lines at 1024 accepted and 1025 rejected. A 1022-hex-digit huge size cannot force an unbounded allocation/read.",
+      "Aggregate framing exactly 65535/65536 accepted and 65537 rejected with full entity; 13106 minimal one-byte chunks accepted and 13107 rejected at framing budget. Source bounds every framing read to remaining budget plus one sentinel, caps size-line reads at 1025 and checks trailer in at most two bytes.",
+      "Five sequential responses each consume their own full 65536-byte framing budget successfully. Eight concurrent direct exchanges in the same interpreter also each use a full budget; class default counter remains zero. Immutable integer += creates instance state, not shared mutation.",
+      "Absolute timeout/shared deadline probes cover size-line trickle, data separator, terminal CRLF and stalled body. All fail with TimeoutError, incomplete receipts and expected received entity prefix; 0.12-second timeout probes finish below 0.5 seconds. No change to existing socket-shutdown watchdog or finite public-input budget validation.",
+      "Unmodified stdlib read1 integration succeeds with one-byte socket fragmentation; natural truncated first/later chunks preserve all delivered entity bytes; explicitly injected nonempty IncompleteRead.partial also preserves exact bounded prefix. Exact entity cap succeeds; one byte over fails retaining only cap.",
+      "Content-Length valid/truncated controls remain correct; duplicate Content-Length/Transfer-Encoding, unsupported transfer list, length+transfer conflict and encoded bodies still reject before retaining entity bytes.",
+      "All 84 focused tests independently rerun, including IPv4/IPv6 proxy controls, endpoint rejection before network, redirects, pre-network public manifest/image validation, hash/traversal/symlink boundaries, fd-pinned output race, exclusive writes and partial-failure receipts. Complete diff leaves these security paths unchanged."
+    ],
+    "reviewed_file_sha256": {
+      "qualification/transport.py": "8fa7fd97dbf859793f738e256ac8593f1b9c7b2912a948dd9feb0a7f2a7fe004",
+      "tests/test_qualification.py": "82a8c5b43d536052f8578acc8762dc0581e7cfd60a82649078277d2a2dbc1310",
+      "qualification/client.py": "1db5e5abea893a56fed4030086dfffa552bebd7b0e08b8bd7483986b475b5743",
+      "qualification/inputs.py": "95d56795c27b9d385676327fba79e571a4a05da094f04b225e142d8de5717b03",
+      "qualification/store.py": "645cf425d9918e91b1958c7bdfedec5d4e7a37c7836df485b0f487aaf084b292",
+      "TDD.md": "e3239a4d3a4ff062942fe2c4912c7b9cb5bc0ba39cd7c62e9f1e7503e883f226",
+      "qualification/README.md": "6bb38622f3a52d81b31393024dac0953c7185cdfa818809c89bd2a5e56a5c30a"
+    },
+    "reviewed_stdlib": {
+      "path": "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py",
+      "sha256": "a34fb28ab2cf55ed3a6a4ee4d78fc235d69f004afba7a6d3308d5bcb30f17dcc",
+      "methods_inspected": [
+        "read1",
+        "_read1_chunked",
+        "_get_chunk_left",
+        "_read_next_chunk_size",
+        "_read_and_discard_trailer",
+        "_safe_read",
+        "begin"
+      ]
+    },
+    "reviewed_diff": {
+      "path": "/Users/jeremylien/.hermes/cache/scratch/chunk-framing-xva05035/chunk-framing.patch",
+      "sha256": "ee8ad279312e3f60d09ff40750f5f247037025e9692aa0321f2c07e2bfd68d03",
+      "verified_current_hunks": [
+        {
+          "file": "qualification/transport.py",
+          "new_start_line": 5,
+          "new_line_count": 48
+        },
+        {
+          "file": "qualification/transport.py",
+          "new_start_line": 62,
+          "new_line_count": 8
+        },
+        {
+          "file": "tests/test_qualification.py",
+          "new_start_line": 437,
+          "new_line_count": 234
+        },
+        {
+          "file": "TDD.md",
+          "new_start_line": 46,
+          "new_line_count": 68
+        },
+        {
+          "file": "qualification/README.md",
+          "new_start_line": 57,
+          "new_line_count": 7
+        }
+      ]
+    },
+    "historical_failed_review": {
+      "path": "results/qualification-client-independent-review.json",
+      "sha256_before": "90d735e8e50a9e64fa2759a42ac7253a7dc9320bc5d0fe79791ec3a07b77114c",
+      "sha256_after": "90d735e8e50a9e64fa2759a42ac7253a7dc9320bc5d0fe79791ec3a07b77114c",
+      "byteexact_preserved": true
+    },
+    "scratch_evidence": {
+      "directory": "/Users/jeremylien/.hermes/cache/scratch/chunk-review-v2-wbnohbe9",
+      "probe_script_sha256": "8f49ef92ab826d1a78124f1cf97ce9e86ff225089ccad8aff019a65e7cf0c458",
+      "supplement_script_sha256": "023add9387286dab513daba50fa8ede313f16819073e657c8f500562c4604f9a"
+    },
+    "limitations": [
+      "CPU/local-fixture transport qualification only. No physical model, 27B, GPU residency/placement, dual-host RPC, GUI or autonomy approval; every CLI receipt attestation remains false.",
+      "No source/document edits, GPU/SSH/model calls, installs, downloads, live-target polling or commits. Bytecode, pytest cache and Ruff cache disabled. Only new workspace file is this exclusive v2 report; scripts/results/HTTP fixtures are scratch-local.",
+      "Workspace is not a Git repository; reviewed full supplied diff and verified every new/context hunk against current files instead of claiming a commit binding.",
+      "Review approves the documented strict HTTP chunked subset only: extensions and nonempty trailers intentionally fail closed. This is not a claim of supporting all valid HTTP chunked messages."
+    ]
+  },
+  "summary": "PASS for HTTP-CHUNK-FRAMING only: 84 focused tests, Ruff and 52 independent probe groups pass; both original malformed wire forms now fail closed with complete bounded entity evidence, historical FAIL review preserved, and no logic/security findings in this repair."
+}

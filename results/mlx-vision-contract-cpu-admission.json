@@ -1,0 +1,27 @@
+{
+  "schema": "single-image-CPU-contract-admission-v1",
+  "timestamp": 1792210147.807586,
+  "passed": true,
+  "independent_review_sha256": "b2fbb711c7286041ed2c86fa81750a4b44c2f40126201e70bf1d4c70fc2e6ece",
+  "source_document_sha256": {
+    "multimodal_contract/__init__.py": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+    "tests/test_multimodal_contract.py": "e52ceb63ae75aef087414e4e187d1e0a5a9ffcdb7b54b5523e54ef863e8e00c3",
+    "MULTIMODAL-TDD.md": "b2da4b82b7f56d857ca3773a6e72c1aae4d338a8e386a5121cd6969a5e914da0",
+    "multimodal_contract/README.md": "58c69d3193b1e56b311d38a5fbb3747fe98e748bb1168cc4772f2b0b9eaff8ae"
+  },
+  "reviewer_executed_CPU_tests": 72,
+  "reviewer_independent_boundary_tests": 30,
+  "reviewer_NumPy_reference_comparisons": 4398,
+  "parent_combined_regression_result": "156 passed in40.62s; exactcommand/output inmlx-vision-contract-fix-parent-verification.json",
+  "original_FAIL_preserved": true,
+  "limits": {
+    "batch": 1,
+    "prompt_tokens": 1024,
+    "image_tokens": 256,
+    "decode_tokens": 32,
+    "chunk_tokens": 256,
+    "video_padding_multiimage_supported": false
+  },
+  "scope": "CPUposition/requestidentity/cursor/lifecyclecontract ONLY. Does not authorize model/GPUloading, encoder/scatter/rotary/cache arithmetic, distributed equivalence, realisticimage/context capacity, autonomy orservice.",
+  "next_step": "Isolated source-pinned rotary-only primitive underCPU TDD; later independent review and parent-owned small physical arithmetic fixture."
+}

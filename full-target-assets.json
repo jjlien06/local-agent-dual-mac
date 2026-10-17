@@ -1,0 +1,22 @@
+{
+  "schema": "full-qwen38-vision-assets-v1",
+  "role": "Full Qwen3.8-27B target, different quantization/format from the archived MLX baseline; native comparison must use this exact GGUF",
+  "repo": "unsloth/Qwen3.8-27B-GGUF",
+  "revision": "4ca720788d1e01f1bff70c033e0d0028fd02e502",
+  "files": [
+    {
+      "name": "Qwen3.8-27B-UD-Q4_K_M.gguf",
+      "bytes": 16464440224,
+      "sha256": "322e194ff79741c7baa497c240f677f54b201b0efab44ca8e50f122b39123482"
+    },
+    {
+      "name": "mmproj-BF16.gguf",
+      "bytes": 931146432,
+      "sha256": "83ee4f4f205fa514161778c41df1ea14144faa0f713510893b63c2395f5c2d53"
+    }
+  ],
+  "total_bytes": 17395586656,
+  "model_dir": "/Volumes/新增磁碟區/local-agent-models/qwen38-27b-ud-q4km-4ca720788d1e",
+  "capacity_plan": "results/full-target-admission/q4-capacity-plan.json",
+  "admission_status": "Capacity-plausible; no physical full-model admission yet; controller must validate actual context/image/memory/device placement"
+}

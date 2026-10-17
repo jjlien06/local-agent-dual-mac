@@ -1,0 +1,26 @@
+{
+  "schema": "native-rotary-cpu-reference-admission-v1",
+  "packages": [
+    {
+      "name": "mlx",
+      "version": "0.32.4",
+      "bytes": 667575
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.3",
+      "bytes": 5439695
+    },
+    {
+      "name": "mlx-metal",
+      "version": "0.32.4",
+      "bytes": 78106861
+    }
+  ],
+  "download_bytes": 84214131,
+  "disk_free_bytes": 74852061184,
+  "install_reserve_bytes": 673713048,
+  "scope": "Three pinned numeric wheels only in separate .vision-venv; not full mlx-vlm dependency installation or GPU/model execution. No checkpoint downloaded. Tiny CPU Q/K reference arrays capped below64MiB.",
+  "protected_text_environment": "/Users/jeremylien/Projects/paretoquant-metal/.venv",
+  "requirements_sha256": "c0e14082b2121beaa5808689d91edbaf9a22012ae54916b0d525187fc1c96b30"
+}

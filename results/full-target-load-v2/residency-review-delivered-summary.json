@@ -1,0 +1,36 @@
+{
+  "schema": "v2-independent-residency-review-summary-v1",
+  "delegation": "deleg_0f91c0e3",
+  "source": "Completed independent read-only review delivered to parent; principal findings plus parent-recomputed counters, not a new trial.",
+  "transcript": "/Users/jeremylien/.hermes/cache/delegation/live/deleg_0f91c0e3/task-0.log",
+  "reviewer_modified_files": false,
+  "parent_numeric_verification": {
+    "wired_pages_before": 210998,
+    "wired_pages_after": 621611,
+    "page_bytes": 16384,
+    "wired_increase_bytes": 6727483392,
+    "wired_increase_GiB": 6.2654571533203125,
+    "sampled_pressure_sequence": [
+      1,
+      2
+    ],
+    "assurance": "Global sequential samples, not exact per-allocation driver attribution; log hashes independently match review."
+  },
+  "leading_hypothesis": "Explicit residency requests associated with the successful6.26GiB allocation wire roughly the shard and trigger pressure; low process footprint does not bound driver/system effects. Large head upload is a later risk, not demonstrated before guard abort.",
+  "flag_semantics": {
+    "activation": "Any presence of GGML_METAL_NO_RESIDENCY disables residency sets in this pinned capable build; unsetting restores default. Configure before device initialization.",
+    "changes": "Residency collection/references, explicit add/commit/request and refresh policy.",
+    "does_not_change": "Weights, quantization, requested buffers, placement, mmap, shared/private selection, model kernels/algorithm or existing synchronization/lifetime duties.",
+    "limits": "May shift pressure to upload/compute and change performance; no capacity/correctness/stability guarantee."
+  },
+  "existing_workaround": "Pinned source already includes dummy-work workaround for issue25937; no new fix to apply.",
+  "recommended_gate": [
+    "Independent repaired qualification client must first pass CPU review.",
+    "Fresh small native and dual DEFAULT controls with unchanged assets/settings.",
+    "Candidate changes ONLY laptop RPC worker policy; mini remains default. Observe laptop startup policy false and shared buffers true.",
+    "Require completed matched image answers, actual GPU work, normal pressure, finite budgets and cleanup; matching text is not numerical equivalence.",
+    "Only then consider separately budgeted full27B load-only candidate with same3,2 split/context8192/image1024/source/model hashes."
+  ],
+  "prior_both_host_policy_controls_disposition": "Exploratory small-image controls remain valid within documented assurance bounds, but changed both hosts and used the older manual client. They do NOT satisfy the newly recommended transport-reviewed, fresh-default, laptop-only isolation gate.",
+  "overall_status": "NO full27B inference or always-on admission; no pressure weakening or unrelated app termination authorized."
+}

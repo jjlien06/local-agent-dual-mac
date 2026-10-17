@@ -1,0 +1,206 @@
+{
+  "status": "failed",
+  "role": "full-target-load-only",
+  "inference_executed": false,
+  "observations": [
+    {
+      "timestamp": 1792203570.654678,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105  17824 00:00",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203572.7021089,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 1473136 00:02",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203574.749717,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 2928752 00:04",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203576.802064,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 4388880 00:06",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203578.854679,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 5845440 00:08",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203580.9047942,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 7309056 00:10",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203582.9561899,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 8777712 00:12",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203585.00035,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 9596304 00:14",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203587.048213,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 9606512 00:17",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203589.082701,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 9605680 00:19",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203591.13567,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 9610000 00:21",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203593.183189,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 9599456 00:23",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203595.233302,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 8119184 00:25",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203597.282239,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 6629552 00:27",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203599.328877,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 5137488 00:29",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203601.368373,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 3689296 00:31",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203603.437525,
+      "pressure": 1,
+      "process_ps_rss_KiB": "12105 3023536 00:33",
+      "swap": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)"
+    }
+  ],
+  "started_at": 1792203570.511481,
+  "config": {
+    "role": "full-target-load-only",
+    "port": 18382,
+    "rpc": "169.254.47.213:18562",
+    "source_revision": "ea0c4c2c85fb183ec0fbd30a1af4e4275a18a064",
+    "assets": {
+      "schema": "full-qwen38-vision-assets-v1",
+      "role": "Full Qwen3.8-27B target, different quantization/format from the archived MLX baseline; native comparison must use this exact GGUF",
+      "repo": "unsloth/Qwen3.8-27B-GGUF",
+      "revision": "4ca720788d1e01f1bff70c033e0d0028fd02e502",
+      "files": [
+        {
+          "name": "Qwen3.8-27B-UD-Q4_K_M.gguf",
+          "bytes": 16464440224,
+          "sha256": "322e194ff79741c7baa497c240f677f54b201b0efab44ca8e50f122b39123482"
+        },
+        {
+          "name": "mmproj-BF16.gguf",
+          "bytes": 931146432,
+          "sha256": "83ee4f4f205fa514161778c41df1ea14144faa0f713510893b63c2395f5c2d53"
+        }
+      ],
+      "total_bytes": 17395586656,
+      "model_dir": "/Volumes/\u65b0\u589e\u78c1\u789f\u5340/local-agent-models/qwen38-27b-ud-q4km-4ca720788d1e",
+      "capacity_plan": "results/full-target-admission/q4-capacity-plan.json",
+      "admission_status": "Capacity-plausible; no physical full-model admission yet; controller must validate actual context/image/memory/device placement"
+    },
+    "server_sha256": "bdcd2f4313fb976247598c05bc734e9eb5186f03bbd7c94d4d53b0acd00cfecb",
+    "build_files": {
+      "ggml-rpc-server": {
+        "bytes": 132912,
+        "sha256": "0292e0afe0d86f08765394e746e5d4e9b3a7cc02c2f98e251444816a9d8c19d3"
+      },
+      "libggml-base.0.27.0.dylib": {
+        "bytes": 774120,
+        "sha256": "0d17252bcd2d8d3abc3faab6e649ee02f9c8d9e811d624927f0d619ee7b1d9bb"
+      },
+      "libggml-blas.0.27.0.dylib": {
+        "bytes": 58664,
+        "sha256": "c2c2e840c0a7dec168b3ae4a6faac6f788de00ad5964daaf26edb8ffb6a30c30"
+      },
+      "libggml-cpu.0.27.0.dylib": {
+        "bytes": 973872,
+        "sha256": "d5420c32e30c32af8bb93e97375cb9a983c5e9a75e415df499108b935812bc70"
+      },
+      "libggml-metal.0.27.0.dylib": {
+        "bytes": 5569720,
+        "sha256": "edba21b62ef9e076ae5bf9f112e6488717b494f555e784a61c8e63d8da3837ff"
+      },
+      "libggml-rpc.0.27.0.dylib": {
+        "bytes": 222304,
+        "sha256": "5f13606548e37df535513aa6ef8364f3ad3eeb8040fd6201e42042c784ad89b8"
+      },
+      "libggml.0.27.0.dylib": {
+        "bytes": 60240,
+        "sha256": "c29d1ff9fc4a803c6a45c844ed920cecd4fb3a16b1aa2cd14786c5ab608eee42"
+      },
+      "libllama-common.0.7.0.dylib": {
+        "bytes": 5327192,
+        "sha256": "0332a0477f9a426ffd3bc365a529cdac226c0dff93ccf3439bbfe6534fda75bf"
+      },
+      "libllama-server-impl.dylib": {
+        "bytes": 3416232,
+        "sha256": "d16db8b8520772269d04d69310274c021cb0e5b8f44a17ce92aaba67348dd670"
+      },
+      "libllama.0.7.0.dylib": {
+        "bytes": 3493488,
+        "sha256": "b6aa7eab56ec1c26963dfa10624a2277fc3c06fe355a403d96609ad4f8bb8ee4"
+      },
+      "libmtmd.0.7.0.dylib": {
+        "bytes": 1443232,
+        "sha256": "8e77f19e8019cb6751a7dff5e58ddbcfa9ac981debcb4b36c2809cafc46e0380"
+      },
+      "llama-mtmd-cli": {
+        "bytes": 87008,
+        "sha256": "130d8d0937ba5f8512a3c1fd52499f318142e0fc4666e6669c912dcb4e5c6380"
+      },
+      "llama-server": {
+        "bytes": 33472,
+        "sha256": "bdcd2f4313fb976247598c05bc734e9eb5186f03bbd7c94d4d53b0acd00cfecb"
+      }
+    },
+    "remote_supervisor_sha256": "934fa00886fa779d24222eb6489721855f83da31fbe7b0a719989f6950f82203"
+  },
+  "provision_receipt_sha256": "16bffd807c2b5bdc83644d9af7381f72d96b111d9322b567b67d0e2b6d38883f",
+  "devices": "Available devices:\n  MTL0: Apple M4 (12124 MiB, 12123 MiB free)\n  BLAS: Accelerate (0 MiB, 0 MiB free)\n  RPC0: 169.254.47.213:18562 (12124 MiB, 12123 MiB free)\n",
+  "pid": 12105,
+  "error": {
+    "type": "RuntimeError",
+    "message": "server exited during loading: -6"
+  },
+  "exit_code": -6,
+  "owned_process_reaped": true,
+  "listener_closed": true,
+  "finished_at": 1792203605.218441,
+  "server_log_sha256": "88593d3e20f5805f5cbafc60e7d5aa46e8aa55fc10365b3aeab0aa810974196f"
+}

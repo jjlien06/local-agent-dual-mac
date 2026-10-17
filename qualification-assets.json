@@ -1,0 +1,22 @@
+{
+  "schema": "dual-mac-vision-control-assets-v1",
+  "role": "Small same-architecture VLM control only; NOT the final model recommendation",
+  "repo": "unsloth/Qwen3.5-0.8B-GGUF",
+  "revision": "6ab461498e2023f6e3c1baea90a8f0fe38ab64d0",
+  "files": [
+    {
+      "name": "Qwen3.5-0.8B-Q4_K_M.gguf",
+      "bytes": 532517120,
+      "sha256": "bd258782e35f7f458f8aced1adc053e6e92e89bc735ba3be89d38a06121dc517"
+    },
+    {
+      "name": "mmproj-BF16.gguf",
+      "bytes": 207346528,
+      "sha256": "d312c4d02fd46eea7a16e4f3bbb58840e6222209322ca1e33ca03247ad8935d6"
+    }
+  ],
+  "total_bytes": 739863648,
+  "target_model_unchanged": "Qwen/Qwen3.8-27B",
+  "storage_root": "/Volumes/新增磁碟區/local-agent-models",
+  "model_dir": "/Volumes/新增磁碟區/local-agent-models/qwen35-0.8b-control-6ab461498e20"
+}

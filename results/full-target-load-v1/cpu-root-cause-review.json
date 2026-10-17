@@ -1,0 +1,247 @@
+{
+  "passed_as_investigation": true,
+  "findings": {
+    "verdict": "CPU/source investigation completed; primary observed failure is laptop system-memory pressure and a deliberate owned-RPC abort, not an independently crashing RPC server. Most likely pressure path is a multi-GiB Metal weight-buffer allocation/residency request before any weight upload. Exact blocked call and charged physical bytes remain unmeasured.",
+    "scope": "Local archived evidence, pinned source reads and bounded header arithmetic only; no SSH, GPU/model requests, downloads, installs, live-app inspection, process signalling or source edits.",
+    "source_revision": "ea0c4c2c85fb183ec0fbd30a1af4e4275a18a064",
+    "source_worktree": "git rev-parse matches archived revision; git status --short --untracked-files=no was empty.",
+    "causal_sequence": {
+      "evidence": [
+        "results/full-target-load-v1/local-result.json:96-119",
+        "results/full-target-admission/load-controller-v1.py:97-108",
+        "results/full-target-load-v1/ssh-readback/server.log:183-193",
+        "upstream/llama.cpp/ggml/src/ggml-rpc/ggml-rpc.cpp:675-685"
+      ],
+      "explanation": "At elapsed 33.666 s, laptop pressure changes from 1 to 4 and recorded swap jumps by 1097.75 MiB between the last two samples. Controller terminates its still-owned RPC process, recorded exit -15. Mini then hits RPC_STATUS_ASSERT(status) at line 682 and exits -6. This is an intentional safety-stop consequence; it does not identify the memory culprit.",
+      "accounting": "Mini maximum sampled RSS is 9610000 KiB = 9.164810 GiB, not 9.6 GiB. Last laptop RPC sample is 45072 KiB = 44.015625 MiB. Mini pressure stays 1 and swap 261.12M. These are samples, not peaks."
+    },
+    "phase_localization": {
+      "explanation": "After ignored MTP tensor warnings, there are no INFO offload summaries or model-buffer-size lines. Source allocates/maps ALL backend contexts first, then prints those INFO lines, then calls load_all_data. This strongly localizes interruption to mapping/allocation/planning rather than upload. Native log buffering/abrupt abort prevents calling this a formal proof.",
+      "source": [
+        "upstream/llama.cpp/src/llama-model.cpp:1887-1985",
+        "upstream/llama.cpp/src/llama-model.cpp:1987-2025",
+        "results/full-target-load-v1/ssh-readback/server.log:167-183"
+      ],
+      "important_caveat": "Absence of RPC allocation-success DEBUG messages alone proves nothing: GGML_RPC_DEBUG is opt-in, and server -lv 4 suppresses DEBUG. RPC success log occurs only AFTER allocation returns; a stalled residency call cannot emit it.",
+      "logging_source": [
+        "upstream/llama.cpp/ggml/src/ggml-rpc/log.h:11-34,47-49",
+        "upstream/llama.cpp/ggml/src/ggml-rpc/ggml-rpc.cpp:1502-1519",
+        "upstream/llama.cpp/common/log.h:24-32",
+        "upstream/llama.cpp/common/log.cpp:561-565"
+      ]
+    },
+    "allocation_path": {
+      "rpc": "RPC caps.buffer_from_host_ptr=false despite caps.mmap_support=true. Therefore mmap can remain enabled on the mini, but remote tensors cannot borrow its host mapping. Model loader routes the RPC context into ggml_backend_alloc_ctx_tensors_from_buft; generic allocation sums aligned tensor bytes and allocates large buffers, splitting only at the backend maximum. RPC forwards requested size to laptop Metal allocation synchronously. A single allocation near the whole remote shard is possible, not guaranteed: the archived maxBufferLength/actual request sizes were not recorded.",
+      "source": [
+        "upstream/llama.cpp/ggml/src/ggml-rpc/ggml-rpc.cpp:2858-2869",
+        "upstream/llama.cpp/src/llama-model.cpp:1927-1956",
+        "upstream/llama.cpp/ggml/src/ggml-alloc.c:1143-1153",
+        "upstream/llama.cpp/ggml/src/ggml-backend.cpp:57-100",
+        "upstream/llama.cpp/ggml/src/ggml-rpc/ggml-rpc.cpp:981-989,1502-1508"
+      ],
+      "metal": "Laptop log says use_shared_buffers=true and use_residency_sets=true. Default buft therefore uses shared=true; macOS vm_allocate reserves page-aligned memory, newBufferWithBytesNoCopy wraps it (not a second explicit full-shard copy), residency set adds the allocation, commits and requests residency. Background collection re-requests active sets every 5 ms during a default 180-second keepalive. This can pin/fault the buffer before model bytes arrive. The generic allocator/Metal shared init has no explicit full-buffer memset in this path; demand-zero/driver residency effects are distinct from a source-visible CPU memset.",
+      "metal_source": [
+        "results/full-target-load-v1/local-rpc.log:47-58",
+        "upstream/llama.cpp/ggml/src/ggml-metal/ggml-metal.cpp:265-266,735-740",
+        "upstream/llama.cpp/ggml/src/ggml-metal/ggml-metal-device.m:2090-2097,2110-2173",
+        "upstream/llama.cpp/ggml/src/ggml-metal/ggml-metal-device.m:2037-2065,976-1017",
+        "upstream/llama.cpp/ggml/src/ggml-alloc.c:61-91"
+      ],
+      "mini": "Local Metal contexts wrap mapped owned tensor ranges with newBufferWithBytesNoCopy and residency requests; ranges intentionally exclude foreign contexts. init_mappings also requests whole-file WILLNEED prefetch (on macOS not Linux MAP_POPULATE). Mini RSS rising then falling is compatible with file-page/Metal ownership and reclaim transitions; it is not evidence that remote weights were uploaded or freed.",
+      "mini_source": [
+        "upstream/llama.cpp/src/llama-model.cpp:1887,1927-1941",
+        "upstream/llama.cpp/src/llama-model-loader.cpp:1411-1433,1491-1523",
+        "upstream/llama.cpp/src/llama-mmap.cpp:482-515",
+        "upstream/llama.cpp/ggml/src/ggml-metal/ggml-metal-device.m:2180-2264"
+      ]
+    },
+    "header_only_budget": {
+      "assumptions": "All requested GPU tensors supported on preferred devices; no tensor overrides/lazy loading; gpu-layers 99, layer split, device order MTL0,RPC0; main 64 layers loaded and extra block64 skipped. Placement denominator is n_layer_all+1 = 66, not 64. Output is slot65; skipped block64 still influences splitting. Model source always keeps token embedding on CPU, which is intended input placement rather than a silent fallback.",
+      "source": [
+        "results/full-target-admission/load-remote-v1.py:73-80",
+        "upstream/llama.cpp/src/llama-model.cpp:1631-1689",
+        "upstream/llama.cpp/src/models/qwen35.cpp:40-53,122-126",
+        "upstream/llama.cpp/src/llama-arch.cpp:841",
+        "results/full-target-admission/q4-header-budget.json"
+      ],
+      "verified_tensor_rows": 866,
+      "payload_bytes": 16453443584,
+      "excluded_mtp_bytes": 351008768,
+      "input_embedding_cpu_bytes": 715161600,
+      "output_weight_on_laptop_bytes": 1042944000,
+      "all_payloads_32_byte_aligned": true,
+      "placements": [
+        {
+          "tensor_split": "1,1",
+          "mini_layers": [
+            0,
+            32
+          ],
+          "laptop_layers": [
+            33,
+            63
+          ],
+          "mini_gpu_payload_bytes": 7116214144,
+          "laptop_gpu_payload_bytes": 8271059072,
+          "mini_cpu_embedding_bytes": 715161600,
+          "mini_gpu_payload_GiB": 6.627490878105164,
+          "laptop_gpu_payload_GiB": 7.7030240297317505,
+          "laptop_max_tensor_bytes": 1042944000,
+          "gpu_tensor_counts": [
+            438,
+            412
+          ]
+        },
+        {
+          "tensor_split": "3,2",
+          "mini_layers": [
+            0,
+            39
+          ],
+          "laptop_layers": [
+            40,
+            63
+          ],
+          "mini_gpu_payload_bytes": 8665073920,
+          "laptop_gpu_payload_bytes": 6722199296,
+          "mini_cpu_embedding_bytes": 715161600,
+          "mini_gpu_payload_GiB": 8.069978952407837,
+          "laptop_gpu_payload_GiB": 6.260535955429077,
+          "laptop_max_tensor_bytes": 1042944000,
+          "gpu_tensor_counts": [
+            530,
+            320
+          ]
+        },
+        {
+          "tensor_split": "5,3",
+          "mini_layers": [
+            0,
+            41
+          ],
+          "laptop_layers": [
+            42,
+            63
+          ],
+          "mini_gpu_payload_bytes": 9120038912,
+          "laptop_gpu_payload_bytes": 6267234304,
+          "mini_cpu_embedding_bytes": 715161600,
+          "mini_gpu_payload_GiB": 8.493698120117188,
+          "laptop_gpu_payload_GiB": 5.836816787719727,
+          "laptop_max_tensor_bytes": 1042944000,
+          "gpu_tensor_counts": [
+            558,
+            292
+          ]
+        }
+      ],
+      "interpretation": "For 1,1 the raw RPC/laptop weight payload is 8271059072 bytes (7.703024 GiB), including output+output_norm; mini GPU owns 7116214144 bytes (6.627491 GiB) plus 715161600 CPU embedding bytes. Equal layer fractions are not equal weight bytes. These are payload budgets, NOT measured buffer allocations or physical peaks; mapped-page rounding, runtime states, projector, driver resources and background workloads add costs. Source can silently choose fallback buffer types, so actual successful placement remains unverified."
+    },
+    "known_later_peaks_not_yet_demonstrated": {
+      "rpc_tensor_upload": "With mmap, load_all_data passes each full remote tensor to synchronous tensor_set. serialize_set_tensor allocates a zero-initialized full-tensor message then memcpy copies bytes. Receiver vector.resize allocates/zero-initializes the full message, then shared Metal memcpy copies to preallocated destination. Source mapping + mini message + laptop message + laptop destination can coexist across the two hosts; no source evidence that full model/shard is serialized as one giant SET_TENSOR. Largest tensor here is output.weight, 1042944000 bytes (0.971317 GiB). Per tensor, synchronous send waits until outgoing command delivery, not a server completion ACK; transport backpressure bounds progress, but does not prove server has finished copying before client returns. No demonstrated unbounded async full-model weight queue in this mmap path.",
+      "source": [
+        "upstream/llama.cpp/src/llama-model-loader.cpp:1697-1735",
+        "upstream/llama.cpp/ggml/src/ggml-rpc/ggml-rpc.cpp:829-837,848-872,570-578",
+        "upstream/llama.cpp/ggml/src/ggml-rpc/ggml-rpc.cpp:344-355,1698-1753,2600-2608",
+        "upstream/llama.cpp/ggml/src/ggml-metal/ggml-metal-device.m:2333-2336"
+      ],
+      "no_mmap": "No-mmap disables file mapping/prefetch and local mapped zero-copy weights. Local and remote model buffers are still allocated upfront; both backends report host_buffer=false, disabling the four-small-async-buffer path. Fallback reads a full tensor into read_buf; RPC then makes its additional full-tensor serialized copy. Non-host contexts are loaded first and staged tensors biggest-first to reduce overlap, not eliminate staging.",
+      "no_mmap_source": [
+        "upstream/llama.cpp/src/llama-model.cpp:2015-2025",
+        "upstream/llama.cpp/src/llama-model-loader.cpp:1569-1587,1611-1616,1671-1680,1802-1807",
+        "upstream/llama.cpp/ggml/src/ggml-metal/ggml-metal.cpp:701-706",
+        "upstream/llama.cpp/ggml/src/ggml-rpc/ggml-rpc.cpp:2863-2868"
+      ]
+    },
+    "configuration_rationale": {
+      "layer_split": "YES, source-based capacity rationale for moving more layers to mini: 3,2 reduces laptop raw weights from 7.703024 to 6.260536 GiB but raises mini GPU from 6.627491 to 8.069979 GiB, plus CPU embedding/projector/cache/runtime. 5,3 yields 5.836817 laptop / 8.493698 mini GPU GiB. Neither is admitted; mini becomes the tighter aggregate host and its mmap-prefetch load peak must be budgeted. Do not auto-select a new ratio or claim this fixes capacity.",
+      "no_mmap": "NOT a direct remedy for likely laptop upfront allocation/residency: that buffer remains. It has a source rationale only to test mini whole-file prefetch/page-cache overlap; it trades away local zero-copy and adds full-tensor staging, so may worsen peak. Do not combine it with a split change in the first differential probe.",
+      "loader_buffers": "NO source-based rationale for reducing the four nominal 1 MiB staging buffers in this run: mmap returns before creating them, and host_buffer=false also disables them for these two backends without mmap. Changing a hypothetical loader-buffer CLI flag is not supported by the inspected loader source. Bounded RPC weight chunking could reduce later per-tensor messages, but requires separate implementation/review and cannot remove the upfront shard allocation.",
+      "residency_option": "Source exposes GGML_METAL_NO_RESIDENCY (ggml-metal-device.m:1268), but disabling residency is a behavior change, not a demonstrated fix or permission to weaken pressure gates. Not recommended as the first probe."
+    },
+    "memory_accounting_caveats": [
+      "The advertised 12123 MiB free is recommendedMaxWorkingSetSize minus this MTLDevice currentAllocatedSize, not machine-wide available physical RAM; it does not subtract other applications. Source: ggml-metal-device.m:1501-1506.",
+      "Low ps RSS does not bound Metal allocation/residency or process physical footprint. Archive contains no phys_footprint, wired/compressor accounting, per-allocation trace or stack sample. Do not infer which unrelated app contributed.",
+      "Unified memory is one physical pool: shared CPU/GPU views of identical pages must not be mechanically double-counted. Conversely malloc RPC messages are separate allocations. GPU allocated bytes, VM reservations, RSS, phys_footprint, system wired/compressed pages and swap are non-equivalent counters.",
+      "WILLNEED is a prefetch hint, not proof of full-file residency. Default 180-second residency refresh can retain allocated resources across loading. The source includes a one-byte dummy GPU-work release workaround at ggml-metal-device.m:1024-1028; this is not proof that a driver leak caused this trial.",
+      "Current context8192/image1024 limits do not shrink stored model weight buffers. The observed failure precedes reported completion of model-buffer setup; projector/cache/compute contributions to this failure are not demonstrated, but remain required in a successful final-host budget."
+    ],
+    "verified_log_sha256": {
+      "results/full-target-load-v1/local-rpc.log": "179188bbc5327a50108950dfb860c85413fcd7b45c17a8b8bae8ca4aa023033e",
+      "results/full-target-load-v1/remote-controller.log": "ebd968fc97369ded99f8c23218bc73d52887d8066f4575eda456dbdb307236f1",
+      "results/full-target-load-v1/ssh-readback/server.log": "88593d3e20f5805f5cbafc60e7d5aa46e8aa55fc10365b3aeab0aa810974196f"
+    },
+    "source_sha256": {
+      "ggml/src/ggml-rpc/ggml-rpc.cpp": "583cf1ee149c5b94c215eca07a293564d1b755427b57b1a7846f0328e724eacd",
+      "ggml/src/ggml-metal/ggml-metal-device.m": "6fb96faa5c1db75dcb3f433d89b9ea514d4ac7822a9a1caca675c58ab4b278d4",
+      "ggml/src/ggml-metal/ggml-metal.cpp": "3392a2ecedd51fda5f90d3b152dd7f9eb7d819a56fbf2d6ac71b9b0bb4b1976c",
+      "src/llama-model-loader.cpp": "7975d83406627e405d36876472495c6111696e70db66c65a629d6213ec54fc04",
+      "src/llama-model.cpp": "c5247d21d7783556d945492ec946880fdacb1ae0502a59976ea22c93cef508c2",
+      "ggml/src/ggml-backend.cpp": "43dea13b13c2a15afd83f53515f3488c17072fc107a6ba4a5e0370f90b4fe7ff"
+    }
+  },
+  "hypotheses": [
+    {
+      "rank": 1,
+      "hypothesis": "Upfront remote weight-buffer creation/Metal residency consumes laptop headroom before uploads.",
+      "confidence": "Leading; source path and phase strongly fit, exact call unobserved.",
+      "evidence": [
+        "ggml-rpc.cpp:981-989,1502-1508",
+        "ggml-metal-device.m:2090-2173,2037-2065",
+        "llama-model.cpp:1887-2025"
+      ],
+      "prediction": "An allocation trace/owned stack sample shows ALLOC_BUFFER or Metal mapping/residency around pressure onset, with no SET_TENSOR preceding it; Metal/physical-footprint/system wiring rises while CPU RSS may stay low. A smaller allocated shard scales the contribution.",
+      "falsification": "A trustworthy trace establishes all shard allocations/residency finished and uploads began well before pressure, or shows no corresponding model-process/driver physical growth."
+    },
+    {
+      "rank": 2,
+      "hypothesis": "Already occupied laptop memory leaves insufficient combined headroom for an otherwise expected ~7.7-GiB shard, not necessarily a loader bug.",
+      "confidence": "Plausible cofactor, not separately attributable with archived counters.",
+      "evidence": [
+        "local-result.json:4-105",
+        "local-rpc.log:58-63",
+        "ggml-metal-device.m:1501-1506"
+      ],
+      "prediction": "Parent-authorized future global memory accounting shows insufficient simultaneous headroom despite backend free-MiB claim; lower remote ownership lowers footprint proportionally.",
+      "falsification": "Adequate contemporaneous physical headroom plus a much larger-than-payload measured model/driver footprint would instead favor anomalous allocation/driver amplification. Do not kill or inventory unrelated apps for this investigation."
+    },
+    {
+      "rank": 3,
+      "hypothesis": "Full-tensor RPC staging duplicates, especially ~0.97-GiB output tensor, create a later upload peak.",
+      "confidence": "Source-known future risk; disfavored as THIS abort cause because model-buffer INFO barrier was not reached.",
+      "evidence": [
+        "llama-model.cpp:2003-2025",
+        "llama-model-loader.cpp:1697-1735",
+        "ggml-rpc.cpp:829-837,344-355,2600-2608",
+        "ggml-metal-device.m:2333-2336"
+      ],
+      "prediction": "Pressure coincides with SET_TENSOR/large receiver vector after completed buffer logs, not ALLOC_BUFFER.",
+      "falsification": "Confirmed absence of SET_TENSOR before the guard rules out upload staging as the initial cause. This does not rule it out for a later successful allocation phase."
+    },
+    {
+      "rank": 4,
+      "hypothesis": "Mini whole-file prefetch/local mapping peak explains mini RSS trajectory; laptop pressure would then require an independent/coupled residency event, not mini RSS itself.",
+      "confidence": "Source-supported mini accounting hypothesis, weak primary explanation for laptop failure.",
+      "evidence": [
+        "llama-model.cpp:1887,1927-1941",
+        "llama-model-loader.cpp:1430-1433",
+        "llama-mmap.cpp:482-515"
+      ],
+      "prediction": "Mini file-backed/Metal page accounting rises before upload; no-mmap changes that mini trajectory without reducing the same remote allocation bytes.",
+      "falsification": "Trace instead shows those mini bytes entirely in serialized RPC messages during active transfer. Cross-host RSS decline alone cannot establish transfer progress."
+    }
+  ],
+  "next_probe": {
+    "performed_here": "Completed header-only placement replay, exact tensor-byte/count/alignment assertions, three archived log SHA-256 comparisons and pinned-source/worktree checks. No physical probe performed.",
+    "minimal_owner_only_probe": "After the parent re-establishes pressure==1 and explicit physical-memory reserve, use a fresh, bounded, task-owned small RPC/Metal allocation-only fixture (e.g. one 64-MiB ALLOC_BUFFER followed by free; no checkpoint, no SET_TENSOR, no inference). This is a proposal, not authorization/execution by this child. Retain pressure gate==1, finite deadline/log cap, ownership cleanup and readback. Do not scale to a multi-GiB allocation merely because the tiny one succeeds.",
+    "instrumentation": "Set GGML_RPC_DEBUG=3 on both endpoints and server common-log verbosity at least 5 so command traces are visible. Collect owned-task RSS plus phys_footprint and global free/wired/compressed/swap deltas, backend allocated bytes if available, exact request byte count and allocation/free completion times; avoid unrelated-app inspection. Existing DEBUG commands emit before dispatch, success records only after allocation. An owned-process stack sample during a stall is more discriminating than RSS alone.",
+    "purpose": "Verify allocation/residency and accounting behavior at safe scale. This can falsify the claim that ALLOC_BUFFER has no physical effect until uploads, but a tiny pass cannot admit a full shard. Preserve existing failed evidence.",
+    "before_any_full_retry": "Need instrumented phase trace and fresh simultaneous host budget including intended CPU embedding, mini-local GPU weights, BF16 projector, actual 8192-context hybrid caches/compute and background headroom. If the parent later authorizes a diagnostic full retry, change one variable only and keep the exact checkpoint, fail-closed pressure guard and no-silent-fallback attestation. Never interpret deliberate disconnect as a new root-cause crash."
+  },
+  "limits": [
+    "No measured proof of a particular Metal driver fault, exact physical allocation size, successful RPC buffer allocation, weight upload, projector/cache initialization or inference.",
+    "Header budgets assume preferred placement; source includes CPU fallback lists. Actual CPU buffer is expected for input embedding, while fallback of repeating weights would need separate rejection/attestation.",
+    "No live apps/process/memory investigation, SSH/network or GPU load was run. Postcleanup swap growth supplied by parent was not independently inspected.",
+    "Only the new exclusive cpu-root-cause-review.json report is created; archived evidence, existing runtime and upstream source remain untouched. No general skill file updated because this assignment permits only local read-only investigation plus this one new report."
+  ]
+}

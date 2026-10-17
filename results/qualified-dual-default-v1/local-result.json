@@ -1,0 +1,44 @@
+{
+  "role": "reviewed-client-small-policy-control",
+  "status": "remote-load-diagnostic-returned-success",
+  "observations": [
+    {
+      "timestamp": 1792206744.316231,
+      "pressure": 1,
+      "process_ps_rss_KiB": "28224  85216 00:00",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1868.62M  free = 1203.38M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [28224]: 64-bit    Footprint: 42549920 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 42582688 B\n    phys_footprint_peak: 42582688 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                    15967.\nPages active:                                 362614.\nPages inactive:                               353340.\nPages speculative:                              7953.\nPages throttled:                                   0.\nPages wired down:                             220550.\nPages purgeable:                               14052.\n\"Translation faults\":                    18084626536.\nPages copy-on-write:                      3218030635.\nPages zero filled:                        4908121204.\nPages reactivated:                        2163431709.\nPages purged:                              149202671.\nFile-backed pages:                            227487.\nAnonymous pages:                              496420.\nPages stored in compressor:                   401850.\nPages occupied by compressor:                  46476.\nDecompressions:                           2397174567.\nCompressions:                             2718492316.\nPageins:                                   246587024.\nPageouts:                                    3415321.\nSwapins:                                    39488456.\nSwapouts:                                   47626892.\n"
+    },
+    {
+      "timestamp": 1792206746.393599,
+      "pressure": 1,
+      "process_ps_rss_KiB": "28224 307408 00:02",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1868.62M  free = 1203.38M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [28224]: 64-bit    Footprint: 268714848 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 268747616 B\n    phys_footprint_peak: 643220584 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                    28162.\nPages active:                                 338830.\nPages inactive:                               326777.\nPages speculative:                             11210.\nPages throttled:                                   0.\nPages wired down:                             247856.\nPages purgeable:                                3185.\n\"Translation faults\":                    18084680229.\nPages copy-on-write:                      3218032346.\nPages zero filled:                        4908195804.\nPages reactivated:                        2163469536.\nPages purged:                              149213717.\nFile-backed pages:                            218130.\nAnonymous pages:                              458687.\nPages stored in compressor:                   411967.\nPages occupied by compressor:                  53926.\nDecompressions:                           2397174615.\nCompressions:                             2718503179.\nPageins:                                   246587298.\nPageouts:                                    3415367.\nSwapins:                                    39488456.\nSwapouts:                                   47626892.\n"
+    }
+  ],
+  "started_at": 1792206744.045977,
+  "role_scope": "HTTP client image controls; actual request results require remote receipt readback",
+  "rpc_policy": {
+    "GGML_METAL_NO_RESIDENCY_present": false
+  },
+  "rpc_pid": 28224,
+  "owned_listener": "COMMAND     PID       USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME\nggml-rpc- 28224 jeremylien    3u  IPv4 0xdc7ee0be1ff4713a      0t0  TCP 169.254.47.213:18570 (LISTEN)\n",
+  "remote_controller_exit": 0,
+  "owned_rpc_reaped": true,
+  "rpc_exit": -15,
+  "rpc_listener_closed": true,
+  "finished_at": 1792206748.585366,
+  "local-rpc.log_sha256": "fd117e66883bd65b77a1096366cf5ed55cacb2f5caa62b82ddfa6eaa5dcdee3b",
+  "remote-controller.log_sha256": "5c9752598cdc9c9200c5bab2e81989ea5965a7177ecc4124439fc4de29afcf44"
+}

@@ -1,0 +1,16 @@
+{
+  "timestamp": 1792208220.8520992,
+  "result_sha256": "38e9aa04a22b58e957011bdc4bdd097653a4a1a306bbf29cbda34bbc44cf4a56",
+  "result_bytes": 120819,
+  "shards_fully_rehashed": 3,
+  "full_tensor_count": 2180,
+  "language_tensor_count": 1847,
+  "vision_tensor_count": 333,
+  "vision_BF16_bytes": 921460192,
+  "all_sampled_pressure_normal": true,
+  "post_health": "kern.memorystatus_vm_pressure_level: 1\nvm.swapusage: total = 1024.00M  used = 245.12M  free = 778.88M  (encrypted)\n",
+  "gpu_execution": false,
+  "model_imported": false,
+  "previous_readback_attempt": "Large JSON passed through tool-output channel failed parsing; no receipt was published by that attempt. This controller parses and saves full SSH stdout before emitting a small summary.",
+  "scope": "Current read-only checkpoint file integrity; not GPU visual compatibility or model/task qualification."
+}

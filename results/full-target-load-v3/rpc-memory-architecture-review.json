@@ -1,0 +1,4126 @@
+{
+  "schema": "rpc-memory-architecture-review-v1",
+  "scope": {
+    "kind": "Architecture reassessment only; CPU reads and arithmetic on pinned source and archived local artifacts. No implementation, model reload, GPU, SSH, process signalling, installs, weight download, application termination, source edits or commits.",
+    "exclusive_new_report": "results/full-target-load-v3/rpc-memory-architecture-review.json",
+    "small_policy_audit": "Not duplicated; independently delegated to another reviewer.",
+    "source_revision": "ea0c4c2c85fb183ec0fbd30a1af4e4275a18a064",
+    "source_worktree_verified_clean": true,
+    "source_hashes": {
+      "upstream/llama.cpp/ggml/src/ggml-rpc/ggml-rpc.cpp": "583cf1ee149c5b94c215eca07a293564d1b755427b57b1a7846f0328e724eacd",
+      "upstream/llama.cpp/ggml/src/ggml-rpc/transport.cpp": "a5a6774d87398344a09da643de6ac175ad8188c91d8def25f6dad9c0e8957e34",
+      "upstream/llama.cpp/ggml/src/ggml-rpc/transport.h": "5859ae198de5c8df1d7184eb7eca13adab5cf2d5548910052756ad6d0ef53cc7",
+      "upstream/llama.cpp/ggml/src/ggml-metal/ggml-metal-device.m": "6fb96faa5c1db75dcb3f433d89b9ea514d4ac7822a9a1caca675c58ab4b278d4",
+      "upstream/llama.cpp/ggml/src/ggml-metal/ggml-metal.cpp": "3392a2ecedd51fda5f90d3b152dd7f9eb7d819a56fbf2d6ac71b9b0bb4b1976c",
+      "upstream/llama.cpp/ggml/src/ggml-backend.cpp": "43dea13b13c2a15afd83f53515f3488c17072fc107a6ba4a5e0370f90b4fe7ff",
+      "upstream/llama.cpp/src/llama-model-loader.cpp": "7975d83406627e405d36876472495c6111696e70db66c65a629d6213ec54fc04",
+      "upstream/llama.cpp/gguf-py/gguf/constants.py": "ef2e7a7f1e717cade0f8a6c1a06930bef9ab6aab55fe708d43e6cb1ab8c5d0ba"
+    },
+    "optional_external_check": "An optional pinned raw-GitHub extraction was attempted; configured extract backend returned search-only/unsupported. All technical conclusions below use the verified local pin, not missing web content.",
+    "evidence_hashes": {
+      "results/full-target-load-v3/local-result.json": "ff0a4a61b71f5423b5616d913263d0c15de0dc6b7222f19b14d3a464360de59e",
+      "results/full-target-load-v3/ssh-readback/result.json": "ec3e89b364f5feda14ebf1246479dff52bcba5bce0287cdfa7f603564cbe2b5d",
+      "results/full-target-load-v3/postcleanup.json": "2d681beff8d256ad8bb9272d7932818e135ee1235a6653b1f0ecf88a2d88dc98",
+      "results/full-target-admission/load-v3-proposal.json": "d3bdf4f9ab2f443342d8bc25a5cccb68fb5b593f5589a561b37a0632c4079d2a",
+      "results/full-target-admission/source-placement-reconciliation.json": "0c5f3276475522476ca4af641adedcb399e51a2cfb199d60652e679ce8ee078b",
+      "results/full-target-admission/provision-readback.json": "925041e4e8e8f748b3cdfe35d7bf608d9c77c550de93ba4b8f42143361101685",
+      "results/full-target-admission/system-footprint-query.json": "eed0ae437a2b266f5b061d4769df62037c410a30be95b0b9d8d49d5bfd0fdb20"
+    }
+  },
+  "decision": {
+    "recommendation": "STOP full27B RPC admission and all further full-load retries under the unchanged deployment constraints. Bounded transport work may be retained as a separate CPU-first experiment, not as a demonstrated route to target fit.",
+    "reason": "Bounded weight messages can remove a real near-1GiB transient per host at output-head upload, but that upload already completed. V3 later hit laptop warning pressure after only4.629GiB of6.261GiB raw remote weights, with1.631GiB still missing and caches/workspaces uninitialized. A short-lived buffer optimization has no proven multi-GiB steady-state saving. The exact capacity shortfall cannot be calculated from these telemetry fields.",
+    "status": "All three full-target attempts remain failed/not admitted; no ready full27B model, completion, image answer, performance qualification or always-on admission.",
+    "native_MLX_baseline": "A different-format native4bit MLX baseline is separate evidence; this review neither requalifies it nor substitutes it for exact-GGUF comparison.",
+    "not_authorized": [
+      "another full-model reload",
+      "weaker pressure threshold",
+      "unrelated app termination",
+      "smaller/different weights",
+      "quantization or kernel change",
+      "blind split/mmap/private-buffer changes"
+    ]
+  },
+  "failures_preserved": [
+    {
+      "trial": "v1",
+      "status": "failed",
+      "split": "1,1",
+      "laptop_no_residency": false,
+      "mini_no_residency": false,
+      "first_bad_pressure": 4,
+      "first_bad_pressure_elapsed_seconds": 33.66603183746338,
+      "started_utc": "2026-10-17T02:19:29.957861+00:00",
+      "inference_executed": false,
+      "rpc_terminated_by_controller_exit": -15,
+      "rpc_reaped": true,
+      "rpc_listener_closed": true,
+      "mini_exit": -6,
+      "mini_owned_process_reaped": true,
+      "mini_listener_closed": true,
+      "postcleanup_artifact": "results/full-target-load-v1/postcleanup.json",
+      "integrity": {
+        "local-rpc.log": {
+          "sha256": "179188bbc5327a50108950dfb860c85413fcd7b45c17a8b8bae8ca4aa023033e",
+          "bytes": 5060,
+          "matches_receipt": true
+        },
+        "remote-controller.log": {
+          "sha256": "ebd968fc97369ded99f8c23218bc73d52887d8066f4575eda456dbdb307236f1",
+          "bytes": 7866,
+          "matches_receipt": true
+        },
+        "ssh-readback/server.log": {
+          "sha256": "88593d3e20f5805f5cbafc60e7d5aa46e8aa55fc10365b3aeab0aa810974196f",
+          "bytes": 16301,
+          "matches_receipt": true
+        },
+        "ssh-readback/result.json": {
+          "sha256": "dcfe9e0a12633a239dfdd3ff6cae194fb62ecff2803bc650fbaf66d8aa17c667",
+          "bytes": 7865,
+          "matches_receipt": true
+        },
+        "ssh-readback/argv.json": {
+          "sha256": "61394635a634b1b376214eff4ec5166376d9b77f8f86b5462b74faefb5e8ac2f",
+          "bytes": 941,
+          "matches_receipt": true
+        },
+        "ssh-readback/started.json": {
+          "sha256": "10af8dbf9f5addcb64bb1dc9546894d3c9284b417c4ef925f6089eebd58d07eb",
+          "bytes": 3907,
+          "matches_receipt": true
+        }
+      }
+    },
+    {
+      "trial": "v2",
+      "status": "failed",
+      "split": "3,2",
+      "laptop_no_residency": false,
+      "mini_no_residency": false,
+      "first_bad_pressure": 2,
+      "first_bad_pressure_elapsed_seconds": 29.578587770462036,
+      "started_utc": "2026-10-17T02:34:05.730338+00:00",
+      "inference_executed": false,
+      "rpc_terminated_by_controller_exit": -15,
+      "rpc_reaped": true,
+      "rpc_listener_closed": true,
+      "mini_exit": -6,
+      "mini_owned_process_reaped": true,
+      "mini_listener_closed": true,
+      "postcleanup_artifact": "results/full-target-load-v2/postcleanup.json",
+      "integrity": {
+        "local-rpc.log": {
+          "sha256": "b47a6803c8543e685d3b68d46a1a911bc100b9f4ad6971efb76473012937732f",
+          "bytes": 12349,
+          "matches_receipt": true
+        },
+        "remote-controller.log": {
+          "sha256": "1368ac678b665f767c7c652340317fd496cc01862dfcc12c869998640bf03cfe",
+          "bytes": 7656,
+          "matches_receipt": true
+        },
+        "ssh-readback/server.log": {
+          "sha256": "80215fdfb23ab6b9ef610ee68fb3aad9d7aae14a764f8dc98e3737fc55f022a4",
+          "bytes": 165327,
+          "matches_receipt": true
+        },
+        "ssh-readback/result.json": {
+          "sha256": "bb2efcf19d5c0928175e219bd4b545c28246666a32064080a53d82f782dac3e3",
+          "bytes": 7655,
+          "matches_receipt": true
+        },
+        "ssh-readback/argv.json": {
+          "sha256": "cc9dbbb692398fa672cc3d061ce39cf6c0bde815f4e16d9382bb3881acd175af",
+          "bytes": 941,
+          "matches_receipt": true
+        },
+        "ssh-readback/started.json": {
+          "sha256": "24bf1dd8cc5556b5a085f12a8bb05d097dbc4c8a2b1f04fb870e22bef8d53615",
+          "bytes": 3907,
+          "matches_receipt": true
+        }
+      }
+    },
+    {
+      "trial": "v3",
+      "status": "failed",
+      "split": "3,2",
+      "laptop_no_residency": true,
+      "mini_no_residency": false,
+      "first_bad_pressure": 2,
+      "first_bad_pressure_elapsed_seconds": 55.21443200111389,
+      "started_utc": "2026-10-17T03:15:25.974452+00:00",
+      "inference_executed": false,
+      "rpc_terminated_by_controller_exit": -15,
+      "rpc_reaped": true,
+      "rpc_listener_closed": true,
+      "mini_exit": -6,
+      "mini_owned_process_reaped": true,
+      "mini_listener_closed": true,
+      "postcleanup_artifact": "results/full-target-load-v3/postcleanup.json",
+      "integrity": {
+        "local-rpc.log": {
+          "sha256": "5c944f621806f3535ee261dd316e49a26b360a595c82d86162859cf0ce93ae77",
+          "bytes": 118452,
+          "matches_receipt": true
+        },
+        "remote-controller.log": {
+          "sha256": "6a4b5b2fcd1baa2c33acf200dc7841f8715f6dab7d8209f0de3230c4da627b9c",
+          "bytes": 10061,
+          "matches_receipt": true
+        },
+        "ssh-readback/server.log": {
+          "sha256": "8d7961695485e8c0fc3a226eb5d010daa37afd760b74c72e3df02196ab365eb9",
+          "bytes": 318995,
+          "matches_receipt": true
+        },
+        "ssh-readback/result.json": {
+          "sha256": "ec3e89b364f5feda14ebf1246479dff52bcba5bce0287cdfa7f603564cbe2b5d",
+          "bytes": 10060,
+          "matches_receipt": true
+        },
+        "ssh-readback/argv.json": {
+          "sha256": "95baa1c21e0a375c7df99792902e3876113b909070ac8576a574018cd243cce7",
+          "bytes": 941,
+          "matches_receipt": true
+        },
+        "ssh-readback/started.json": {
+          "sha256": "ddef12a4eb1014d0d0eb81d29a9db14fb40ff37d7ec90783ec68de6e7080fdad",
+          "bytes": 3943,
+          "matches_receipt": true
+        }
+      }
+    }
+  ],
+  "identity_and_inventory": {
+    "checkpoint_repo": "unsloth/Qwen3.8-27B-GGUF",
+    "checkpoint_revision": "4ca720788d1e01f1bff70c033e0d0028fd02e502",
+    "checkpoint_file": "Qwen3.8-27B-UD-Q4_K_M.gguf",
+    "checkpoint_file_bytes": 16464440224,
+    "checkpoint_file_sha256": "322e194ff79741c7baa497c240f677f54b201b0efab44ca8e50f122b39123482",
+    "projector_bytes": 931146432,
+    "projector_sha256": "83ee4f4f205fa514161778c41df1ea14144faa0f713510893b63c2395f5c2d53",
+    "identity_scope": "Whole-file digests come from the retained completed provisioning readback and v3 admitted config, not a new remote hash. No full weight files are available locally for this audit.",
+    "header_budget_path": "results/full-target-admission/q4-header-budget.json",
+    "header_budget_sha256": "7020c052bc8281cc7283be9129d854453a1b3863b46d88c38ae87c1df70062a7",
+    "prefix_sha256_recomputed": "70816fe106916b128db40924d4143b2f8eb1bbafee271727454daa1b16c4db67",
+    "prefix_bytes": 16777216,
+    "header_independent_reparse": {
+      "version": 3,
+      "metadata_count": 50,
+      "tensor_count": 866,
+      "data_offset": 10996640,
+      "all_names_shapes_offsets_match": true,
+      "all_sizes_recomputed_from_pinned_quant_block_layout": true,
+      "all_tensor_spans_contiguous": true,
+      "total_tensor_payload_bytes": 16453443584
+    },
+    "placement": "Same3,2 split: mini blocks0..39, laptop blocks40..63 plus output_norm/head; input embedding on mini CPU; unused prediction block64 excluded. Printed offloaded66/66 is not66 executed decoder blocks.",
+    "preferred_gpu_tensor_bytes": {
+      "mini": 8665073920,
+      "laptop": 6722199296
+    },
+    "mini_cpu_embedding_bytes": 715161600,
+    "unused_mtp_bytes": 351008768,
+    "runtime_storage_summary_MiB": {
+      "mini_CPU_Mapped": 682.03,
+      "mini_MTL0_Mapped": 8263.66,
+      "laptop_RPC": 6410.79
+    },
+    "allocation": "Exactly one successful remote allocation logged as6.26GiB. Header payload is6,722,199,296bytes; Metal page-rounding to16KiB would reserve6,722,207,744bytes. The trace allocation line is rounded, so page-rounded size is source-derived, not an independently printed exact allocation result."
+  },
+  "v3_upload_accounting": {
+    "method": "Parse only receiver [set_tensor] records, match names/types/shapes to independently reparsed header inventory, sum exact header tensor bytes (not rounded trace sizes). Validate every observed offset is0 and receiver data addresses form a gap-free buffer prefix. Match FNV request values between client/server logs. Do not count client intent or hash request as an uploaded payload.",
+    "receiver_set_records": 239,
+    "unique_receiver_tensors": 239,
+    "raw_received_bytes": 4970537216,
+    "raw_received_GiB": 4.629173517227173,
+    "expected_remote_tensors": 320,
+    "expected_raw_bytes": 6722199296,
+    "expected_raw_GiB": 6.260535955429077,
+    "received_payload_fraction": 0.7394212812104046,
+    "missing_tensors": 81,
+    "missing_raw_bytes": 1751662080,
+    "missing_raw_GiB": 1.6313624382019043,
+    "coverage": "Head+norm, every remote tensor in blocks40..56, and11/14 tensors of block57. Block57 three FFN matrices and every tensor in blocks58..63 are missing.",
+    "receiver_prefix_span": {
+      "base": "0x300000000",
+      "end_exclusive": "0x428446100",
+      "bytes": 4970537216,
+      "all_trace_data_offsets_contiguous": true
+    },
+    "head": {
+      "name": "output.weight",
+      "type": "Q6_K",
+      "shape": [
+        5120,
+        248320
+      ],
+      "bytes": 1042944000,
+      "MiB": 994.62890625,
+      "GGUF_relative_data_offset": 0,
+      "GGUF_absolute_file_offset": 10996640,
+      "remote_buffer_offset": 20480,
+      "receiver_trace_line": 295,
+      "sender_FNV1a64_request": "0xc979907e757facff",
+      "client_relative_seconds": {
+        "first_set_intent": 27.617619,
+        "hash_miss_return": 32.196195,
+        "serialized_send_start": 32.489379,
+        "send_return": 32.871595
+      },
+      "send_duration_ms": 382.2,
+      "arrival_assurance": "Receiver trace shows full-frame receive returned before set_tensor logs. It then advances through later commands, so the shared memcpy and case-local vector destruction completed. Send-return is socket-send completion, not by itself a receiver ACK. No per-tensor byte readback was recorded."
+    },
+    "last_received": {
+      "name": "blk.57.ssm_out.weight",
+      "bytes": 21626880,
+      "gguf_relative_offset": 14512974336,
+      "gguf_absolute_offset": 14523970976,
+      "remote_data_offset": 4948910336,
+      "tensor_set_offset": 0,
+      "trace_line": 2187,
+      "type_matches": true,
+      "shape_matches": true,
+      "sender_fnv1a64_request": "0x9c6e7d79288517f8",
+      "sender_fnv_request_server_trace_line": 2180
+    },
+    "unuploaded_client_intent": {
+      "name": "blk.57.ffn_gate.weight",
+      "bytes": 61276160,
+      "client_relative_seconds": 54.783919000000004,
+      "reason": "Only the next SET_TENSOR_HASH request begins at55.063019s and fails on controlled peer closure; no corresponding receiver payload exists. Exclude this61,276,160byte tensor from uploaded totals."
+    },
+    "FNV_request_pairs_matched": 102,
+    "digest_limits": "FNV1a64 values are sender-computed cache lookup keys merely echoed by server cache-miss logging, not receiver-computed payload digests or collision-resistant integrity proofs. No receiver SHA256/get_tensor readback was captured for v3 weights.102 request keys match across logs;137 smaller received tensors have no recorded per-tensor key. Whole-file/header/log SHA256 identities and matching metadata are stronger provenance, but not a replacement for end-to-end tensor readback.",
+    "trace_columns": [
+      "name",
+      "exact_bytes",
+      "gguf_absolute_file_offset",
+      "gguf_relative_data_offset",
+      "rpc_buffer_offset",
+      "tensor_set_offset",
+      "receiver_log_line",
+      "sender_fnv1a64_request_or_null"
+    ],
+    "received_tensor_inventory": [
+      [
+        "output_norm.weight",
+        20480,
+        1053940640,
+        1042944000,
+        0,
+        0,
+        283,
+        null
+      ],
+      [
+        "output.weight",
+        1042944000,
+        10996640,
+        0,
+        20480,
+        0,
+        295,
+        "0xc979907e757facff"
+      ],
+      [
+        "blk.40.attn_norm.weight",
+        20480,
+        10451891360,
+        10440894720,
+        1042964480,
+        0,
+        300,
+        null
+      ],
+      [
+        "blk.40.post_attention_norm.weight",
+        20480,
+        10641310880,
+        10630314240,
+        1042984960,
+        0,
+        305,
+        null
+      ],
+      [
+        "blk.40.attn_qkv.weight",
+        27852800,
+        10451911840,
+        10440915200,
+        1043005440,
+        0,
+        317,
+        "0x9fa327dae46c9ad7"
+      ],
+      [
+        "blk.40.attn_gate.weight",
+        17694720,
+        10434196640,
+        10423200000,
+        1070858240,
+        0,
+        329,
+        "0x1095618f8370f191"
+      ],
+      [
+        "blk.40.ssm_conv1d.weight",
+        163840,
+        10641853792,
+        10630857152,
+        1088552960,
+        0,
+        334,
+        null
+      ],
+      [
+        "blk.40.ssm_dt.bias",
+        192,
+        10642017632,
+        10631020992,
+        1088716800,
+        0,
+        339,
+        null
+      ],
+      [
+        "blk.40.ssm_a",
+        192,
+        10641331360,
+        10630334720,
+        1088716992,
+        0,
+        344,
+        null
+      ],
+      [
+        "blk.40.ssm_beta.weight",
+        261120,
+        10641592672,
+        10630596032,
+        1088717184,
+        0,
+        349,
+        null
+      ],
+      [
+        "blk.40.ssm_alpha.weight",
+        261120,
+        10641331552,
+        10630334912,
+        1088978304,
+        0,
+        354,
+        null
+      ],
+      [
+        "blk.40.ssm_norm.weight",
+        512,
+        10642017824,
+        10631021184,
+        1089239424,
+        0,
+        359,
+        null
+      ],
+      [
+        "blk.40.ssm_out.weight",
+        21626880,
+        10642018336,
+        10631021696,
+        1089239936,
+        0,
+        371,
+        "0xc7bc9b0dfc6ab056"
+      ],
+      [
+        "blk.40.ffn_gate.weight",
+        50135040,
+        10541040800,
+        10530044160,
+        1110866816,
+        0,
+        383,
+        "0x39d9596904dbc7b9"
+      ],
+      [
+        "blk.40.ffn_down.weight",
+        61276160,
+        10479764640,
+        10468768000,
+        1161001856,
+        0,
+        395,
+        "0x3948683fb717b5e1"
+      ],
+      [
+        "blk.40.ffn_up.weight",
+        50135040,
+        10591175840,
+        10580179200,
+        1222278016,
+        0,
+        407,
+        "0x46e4adbb2dae8d9d"
+      ],
+      [
+        "blk.41.attn_norm.weight",
+        20480,
+        10681339936,
+        10670343296,
+        1272413056,
+        0,
+        412,
+        null
+      ],
+      [
+        "blk.41.post_attention_norm.weight",
+        20480,
+        10866827296,
+        10855830656,
+        1272433536,
+        0,
+        417,
+        null
+      ],
+      [
+        "blk.41.attn_qkv.weight",
+        29491200,
+        10681360416,
+        10670363776,
+        1272454016,
+        0,
+        429,
+        "0x818c031f95a3dd87"
+      ],
+      [
+        "blk.41.attn_gate.weight",
+        17694720,
+        10663645216,
+        10652648576,
+        1301945216,
+        0,
+        441,
+        "0x2d3d545390d0372e"
+      ],
+      [
+        "blk.41.ssm_conv1d.weight",
+        163840,
+        10867370208,
+        10856373568,
+        1319639936,
+        0,
+        446,
+        null
+      ],
+      [
+        "blk.41.ssm_dt.bias",
+        192,
+        10867534048,
+        10856537408,
+        1319803776,
+        0,
+        451,
+        null
+      ],
+      [
+        "blk.41.ssm_a",
+        192,
+        10866847776,
+        10855851136,
+        1319803968,
+        0,
+        456,
+        null
+      ],
+      [
+        "blk.41.ssm_beta.weight",
+        261120,
+        10867109088,
+        10856112448,
+        1319804160,
+        0,
+        461,
+        null
+      ],
+      [
+        "blk.41.ssm_alpha.weight",
+        261120,
+        10866847968,
+        10855851328,
+        1320065280,
+        0,
+        466,
+        null
+      ],
+      [
+        "blk.41.ssm_norm.weight",
+        512,
+        10867534240,
+        10856537600,
+        1320326400,
+        0,
+        471,
+        null
+      ],
+      [
+        "blk.41.ssm_out.weight",
+        21626880,
+        10867534752,
+        10856538112,
+        1320326912,
+        0,
+        483,
+        "0x460df8f22e3a9a7b"
+      ],
+      [
+        "blk.41.ffn_gate.weight",
+        47349760,
+        10758201376,
+        10747204736,
+        1341953792,
+        0,
+        495,
+        "0x6e12820c29f89bed"
+      ],
+      [
+        "blk.41.ffn_down.weight",
+        47349760,
+        10710851616,
+        10699854976,
+        1389303552,
+        0,
+        507,
+        "0xbebcba46e21f8068"
+      ],
+      [
+        "blk.41.ffn_up.weight",
+        61276160,
+        10805551136,
+        10794554496,
+        1436653312,
+        0,
+        519,
+        "0x28f242409c854d51"
+      ],
+      [
+        "blk.42.attn_norm.weight",
+        20480,
+        10905873312,
+        10894876672,
+        1497929472,
+        0,
+        524,
+        null
+      ],
+      [
+        "blk.42.post_attention_norm.weight",
+        20480,
+        11083004832,
+        11072008192,
+        1497949952,
+        0,
+        529,
+        null
+      ],
+      [
+        "blk.42.attn_qkv.weight",
+        29491200,
+        10905893792,
+        10894897152,
+        1497970432,
+        0,
+        541,
+        "0x40ac77f807b843c7"
+      ],
+      [
+        "blk.42.attn_gate.weight",
+        16711680,
+        10889161632,
+        10878164992,
+        1527461632,
+        0,
+        553,
+        "0xd6b40c2a7e4964e7"
+      ],
+      [
+        "blk.42.ssm_conv1d.weight",
+        163840,
+        11083547744,
+        11072551104,
+        1544173312,
+        0,
+        558,
+        null
+      ],
+      [
+        "blk.42.ssm_dt.bias",
+        192,
+        11083711584,
+        11072714944,
+        1544337152,
+        0,
+        563,
+        null
+      ],
+      [
+        "blk.42.ssm_a",
+        192,
+        11083025312,
+        11072028672,
+        1544337344,
+        0,
+        568,
+        null
+      ],
+      [
+        "blk.42.ssm_beta.weight",
+        261120,
+        11083286624,
+        11072289984,
+        1544337536,
+        0,
+        573,
+        null
+      ],
+      [
+        "blk.42.ssm_alpha.weight",
+        261120,
+        11083025504,
+        11072028864,
+        1544598656,
+        0,
+        578,
+        null
+      ],
+      [
+        "blk.42.ssm_norm.weight",
+        512,
+        11083711776,
+        11072715136,
+        1544859776,
+        0,
+        583,
+        null
+      ],
+      [
+        "blk.42.ssm_out.weight",
+        21626880,
+        11083712288,
+        11072715648,
+        1544860288,
+        0,
+        595,
+        "0xe0db977203c270a7"
+      ],
+      [
+        "blk.42.ffn_gate.weight",
+        50135040,
+        10982734752,
+        10971738112,
+        1566487168,
+        0,
+        607,
+        "0x65d4ae077f7a7033"
+      ],
+      [
+        "blk.42.ffn_down.weight",
+        47349760,
+        10935384992,
+        10924388352,
+        1616622208,
+        0,
+        619,
+        "0x9d3023e7d25019da"
+      ],
+      [
+        "blk.42.ffn_up.weight",
+        50135040,
+        11032869792,
+        11021873152,
+        1663971968,
+        0,
+        631,
+        "0x7d70389ba746d4dd"
+      ],
+      [
+        "blk.43.attn_norm.weight",
+        20480,
+        11108944672,
+        11097948032,
+        1714107008,
+        0,
+        636,
+        null
+      ],
+      [
+        "blk.43.post_attention_norm.weight",
+        20480,
+        11314421536,
+        11303424896,
+        1714127488,
+        0,
+        641,
+        null
+      ],
+      [
+        "blk.43.attn_q.weight",
+        35389440,
+        11130592032,
+        11119595392,
+        1714147968,
+        0,
+        653,
+        "0x4e0e3760e610c5f7"
+      ],
+      [
+        "blk.43.attn_k.weight",
+        3604480,
+        11105339168,
+        11094342528,
+        1749537408,
+        0,
+        658,
+        null
+      ],
+      [
+        "blk.43.attn_v.weight",
+        3604480,
+        11165982496,
+        11154985856,
+        1753141888,
+        0,
+        663,
+        null
+      ],
+      [
+        "blk.43.attn_output.weight",
+        21626880,
+        11108965152,
+        11097968512,
+        1756746368,
+        0,
+        675,
+        "0xa73c7fb039001920"
+      ],
+      [
+        "blk.43.attn_q_norm.weight",
+        1024,
+        11165981472,
+        11154984832,
+        1778373248,
+        0,
+        680,
+        null
+      ],
+      [
+        "blk.43.attn_k_norm.weight",
+        1024,
+        11108943648,
+        11097947008,
+        1778374272,
+        0,
+        685,
+        null
+      ],
+      [
+        "blk.43.ffn_gate.weight",
+        50135040,
+        11216936736,
+        11205940096,
+        1778375296,
+        0,
+        697,
+        "0x41a0d439b249bdc4"
+      ],
+      [
+        "blk.43.ffn_down.weight",
+        47349760,
+        11169586976,
+        11158590336,
+        1828510336,
+        0,
+        709,
+        "0xdecc6a97ba537a3d"
+      ],
+      [
+        "blk.43.ffn_up.weight",
+        47349760,
+        11267071776,
+        11256075136,
+        1875860096,
+        0,
+        721,
+        "0x9d97a4eb6f150ce2"
+      ],
+      [
+        "blk.44.attn_norm.weight",
+        20480,
+        11332136736,
+        11321140096,
+        1923209856,
+        0,
+        726,
+        null
+      ],
+      [
+        "blk.44.post_attention_norm.weight",
+        20480,
+        11503697696,
+        11492701056,
+        1923230336,
+        0,
+        731,
+        null
+      ],
+      [
+        "blk.44.attn_qkv.weight",
+        29491200,
+        11332157216,
+        11321160576,
+        1923250816,
+        0,
+        743,
+        "0xd2ba4b4e70b1faa7"
+      ],
+      [
+        "blk.44.attn_gate.weight",
+        17694720,
+        11314442016,
+        11303445376,
+        1952742016,
+        0,
+        755,
+        "0x5070f3d548470bf6"
+      ],
+      [
+        "blk.44.ssm_conv1d.weight",
+        163840,
+        11504240608,
+        11493243968,
+        1970436736,
+        0,
+        760,
+        null
+      ],
+      [
+        "blk.44.ssm_dt.bias",
+        192,
+        11504404448,
+        11493407808,
+        1970600576,
+        0,
+        765,
+        null
+      ],
+      [
+        "blk.44.ssm_a",
+        192,
+        11503718176,
+        11492721536,
+        1970600768,
+        0,
+        770,
+        null
+      ],
+      [
+        "blk.44.ssm_beta.weight",
+        261120,
+        11503979488,
+        11492982848,
+        1970600960,
+        0,
+        775,
+        null
+      ],
+      [
+        "blk.44.ssm_alpha.weight",
+        261120,
+        11503718368,
+        11492721728,
+        1970862080,
+        0,
+        780,
+        null
+      ],
+      [
+        "blk.44.ssm_norm.weight",
+        512,
+        11504404640,
+        11493408000,
+        1971123200,
+        0,
+        785,
+        null
+      ],
+      [
+        "blk.44.ssm_out.weight",
+        21626880,
+        11504405152,
+        11493408512,
+        1971123712,
+        0,
+        797,
+        "0xba973b529dc5a947"
+      ],
+      [
+        "blk.44.ffn_gate.weight",
+        47349760,
+        11408998176,
+        11398001536,
+        1992750592,
+        0,
+        809,
+        "0x914aaa79c208bc7f"
+      ],
+      [
+        "blk.44.ffn_down.weight",
+        47349760,
+        11361648416,
+        11350651776,
+        2040100352,
+        0,
+        821,
+        "0xf6582beb0fa64b0"
+      ],
+      [
+        "blk.44.ffn_up.weight",
+        47349760,
+        11456347936,
+        11445351296,
+        2087450112,
+        0,
+        833,
+        "0xdd49ccbddf2a91ac"
+      ],
+      [
+        "blk.45.attn_norm.weight",
+        20480,
+        11542743712,
+        11531747072,
+        2134799872,
+        0,
+        838,
+        null
+      ],
+      [
+        "blk.45.post_attention_norm.weight",
+        20480,
+        11714304672,
+        11703308032,
+        2134820352,
+        0,
+        843,
+        null
+      ],
+      [
+        "blk.45.attn_qkv.weight",
+        29491200,
+        11542764192,
+        11531767552,
+        2134840832,
+        0,
+        855,
+        "0xbfba3d357f01612d"
+      ],
+      [
+        "blk.45.attn_gate.weight",
+        16711680,
+        11526032032,
+        11515035392,
+        2164332032,
+        0,
+        867,
+        "0x34efb0be4428f28"
+      ],
+      [
+        "blk.45.ssm_conv1d.weight",
+        163840,
+        11714847584,
+        11703850944,
+        2181043712,
+        0,
+        872,
+        null
+      ],
+      [
+        "blk.45.ssm_dt.bias",
+        192,
+        11715011424,
+        11704014784,
+        2181207552,
+        0,
+        877,
+        null
+      ],
+      [
+        "blk.45.ssm_a",
+        192,
+        11714325152,
+        11703328512,
+        2181207744,
+        0,
+        882,
+        null
+      ],
+      [
+        "blk.45.ssm_beta.weight",
+        261120,
+        11714586464,
+        11703589824,
+        2181207936,
+        0,
+        887,
+        null
+      ],
+      [
+        "blk.45.ssm_alpha.weight",
+        261120,
+        11714325344,
+        11703328704,
+        2181469056,
+        0,
+        892,
+        null
+      ],
+      [
+        "blk.45.ssm_norm.weight",
+        512,
+        11715011616,
+        11704014976,
+        2181730176,
+        0,
+        897,
+        null
+      ],
+      [
+        "blk.45.ssm_out.weight",
+        17694720,
+        11715012128,
+        11704015488,
+        2181730688,
+        0,
+        909,
+        "0x28a150d0cc24f694"
+      ],
+      [
+        "blk.45.ffn_gate.weight",
+        47349760,
+        11619605152,
+        11608608512,
+        2199425408,
+        0,
+        921,
+        "0xb12d7aeecb282297"
+      ],
+      [
+        "blk.45.ffn_down.weight",
+        47349760,
+        11572255392,
+        11561258752,
+        2246775168,
+        0,
+        933,
+        "0xa08b0846fec3932e"
+      ],
+      [
+        "blk.45.ffn_up.weight",
+        47349760,
+        11666954912,
+        11655958272,
+        2294124928,
+        0,
+        945,
+        "0xc836593da7aaad90"
+      ],
+      [
+        "blk.46.attn_norm.weight",
+        20480,
+        11750401568,
+        11739404928,
+        2341474688,
+        0,
+        950,
+        null
+      ],
+      [
+        "blk.46.post_attention_norm.weight",
+        20480,
+        11921962528,
+        11910965888,
+        2341495168,
+        0,
+        955,
+        null
+      ],
+      [
+        "blk.46.attn_qkv.weight",
+        29491200,
+        11750422048,
+        11739425408,
+        2341515648,
+        0,
+        967,
+        "0x3b40e5d1726c2e90"
+      ],
+      [
+        "blk.46.attn_gate.weight",
+        17694720,
+        11732706848,
+        11721710208,
+        2371006848,
+        0,
+        979,
+        "0x89357166652cb2af"
+      ],
+      [
+        "blk.46.ssm_conv1d.weight",
+        163840,
+        11922505440,
+        11911508800,
+        2388701568,
+        0,
+        984,
+        null
+      ],
+      [
+        "blk.46.ssm_dt.bias",
+        192,
+        11922669280,
+        11911672640,
+        2388865408,
+        0,
+        989,
+        null
+      ],
+      [
+        "blk.46.ssm_a",
+        192,
+        11921983008,
+        11910986368,
+        2388865600,
+        0,
+        994,
+        null
+      ],
+      [
+        "blk.46.ssm_beta.weight",
+        261120,
+        11922244320,
+        11911247680,
+        2388865792,
+        0,
+        999,
+        null
+      ],
+      [
+        "blk.46.ssm_alpha.weight",
+        261120,
+        11921983200,
+        11910986560,
+        2389126912,
+        0,
+        1004,
+        null
+      ],
+      [
+        "blk.46.ssm_norm.weight",
+        512,
+        11922669472,
+        11911672832,
+        2389388032,
+        0,
+        1009,
+        null
+      ],
+      [
+        "blk.46.ssm_out.weight",
+        21626880,
+        11922669984,
+        11911673344,
+        2389388544,
+        0,
+        1021,
+        "0x271ee875990a2510"
+      ],
+      [
+        "blk.46.ffn_gate.weight",
+        47349760,
+        11827263008,
+        11816266368,
+        2411015424,
+        0,
+        1033,
+        "0xcc2ddf99c2aca68b"
+      ],
+      [
+        "blk.46.ffn_down.weight",
+        47349760,
+        11779913248,
+        11768916608,
+        2458365184,
+        0,
+        1045,
+        "0x623692d1b2f40082"
+      ],
+      [
+        "blk.46.ffn_up.weight",
+        47349760,
+        11874612768,
+        11863616128,
+        2505714944,
+        0,
+        1057,
+        "0xc63abf052c7cb914"
+      ],
+      [
+        "blk.47.attn_norm.weight",
+        20480,
+        11947902368,
+        11936905728,
+        2553064704,
+        0,
+        1062,
+        null
+      ],
+      [
+        "blk.47.post_attention_norm.weight",
+        20480,
+        12151413152,
+        12140416512,
+        2553085184,
+        0,
+        1067,
+        null
+      ],
+      [
+        "blk.47.attn_q.weight",
+        33423360,
+        11969549728,
+        11958553088,
+        2553105664,
+        0,
+        1079,
+        "0x89dbeb916fdd525e"
+      ],
+      [
+        "blk.47.attn_k.weight",
+        3604480,
+        11944296864,
+        11933300224,
+        2586529024,
+        0,
+        1084,
+        null
+      ],
+      [
+        "blk.47.attn_v.weight",
+        3604480,
+        12002974112,
+        11991977472,
+        2590133504,
+        0,
+        1089,
+        null
+      ],
+      [
+        "blk.47.attn_output.weight",
+        21626880,
+        11947922848,
+        11936926208,
+        2593737984,
+        0,
+        1101,
+        "0x59c39777d1c43324"
+      ],
+      [
+        "blk.47.attn_q_norm.weight",
+        1024,
+        12002973088,
+        11991976448,
+        2615364864,
+        0,
+        1106,
+        null
+      ],
+      [
+        "blk.47.attn_k_norm.weight",
+        1024,
+        11947901344,
+        11936904704,
+        2615365888,
+        0,
+        1111,
+        null
+      ],
+      [
+        "blk.47.ffn_gate.weight",
+        47349760,
+        12053928352,
+        12042931712,
+        2615366912,
+        0,
+        1123,
+        "0x71cee767b74b0f57"
+      ],
+      [
+        "blk.47.ffn_down.weight",
+        47349760,
+        12006578592,
+        11995581952,
+        2662716672,
+        0,
+        1135,
+        "0xf6e2044881ce1b50"
+      ],
+      [
+        "blk.47.ffn_up.weight",
+        50135040,
+        12101278112,
+        12090281472,
+        2710066432,
+        0,
+        1147,
+        "0x2e2bb0aa35074a7"
+      ],
+      [
+        "blk.48.attn_norm.weight",
+        20480,
+        12168145312,
+        12157148672,
+        2760201472,
+        0,
+        1152,
+        null
+      ],
+      [
+        "blk.48.post_attention_norm.weight",
+        20480,
+        12339706272,
+        12328709632,
+        2760221952,
+        0,
+        1157,
+        null
+      ],
+      [
+        "blk.48.attn_qkv.weight",
+        29491200,
+        12168165792,
+        12157169152,
+        2760242432,
+        0,
+        1169,
+        "0xe84c3f46735d0b1a"
+      ],
+      [
+        "blk.48.attn_gate.weight",
+        16711680,
+        12151433632,
+        12140436992,
+        2789733632,
+        0,
+        1181,
+        "0x9c18aae19a40fa6c"
+      ],
+      [
+        "blk.48.ssm_conv1d.weight",
+        163840,
+        12340249184,
+        12329252544,
+        2806445312,
+        0,
+        1186,
+        null
+      ],
+      [
+        "blk.48.ssm_dt.bias",
+        192,
+        12340413024,
+        12329416384,
+        2806609152,
+        0,
+        1191,
+        null
+      ],
+      [
+        "blk.48.ssm_a",
+        192,
+        12339726752,
+        12328730112,
+        2806609344,
+        0,
+        1196,
+        null
+      ],
+      [
+        "blk.48.ssm_beta.weight",
+        261120,
+        12339988064,
+        12328991424,
+        2806609536,
+        0,
+        1201,
+        null
+      ],
+      [
+        "blk.48.ssm_alpha.weight",
+        261120,
+        12339726944,
+        12328730304,
+        2806870656,
+        0,
+        1206,
+        null
+      ],
+      [
+        "blk.48.ssm_norm.weight",
+        512,
+        12340413216,
+        12329416576,
+        2807131776,
+        0,
+        1211,
+        null
+      ],
+      [
+        "blk.48.ssm_out.weight",
+        21626880,
+        12340413728,
+        12329417088,
+        2807132288,
+        0,
+        1223,
+        "0x4024853f6fc31dd5"
+      ],
+      [
+        "blk.48.ffn_gate.weight",
+        47349760,
+        12245006752,
+        12234010112,
+        2828759168,
+        0,
+        1235,
+        "0xf37fa6ebf8c1b648"
+      ],
+      [
+        "blk.48.ffn_down.weight",
+        47349760,
+        12197656992,
+        12186660352,
+        2876108928,
+        0,
+        1247,
+        "0x53700e3ff0933ca1"
+      ],
+      [
+        "blk.48.ffn_up.weight",
+        47349760,
+        12292356512,
+        12281359872,
+        2923458688,
+        0,
+        1259,
+        "0xcbc462f9f6260ad9"
+      ],
+      [
+        "blk.49.attn_norm.weight",
+        20480,
+        12378752288,
+        12367755648,
+        2970808448,
+        0,
+        1264,
+        null
+      ],
+      [
+        "blk.49.post_attention_norm.weight",
+        20480,
+        12559652128,
+        12548655488,
+        2970828928,
+        0,
+        1269,
+        null
+      ],
+      [
+        "blk.49.attn_qkv.weight",
+        36044800,
+        12378772768,
+        12367776128,
+        2970849408,
+        0,
+        1281,
+        "0xfb1216cf57a2e3ef"
+      ],
+      [
+        "blk.49.attn_gate.weight",
+        16711680,
+        12362040608,
+        12351043968,
+        3006894208,
+        0,
+        1293,
+        "0x84262306341cd267"
+      ],
+      [
+        "blk.49.ssm_conv1d.weight",
+        163840,
+        12560195040,
+        12549198400,
+        3023605888,
+        0,
+        1298,
+        null
+      ],
+      [
+        "blk.49.ssm_dt.bias",
+        192,
+        12560358880,
+        12549362240,
+        3023769728,
+        0,
+        1303,
+        null
+      ],
+      [
+        "blk.49.ssm_a",
+        192,
+        12559672608,
+        12548675968,
+        3023769920,
+        0,
+        1308,
+        null
+      ],
+      [
+        "blk.49.ssm_beta.weight",
+        261120,
+        12559933920,
+        12548937280,
+        3023770112,
+        0,
+        1313,
+        null
+      ],
+      [
+        "blk.49.ssm_alpha.weight",
+        261120,
+        12559672800,
+        12548676160,
+        3024031232,
+        0,
+        1318,
+        null
+      ],
+      [
+        "blk.49.ssm_norm.weight",
+        512,
+        12560359072,
+        12549362432,
+        3024292352,
+        0,
+        1323,
+        null
+      ],
+      [
+        "blk.49.ssm_out.weight",
+        21626880,
+        12560359584,
+        12549362944,
+        3024292864,
+        0,
+        1335,
+        "0x3277261bdf137dba"
+      ],
+      [
+        "blk.49.ffn_gate.weight",
+        47349760,
+        12462167328,
+        12451170688,
+        3045919744,
+        0,
+        1347,
+        "0x97b7c722731b0e25"
+      ],
+      [
+        "blk.49.ffn_down.weight",
+        47349760,
+        12414817568,
+        12403820928,
+        3093269504,
+        0,
+        1359,
+        "0x35e3ba62cf26f516"
+      ],
+      [
+        "blk.49.ffn_up.weight",
+        50135040,
+        12509517088,
+        12498520448,
+        3140619264,
+        0,
+        1371,
+        "0x26fa307e27c50784"
+      ],
+      [
+        "blk.50.attn_norm.weight",
+        20480,
+        12599681184,
+        12588684544,
+        3190754304,
+        0,
+        1376,
+        null
+      ],
+      [
+        "blk.50.post_attention_norm.weight",
+        20480,
+        12801880224,
+        12790883584,
+        3190774784,
+        0,
+        1381,
+        null
+      ],
+      [
+        "blk.50.attn_qkv.weight",
+        29491200,
+        12599701664,
+        12588705024,
+        3190795264,
+        0,
+        1393,
+        "0x65579e6af2686f99"
+      ],
+      [
+        "blk.50.attn_gate.weight",
+        17694720,
+        12581986464,
+        12570989824,
+        3220286464,
+        0,
+        1405,
+        "0x4a6c8f39f352f765"
+      ],
+      [
+        "blk.50.ssm_conv1d.weight",
+        163840,
+        12802423136,
+        12791426496,
+        3237981184,
+        0,
+        1410,
+        null
+      ],
+      [
+        "blk.50.ssm_dt.bias",
+        192,
+        12802586976,
+        12791590336,
+        3238145024,
+        0,
+        1415,
+        null
+      ],
+      [
+        "blk.50.ssm_a",
+        192,
+        12801900704,
+        12790904064,
+        3238145216,
+        0,
+        1420,
+        null
+      ],
+      [
+        "blk.50.ssm_beta.weight",
+        261120,
+        12802162016,
+        12791165376,
+        3238145408,
+        0,
+        1425,
+        null
+      ],
+      [
+        "blk.50.ssm_alpha.weight",
+        261120,
+        12801900896,
+        12790904256,
+        3238406528,
+        0,
+        1430,
+        null
+      ],
+      [
+        "blk.50.ssm_norm.weight",
+        512,
+        12802587168,
+        12791590528,
+        3238667648,
+        0,
+        1435,
+        null
+      ],
+      [
+        "blk.50.ssm_out.weight",
+        21626880,
+        12802587680,
+        12791591040,
+        3238668160,
+        0,
+        1447,
+        "0x5459d0ad145a3417"
+      ],
+      [
+        "blk.50.ffn_gate.weight",
+        50135040,
+        12690469024,
+        12679472384,
+        3260295040,
+        0,
+        1459,
+        "0xa893d54fd52aeafe"
+      ],
+      [
+        "blk.50.ffn_down.weight",
+        61276160,
+        12629192864,
+        12618196224,
+        3310430080,
+        0,
+        1471,
+        "0x43239091be13d937"
+      ],
+      [
+        "blk.50.ffn_up.weight",
+        61276160,
+        12740604064,
+        12729607424,
+        3371706240,
+        0,
+        1483,
+        "0x93a97311c931e37b"
+      ],
+      [
+        "blk.51.attn_norm.weight",
+        20480,
+        12828516384,
+        12817519744,
+        3432982400,
+        0,
+        1488,
+        null
+      ],
+      [
+        "blk.51.post_attention_norm.weight",
+        20480,
+        13050704928,
+        13039708288,
+        3433002880,
+        0,
+        1493,
+        null
+      ],
+      [
+        "blk.51.attn_q.weight",
+        33423360,
+        12850163744,
+        12839167104,
+        3433023360,
+        0,
+        1505,
+        "0xd53a6b29b47667bc"
+      ],
+      [
+        "blk.51.attn_k.weight",
+        4300800,
+        12824214560,
+        12813217920,
+        3466446720,
+        0,
+        1510,
+        null
+      ],
+      [
+        "blk.51.attn_v.weight",
+        5570560,
+        12883588128,
+        12872591488,
+        3470747520,
+        0,
+        1515,
+        null
+      ],
+      [
+        "blk.51.attn_output.weight",
+        21626880,
+        12828536864,
+        12817540224,
+        3476318080,
+        0,
+        1527,
+        "0x9b1f82483874eae1"
+      ],
+      [
+        "blk.51.attn_q_norm.weight",
+        1024,
+        12883587104,
+        12872590464,
+        3497944960,
+        0,
+        1532,
+        null
+      ],
+      [
+        "blk.51.attn_k_norm.weight",
+        1024,
+        12828515360,
+        12817518720,
+        3497945984,
+        0,
+        1537,
+        null
+      ],
+      [
+        "blk.51.ffn_gate.weight",
+        50135040,
+        12950434848,
+        12939438208,
+        3497947008,
+        0,
+        1549,
+        "0xd2dcd4706aa82113"
+      ],
+      [
+        "blk.51.ffn_down.weight",
+        61276160,
+        12889158688,
+        12878162048,
+        3548082048,
+        0,
+        1561,
+        "0xe86a6002196e4501"
+      ],
+      [
+        "blk.51.ffn_up.weight",
+        50135040,
+        13000569888,
+        12989573248,
+        3609358208,
+        0,
+        1573,
+        "0xd104113f28fb5e2f"
+      ],
+      [
+        "blk.52.attn_norm.weight",
+        20480,
+        13072352288,
+        13061355648,
+        3659493248,
+        0,
+        1578,
+        null
+      ],
+      [
+        "blk.52.post_attention_norm.weight",
+        20480,
+        13274551328,
+        13263554688,
+        3659513728,
+        0,
+        1583,
+        null
+      ],
+      [
+        "blk.52.attn_qkv.weight",
+        29491200,
+        13072372768,
+        13061376128,
+        3659534208,
+        0,
+        1595,
+        "0x8551b227abbc76c4"
+      ],
+      [
+        "blk.52.attn_gate.weight",
+        21626880,
+        13050725408,
+        13039728768,
+        3689025408,
+        0,
+        1607,
+        "0x1ba7ac788b830e31"
+      ],
+      [
+        "blk.52.ssm_conv1d.weight",
+        163840,
+        13275094240,
+        13264097600,
+        3710652288,
+        0,
+        1612,
+        null
+      ],
+      [
+        "blk.52.ssm_dt.bias",
+        192,
+        13275258080,
+        13264261440,
+        3710816128,
+        0,
+        1617,
+        null
+      ],
+      [
+        "blk.52.ssm_a",
+        192,
+        13274571808,
+        13263575168,
+        3710816320,
+        0,
+        1622,
+        null
+      ],
+      [
+        "blk.52.ssm_beta.weight",
+        261120,
+        13274833120,
+        13263836480,
+        3710816512,
+        0,
+        1627,
+        null
+      ],
+      [
+        "blk.52.ssm_alpha.weight",
+        261120,
+        13274572000,
+        13263575360,
+        3711077632,
+        0,
+        1632,
+        null
+      ],
+      [
+        "blk.52.ssm_norm.weight",
+        512,
+        13275258272,
+        13264261632,
+        3711338752,
+        0,
+        1637,
+        null
+      ],
+      [
+        "blk.52.ssm_out.weight",
+        21626880,
+        13275258784,
+        13264262144,
+        3711339264,
+        0,
+        1649,
+        "0x811995886c2d1f51"
+      ],
+      [
+        "blk.52.ffn_gate.weight",
+        50135040,
+        13163140128,
+        13152143488,
+        3732966144,
+        0,
+        1661,
+        "0x3455e445bc6189b8"
+      ],
+      [
+        "blk.52.ffn_down.weight",
+        61276160,
+        13101863968,
+        13090867328,
+        3783101184,
+        0,
+        1673,
+        "0xe0c8fac74931e43"
+      ],
+      [
+        "blk.52.ffn_up.weight",
+        61276160,
+        13213275168,
+        13202278528,
+        3844377344,
+        0,
+        1685,
+        "0xb9e28d1e2042f235"
+      ],
+      [
+        "blk.53.attn_norm.weight",
+        20480,
+        13314580384,
+        13303583744,
+        3905653504,
+        0,
+        1690,
+        null
+      ],
+      [
+        "blk.53.post_attention_norm.weight",
+        20480,
+        13516779424,
+        13505782784,
+        3905673984,
+        0,
+        1695,
+        null
+      ],
+      [
+        "blk.53.attn_qkv.weight",
+        29491200,
+        13314600864,
+        13303604224,
+        3905694464,
+        0,
+        1707,
+        "0xbef2ca71bd12025f"
+      ],
+      [
+        "blk.53.attn_gate.weight",
+        17694720,
+        13296885664,
+        13285889024,
+        3935185664,
+        0,
+        1719,
+        "0xa125193ce729aca5"
+      ],
+      [
+        "blk.53.ssm_conv1d.weight",
+        163840,
+        13517322336,
+        13506325696,
+        3952880384,
+        0,
+        1724,
+        null
+      ],
+      [
+        "blk.53.ssm_dt.bias",
+        192,
+        13517486176,
+        13506489536,
+        3953044224,
+        0,
+        1729,
+        null
+      ],
+      [
+        "blk.53.ssm_a",
+        192,
+        13516799904,
+        13505803264,
+        3953044416,
+        0,
+        1734,
+        null
+      ],
+      [
+        "blk.53.ssm_beta.weight",
+        261120,
+        13517061216,
+        13506064576,
+        3953044608,
+        0,
+        1739,
+        null
+      ],
+      [
+        "blk.53.ssm_alpha.weight",
+        261120,
+        13516800096,
+        13505803456,
+        3953305728,
+        0,
+        1744,
+        null
+      ],
+      [
+        "blk.53.ssm_norm.weight",
+        512,
+        13517486368,
+        13506489728,
+        3953566848,
+        0,
+        1749,
+        null
+      ],
+      [
+        "blk.53.ssm_out.weight",
+        21626880,
+        13517486880,
+        13506490240,
+        3953567360,
+        0,
+        1761,
+        "0xc6f86e0d6e3e5b81"
+      ],
+      [
+        "blk.53.ffn_gate.weight",
+        50135040,
+        13405368224,
+        13394371584,
+        3975194240,
+        0,
+        1773,
+        "0xff8df848a885d184"
+      ],
+      [
+        "blk.53.ffn_down.weight",
+        61276160,
+        13344092064,
+        13333095424,
+        4025329280,
+        0,
+        1785,
+        "0xcc15834230199102"
+      ],
+      [
+        "blk.53.ffn_up.weight",
+        61276160,
+        13455503264,
+        13444506624,
+        4086605440,
+        0,
+        1797,
+        "0xff9972ea6d07fd86"
+      ],
+      [
+        "blk.54.attn_norm.weight",
+        20480,
+        13555825440,
+        13544828800,
+        4147881600,
+        0,
+        1802,
+        null
+      ],
+      [
+        "blk.54.post_attention_norm.weight",
+        20480,
+        13758024480,
+        13747027840,
+        4147902080,
+        0,
+        1807,
+        null
+      ],
+      [
+        "blk.54.attn_qkv.weight",
+        29491200,
+        13555845920,
+        13544849280,
+        4147922560,
+        0,
+        1819,
+        "0xc0701ea9e5e0ae0b"
+      ],
+      [
+        "blk.54.attn_gate.weight",
+        16711680,
+        13539113760,
+        13528117120,
+        4177413760,
+        0,
+        1831,
+        "0xe866ab42197b9598"
+      ],
+      [
+        "blk.54.ssm_conv1d.weight",
+        163840,
+        13758567392,
+        13747570752,
+        4194125440,
+        0,
+        1836,
+        null
+      ],
+      [
+        "blk.54.ssm_dt.bias",
+        192,
+        13758731232,
+        13747734592,
+        4194289280,
+        0,
+        1841,
+        null
+      ],
+      [
+        "blk.54.ssm_a",
+        192,
+        13758044960,
+        13747048320,
+        4194289472,
+        0,
+        1846,
+        null
+      ],
+      [
+        "blk.54.ssm_beta.weight",
+        261120,
+        13758306272,
+        13747309632,
+        4194289664,
+        0,
+        1851,
+        null
+      ],
+      [
+        "blk.54.ssm_alpha.weight",
+        261120,
+        13758045152,
+        13747048512,
+        4194550784,
+        0,
+        1856,
+        null
+      ],
+      [
+        "blk.54.ssm_norm.weight",
+        512,
+        13758731424,
+        13747734784,
+        4194811904,
+        0,
+        1861,
+        null
+      ],
+      [
+        "blk.54.ssm_out.weight",
+        21626880,
+        13758731936,
+        13747735296,
+        4194812416,
+        0,
+        1873,
+        "0x131c114d525f6a10"
+      ],
+      [
+        "blk.54.ffn_gate.weight",
+        50135040,
+        13646613280,
+        13635616640,
+        4216439296,
+        0,
+        1885,
+        "0xc420c39d9bf0b750"
+      ],
+      [
+        "blk.54.ffn_down.weight",
+        61276160,
+        13585337120,
+        13574340480,
+        4266574336,
+        0,
+        1897,
+        "0x65c1e0ff91fcede0"
+      ],
+      [
+        "blk.54.ffn_up.weight",
+        61276160,
+        13696748320,
+        13685751680,
+        4327850496,
+        0,
+        1909,
+        "0x2117299f3017ff87"
+      ],
+      [
+        "blk.55.attn_norm.weight",
+        20480,
+        13783964320,
+        13772967680,
+        4389126656,
+        0,
+        1914,
+        null
+      ],
+      [
+        "blk.55.post_attention_norm.weight",
+        20480,
+        14028435104,
+        14017438464,
+        4389147136,
+        0,
+        1919,
+        null
+      ],
+      [
+        "blk.55.attn_q.weight",
+        33423360,
+        13805611680,
+        13794615040,
+        4389167616,
+        0,
+        1931,
+        "0xca4dc7c72b5f997a"
+      ],
+      [
+        "blk.55.attn_k.weight",
+        3604480,
+        13780358816,
+        13769362176,
+        4422590976,
+        0,
+        1936,
+        null
+      ],
+      [
+        "blk.55.attn_v.weight",
+        5570560,
+        13839036064,
+        13828039424,
+        4426195456,
+        0,
+        1941,
+        null
+      ],
+      [
+        "blk.55.attn_output.weight",
+        21626880,
+        13783984800,
+        13772988160,
+        4431766016,
+        0,
+        1953,
+        "0x551002c2999584c8"
+      ],
+      [
+        "blk.55.attn_q_norm.weight",
+        1024,
+        13839035040,
+        13828038400,
+        4453392896,
+        0,
+        1958,
+        null
+      ],
+      [
+        "blk.55.attn_k_norm.weight",
+        1024,
+        13783963296,
+        13772966656,
+        4453393920,
+        0,
+        1963,
+        null
+      ],
+      [
+        "blk.55.ffn_gate.weight",
+        61276160,
+        13905882784,
+        13894886144,
+        4453394944,
+        0,
+        1975,
+        "0x2e329884b5fdde9d"
+      ],
+      [
+        "blk.55.ffn_down.weight",
+        61276160,
+        13844606624,
+        13833609984,
+        4514671104,
+        0,
+        1987,
+        "0x509f28691eb88c14"
+      ],
+      [
+        "blk.55.ffn_up.weight",
+        61276160,
+        13967158944,
+        13956162304,
+        4575947264,
+        0,
+        1999,
+        "0x39ca0566a424c288"
+      ],
+      [
+        "blk.56.attn_norm.weight",
+        20480,
+        14050082464,
+        14039085824,
+        4637223424,
+        0,
+        2004,
+        null
+      ],
+      [
+        "blk.56.post_attention_norm.weight",
+        20480,
+        14261784224,
+        14250787584,
+        4637243904,
+        0,
+        2009,
+        null
+      ],
+      [
+        "blk.56.attn_qkv.weight",
+        27852800,
+        14050102944,
+        14039106304,
+        4637264384,
+        0,
+        2021,
+        "0x7f82f81c8d9543c2"
+      ],
+      [
+        "blk.56.attn_gate.weight",
+        21626880,
+        14028455584,
+        14017458944,
+        4665117184,
+        0,
+        2033,
+        "0xbc37485bc71a0bfb"
+      ],
+      [
+        "blk.56.ssm_conv1d.weight",
+        163840,
+        14262327136,
+        14251330496,
+        4686744064,
+        0,
+        2038,
+        null
+      ],
+      [
+        "blk.56.ssm_dt.bias",
+        192,
+        14262490976,
+        14251494336,
+        4686907904,
+        0,
+        2043,
+        null
+      ],
+      [
+        "blk.56.ssm_a",
+        192,
+        14261804704,
+        14250808064,
+        4686908096,
+        0,
+        2048,
+        null
+      ],
+      [
+        "blk.56.ssm_beta.weight",
+        261120,
+        14262066016,
+        14251069376,
+        4686908288,
+        0,
+        2053,
+        null
+      ],
+      [
+        "blk.56.ssm_alpha.weight",
+        261120,
+        14261804896,
+        14250808256,
+        4687169408,
+        0,
+        2058,
+        null
+      ],
+      [
+        "blk.56.ssm_norm.weight",
+        512,
+        14262491168,
+        14251494528,
+        4687430528,
+        0,
+        2063,
+        null
+      ],
+      [
+        "blk.56.ssm_out.weight",
+        25804800,
+        14262491680,
+        14251495040,
+        4687431040,
+        0,
+        2075,
+        "0x9033d8db6009ddec"
+      ],
+      [
+        "blk.56.ffn_gate.weight",
+        61276160,
+        14139231904,
+        14128235264,
+        4713235840,
+        0,
+        2087,
+        "0x60d1916db40c7f0b"
+      ],
+      [
+        "blk.56.ffn_down.weight",
+        61276160,
+        14077955744,
+        14066959104,
+        4774512000,
+        0,
+        2099,
+        "0x5f28c6ff9934fd78"
+      ],
+      [
+        "blk.56.ffn_up.weight",
+        61276160,
+        14200508064,
+        14189511424,
+        4835788160,
+        0,
+        2111,
+        "0xb437a0cd5600867f"
+      ],
+      [
+        "blk.57.attn_norm.weight",
+        20480,
+        14309923360,
+        14298926720,
+        4897064320,
+        0,
+        2116,
+        null
+      ],
+      [
+        "blk.57.post_attention_norm.weight",
+        20480,
+        14523263520,
+        14512266880,
+        4897084800,
+        0,
+        2121,
+        null
+      ],
+      [
+        "blk.57.attn_qkv.weight",
+        29491200,
+        14309943840,
+        14298947200,
+        4897105280,
+        0,
+        2133,
+        "0xe0be35336462ea69"
+      ],
+      [
+        "blk.57.attn_gate.weight",
+        21626880,
+        14288296480,
+        14277299840,
+        4926596480,
+        0,
+        2145,
+        "0x749e0066b457a15d"
+      ],
+      [
+        "blk.57.ssm_conv1d.weight",
+        163840,
+        14523806432,
+        14512809792,
+        4948223360,
+        0,
+        2150,
+        null
+      ],
+      [
+        "blk.57.ssm_dt.bias",
+        192,
+        14523970272,
+        14512973632,
+        4948387200,
+        0,
+        2155,
+        null
+      ],
+      [
+        "blk.57.ssm_a",
+        192,
+        14523284000,
+        14512287360,
+        4948387392,
+        0,
+        2160,
+        null
+      ],
+      [
+        "blk.57.ssm_beta.weight",
+        261120,
+        14523545312,
+        14512548672,
+        4948387584,
+        0,
+        2165,
+        null
+      ],
+      [
+        "blk.57.ssm_alpha.weight",
+        261120,
+        14523284192,
+        14512287552,
+        4948648704,
+        0,
+        2170,
+        null
+      ],
+      [
+        "blk.57.ssm_norm.weight",
+        512,
+        14523970464,
+        14512973824,
+        4948909824,
+        0,
+        2175,
+        null
+      ],
+      [
+        "blk.57.ssm_out.weight",
+        21626880,
+        14523970976,
+        14512974336,
+        4948910336,
+        0,
+        2187,
+        "0x9c6e7d79288517f8"
+      ]
+    ],
+    "missing_inventory_columns": [
+      "name",
+      "exact_bytes",
+      "gguf_absolute_file_offset"
+    ],
+    "missing_tensor_inventory": [
+      [
+        "blk.57.ffn_down.weight",
+        61276160,
+        14339435040
+      ],
+      [
+        "blk.57.ffn_gate.weight",
+        61276160,
+        14400711200
+      ],
+      [
+        "blk.57.ffn_up.weight",
+        61276160,
+        14461987360
+      ],
+      [
+        "blk.58.attn_gate.weight",
+        21626880,
+        14545597856
+      ],
+      [
+        "blk.58.attn_norm.weight",
+        20480,
+        14567224736
+      ],
+      [
+        "blk.58.attn_qkv.weight",
+        27852800,
+        14567245216
+      ],
+      [
+        "blk.58.ffn_down.weight",
+        61276160,
+        14595098016
+      ],
+      [
+        "blk.58.ffn_gate.weight",
+        61276160,
+        14656374176
+      ],
+      [
+        "blk.58.ffn_up.weight",
+        61276160,
+        14717650336
+      ],
+      [
+        "blk.58.post_attention_norm.weight",
+        20480,
+        14778926496
+      ],
+      [
+        "blk.58.ssm_a",
+        192,
+        14778946976
+      ],
+      [
+        "blk.58.ssm_alpha.weight",
+        261120,
+        14778947168
+      ],
+      [
+        "blk.58.ssm_beta.weight",
+        261120,
+        14779208288
+      ],
+      [
+        "blk.58.ssm_conv1d.weight",
+        163840,
+        14779469408
+      ],
+      [
+        "blk.58.ssm_dt.bias",
+        192,
+        14779633248
+      ],
+      [
+        "blk.58.ssm_norm.weight",
+        512,
+        14779633440
+      ],
+      [
+        "blk.58.ssm_out.weight",
+        21626880,
+        14779633952
+      ],
+      [
+        "blk.59.attn_k.weight",
+        4300800,
+        14801260832
+      ],
+      [
+        "blk.59.attn_k_norm.weight",
+        1024,
+        14805561632
+      ],
+      [
+        "blk.59.attn_norm.weight",
+        20480,
+        14805562656
+      ],
+      [
+        "blk.59.attn_output.weight",
+        21626880,
+        14805583136
+      ],
+      [
+        "blk.59.attn_q.weight",
+        33423360,
+        14827210016
+      ],
+      [
+        "blk.59.attn_q_norm.weight",
+        1024,
+        14860633376
+      ],
+      [
+        "blk.59.attn_v.weight",
+        5570560,
+        14860634400
+      ],
+      [
+        "blk.59.ffn_down.weight",
+        61276160,
+        14866204960
+      ],
+      [
+        "blk.59.ffn_gate.weight",
+        61276160,
+        14927481120
+      ],
+      [
+        "blk.59.ffn_up.weight",
+        61276160,
+        14988757280
+      ],
+      [
+        "blk.59.post_attention_norm.weight",
+        20480,
+        15050033440
+      ],
+      [
+        "blk.60.attn_gate.weight",
+        21626880,
+        15050053920
+      ],
+      [
+        "blk.60.attn_norm.weight",
+        20480,
+        15071680800
+      ],
+      [
+        "blk.60.attn_qkv.weight",
+        36044800,
+        15071701280
+      ],
+      [
+        "blk.60.ffn_down.weight",
+        61276160,
+        15107746080
+      ],
+      [
+        "blk.60.ffn_gate.weight",
+        61276160,
+        15169022240
+      ],
+      [
+        "blk.60.ffn_up.weight",
+        61276160,
+        15230298400
+      ],
+      [
+        "blk.60.post_attention_norm.weight",
+        20480,
+        15291574560
+      ],
+      [
+        "blk.60.ssm_a",
+        192,
+        15291595040
+      ],
+      [
+        "blk.60.ssm_alpha.weight",
+        261120,
+        15291595232
+      ],
+      [
+        "blk.60.ssm_beta.weight",
+        261120,
+        15291856352
+      ],
+      [
+        "blk.60.ssm_conv1d.weight",
+        163840,
+        15292117472
+      ],
+      [
+        "blk.60.ssm_dt.bias",
+        192,
+        15292281312
+      ],
+      [
+        "blk.60.ssm_norm.weight",
+        512,
+        15292281504
+      ],
+      [
+        "blk.60.ssm_out.weight",
+        21626880,
+        15292282016
+      ],
+      [
+        "blk.61.attn_gate.weight",
+        17694720,
+        15313908896
+      ],
+      [
+        "blk.61.attn_norm.weight",
+        20480,
+        15331603616
+      ],
+      [
+        "blk.61.attn_qkv.weight",
+        29491200,
+        15331624096
+      ],
+      [
+        "blk.61.ffn_down.weight",
+        61276160,
+        15361115296
+      ],
+      [
+        "blk.61.ffn_gate.weight",
+        61276160,
+        15422391456
+      ],
+      [
+        "blk.61.ffn_up.weight",
+        61276160,
+        15483667616
+      ],
+      [
+        "blk.61.post_attention_norm.weight",
+        20480,
+        15544943776
+      ],
+      [
+        "blk.61.ssm_a",
+        192,
+        15544964256
+      ],
+      [
+        "blk.61.ssm_alpha.weight",
+        261120,
+        15544964448
+      ],
+      [
+        "blk.61.ssm_beta.weight",
+        261120,
+        15545225568
+      ],
+      [
+        "blk.61.ssm_conv1d.weight",
+        163840,
+        15545486688
+      ],
+      [
+        "blk.61.ssm_dt.bias",
+        192,
+        15545650528
+      ],
+      [
+        "blk.61.ssm_norm.weight",
+        512,
+        15545650720
+      ],
+      [
+        "blk.61.ssm_out.weight",
+        21626880,
+        15545651232
+      ],
+      [
+        "blk.62.attn_gate.weight",
+        21626880,
+        15567278112
+      ],
+      [
+        "blk.62.attn_norm.weight",
+        20480,
+        15588904992
+      ],
+      [
+        "blk.62.attn_qkv.weight",
+        36044800,
+        15588925472
+      ],
+      [
+        "blk.62.ffn_down.weight",
+        61276160,
+        15624970272
+      ],
+      [
+        "blk.62.ffn_gate.weight",
+        61276160,
+        15686246432
+      ],
+      [
+        "blk.62.ffn_up.weight",
+        61276160,
+        15747522592
+      ],
+      [
+        "blk.62.post_attention_norm.weight",
+        20480,
+        15808798752
+      ],
+      [
+        "blk.62.ssm_a",
+        192,
+        15808819232
+      ],
+      [
+        "blk.62.ssm_alpha.weight",
+        261120,
+        15808819424
+      ],
+      [
+        "blk.62.ssm_beta.weight",
+        261120,
+        15809080544
+      ],
+      [
+        "blk.62.ssm_conv1d.weight",
+        163840,
+        15809341664
+      ],
+      [
+        "blk.62.ssm_dt.bias",
+        192,
+        15809505504
+      ],
+      [
+        "blk.62.ssm_norm.weight",
+        512,
+        15809505696
+      ],
+      [
+        "blk.62.ssm_out.weight",
+        21626880,
+        15809506208
+      ],
+      [
+        "blk.63.attn_k.weight",
+        4300800,
+        15831133088
+      ],
+      [
+        "blk.63.attn_k_norm.weight",
+        1024,
+        15835433888
+      ],
+      [
+        "blk.63.attn_norm.weight",
+        20480,
+        15835434912
+      ],
+      [
+        "blk.63.attn_output.weight",
+        21626880,
+        15835455392
+      ],
+      [
+        "blk.63.attn_q.weight",
+        43253760,
+        15857082272
+      ],
+      [
+        "blk.63.attn_q_norm.weight",
+        1024,
+        15900336032
+      ],
+      [
+        "blk.63.attn_v.weight",
+        5570560,
+        15900337056
+      ],
+      [
+        "blk.63.ffn_down.weight",
+        73113600,
+        15905907616
+      ],
+      [
+        "blk.63.ffn_gate.weight",
+        61276160,
+        15979021216
+      ],
+      [
+        "blk.63.ffn_up.weight",
+        73113600,
+        16040297376
+      ],
+      [
+        "blk.63.post_attention_norm.weight",
+        20480,
+        16113410976
+      ]
+    ]
+  },
+  "telemetry": {
+    "source": "results/full-target-load-v3/local-result.json, ssh-readback/result.json; all counters belong to their explicitly selected host/PID. Global fields are not exclusively attributable to RPC.",
+    "page_bytes": 16384,
+    "first_pressure2_elapsed_local_seconds": 55.21443200111389,
+    "last_rpc_phys_footprint_bytes": 6190470088,
+    "last_rpc_phys_footprint_GiB": 5.765324540436268,
+    "last_rpc_phys_footprint_peak_bytes": 6190486472,
+    "last_rpc_rss_bytes": 1295515648,
+    "last_rpc_rss_GiB": 1.20654296875,
+    "sampled_progression": "At31.798s RPC footprint is42.6MB. At33.889s it is2.073GiB, free715MiB. At38.185s footprint2.893GiB/free60MiB. At46.691s footprint4.286GiB and physical compressor0.836GiB. At48.787s RSS falls to0.457GiB while footprint rises to4.679GiB and global compressor reaches5.300GiB. At55.214s pressure2, footprint5.765GiB, RSS1.207GiB and free47.06MiB. RSS collapse is not successful weight reclamation.",
+    "global_first_to_warning": {
+      "wired_pages_before": 216617,
+      "wired_pages_after": 217549,
+      "wired_increase_bytes": 15269888,
+      "physical_compressor_bytes_before": 528498688,
+      "physical_compressor_bytes_after": 6499385344,
+      "physical_compressor_growth_GiB": 5.560821533203125,
+      "compressions_increase": 436578,
+      "swapouts_increase": 0,
+      "swapins_increase": 24,
+      "file_backed_pages_decrease_bytes": 1466957824,
+      "free_bytes_before": 2975547392,
+      "free_bytes_after": 49348608,
+      "laptop_swap_used_MiB_constant": 1852.62
+    },
+    "v2_contrast": "v2 default residency produced an archived global wired increase6,727,483,392bytes (~6.265GiB), pressure2 after29.579s and only20KiB receiver upload. v3 removes that eager-wired signature, not final capacity demand: wired rises only15,269,888bytes between first and warning samples, while anonymous/compressor demand grows during upload.",
+    "mini": "Mini pressure remains1 throughout; maximum sampled RSS9.919662GiB, then falls as mapped pages transition/reclaim. No mini footprint/global counters were captured in v3, and RSS does not bound driver or whole-host residency. Projector/cache/compute readiness was not reached.",
+    "footprint_limits": "No hard process phys_footprint/jetsam budget or per-region/allocator attribution was recorded. Reported phys_footprint_peak is a high-water field, not a limit. v2 low process footprint coexisted with multi-GiB global wiring; v3 low RSS coexisted with high footprint/compressor. None of RSS, phys_footprint or advertised backend free bytes alone bounds total OS/GPU residency.",
+    "residual_observation": {
+      "last_footprint_minus_logged_raw_bytes": 1219932872,
+      "GiB": 1.136151023209095,
+      "interpretation": "Approximate diagnostic residual, not a synchronized allocation decomposition. Near1GiB excess could include allocator/VM accounting retention, backend/driver/bookkeeping or other live allocations. It does NOT establish a retained std::vector or a persistent head leak. Source proves vector object destruction at each SET_TENSOR break. A per-region allocation trace or bounded A/B is needed."
+    },
+    "sampling_limits": "~2s sequential samples are not instantaneous peaks or per-frame timestamps. Client relative log clock is separate from controller timestamps; no precise cross-host clock alignment is assumed. Global compression can involve unrelated processes. Swapouts unchanged does not imply healthy pressure.",
+    "full_local_timeline": [
+      {
+        "timestamp": 1792206926.225163,
+        "elapsed_local_seconds": 0.25071096420288086,
+        "pressure": 1,
+        "rss_bytes": 87900160,
+        "phys_footprint_bytes": 43074184,
+        "phys_footprint_peak_bytes": 43074184,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 181613,
+          "Pages active": 263947,
+          "Pages inactive": 290764,
+          "Pages speculative": 21775,
+          "Pages throttled": 0,
+          "Pages wired down": 216617,
+          "Pages purgeable": 7383,
+          "\"Translation faults\"": 18086410960,
+          "Pages copy-on-write": 3218239715,
+          "Pages zero filled": 4908897603,
+          "Pages reactivated": 2163470217,
+          "Pages purged": 149214628,
+          "File-backed pages": 234216,
+          "Anonymous pages": 342270,
+          "Pages stored in compressor": 374270,
+          "Pages occupied by compressor": 32257,
+          "Decompressions": 2397185317,
+          "Compressions": 2718503179,
+          "Pageins": 246605493,
+          "Pageouts": 3415367,
+          "Swapins": 39488849,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206928.278914,
+        "elapsed_local_seconds": 2.30446195602417,
+        "pressure": 1,
+        "rss_bytes": 87965696,
+        "phys_footprint_bytes": 43106952,
+        "phys_footprint_peak_bytes": 43106952,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 180383,
+          "Pages active": 265954,
+          "Pages inactive": 290765,
+          "Pages speculative": 21776,
+          "Pages throttled": 0,
+          "Pages wired down": 215771,
+          "Pages purgeable": 7713,
+          "\"Translation faults\"": 18086421982,
+          "Pages copy-on-write": 3218241178,
+          "Pages zero filled": 4908902549,
+          "Pages reactivated": 2163470217,
+          "Pages purged": 149214628,
+          "File-backed pages": 234227,
+          "Anonymous pages": 344268,
+          "Pages stored in compressor": 374268,
+          "Pages occupied by compressor": 32256,
+          "Decompressions": 2397185319,
+          "Compressions": 2718503179,
+          "Pageins": 246605513,
+          "Pageouts": 3415367,
+          "Swapins": 39488849,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206930.407797,
+        "elapsed_local_seconds": 4.433345079421997,
+        "pressure": 1,
+        "rss_bytes": 87965696,
+        "phys_footprint_bytes": 43106952,
+        "phys_footprint_peak_bytes": 43106952,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 181670,
+          "Pages active": 264830,
+          "Pages inactive": 290766,
+          "Pages speculative": 21777,
+          "Pages throttled": 0,
+          "Pages wired down": 215577,
+          "Pages purgeable": 7856,
+          "\"Translation faults\"": 18086431391,
+          "Pages copy-on-write": 3218242449,
+          "Pages zero filled": 4908906908,
+          "Pages reactivated": 2163470217,
+          "Pages purged": 149214628,
+          "File-backed pages": 234229,
+          "Anonymous pages": 343144,
+          "Pages stored in compressor": 374262,
+          "Pages occupied by compressor": 32252,
+          "Decompressions": 2397185325,
+          "Compressions": 2718503179,
+          "Pageins": 246605521,
+          "Pageouts": 3415367,
+          "Swapins": 39488849,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206932.486457,
+        "elapsed_local_seconds": 6.512005090713501,
+        "pressure": 1,
+        "rss_bytes": 87425024,
+        "phys_footprint_bytes": 42549896,
+        "phys_footprint_peak_bytes": 43123336,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 185485,
+          "Pages active": 260799,
+          "Pages inactive": 290774,
+          "Pages speculative": 21774,
+          "Pages throttled": 0,
+          "Pages wired down": 215944,
+          "Pages purgeable": 7563,
+          "\"Translation faults\"": 18086442208,
+          "Pages copy-on-write": 3218244759,
+          "Pages zero filled": 4908910938,
+          "Pages reactivated": 2163470217,
+          "Pages purged": 149214628,
+          "File-backed pages": 234226,
+          "Anonymous pages": 339121,
+          "Pages stored in compressor": 374261,
+          "Pages occupied by compressor": 32251,
+          "Decompressions": 2397185326,
+          "Compressions": 2718503179,
+          "Pageins": 246605535,
+          "Pageouts": 3415367,
+          "Swapins": 39488849,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206934.6571908,
+        "elapsed_local_seconds": 8.682738780975342,
+        "pressure": 1,
+        "rss_bytes": 87425024,
+        "phys_footprint_bytes": 42549896,
+        "phys_footprint_peak_bytes": 43123336,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 185369,
+          "Pages active": 261103,
+          "Pages inactive": 290772,
+          "Pages speculative": 21775,
+          "Pages throttled": 0,
+          "Pages wired down": 215567,
+          "Pages purgeable": 7856,
+          "\"Translation faults\"": 18086449544,
+          "Pages copy-on-write": 3218246156,
+          "Pages zero filled": 4908914693,
+          "Pages reactivated": 2163470217,
+          "Pages purged": 149214628,
+          "File-backed pages": 234227,
+          "Anonymous pages": 339423,
+          "Pages stored in compressor": 374260,
+          "Pages occupied by compressor": 32251,
+          "Decompressions": 2397185327,
+          "Compressions": 2718503179,
+          "Pageins": 246605543,
+          "Pageouts": 3415367,
+          "Swapins": 39488849,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206936.749434,
+        "elapsed_local_seconds": 10.77498197555542,
+        "pressure": 1,
+        "rss_bytes": 87425024,
+        "phys_footprint_bytes": 42549896,
+        "phys_footprint_peak_bytes": 43123336,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 185343,
+          "Pages active": 261108,
+          "Pages inactive": 290772,
+          "Pages speculative": 21779,
+          "Pages throttled": 0,
+          "Pages wired down": 215569,
+          "Pages purgeable": 7856,
+          "\"Translation faults\"": 18086457056,
+          "Pages copy-on-write": 3218247551,
+          "Pages zero filled": 4908918427,
+          "Pages reactivated": 2163470217,
+          "Pages purged": 149214628,
+          "File-backed pages": 234231,
+          "Anonymous pages": 339428,
+          "Pages stored in compressor": 374259,
+          "Pages occupied by compressor": 32250,
+          "Decompressions": 2397185328,
+          "Compressions": 2718503179,
+          "Pageins": 246605552,
+          "Pageouts": 3415367,
+          "Swapins": 39488849,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206938.86148,
+        "elapsed_local_seconds": 12.887027978897095,
+        "pressure": 1,
+        "rss_bytes": 87425024,
+        "phys_footprint_bytes": 42549896,
+        "phys_footprint_peak_bytes": 43123336,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 185403,
+          "Pages active": 261104,
+          "Pages inactive": 290772,
+          "Pages speculative": 21780,
+          "Pages throttled": 0,
+          "Pages wired down": 215570,
+          "Pages purgeable": 7713,
+          "\"Translation faults\"": 18086464339,
+          "Pages copy-on-write": 3218248917,
+          "Pages zero filled": 4908922140,
+          "Pages reactivated": 2163470217,
+          "Pages purged": 149214628,
+          "File-backed pages": 234233,
+          "Anonymous pages": 339423,
+          "Pages stored in compressor": 374259,
+          "Pages occupied by compressor": 32250,
+          "Decompressions": 2397185328,
+          "Compressions": 2718503179,
+          "Pageins": 246605560,
+          "Pageouts": 3415367,
+          "Swapins": 39488849,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206940.9630778,
+        "elapsed_local_seconds": 14.988625764846802,
+        "pressure": 1,
+        "rss_bytes": 87425024,
+        "phys_footprint_bytes": 42549896,
+        "phys_footprint_peak_bytes": 43123336,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 185315,
+          "Pages active": 261085,
+          "Pages inactive": 290772,
+          "Pages speculative": 21786,
+          "Pages throttled": 0,
+          "Pages wired down": 215569,
+          "Pages purgeable": 7856,
+          "\"Translation faults\"": 18086471504,
+          "Pages copy-on-write": 3218250161,
+          "Pages zero filled": 4908926185,
+          "Pages reactivated": 2163470217,
+          "Pages purged": 149214628,
+          "File-backed pages": 234239,
+          "Anonymous pages": 339404,
+          "Pages stored in compressor": 374259,
+          "Pages occupied by compressor": 32250,
+          "Decompressions": 2397185328,
+          "Compressions": 2718503179,
+          "Pageins": 246605568,
+          "Pageouts": 3415367,
+          "Swapins": 39488849,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206943.0529091,
+        "elapsed_local_seconds": 17.07845711708069,
+        "pressure": 1,
+        "rss_bytes": 87425024,
+        "phys_footprint_bytes": 42549896,
+        "phys_footprint_peak_bytes": 43123336,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 185696,
+          "Pages active": 260505,
+          "Pages inactive": 290772,
+          "Pages speculative": 21827,
+          "Pages throttled": 0,
+          "Pages wired down": 215746,
+          "Pages purgeable": 7706,
+          "\"Translation faults\"": 18086479307,
+          "Pages copy-on-write": 3218251492,
+          "Pages zero filled": 4908930060,
+          "Pages reactivated": 2163470217,
+          "Pages purged": 149214628,
+          "File-backed pages": 234276,
+          "Anonymous pages": 338828,
+          "Pages stored in compressor": 374259,
+          "Pages occupied by compressor": 32250,
+          "Decompressions": 2397185328,
+          "Compressions": 2718503179,
+          "Pageins": 246605578,
+          "Pageouts": 3415367,
+          "Swapins": 39488849,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206945.135972,
+        "elapsed_local_seconds": 19.16152000427246,
+        "pressure": 1,
+        "rss_bytes": 87425024,
+        "phys_footprint_bytes": 42549896,
+        "phys_footprint_peak_bytes": 43123336,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 185826,
+          "Pages active": 260699,
+          "Pages inactive": 290772,
+          "Pages speculative": 21829,
+          "Pages throttled": 0,
+          "Pages wired down": 215558,
+          "Pages purgeable": 7856,
+          "\"Translation faults\"": 18086486367,
+          "Pages copy-on-write": 3218252731,
+          "Pages zero filled": 4908933601,
+          "Pages reactivated": 2163470217,
+          "Pages purged": 149214628,
+          "File-backed pages": 234278,
+          "Anonymous pages": 339022,
+          "Pages stored in compressor": 374259,
+          "Pages occupied by compressor": 32250,
+          "Decompressions": 2397185328,
+          "Compressions": 2718503179,
+          "Pageins": 246605586,
+          "Pageouts": 3415367,
+          "Swapins": 39488849,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206947.21309,
+        "elapsed_local_seconds": 21.238637924194336,
+        "pressure": 1,
+        "rss_bytes": 87425024,
+        "phys_footprint_bytes": 42549896,
+        "phys_footprint_peak_bytes": 43123336,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 185715,
+          "Pages active": 260388,
+          "Pages inactive": 290766,
+          "Pages speculative": 21829,
+          "Pages throttled": 0,
+          "Pages wired down": 215920,
+          "Pages purgeable": 7570,
+          "\"Translation faults\"": 18086493596,
+          "Pages copy-on-write": 3218253965,
+          "Pages zero filled": 4908937330,
+          "Pages reactivated": 2163470217,
+          "Pages purged": 149214628,
+          "File-backed pages": 234278,
+          "Anonymous pages": 338705,
+          "Pages stored in compressor": 374259,
+          "Pages occupied by compressor": 32250,
+          "Decompressions": 2397185328,
+          "Compressions": 2718503179,
+          "Pageins": 246605594,
+          "Pageouts": 3415367,
+          "Swapins": 39488849,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206949.314094,
+        "elapsed_local_seconds": 23.33964204788208,
+        "pressure": 1,
+        "rss_bytes": 87425024,
+        "phys_footprint_bytes": 42549896,
+        "phys_footprint_peak_bytes": 43123336,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 185898,
+          "Pages active": 260630,
+          "Pages inactive": 290774,
+          "Pages speculative": 21832,
+          "Pages throttled": 0,
+          "Pages wired down": 215549,
+          "Pages purgeable": 7856,
+          "\"Translation faults\"": 18086500873,
+          "Pages copy-on-write": 3218255209,
+          "Pages zero filled": 4908940926,
+          "Pages reactivated": 2163470239,
+          "Pages purged": 149214628,
+          "File-backed pages": 234279,
+          "Anonymous pages": 338957,
+          "Pages stored in compressor": 374259,
+          "Pages occupied by compressor": 32250,
+          "Decompressions": 2397185328,
+          "Compressions": 2718503179,
+          "Pageins": 246605602,
+          "Pageouts": 3415367,
+          "Swapins": 39488849,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206951.403596,
+        "elapsed_local_seconds": 25.42914390563965,
+        "pressure": 1,
+        "rss_bytes": 87425024,
+        "phys_footprint_bytes": 42549896,
+        "phys_footprint_peak_bytes": 43123336,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 185751,
+          "Pages active": 260655,
+          "Pages inactive": 290772,
+          "Pages speculative": 21832,
+          "Pages throttled": 0,
+          "Pages wired down": 215549,
+          "Pages purgeable": 7856,
+          "\"Translation faults\"": 18086508080,
+          "Pages copy-on-write": 3218256455,
+          "Pages zero filled": 4908944537,
+          "Pages reactivated": 2163470239,
+          "Pages purged": 149214628,
+          "File-backed pages": 234280,
+          "Anonymous pages": 338979,
+          "Pages stored in compressor": 374239,
+          "Pages occupied by compressor": 32244,
+          "Decompressions": 2397185348,
+          "Compressions": 2718503179,
+          "Pageins": 246605610,
+          "Pageouts": 3415367,
+          "Swapins": 39488849,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206953.515819,
+        "elapsed_local_seconds": 27.541367053985596,
+        "pressure": 1,
+        "rss_bytes": 87425024,
+        "phys_footprint_bytes": 42549896,
+        "phys_footprint_peak_bytes": 43123336,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 180331,
+          "Pages active": 265962,
+          "Pages inactive": 290365,
+          "Pages speculative": 21916,
+          "Pages throttled": 0,
+          "Pages wired down": 215953,
+          "Pages purgeable": 6275,
+          "\"Translation faults\"": 18086524175,
+          "Pages copy-on-write": 3218258504,
+          "Pages zero filled": 4908953953,
+          "Pages reactivated": 2163470239,
+          "Pages purged": 149214628,
+          "File-backed pages": 234424,
+          "Anonymous pages": 343819,
+          "Pages stored in compressor": 374228,
+          "Pages occupied by compressor": 32244,
+          "Decompressions": 2397185361,
+          "Compressions": 2718503179,
+          "Pageins": 246605643,
+          "Pageouts": 3415367,
+          "Swapins": 39488857,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206955.6679192,
+        "elapsed_local_seconds": 29.693467140197754,
+        "pressure": 1,
+        "rss_bytes": 87490560,
+        "phys_footprint_bytes": 42615456,
+        "phys_footprint_peak_bytes": 43123336,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 181207,
+          "Pages active": 265845,
+          "Pages inactive": 290363,
+          "Pages speculative": 21916,
+          "Pages throttled": 0,
+          "Pages wired down": 215420,
+          "Pages purgeable": 7520,
+          "\"Translation faults\"": 18086533969,
+          "Pages copy-on-write": 3218259908,
+          "Pages zero filled": 4908958376,
+          "Pages reactivated": 2163470239,
+          "Pages purged": 149214628,
+          "File-backed pages": 234424,
+          "Anonymous pages": 343700,
+          "Pages stored in compressor": 374185,
+          "Pages occupied by compressor": 32208,
+          "Decompressions": 2397185362,
+          "Compressions": 2718503179,
+          "Pageins": 246605651,
+          "Pageouts": 3415367,
+          "Swapins": 39488857,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206957.7725902,
+        "elapsed_local_seconds": 31.79813814163208,
+        "pressure": 1,
+        "rss_bytes": 87490560,
+        "phys_footprint_bytes": 42615456,
+        "phys_footprint_peak_bytes": 43123336,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 182181,
+          "Pages active": 258264,
+          "Pages inactive": 290360,
+          "Pages speculative": 21917,
+          "Pages throttled": 0,
+          "Pages wired down": 221978,
+          "Pages purgeable": 6355,
+          "\"Translation faults\"": 18086541433,
+          "Pages copy-on-write": 3218261287,
+          "Pages zero filled": 4908962973,
+          "Pages reactivated": 2163470239,
+          "Pages purged": 149214628,
+          "File-backed pages": 234425,
+          "Anonymous pages": 336116,
+          "Pages stored in compressor": 374183,
+          "Pages occupied by compressor": 32208,
+          "Decompressions": 2397185364,
+          "Compressions": 2718503179,
+          "Pageins": 246605659,
+          "Pageouts": 3415367,
+          "Swapins": 39488857,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206959.863721,
+        "elapsed_local_seconds": 33.88926887512207,
+        "pressure": 1,
+        "rss_bytes": 2269200384,
+        "phys_footprint_bytes": 2225391800,
+        "phys_footprint_peak_bytes": 2225408184,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 45770,
+          "Pages active": 375216,
+          "Pages inactive": 314682,
+          "Pages speculative": 21929,
+          "Pages throttled": 0,
+          "Pages wired down": 217019,
+          "Pages purgeable": 7438,
+          "\"Translation faults\"": 18086686041,
+          "Pages copy-on-write": 3218262661,
+          "Pages zero filled": 4909102948,
+          "Pages reactivated": 2163470239,
+          "Pages purged": 149214628,
+          "File-backed pages": 234428,
+          "Anonymous pages": 477399,
+          "Pages stored in compressor": 374180,
+          "Pages occupied by compressor": 32206,
+          "Decompressions": 2397185367,
+          "Compressions": 2718503179,
+          "Pageins": 246605667,
+          "Pageouts": 3415367,
+          "Swapins": 39488857,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206961.987835,
+        "elapsed_local_seconds": 36.01338291168213,
+        "pressure": 1,
+        "rss_bytes": 2767781888,
+        "phys_footprint_bytes": 2753710624,
+        "phys_footprint_peak_bytes": 2753727008,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 18772,
+          "Pages active": 389052,
+          "Pages inactive": 328232,
+          "Pages speculative": 21931,
+          "Pages throttled": 0,
+          "Pages wired down": 216710,
+          "Pages purgeable": 7741,
+          "\"Translation faults\"": 18086724148,
+          "Pages copy-on-write": 3218264057,
+          "Pages zero filled": 4909136067,
+          "Pages reactivated": 2163470239,
+          "Pages purged": 149214628,
+          "File-backed pages": 234430,
+          "Anonymous pages": 504785,
+          "Pages stored in compressor": 374178,
+          "Pages occupied by compressor": 32202,
+          "Decompressions": 2397185369,
+          "Compressions": 2718503179,
+          "Pageins": 246605677,
+          "Pageouts": 3415367,
+          "Swapins": 39488857,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206964.159152,
+        "elapsed_local_seconds": 38.18470001220703,
+        "pressure": 1,
+        "rss_bytes": 3149348864,
+        "phys_footprint_bytes": 3105950480,
+        "phys_footprint_peak_bytes": 3105966864,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 3857,
+          "Pages active": 377410,
+          "Pages inactive": 360380,
+          "Pages speculative": 16060,
+          "Pages throttled": 0,
+          "Pages wired down": 216895,
+          "Pages purgeable": 7567,
+          "\"Translation faults\"": 18086820647,
+          "Pages copy-on-write": 3218278573,
+          "Pages zero filled": 4909166437,
+          "Pages reactivated": 2163470239,
+          "Pages purged": 149214637,
+          "File-backed pages": 228700,
+          "Anonymous pages": 525150,
+          "Pages stored in compressor": 374168,
+          "Pages occupied by compressor": 32193,
+          "Decompressions": 2397185393,
+          "Compressions": 2718503179,
+          "Pageins": 246606029,
+          "Pageouts": 3415367,
+          "Swapins": 39488857,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206966.291222,
+        "elapsed_local_seconds": 40.31677007675171,
+        "pressure": 1,
+        "rss_bytes": 3520266240,
+        "phys_footprint_bytes": 3477048344,
+        "phys_footprint_peak_bytes": 3477064728,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 7545,
+          "Pages active": 375611,
+          "Pages inactive": 374551,
+          "Pages speculative": 341,
+          "Pages throttled": 0,
+          "Pages wired down": 216730,
+          "Pages purgeable": 7734,
+          "\"Translation faults\"": 18086853312,
+          "Pages copy-on-write": 3218279837,
+          "Pages zero filled": 4909192959,
+          "Pages reactivated": 2163470246,
+          "Pages purged": 149214639,
+          "File-backed pages": 209065,
+          "Anonymous pages": 541438,
+          "Pages stored in compressor": 374142,
+          "Pages occupied by compressor": 32191,
+          "Decompressions": 2397185397,
+          "Compressions": 2718503179,
+          "Pageins": 246606048,
+          "Pageouts": 3415396,
+          "Swapins": 39488869,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206968.407318,
+        "elapsed_local_seconds": 42.43286609649658,
+        "pressure": 1,
+        "rss_bytes": 3888857088,
+        "phys_footprint_bytes": 3845819680,
+        "phys_footprint_peak_bytes": 3845836064,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 3885,
+          "Pages active": 377323,
+          "Pages inactive": 376046,
+          "Pages speculative": 576,
+          "Pages throttled": 0,
+          "Pages wired down": 216875,
+          "Pages purgeable": 7734,
+          "\"Translation faults\"": 18086883485,
+          "Pages copy-on-write": 3218281095,
+          "Pages zero filled": 4909219222,
+          "Pages reactivated": 2163470246,
+          "Pages purged": 149214641,
+          "File-backed pages": 189920,
+          "Anonymous pages": 564025,
+          "Pages stored in compressor": 374142,
+          "Pages occupied by compressor": 32191,
+          "Decompressions": 2397185397,
+          "Compressions": 2718503179,
+          "Pageins": 246606056,
+          "Pageouts": 3415399,
+          "Swapins": 39488869,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206970.562239,
+        "elapsed_local_seconds": 44.58778691291809,
+        "pressure": 1,
+        "rss_bytes": 4319412224,
+        "phys_footprint_bytes": 4276588120,
+        "phys_footprint_peak_bytes": 4276604504,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 4229,
+          "Pages active": 376663,
+          "Pages inactive": 374900,
+          "Pages speculative": 539,
+          "Pages throttled": 0,
+          "Pages wired down": 216976,
+          "Pages purgeable": 4701,
+          "\"Translation faults\"": 18086927785,
+          "Pages copy-on-write": 3218284072,
+          "Pages zero filled": 4909250142,
+          "Pages reactivated": 2163485897,
+          "Pages purged": 149214649,
+          "File-backed pages": 179026,
+          "Anonymous pages": 573076,
+          "Pages stored in compressor": 380260,
+          "Pages occupied by compressor": 33590,
+          "Decompressions": 2397185403,
+          "Compressions": 2718509297,
+          "Pageins": 246606142,
+          "Pageouts": 3415401,
+          "Swapins": 39488869,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206972.665741,
+        "elapsed_local_seconds": 46.69128894805908,
+        "pressure": 1,
+        "rss_bytes": 4645208064,
+        "phys_footprint_bytes": 4602548040,
+        "phys_footprint_peak_bytes": 4602564424,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 4015,
+          "Pages active": 366096,
+          "Pages inactive": 364686,
+          "Pages speculative": 458,
+          "Pages throttled": 0,
+          "Pages wired down": 216797,
+          "Pages purgeable": 4510,
+          "\"Translation faults\"": 18087000247,
+          "Pages copy-on-write": 3218294275,
+          "Pages zero filled": 4909277873,
+          "Pages reactivated": 2163527778,
+          "Pages purged": 149214659,
+          "File-backed pages": 178875,
+          "Anonymous pages": 552365,
+          "Pages stored in compressor": 410890,
+          "Pages occupied by compressor": 54807,
+          "Decompressions": 2397185410,
+          "Compressions": 2718539928,
+          "Pageins": 246606256,
+          "Pageouts": 3415411,
+          "Swapins": 39488873,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206974.76145,
+        "elapsed_local_seconds": 48.78699803352356,
+        "pressure": 1,
+        "rss_bytes": 490881024,
+        "phys_footprint_bytes": 5024092288,
+        "phys_footprint_peak_bytes": 5024108672,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 3458,
+          "Pages active": 217614,
+          "Pages inactive": 211867,
+          "Pages speculative": 4940,
+          "Pages throttled": 0,
+          "Pages wired down": 221561,
+          "Pages purgeable": 24,
+          "\"Translation faults\"": 18087056951,
+          "Pages copy-on-write": 3218298352,
+          "Pages zero filled": 4909312237,
+          "Pages reactivated": 2163600813,
+          "Pages purged": 149218479,
+          "File-backed pages": 176722,
+          "Anonymous pages": 257699,
+          "Pages stored in compressor": 716975,
+          "Pages occupied by compressor": 347339,
+          "Decompressions": 2397188245,
+          "Compressions": 2718852906,
+          "Pageins": 246606355,
+          "Pageouts": 3415439,
+          "Swapins": 39488873,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206976.891857,
+        "elapsed_local_seconds": 50.917404890060425,
+        "pressure": 1,
+        "rss_bytes": 923009024,
+        "phys_footprint_bytes": 5418602912,
+        "phys_footprint_peak_bytes": 5418619296,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 4002,
+          "Pages active": 214192,
+          "Pages inactive": 207443,
+          "Pages speculative": 5447,
+          "Pages throttled": 0,
+          "Pages wired down": 218900,
+          "Pages purgeable": 469,
+          "\"Translation faults\"": 18087096772,
+          "Pages copy-on-write": 3218299932,
+          "Pages zero filled": 4909343963,
+          "Pages reactivated": 2163625157,
+          "Pages purged": 149218518,
+          "File-backed pages": 167419,
+          "Anonymous pages": 259663,
+          "Pages stored in compressor": 742043,
+          "Pages occupied by compressor": 356958,
+          "Decompressions": 2397189105,
+          "Compressions": 2718878914,
+          "Pageins": 246606464,
+          "Pageouts": 3415439,
+          "Swapins": 39488873,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206979.03855,
+        "elapsed_local_seconds": 53.06409788131714,
+        "pressure": 1,
+        "rss_bytes": 1259896832,
+        "phys_footprint_bytes": 5817324224,
+        "phys_footprint_peak_bytes": 5817340608,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 4086,
+          "Pages active": 208904,
+          "Pages inactive": 202427,
+          "Pages speculative": 5935,
+          "Pages throttled": 0,
+          "Pages wired down": 217078,
+          "Pages purgeable": 706,
+          "\"Translation faults\"": 18087131263,
+          "Pages copy-on-write": 3218301307,
+          "Pages zero filled": 4909372206,
+          "Pages reactivated": 2163630587,
+          "Pages purged": 149218520,
+          "File-backed pages": 156589,
+          "Anonymous pages": 260677,
+          "Pages stored in compressor": 764268,
+          "Pages occupied by compressor": 368437,
+          "Decompressions": 2397190246,
+          "Compressions": 2718902294,
+          "Pageins": 246606483,
+          "Pageouts": 3415440,
+          "Swapins": 39488873,
+          "Swapouts": 47626892
+        }
+      },
+      {
+        "timestamp": 1792206981.188884,
+        "elapsed_local_seconds": 55.21443200111389,
+        "pressure": 2,
+        "rss_bytes": 1295515648,
+        "phys_footprint_bytes": 6190470088,
+        "phys_footprint_peak_bytes": 6190486472,
+        "global_vm_stat_pages_and_events": {
+          "Pages free": 3012,
+          "Pages active": 194527,
+          "Pages inactive": 192151,
+          "Pages speculative": 1663,
+          "Pages throttled": 0,
+          "Pages wired down": 217549,
+          "Pages purgeable": 0,
+          "\"Translation faults\"": 18087167493,
+          "Pages copy-on-write": 3218302899,
+          "Pages zero filled": 4909401191,
+          "Pages reactivated": 2163651085,
+          "Pages purged": 149218707,
+          "File-backed pages": 144680,
+          "Anonymous pages": 243661,
+          "Pages stored in compressor": 799905,
+          "Pages occupied by compressor": 396691,
+          "Decompressions": 2397191695,
+          "Compressions": 2718939757,
+          "Pageins": 246606504,
+          "Pageouts": 3415441,
+          "Swapins": 39488873,
+          "Swapouts": 47626892
+        }
+      }
+    ]
+  },
+  "pinned_memory_path": {
+    "client_serialization": {
+      "evidence": "ggml-rpc.cpp:829-837,848-872",
+      "finding": "serialize_set_tensor allocates zero-initialized new uint8_t[305+payload] and memcpy-copies the whole requested span. Source/mmap pages coexist with this owned staging allocation. shared_ptr ownership retains those bytes through dispatcher send; this is a real model-sized per-frame temporary in the mini, not a pointer-only header."
+    },
+    "receiver_frame": {
+      "evidence": "ggml-rpc.cpp:344-355,1698-1753,2600-2608",
+      "finding": "recv_msg resizes one local vector to the whole message before socket receive. That vector is created INSIDE the SET_TENSOR case and destroyed on break. set_tensor synchronizes backends, parses header+offset, validates region, and synchronously sets bytes. There is no persistent vector-capacity bank in this case. Freed allocation may or may not remain charged by libc/VM; source alone cannot answer that."
+    },
+    "metal_shared": {
+      "evidence": "ggml-metal-device.m:2037-2065,2090-2177,2333-2336; ggml-metal.cpp:735-740",
+      "finding": "Actual v3 startup confirms use_shared_buffers=true, use_residency_sets=false. Shared destination is a page-aligned vm_allocate allocation wrapped in newBufferWithBytesNoCopy. No source-visible second full-shard CPU-to-GPU copy is allocated. Shared set_tensor is immediate memcpy into destination+offset. Without explicit residency, allocation is not an explicit all-pages memset; actual first writes still materialize weights."
+    },
+    "metal_private_alternative": {
+      "evidence": "ggml-metal-device.m:2130-2152,2339-2385",
+      "finding": "Private allocation reserves GPU storage and wraps source bytes in a temporary shared MTLBuffer for blit, waiting on completion before releasing source wrapper. It is not a demonstrated lower-memory alternative on unified RAM. It adds driver/copy/lifetime complexity and changes the buffer-policy variable already held fixed; reject a blind private-buffer retry."
+    },
+    "mmap_remote_boundary": {
+      "evidence": "ggml-rpc.cpp:2858-2869; llama-model-loader.cpp:1585-1588,1699-1735",
+      "finding": "RPC reports buffer_from_host_ptr=false: mini mmap cannot become laptop zero-copy destination. Current mmap loading calls synchronous whole-tensor ggml_backend_tensor_set. Existing four1MiB asynchronous file-upload staging buffers are bypassed with mmap, and RPC caps.host_buffer=false also defeats that fast path. Simply flipping mmap off is not a proven bounded-upload solution."
+    },
+    "socket_chunk_is_not_frame_bound": {
+      "evidence": "transport.h:10; transport.cpp:534-585; ggml-rpc.cpp:344-355,829-837",
+      "finding": "MAX_CHUNK_SIZE=1GiB caps individual send/recv syscall spans, not message size or staging allocation. Lowering it alone leaves both whole-frame client and receiver allocations unchanged."
+    },
+    "queue": {
+      "evidence": "ggml-rpc.cpp:444-492,547-588,660-695,1147-1173,2600-2608",
+      "finding": "Dispatcher std::queue has no item/byte cap and send_async can accumulate owning serialized inputs. That is a real unbounded API surface, but not demonstrated causation here: mmap weights use the synchronous setter and one serial loader producer. send waits for socket-send completion, not receiver acknowledgment; bounded TCP buffers can overlap adjacent frames, and a transient old shared_ptr can overlap the next serialization. Receiver processes one SET_TENSOR vector at a time, with no queue of full weight frames. No evidence of an unbounded v3 weight pipeline. Preserve explicit byte credits and construction budget if adding async chunking."
+    },
+    "safe_partial_set": {
+      "evidence": "ggml-backend.cpp:475-487; ggml-rpc.cpp:828-872,1698-1753; ggml-metal-device.m:2333-2336",
+      "finding": "Existing SET_TENSOR has byte offset and byte-span semantics: same tensor metadata, source pointer+chunk_start, offset=original_offset+chunk_start, size=min(C,remaining). GGML checks tensor bound; receiver checks backing buffer and shared Metal memcpy honors offset. Packed bytes need no requantization/kernel change; choose bounded valid spans, preferably block-aligned, then prove complete bytes and unchanged surrounding regions. No protocol redesign is necessary for a CPU-first chunked-caller proof.",
+      "safety_caveats": "Existing out-of-bounds checks are asserts/buffer checks, not hardened hostile-input admission. Future frame cap must check length BEFORE vector.resize and use overflow-safe subtraction before pointer arithmetic. Current handler allocates announced length before header validation. Validate original offset<=tensor bytes and length<=remaining; refuse truncated/oversized/overlapping incomplete transactions at higher-level admission. SET is fire-and-forget; GET reply gives a receiver-processed fence."
+    },
+    "cache": {
+      "evidence": "ggml-rpc.cpp:117-118,840-869,1741-1749,1818-1882",
+      "finding": "Server cache is disabled (local cache n/a), but sender still hashes weight spans>10MiB and sends lookup requests; all102 observed are misses. Chunking at1MiB bypasses the threshold and removes whole-head FNV scan on this no-cache path, but do not mix speed claims with memory. Cache-enabled mode is separate: cached_file vectors are whole cache-entry size; using an old whole-head cache hit before chunking would retain the giant-buffer risk. Freeze cache off for minimal A/B, then test chunk-key offset/length/cache-hit behavior independently before broader adoption."
+    }
+  },
+  "saving_scale_and_capacity": {
+    "C_bytes": 1048576,
+    "SET_TENSOR_header_bytes": 305,
+    "head_frame_bytes": 1042944305,
+    "bounded_frame_bytes": 1048881,
+    "head_frame_live_allocation_reduction_per_host_bytes": 1041895424,
+    "head_frame_reduction_per_host_MiB": 993.62890625,
+    "head_chunks": 995,
+    "head_last_chunk_bytes": 659456,
+    "benefit_scope": "About993.63MiB less maximum application-owned staging per host at the head (not pooled across hosts); destination weights are unchanged. This bounds live frame allocations, not a promised physical-footprint saving. Head already completed in v3. Largest other laptop tensor is69.73MiB; largest actually received later tensor58.44MiB, so later per-frame savings are at most57.44MiB versus1MiB chunks. End-of-trace ssm_out is20.625MiB, not a1GiB live head frame.",
+    "destination_policy_limit": "Per-tensor or deferred buffer reservation could change VM/residency bookkeeping but v3 has no giant eager-wired increase left to remove. All6.261GiB destination weight bytes are still required. Reclaiming/freeing uploaded tensors changes model residency/streaming architecture, not ordinary buffer allocation. Remote mmap/file-backed weights need a different verified asset/storage architecture, not a message-size flag.",
+    "missing_raw_bytes_at_stop": 1751662080,
+    "missing_raw_GiB": 1.6313624382019043,
+    "laptop_runtime_estimates_not_measured": {
+      "KV_bytes_8192": 201326592,
+      "recurrent_state_allowance_bytes": 268435456,
+      "workspace_allocator_allowance_bytes": 2147483648,
+      "sum_bytes": 2617245696,
+      "sum_GiB": 2.4375
+    },
+    "missing_raw_plus_runtime_estimate_GiB": 4.068862438201904,
+    "proposal_model_stack_GiB": {
+      "laptop": 8.698035955429077,
+      "mini": 12.165722787380219
+    },
+    "headroom_evidence": "16GiB physical memory is archived for the laptop. Just before writes it had~2.78GiB free pages, then47MiB by warning, with5.56GiB new physical compressor occupancy. Historical system footprint is21.006GiB laptop and6.409GiB mini; these ledgers are not directly subtractable from physical RAM. Advertised~11.84GiB backend free comes from recommendedMaxWorkingSetSize-currentAllocatedSize (ggml-metal-device.m:1501-1506), not allocatable OS headroom. Runtime allowances are planning reserves, not measured requirements or a proven hard4.069GiB shortfall.",
+    "judgment": "Removing a potential0.970GiB head temporary/retention would still be smaller than1.631GiB unuploaded raw weights, before estimated2.438GiB laptop runtime buffers; the mini also has an unqualified12.166GiB estimated stack before OS/apps. This is not a mathematical impossibility proof because reclaimability/accounting overlap and actual workspace are unknown. It is insufficient evidence to authorize another full load or claim chunking fixes capacity."
+  },
+  "future_byte_equality_gate": {
+    "not_executed": true,
+    "goals": [
+      "Bind immutable source/checkpoint/header/placement and readback SHA256 identities.",
+      "Compare stock whole-span and chunked uploads using identical tensor type/shape/stride/storage bytes; no weight or kernel change.",
+      "For each tensor verify contiguous coverage[0,nbytes), unique offsets, exact final short chunk and expected digest; no missing/duplicate/out-of-range bytes.",
+      "Read back in bounded GET slices AFTER receiver-processed fence, compute receiver SHA256 incrementally, compare every byte against source and stock control; do not accept FNV cache keys as integrity.",
+      "Verify nonzero base offsets, views where supported, guard bytes untouched, unaligned logical tails, quantization-block boundaries and multiple tensor boundaries.",
+      "Test0,1,C-1,C,C+1,2C+tail payload sizes, short reads/fragmented headers and data, disconnect during chunk, oversized lengths and overflow at local parser boundary. Failed transaction cannot publish loaded/admitted state.",
+      "Freeze cache disabled for initial gate; separately test hash-hit/miss, chunk offset+length binding and refusal of a cached oversized whole tensor.",
+      "Under async variants prove a finite outstanding-byte cap includes buffers being constructed and queued, not just sent frames; test producer outrunning blocked receiver and cancellation cleanup.",
+      "Only after CPU transport equality and later owner-approved small physical shared-Metal parity may full-model capacity be reassessed. Neither test is27B inference or a workload qualification."
+    ]
+  },
+  "minimal_AB_probe_proposal": {
+    "not_executed": true,
+    "purpose": "One bounded transport/offset lifetime discriminator, never another model reload. CPU-only pinned-library/socket fixture first; no Metal device enumeration or kernel work. A later physical shared-Metal version requires explicit hardware-owner authorization and separate admission.",
+    "tensor": "One contiguous F32 raw-byte tensor, no arithmetic, total allocation N+128bytes. Initial fill0xA5;64byte guards before/after an N-byte region. Set region at original byte offset64. F32 is only storage; transport equality is not numerical admission.",
+    "N_bytes": 8388864,
+    "destination_bytes": 8388992,
+    "source": "Same fixed deterministic high-entropy counter-hash byte pattern in A/B; record seed and source SHA256. Allocate one source buffer only; compute expected/readback digests incrementally rather than another full tensor copy.",
+    "A": "Fresh CPU-only fixture process/connection, cache disabled, identical destination policy. One existing ggml_backend_tensor_set(tensor,source,64,N). Read a small GET at the end as receiver fence; then bounded64KiB whole-tensor readback with exact guard and byte equality.",
+    "B": "Fresh otherwise identical fixture: repeat existing setter with offsets64+j and source+j; chunk size1,048,576bytes,8 full chunks+256byte tail. A receiver-processed small GET fence after each chunk forces at most one in-flight application payload and makes temp destruction observable. Same final bounded readback.",
+    "memory_cap": {
+      "explicit_combined_buffer_upper_bound_bytes": 33687266,
+      "explicit_combined_buffer_upper_bound_MiB": 32.12668037414551,
+      "limit_bytes": 67108864,
+      "scope": "Conservative source+destination+client-frame+receiver-frame+two64KiB readback blocks:32.127MiB. Baseline libraries/interpreter, allocator overhead, socket buffers and OS/driver accounting are separate; do not promise total RSS<64MiB. Enforce a fixture allocation ledger below64MiB and abort rather than inflate any requested buffer. If the user means total process footprint<64MiB, admit actual baseline first and reduce N to1MiB+256 if necessary."
+    },
+    "record": [
+      "source/binary hashes, exact sent/received byte counts and tensor metadata",
+      "frame live-size/allocation high-water using fixture instrumentation at allocate/receive/set/destroy boundaries, not only2s polling",
+      "per-process footprint/RSS before, after receiver fence, after free and0.1/0.5/2s later if physical version is authorized; global wired/compressor/pressure separately",
+      "final receiver SHA256, stock-vs-chunk bytes, sentinel guards, offset and tail coverage",
+      "bounded deadline<=30s, logs<=8MiB, no resident service, exact owned-process/listener cleanup; physical variant normal-pressure guard unchanged"
+    ],
+    "expected_architectural_signal": {
+      "A_largest_frame_bytes": 8389169,
+      "B_largest_frame_bytes": 1048881,
+      "expected_live_frame_reduction_bytes": 7340288,
+      "byte_equality_required": true,
+      "retention_hypothesis": "If post-fence footprint stays proportional to the largest A frame but not B, allocator/VM retention is supported at this small size; source-object lifetime still ends at break. If both return to baseline but B peaks lower, benefit is transient only. If destination growth dominates equally, chunking does not reduce steady demand."
+    },
+    "limitations": "N is below the10MiB hash threshold, intentionally isolating offset/frame behavior. It cannot reproduce the full head hash scan/cache path or1GiB allocator regime. Negative/parser/cache tests are separate bounded CPU gates. A successful8MiB fixture cannot establish multi-GiB fit, actual Metal residency or model numerical correctness. No hardware test was executed in this reassessment."
+  },
+  "failures_interpretation": "In all3 trials the local pressure guard deliberately terminates only its owned RPC worker (exit-15); the mini later aborts at the RPC assertion on peer closure (exit-6). The generic Remote RPC server crashed/malformed message is a consequence, not evidence of an independent spontaneous RPC crash."
+}

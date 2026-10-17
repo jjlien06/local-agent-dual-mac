@@ -1,0 +1,38 @@
+{
+  "schema": "mlx-vision-contract-parent-verification-v1",
+  "timestamp": 1792208761.481196,
+  "status": "parent_cpu_checks_passed_independent_review_pending",
+  "independent_review": "pending",
+  "implementation_artifact_sha256": "0e6901ec6e659f2832fb24d89fe652172feff442f305e46f9df4f5b415c88409",
+  "current_source_document_sha256": {
+    "multimodal_contract/__init__.py": "dc33ebc3fed629d28fd9b230c03019edec78836f7ee2aeaf7bb37e01bd9fa2ca",
+    "tests/test_multimodal_contract.py": "9061dc54b9388fbb50d86ad60a5b3888578b500605725234167218834c83f929",
+    "multimodal_contract/README.md": "edefc2cd8c6996b20033d7606e13f913a060e79e2b02fcefb89c38843dc7efed",
+    "MULTIMODAL-TDD.md": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d"
+  },
+  "implementation_Python_tests_TDD_exact_hashes_match": true,
+  "original_qualification_test_hash_matches": true,
+  "combined_test_observation": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 /Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -B -m pytest -p no:cacheprovider tests/test_multimodal_contract.py tests/test_qualification.py -q",
+    "passed": 147,
+    "seconds": 40.68,
+    "observation": "Actual terminal result; includes new63 CPUcontract tests plus original84qualification regressions."
+  },
+  "ruff_check": "All checks passed!",
+  "initial_directory_format_exit_code": 1,
+  "initial_directory_format_failure": "Only README Pythoncodefence needed request_id and grid on separatelines;2Pythonfiles alreadyformatted. Original implementation evidence retained unchanged.",
+  "documentation_only_repair": {
+    "old_sha256": "ab4b2f7e3e0ca3275f8cf8e7320023d7cfbc84e75abac6da7d82fcc51ea8b05b",
+    "new_sha256": "edefc2cd8c6996b20033d7606e13f913a060e79e2b02fcefb89c38843dc7efed",
+    "only_change": "Split request_id/grid keyword arguments onto separate lines in Python code fence after parent directory Ruffformat found it unformatted; Python and tests unchanged."
+  },
+  "repeated_directory_format": {
+    "output": "3 files already formatted",
+    "exit_code": 0,
+    "error": null
+  },
+  "physical_vision_approved": false,
+  "GPU_execution": false,
+  "MLX_imported": false,
+  "scope": "CPUposition/requestcontract; noencoder/scatter/rotary/GPUcache/distributed/imageprocessing/server/autonomyadmission."
+}

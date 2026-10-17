@@ -1,0 +1,9 @@
+[
+  "/Users/jeremylien/Projects/local-agent-dual-mac/build-api-arm64/bin/ggml-rpc-server",
+  "--host",
+  "169.254.47.213",
+  "--port",
+  "18564",
+  "--device",
+  "MTL0"
+]

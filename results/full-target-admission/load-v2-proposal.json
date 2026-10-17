@@ -1,0 +1,26 @@
+{
+  "role": "Full27B load-only diagnostic v2; not admitted endpoint or agent",
+  "model_or_quant_changed": false,
+  "source_revision_changed": false,
+  "numerical_or_context_settings_changed": false,
+  "placement_change": "tensor_split1,1 ->3,2; source-derived mini main0..39, laptop40..63 plushead",
+  "instrumentation_change": [
+    "GGML_RPC_DEBUG3 on both endpoints",
+    "server verbosity5",
+    "owned laptop RPC footprint and global VM counters"
+  ],
+  "keep": [
+    "8192 context",
+    "1024 minimum/maximum image tokens",
+    "all requested decoder layers GPU",
+    "mini vision projector",
+    "mmap enabled",
+    "fit off",
+    "pressure must remain1",
+    "bounded logs/deadlines",
+    "owned-only cleanup"
+  ],
+  "rationale": "Source/header-derived remote raw GPU payload decreases from8271059072 to6722199296bytes; mini raw GPU rises7116214144 to8665073920bytes. Small fixed64MiB allocation/free validates debug instrumentation, not GiB capacity. Mini becomes tighter host; physical fitting remains uncertain.",
+  "capacity_status": "Marginal planning candidate, not a demonstrated fit. No performance or causal speed comparison intended. Do not change mmap or pressure policy simultaneously.",
+  "bounds": "One fresh load-only trial, no prompts, no automatic retry or scaling, no unrelated app termination. Stop on either pressure gate."
+}

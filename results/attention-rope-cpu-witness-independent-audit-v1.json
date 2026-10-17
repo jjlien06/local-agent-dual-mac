@@ -1,0 +1,1627 @@
+{
+  "actual_passed": true,
+  "admission": {
+    "GDN_approved": false,
+    "Metal_approved": false,
+    "cache_all_16_layers_approved": false,
+    "checkpoint_27B_approved": false,
+    "distributed_approved": false,
+    "existing_tasks_closed": false,
+    "production_loader_approved": false,
+    "security_approved": false,
+    "separate_native_NumPy_failures_cleared": false,
+    "validated_text025_changed_by_audit": false,
+    "vision_approved": false
+  },
+  "check_count": 91,
+  "checks": [
+    {
+      "name": "CPU selected before nn/model array construction",
+      "passed": true
+    },
+    {
+      "name": "isolated MLX version",
+      "passed": true
+    },
+    {
+      "name": "isolated NumPy version",
+      "passed": true
+    },
+    {
+      "name": "terminal native ordinary SDPA call AST identical",
+      "passed": true
+    },
+    {
+      "name": "full VLM and LM SDPA helper AST not identical",
+      "passed": true
+    },
+    {
+      "name": "preserved preflight selector actually mismatches",
+      "passed": true
+    },
+    {
+      "name": "preserved preflight source hash",
+      "passed": true
+    },
+    {
+      "name": "preflight fix changes only terminal-call selector",
+      "passed": true
+    },
+    {
+      "name": "two current binding protocol tests pass",
+      "passed": true
+    },
+    {
+      "name": "independent positions:text",
+      "passed": true
+    },
+    {
+      "name": "independent physical decode positions:text:0",
+      "passed": true
+    },
+    {
+      "name": "independent physical decode positions:text:1",
+      "passed": true
+    },
+    {
+      "name": "independent positions:image-4x6-prefix1",
+      "passed": true
+    },
+    {
+      "name": "independent physical decode positions:image-4x6-prefix1:0",
+      "passed": true
+    },
+    {
+      "name": "independent physical decode positions:image-4x6-prefix1:1",
+      "passed": true
+    },
+    {
+      "name": "independent positions:image-6x4-prefix1",
+      "passed": true
+    },
+    {
+      "name": "independent physical decode positions:image-6x4-prefix1:0",
+      "passed": true
+    },
+    {
+      "name": "independent physical decode positions:image-6x4-prefix1:1",
+      "passed": true
+    },
+    {
+      "name": "independent positions:image-16x32-prefix1",
+      "passed": true
+    },
+    {
+      "name": "independent physical decode positions:image-16x32-prefix1:0",
+      "passed": true
+    },
+    {
+      "name": "independent physical decode positions:image-16x32-prefix1:1",
+      "passed": true
+    },
+    {
+      "name": "independent positions:image-4x6-prefix252",
+      "passed": true
+    },
+    {
+      "name": "independent physical decode positions:image-4x6-prefix252:0",
+      "passed": true
+    },
+    {
+      "name": "independent physical decode positions:image-4x6-prefix252:1",
+      "passed": true
+    },
+    {
+      "name": "byte-identical isolated copy:probe.py",
+      "passed": true
+    },
+    {
+      "name": "probe exit:probe.py",
+      "passed": true
+    },
+    {
+      "name": "exact complete metric population:probe.py",
+      "passed": true
+    },
+    {
+      "name": "42 forward-step groups:probe.py",
+      "passed": true
+    },
+    {
+      "name": "independent raw-array recomputation complete:probe.py",
+      "passed": true
+    },
+    {
+      "name": "all strict metric rows independently pass:probe.py",
+      "passed": true
+    },
+    {
+      "name": "eight finite scalar output controls:probe.py",
+      "passed": true
+    },
+    {
+      "name": "strict tolerances unchanged:probe.py",
+      "passed": true
+    },
+    {
+      "name": "all original scalar/metric observations reproduced:probe.py",
+      "passed": true
+    },
+    {
+      "name": "actual native forward/cache/SDPA counts:probe.py",
+      "passed": true
+    },
+    {
+      "name": "only unchanged original attention methods executed:probe.py",
+      "passed": true
+    },
+    {
+      "name": "RoPE callback count:probe.py",
+      "passed": true
+    },
+    {
+      "name": "byte-identical isolated copy:probe-with-mutations.py",
+      "passed": true
+    },
+    {
+      "name": "probe exit:probe-with-mutations.py",
+      "passed": true
+    },
+    {
+      "name": "exact complete metric population:probe-with-mutations.py",
+      "passed": true
+    },
+    {
+      "name": "42 forward-step groups:probe-with-mutations.py",
+      "passed": true
+    },
+    {
+      "name": "independent raw-array recomputation complete:probe-with-mutations.py",
+      "passed": true
+    },
+    {
+      "name": "all strict metric rows independently pass:probe-with-mutations.py",
+      "passed": true
+    },
+    {
+      "name": "eight finite scalar output controls:probe-with-mutations.py",
+      "passed": true
+    },
+    {
+      "name": "strict tolerances unchanged:probe-with-mutations.py",
+      "passed": true
+    },
+    {
+      "name": "all original scalar/metric observations reproduced:probe-with-mutations.py",
+      "passed": true
+    },
+    {
+      "name": "four mutation controls independently detected in output and keys",
+      "passed": true
+    },
+    {
+      "name": "original mutation counts reproduced",
+      "passed": true
+    },
+    {
+      "name": "actual native forward/cache/SDPA counts:probe-with-mutations.py",
+      "passed": true
+    },
+    {
+      "name": "only unchanged original attention methods executed:probe-with-mutations.py",
+      "passed": true
+    },
+    {
+      "name": "RoPE callback count:probe-with-mutations.py",
+      "passed": true
+    },
+    {
+      "name": "experimental binding is not an untrusted admission API",
+      "passed": true
+    },
+    {
+      "name": "no forbidden operations attempted during audit",
+      "passed": true
+    },
+    {
+      "name": "all 52 independent guarded rerun checks passed",
+      "passed": true
+    },
+    {
+      "name": "literal user-pinned mutation report hash",
+      "passed": true
+    },
+    {
+      "name": "parent binds original successful result hash",
+      "passed": true
+    },
+    {
+      "name": "parent binds mutation result hash",
+      "passed": true
+    },
+    {
+      "name": "all ten reported input/source hashes match:result.json",
+      "passed": true
+    },
+    {
+      "name": "original exact 126 metric rows:result.json",
+      "passed": true
+    },
+    {
+      "name": "original all finite strict rows:result.json",
+      "passed": true
+    },
+    {
+      "name": "original eight scalar controls:result.json",
+      "passed": true
+    },
+    {
+      "name": "original CPU synthetic geometry and limits:result.json",
+      "passed": true
+    },
+    {
+      "name": "all ten reported input/source hashes match:result-with-mutations.json",
+      "passed": true
+    },
+    {
+      "name": "original exact 126 metric rows:result-with-mutations.json",
+      "passed": true
+    },
+    {
+      "name": "original all finite strict rows:result-with-mutations.json",
+      "passed": true
+    },
+    {
+      "name": "original eight scalar controls:result-with-mutations.json",
+      "passed": true
+    },
+    {
+      "name": "original CPU synthetic geometry and limits:result-with-mutations.json",
+      "passed": true
+    },
+    {
+      "name": "four distinct original mutation detections",
+      "passed": true
+    },
+    {
+      "name": "declared TDD trace is exactly two RED/GREEN cycles",
+      "passed": true
+    },
+    {
+      "name": "separate original five F32 failures remain rejected",
+      "passed": true
+    },
+    {
+      "name": "three VLM native sources clean relative to pinned local HEAD",
+      "passed": true
+    },
+    {
+      "name": "VLM git blob bytes:mlx_vlm/models/base.py",
+      "passed": true
+    },
+    {
+      "name": "VLM git blob bytes:mlx_vlm/models/qwen3_5/language.py",
+      "passed": true
+    },
+    {
+      "name": "VLM git blob bytes:mlx_vlm/models/rope_utils.py",
+      "passed": true
+    },
+    {
+      "name": "all forty protected baseline files unchanged",
+      "passed": true
+    },
+    {
+      "name": "eighteen complete scoped input hashes frozen",
+      "passed": true
+    },
+    {
+      "name": "256 boundary, final prompt, and two physical decode increments",
+      "passed": true
+    },
+    {
+      "name": "physical cache offset distinct from max spatial plus one",
+      "passed": true
+    },
+    {
+      "name": "V2 literal newly supplied result hash",
+      "passed": true
+    },
+    {
+      "name": "V2 all thirteen reported source hashes match",
+      "passed": true
+    },
+    {
+      "name": "V2 numerical observations exactly match independently replayed V1 mutation observations",
+      "passed": true
+    },
+    {
+      "name": "V2 original report has exact strict population and CPU scope",
+      "passed": true
+    },
+    {
+      "name": "V2 actual class/package imports present without class-AST execution",
+      "passed": true
+    },
+    {
+      "name": "V2 no common SDPA assignment/injection in probe",
+      "passed": true
+    },
+    {
+      "name": "V2 installed LM native source bytes equal previously pinned LM files",
+      "passed": true
+    },
+    {
+      "name": "V2 original classes import their own package SDPA helper",
+      "passed": true
+    },
+    {
+      "name": "V2 source records fifteen real factory registrations and no launch calls",
+      "passed": true
+    },
+    {
+      "name": "V2 callback and implemented tests byte-identical to audited V1",
+      "passed": true
+    },
+    {
+      "name": "V2 read-only environment records bind 74 hash-locked requirements and successful pip-check log",
+      "passed": true
+    },
+    {
+      "name": "V2 original import failure and corrected smoke results preserved",
+      "passed": true
+    },
+    {
+      "name": "V2 documentation and protected text native hashes match parent",
+      "passed": true
+    },
+    {
+      "name": "V2 all twenty read-only witness/environment baseline files unchanged",
+      "passed": true
+    }
+  ],
+  "counts": {
+    "declared_test_first_cycles": 2,
+    "guarded_probes_reexecuted": 2,
+    "implemented_protocol_tests_independently_passed": 2,
+    "negative_position_controls_in_mutation_probe": 4,
+    "original_metric_rows_per_probe": 126,
+    "paired_forward_step_groups_per_probe": 42,
+    "parts_per_group": 3,
+    "protected_unchanged_files": 40,
+    "scoped_input_files": 18,
+    "separate_original_F32_rejections_preserved": 5,
+    "stock_scalar_output_controls_per_probe": 8,
+    "total_independently_recomputed_metric_rows": 252,
+    "total_independently_recomputed_scalar_controls": 16
+  },
+  "execution": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TMPDIR=/Users/jeremylien/.hermes/cache/scratch .vision-venv/bin/python -B /Users/jeremylien/.hermes/cache/scratch/attention-rope-independent-audit-35f1zwen/audit_runner.py",
+    "copies_byte_identical_to_reviewed_probe_sources": true,
+    "evidence": {
+      "bytes": 14661,
+      "path": "/Users/jeremylien/.hermes/cache/scratch/attention-rope-independent-audit-35f1zwen/rerun-evidence.json",
+      "sha256": "ae0502b7da764bc3ae090e3799ae4887daeb775024a0f2a4a1b953eced70a534"
+    },
+    "guards": {
+      "custom_metal_kernel_forbidden": true,
+      "default_device": "Device(cpu, 0)",
+      "metal_available_forced_false": true,
+      "network_forbidden": true,
+      "subprocess_and_signals_forbidden": true,
+      "unexpected_blocked_operations": [],
+      "weight_reads_forbidden": true,
+      "writes_restricted_to_exclusive_scratch": true
+    },
+    "isolated_copy_directory": "/Users/jeremylien/.hermes/cache/scratch/attention-rope-independent-audit-35f1zwen/replica",
+    "rerun_rss_bytes": [
+      219136000,
+      256638976
+    ],
+    "rerun_rss_is_instrumented_process_footprint_not_27B_or_hard_limit": true,
+    "runner": {
+      "bytes": 21564,
+      "path": "/Users/jeremylien/.hermes/cache/scratch/attention-rope-independent-audit-35f1zwen/audit_runner.py",
+      "sha256": "d226a0dcef2edda779181840092a03f163d2a408c083a96a748e2a78b12a0aa8"
+    },
+    "runs": [
+      {
+        "all_observations_equal_original": true,
+        "exit_code": 0,
+        "forward_step_groups": 42,
+        "max_metric_abs_error": 0.0,
+        "max_scalar_abs_error": 5.960464477539063e-08,
+        "metric_rows": 126,
+        "mutation_controls": 0,
+        "observed_native_call_counts": {
+          "cache_updates": 92,
+          "common_sdpa_calls": 92,
+          "native_sdpa_calls": 92,
+          "rope_callback_calls": 84
+        },
+        "probe": "probe.py",
+        "raw_array_recomputation_passed": true,
+        "result_path": "/Users/jeremylien/.hermes/cache/scratch/attention-rope-independent-audit-35f1zwen/replica/result.json",
+        "result_sha256": "a9c9c743603f491ae79d3c0417ce3487bf43a8b216bd11f0b065082af864af82",
+        "role_forward_counts": {
+          "candidate": 42,
+          "reference": 42,
+          "scalar": 8
+        },
+        "runtime_method_codes_equal_to_full_source_AST": [
+          [
+            "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py",
+            "Qwen3_5Attention",
+            "__call__"
+          ],
+          [
+            "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py",
+            "Qwen3_5Attention",
+            "__init__"
+          ],
+          [
+            "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py",
+            "Qwen3_5Attention",
+            "_prepare_projected_qkv"
+          ],
+          [
+            "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py",
+            "Qwen3_5RotaryEmbedding",
+            "__init__"
+          ],
+          [
+            "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py",
+            "Qwen3NextAttention",
+            "__call__"
+          ],
+          [
+            "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py",
+            "Qwen3NextAttention",
+            "__init__"
+          ]
+        ],
+        "scalar_controls": 8
+      },
+      {
+        "all_observations_equal_original": true,
+        "exit_code": 0,
+        "forward_step_groups": 42,
+        "max_metric_abs_error": 0.0,
+        "max_scalar_abs_error": 5.960464477539063e-08,
+        "metric_rows": 126,
+        "mutation_controls": 4,
+        "observed_native_call_counts": {
+          "cache_updates": 98,
+          "common_sdpa_calls": 98,
+          "native_sdpa_calls": 98,
+          "rope_callback_calls": 92
+        },
+        "probe": "probe-with-mutations.py",
+        "raw_array_recomputation_passed": true,
+        "result_path": "/Users/jeremylien/.hermes/cache/scratch/attention-rope-independent-audit-35f1zwen/replica/result-with-mutations.json",
+        "result_sha256": "43d49c715b30e51a3e11f56ca75780b6420a10bcc81e155010dbb31283a25678",
+        "role_forward_counts": {
+          "candidate": 46,
+          "reference": 44,
+          "scalar": 8
+        },
+        "runtime_method_codes_equal_to_full_source_AST": [
+          [
+            "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py",
+            "Qwen3_5Attention",
+            "__call__"
+          ],
+          [
+            "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py",
+            "Qwen3_5Attention",
+            "__init__"
+          ],
+          [
+            "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py",
+            "Qwen3_5Attention",
+            "_prepare_projected_qkv"
+          ],
+          [
+            "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py",
+            "Qwen3_5RotaryEmbedding",
+            "__init__"
+          ],
+          [
+            "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py",
+            "Qwen3NextAttention",
+            "__call__"
+          ],
+          [
+            "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py",
+            "Qwen3NextAttention",
+            "__init__"
+          ]
+        ],
+        "scalar_controls": 8
+      }
+    ],
+    "tool_exit_code": 0,
+    "untrusted_API_characterization": {
+      "accepts_arbitrary_positions_and_equal_bool_float_offset_length": true,
+      "scope": "nonblocking limitation for canonical experimental fixture only; not production admission"
+    },
+    "versions": {
+      "mlx": "0.32.4",
+      "numpy": "2.5.3",
+      "python": "3.13.2 (main, Feb  4 2025, 14:51:09) [Clang 16.0.0 (clang-1600.0.26.6)]"
+    },
+    "working_directory": "/Users/jeremylien/Projects/local-agent-dual-mac"
+  },
+  "failed_checks": [],
+  "geometry_and_dtype": {
+    "batch_size": 1,
+    "dtypes": [
+      "float32",
+      "float16"
+    ],
+    "head_dim": 256,
+    "hidden_size": 32,
+    "k_and_v_projection_weight_shape": [
+      1024,
+      32
+    ],
+    "kv_heads": 4,
+    "o_projection_weight_shape": [
+      32,
+      6144
+    ],
+    "q_projection_weight_shape": [
+      12288,
+      32
+    ],
+    "query_heads": 24,
+    "rotated_prefix": 64,
+    "shared_modules_checked_by_identity": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "q_norm",
+      "k_norm"
+    ],
+    "unquantized_synthetic_weights": true
+  },
+  "input_hashes": {
+    "/Users/jeremylien/Projects/local-agent-dual-mac/multimodal_contract/__init__.py": {
+      "bytes": 9160,
+      "sha256": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116"
+    },
+    "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/README.md": {
+      "bytes": 2883,
+      "sha256": "f8e798d910d5521b3b456d30defe7ee4e12ca85bab8c671883c1ed924659d544"
+    },
+    "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/parent-disposition.json": {
+      "bytes": 1194,
+      "sha256": "7bd354e25c2a1955ef86c2098f64e1552bfc027c89ae1d8870c19f2de23cfcb0"
+    },
+    "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/preflight-failure.json": {
+      "bytes": 566,
+      "sha256": "82de7447804d23bbf6807810d7c12fee7852ca7eb7bbe3ff8915cea9cd13f740"
+    },
+    "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/probe-before-sdpa-selector-fix.py": {
+      "bytes": 11370,
+      "sha256": "af44ac34da4fcda3b80e4666c3bd4531ee76b5faaae2b3c2e80d1734e285e412"
+    },
+    "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/probe-with-mutations.py": {
+      "bytes": 13203,
+      "sha256": "a73aa2e21623ecc2d981b7645d3fc236f5fbd4aaf51a144b77a20f2bff91f003"
+    },
+    "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/probe.py": {
+      "bytes": 11401,
+      "sha256": "406c59e1ca87723349b9de53123af615a578f1a343bc69f146a59d0bd481d138"
+    },
+    "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/result-with-mutations.json": {
+      "bytes": 45126,
+      "sha256": "75198147b68a9169cb22223e06a4052bb09136f8edb95b33a60b8f9cb8a87687"
+    },
+    "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/result.json": {
+      "bytes": 44380,
+      "sha256": "f5c0c4995c9ba1df17b25bbb8b3875ad454950814080d4d92a4f37d1f4a4a5c2"
+    },
+    "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/test_binding.py": {
+      "bytes": 1749,
+      "sha256": "d101697a7d81d8e5ac420affb64c2e56f3e02782ead48aa818ce53e72dfeb70c"
+    },
+    "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/witness.py": {
+      "bytes": 661,
+      "sha256": "12b58ee3f88940879f4fd4e2b81846b8193e606158a3998f8c0f12d25e8cf750"
+    },
+    "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/base.py": {
+      "bytes": 21702,
+      "sha256": "a7cfa38413bea057946c5d56c9edd34dbcceb33f6613529f5201ca2ad5b41120"
+    },
+    "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py": {
+      "bytes": 74233,
+      "sha256": "6cfeb5e9efee8042e9d82bbc696168d0e15cb95220365613caa84ea2568304a7"
+    },
+    "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/rope_utils.py": {
+      "bytes": 46863,
+      "sha256": "6944f69a03c41cbb9613afbd2f1b54b71c504840aaeb0eade39c6109dbfdd25b"
+    },
+    "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/base.py": {
+      "bytes": 3986,
+      "sha256": "b782b2ac0f55ed8fa9c1afce1f36307d5d8714aad2c0991d63998047f7507174"
+    },
+    "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/cache.py": {
+      "bytes": 58349,
+      "sha256": "c96cb169fd5e0ec4584a162dd61dc62ab08ccdca03a9850f8a491ce6809145e6"
+    },
+    "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py": {
+      "bytes": 17853,
+      "sha256": "67ca08a4d08cb7be124965e95399735e556f1eaeb21a16bc23cb88d1ac035e11"
+    },
+    "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/rope_utils.py": {
+      "bytes": 12689,
+      "sha256": "06466d57dfe1ccc1e61ba595c0a8f2dd3a14bcb5c6a1d06c67591dc03128606b"
+    }
+  },
+  "limits": [
+    "PASS is strictly a synthetic attention/position-hook CPU witness, not checkpoint, vision, model-quality, production/security or loader admission.",
+    "Synthetic unquantized hidden32 projections and norm weights, F32/F16, B=1, 24 query heads/4 KV heads/head dimension256. Not the 5120-wide 27B checkpoint; no checkpoint loaded.",
+    "Original LM and VLM attention class ASTs and native KVCache execute unchanged. Synthetic projection and norm module objects are shared by identity. The candidate instance replaces only its rope attribute; invocation globals deliberately select the common original LM ordinary-KV SDPA helper for both.",
+    "Only the terminal ordinary native SDPA call AST matches. Full VLM base helper is different and unexecuted TurboQuant/quantized-KV/sinks/padding/left-padded paths are not admitted. Some unexercised VLM branches have deliberately absent fixture globals.",
+    "The comparison shares the native rotary implementation and common SDPA helper. It tests interface/position/cache seam consistency, not an independent mathematical or trained-checkpoint oracle.",
+    "Forward-step groups mean 42 paired reference/candidate intervals, each with output/live-key/live-value metrics. They do not mean 126 forward steps or all16 attention layers. Both full native runs together include extra scalar and mutation forwards.",
+    "The two decode steps use deterministic random synthetic hidden states; these are physical cache increments, not model-generated autoregressive token/logit evidence.",
+    "No BF16, Metal kernel execution, vision encoder, actual image pixels, GDN state, MTP, full-model logits, quantized projections/KV, two-host transport, cache-all16 integration, screenshot actions, or performance qualification.",
+    "The callback redundantly rotates x as both Q and K on each original single-input rope invocation; no speedup or memory-scaling claim follows.",
+    "Historical two-cycle TDD chronology is preserved as the parent artifact tool-declared trace; no contemporaneous raw RED/GREEN stdout exists in the supplied witness directory, and session search returned no archived trace. Only the current two protocol tests were independently executed. No TDD claim extends beyond those two.",
+    "The original preflight failure and successful result/result-with-mutations remain byte-for-byte preserved. The separate NumPy-to-native five F32 numerical failures remain failures and are not cleared by this witness.",
+    "The workspace root is not a git repository. Source nonmodification claims use before/after scoped hashes; the three VLM source files are additionally clean at the pinned local upstream commit. No global workspace cleanliness claim is made, and concurrent other-child new bridge work is excluded."
+  ],
+  "logic_errors": [
+    {
+      "blocking_for_this_witness": false,
+      "current_experiment_impact": "None observed: this audit independently checks exact populations, finite raw arrays, all 126 strict metric rows, eight scalar controls, four mutation detections, and both implemented protocol tests. No numerical or cache-offset defect was found in the exercised fixture.",
+      "finding": "Original passed flag is all(primary metric strict_pass), not a conjunction including scalar-control success or exact nonempty expected populations. Scalar checks also do not explicitly record finiteness. Mutations have explicit detection assertions but not a separately enforced expected control count. A generic consumer must not use passed alone as a production gate.",
+      "id": "ORIGINAL_PASS_FLAG_IS_NOT_A_GENERAL_AGGREGATE_GATE",
+      "location": "probe.py:165-166; probe-with-mutations.py:186-187",
+      "severity": "low"
+    }
+  ],
+  "native_source_binding": {
+    "complete_selected_ASTs": [
+      {
+        "full_ast_sha256": "e0853e519c97ccb2cf8614138ef1ca35be9e8d3f926e5b7f10b98630b7cfffbb",
+        "name": "Qwen3NextAttention",
+        "path": "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py",
+        "source_sha256": "67ca08a4d08cb7be124965e95399735e556f1eaeb21a16bc23cb88d1ac035e11"
+      },
+      {
+        "full_ast_sha256": "4e67f55f859c2bad4463b3e771506ed14bf36cf923d91a8b495c6a486c787b25",
+        "name": "Qwen3_5Attention",
+        "path": "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py",
+        "source_sha256": "6cfeb5e9efee8042e9d82bbc696168d0e15cb95220365613caa84ea2568304a7"
+      },
+      {
+        "full_ast_sha256": "ed99e7bdb09560f23347cf3e668649dd01004006bb0e67fb1117011985981fbb",
+        "name": "Qwen3_5RotaryEmbedding",
+        "path": "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py",
+        "source_sha256": "6cfeb5e9efee8042e9d82bbc696168d0e15cb95220365613caa84ea2568304a7"
+      },
+      {
+        "full_ast_sha256": "22e42aa002179ccdab2933756b6ce44c8129541c858b1445702890d10dac9873",
+        "name": "apply_multimodal_rotary_pos_emb",
+        "path": "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py",
+        "source_sha256": "6cfeb5e9efee8042e9d82bbc696168d0e15cb95220365613caa84ea2568304a7"
+      },
+      {
+        "full_ast_sha256": "31c08a9d2faf6ba91d9642d1c41d6951e9afd16e033a67542d2f25ea4ee45d8b",
+        "name": "KVCache",
+        "path": "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/cache.py",
+        "source_sha256": "c96cb169fd5e0ec4584a162dd61dc62ab08ccdca03a9850f8a491ce6809145e6"
+      },
+      {
+        "full_ast_sha256": "def8cf4ec5e6e6908c3e9e4247504e7bff9dbf5dd32f99ecf36d7ee493e62b0d",
+        "name": "scaled_dot_product_attention",
+        "path": "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/base.py",
+        "source_sha256": "b782b2ac0f55ed8fa9c1afce1f36307d5d8714aad2c0991d63998047f7507174"
+      }
+    ],
+    "lm_installed_source_not_claimed_as_git_checkout": "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models",
+    "vlm_git_tree_blobs": {
+      "mlx_vlm/models/base.py": "03742f2930410f8895cd767e535c1eebc76cf979",
+      "mlx_vlm/models/qwen3_5/language.py": "b34c9491efe5686a63b8a72f882882441daa3456",
+      "mlx_vlm/models/rope_utils.py": "4317192fe72a51e1ecc96a1adcb18d78448e9bfb"
+    },
+    "vlm_local_checkout_head": "b8bf04c6dd7f3bd3a2a5033bbfecef6375c3bfb0",
+    "vlm_three_source_git_status": ""
+  },
+  "numerics": {
+    "all_reproduced_metric_scalar_mutation_observations_equal_original": true,
+    "atol": 1e-06,
+    "independent_max_metric_abs_error": 0.0,
+    "independent_max_scalar_abs_error": 5.960464477539063e-08,
+    "negative_position_controls": [
+      {
+        "detected": true,
+        "dtype": "mlx.core.float32",
+        "live_key_violations": 432,
+        "mutation": "temporal-only",
+        "output_violations": 224
+      },
+      {
+        "detected": true,
+        "dtype": "mlx.core.float32",
+        "live_key_violations": 486,
+        "mutation": "height-width-swapped",
+        "output_violations": 223
+      },
+      {
+        "detected": true,
+        "dtype": "mlx.core.float16",
+        "live_key_violations": 308,
+        "mutation": "temporal-only",
+        "output_violations": 224
+      },
+      {
+        "detected": true,
+        "dtype": "mlx.core.float16",
+        "live_key_violations": 358,
+        "mutation": "height-width-swapped",
+        "output_violations": 224
+      }
+    ],
+    "original_max_metric_abs_error": 0.0,
+    "rtol": 1e-05,
+    "tolerance_weakened": false
+  },
+  "original_result_handles": {
+    "parent-disposition.json": {
+      "bytes": 1194,
+      "path": "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/parent-disposition.json",
+      "sha256": "7bd354e25c2a1955ef86c2098f64e1552bfc027c89ae1d8870c19f2de23cfcb0"
+    },
+    "preflight-failure.json": {
+      "bytes": 566,
+      "path": "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/preflight-failure.json",
+      "sha256": "82de7447804d23bbf6807810d7c12fee7852ca7eb7bbe3ff8915cea9cd13f740"
+    },
+    "probe-before-sdpa-selector-fix.py": {
+      "bytes": 11370,
+      "path": "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/probe-before-sdpa-selector-fix.py",
+      "sha256": "af44ac34da4fcda3b80e4666c3bd4531ee76b5faaae2b3c2e80d1734e285e412"
+    },
+    "result-with-mutations.json": {
+      "bytes": 45126,
+      "path": "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/result-with-mutations.json",
+      "sha256": "75198147b68a9169cb22223e06a4052bb09136f8edb95b33a60b8f9cb8a87687"
+    },
+    "result.json": {
+      "bytes": 44380,
+      "path": "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/result.json",
+      "sha256": "f5c0c4995c9ba1df17b25bbb8b3875ad454950814080d4d92a4f37d1f4a4a5c2"
+    }
+  },
+  "passed": true,
+  "passed_check_count": 91,
+  "positions_and_physical_cache": {
+    "boundary_final_prompt_decode_examples": [
+      {
+        "case": "image-4x6-prefix252",
+        "dtype": "mlx.core.float32",
+        "finite": true,
+        "interval": [
+          0,
+          256
+        ],
+        "max_abs_error": 0.0,
+        "maximum_position": 255,
+        "part": "output",
+        "physical_offset": 256,
+        "strict_pass": true,
+        "violations": 0
+      },
+      {
+        "case": "image-4x6-prefix252",
+        "dtype": "mlx.core.float32",
+        "finite": true,
+        "interval": [
+          256,
+          260
+        ],
+        "max_abs_error": 0.0,
+        "maximum_position": 256,
+        "part": "output",
+        "physical_offset": 260,
+        "strict_pass": true,
+        "violations": 0
+      },
+      {
+        "case": "image-4x6-prefix252",
+        "dtype": "mlx.core.float32",
+        "finite": true,
+        "interval": [
+          260,
+          261
+        ],
+        "max_abs_error": 0.0,
+        "maximum_position": 257,
+        "part": "output",
+        "physical_offset": 261,
+        "strict_pass": true,
+        "violations": 0
+      },
+      {
+        "case": "image-4x6-prefix252",
+        "dtype": "mlx.core.float32",
+        "finite": true,
+        "interval": [
+          261,
+          262
+        ],
+        "max_abs_error": 0.0,
+        "maximum_position": 258,
+        "part": "output",
+        "physical_offset": 262,
+        "strict_pass": true,
+        "violations": 0
+      },
+      {
+        "case": "image-4x6-prefix252",
+        "dtype": "mlx.core.float32",
+        "finite": true,
+        "interval": [
+          262,
+          263
+        ],
+        "max_abs_error": 0.0,
+        "maximum_position": 259,
+        "part": "output",
+        "physical_offset": 263,
+        "strict_pass": true,
+        "violations": 0
+      }
+    ],
+    "fixtures": {
+      "image-16x32-prefix1": {
+        "delta": -112,
+        "intervals": [
+          [
+            0,
+            131
+          ],
+          [
+            131,
+            132
+          ],
+          [
+            132,
+            133
+          ],
+          [
+            133,
+            134
+          ]
+        ],
+        "maximum_prompt_position": 19,
+        "prompt_length": 132
+      },
+      "image-4x6-prefix1": {
+        "delta": -3,
+        "intervals": [
+          [
+            0,
+            9
+          ],
+          [
+            9,
+            10
+          ],
+          [
+            10,
+            11
+          ],
+          [
+            11,
+            12
+          ]
+        ],
+        "maximum_prompt_position": 6,
+        "prompt_length": 10
+      },
+      "image-4x6-prefix252": {
+        "delta": -3,
+        "intervals": [
+          [
+            0,
+            256
+          ],
+          [
+            256,
+            260
+          ],
+          [
+            260,
+            261
+          ],
+          [
+            261,
+            262
+          ],
+          [
+            262,
+            263
+          ]
+        ],
+        "maximum_prompt_position": 257,
+        "prompt_length": 261
+      },
+      "image-6x4-prefix1": {
+        "delta": -3,
+        "intervals": [
+          [
+            0,
+            9
+          ],
+          [
+            9,
+            10
+          ],
+          [
+            10,
+            11
+          ],
+          [
+            11,
+            12
+          ]
+        ],
+        "maximum_prompt_position": 6,
+        "prompt_length": 10
+      },
+      "text": {
+        "delta": 0,
+        "intervals": [
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "maximum_prompt_position": 2,
+        "prompt_length": 3
+      }
+    },
+    "live_KV_comparisons_exclude_unwritten_allocated_tail": true,
+    "native_cache_full_class_AST_bound": true,
+    "native_update_and_fetch_runtime_code_verified": true,
+    "offset_is_actual_native_cache_physical_length_not_max_spatial_position": true
+  },
+  "preliminary_audit_harness_issue": {
+    "completed_guarded_rerun_exit_code": 0,
+    "finding": "Initial independent runtime-code assertion for normally imported KVCache failed because compiling an isolated class loses Python3.13 full-module imported-global call optimization context (and future flags must match). The audit harness was corrected to compile normal base/cache modules in their full original module context; AST-extracted classes retain their original explicit future flag. No reviewed source, tolerance or historical result was changed.",
+    "preliminary_runs_wrote_original_results": false,
+    "resolved": true
+  },
+  "preservation": {
+    "all_protected_baseline_files_unchanged": true,
+    "existing_witness_or_runtime_files_edited": false,
+    "ignored_unrelated_concurrent_observations": [
+      {
+        "after_sha256": "33d72f8bb53b424d37a288d601403661ebc93855d771341f10952bf7eb5883ca",
+        "before_sha256": "ebd05b327a51e8acd579166b13e66bf7e56e3d44e584196d8df2f3617bc3671f",
+        "disposition": "unrelated concurrent native-CPU-bridge receipt; intentionally excluded from witness audit and no approval inferred",
+        "path": "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-rotary-bridge-implementation-v1.json"
+      }
+    ],
+    "old_native_rotary_result": {
+      "failed_rows": [
+        {
+          "case": "text-boundaries",
+          "dtype": "float32",
+          "finite": true,
+          "input_unchanged": true,
+          "max_abs_error": 9.071826934814453e-05,
+          "max_error_ratio": 29.76641573337565,
+          "native_wrapper_exact": true,
+          "role": "q",
+          "shape": [
+            1,
+            24,
+            4,
+            256
+          ],
+          "strict_pass": false,
+          "unchanged_tail_exact": true,
+          "violations": 144
+        },
+        {
+          "case": "text-boundaries",
+          "dtype": "float32",
+          "finite": true,
+          "input_unchanged": true,
+          "max_abs_error": 6.437301635742188e-05,
+          "max_error_ratio": 15.405966212171695,
+          "native_wrapper_exact": true,
+          "role": "k",
+          "shape": [
+            1,
+            4,
+            4,
+            256
+          ],
+          "strict_pass": false,
+          "unchanged_tail_exact": true,
+          "violations": 28
+        },
+        {
+          "case": "image-16x32",
+          "dtype": "float32",
+          "finite": true,
+          "input_unchanged": true,
+          "max_abs_error": 1.7881393432617188e-06,
+          "max_error_ratio": 1.7755118563947074,
+          "native_wrapper_exact": true,
+          "role": "q",
+          "shape": [
+            1,
+            24,
+            132,
+            256
+          ],
+          "strict_pass": false,
+          "unchanged_tail_exact": true,
+          "violations": 2
+        },
+        {
+          "case": "image-16x32",
+          "dtype": "float32",
+          "finite": true,
+          "input_unchanged": true,
+          "max_abs_error": 1.3113021850585938e-06,
+          "max_error_ratio": 1.103376552927268,
+          "native_wrapper_exact": true,
+          "role": "k",
+          "shape": [
+            1,
+            4,
+            132,
+            256
+          ],
+          "strict_pass": false,
+          "unchanged_tail_exact": true,
+          "violations": 1
+        },
+        {
+          "case": "decode-16x32",
+          "dtype": "float32",
+          "finite": true,
+          "input_unchanged": true,
+          "max_abs_error": 1.9073486328125e-06,
+          "max_error_ratio": 1.0171401414904528,
+          "native_wrapper_exact": true,
+          "role": "q",
+          "shape": [
+            1,
+            24,
+            1,
+            256
+          ],
+          "strict_pass": false,
+          "unchanged_tail_exact": true,
+          "violations": 1
+        }
+      ],
+      "passed": false,
+      "path": "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-rotary-reference-v1/result.json",
+      "sha256": "7c46bc1559b4e3ec96c722884b12e792bfe71cecc1136f349609225dbde01d4d",
+      "status": "numerical_rejection"
+    },
+    "prior_success_and_preflight_rewritten": false,
+    "protected_files": {
+      "/Users/jeremylien/Projects/local-agent-dual-mac/multimodal_contract/__init__.py": {
+        "after": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+        "before": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/README.md": {
+        "after": "f8e798d910d5521b3b456d30defe7ee4e12ca85bab8c671883c1ed924659d544",
+        "before": "f8e798d910d5521b3b456d30defe7ee4e12ca85bab8c671883c1ed924659d544",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/parent-disposition.json": {
+        "after": "7bd354e25c2a1955ef86c2098f64e1552bfc027c89ae1d8870c19f2de23cfcb0",
+        "before": "7bd354e25c2a1955ef86c2098f64e1552bfc027c89ae1d8870c19f2de23cfcb0",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/preflight-failure.json": {
+        "after": "82de7447804d23bbf6807810d7c12fee7852ca7eb7bbe3ff8915cea9cd13f740",
+        "before": "82de7447804d23bbf6807810d7c12fee7852ca7eb7bbe3ff8915cea9cd13f740",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/probe-before-sdpa-selector-fix.py": {
+        "after": "af44ac34da4fcda3b80e4666c3bd4531ee76b5faaae2b3c2e80d1734e285e412",
+        "before": "af44ac34da4fcda3b80e4666c3bd4531ee76b5faaae2b3c2e80d1734e285e412",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/probe-with-mutations.py": {
+        "after": "a73aa2e21623ecc2d981b7645d3fc236f5fbd4aaf51a144b77a20f2bff91f003",
+        "before": "a73aa2e21623ecc2d981b7645d3fc236f5fbd4aaf51a144b77a20f2bff91f003",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/probe.py": {
+        "after": "406c59e1ca87723349b9de53123af615a578f1a343bc69f146a59d0bd481d138",
+        "before": "406c59e1ca87723349b9de53123af615a578f1a343bc69f146a59d0bd481d138",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/result-with-mutations.json": {
+        "after": "75198147b68a9169cb22223e06a4052bb09136f8edb95b33a60b8f9cb8a87687",
+        "before": "75198147b68a9169cb22223e06a4052bb09136f8edb95b33a60b8f9cb8a87687",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/result.json": {
+        "after": "f5c0c4995c9ba1df17b25bbb8b3875ad454950814080d4d92a4f37d1f4a4a5c2",
+        "before": "f5c0c4995c9ba1df17b25bbb8b3875ad454950814080d4d92a4f37d1f4a4a5c2",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/test_binding.py": {
+        "after": "d101697a7d81d8e5ac420affb64c2e56f3e02782ead48aa818ce53e72dfeb70c",
+        "before": "d101697a7d81d8e5ac420affb64c2e56f3e02782ead48aa818ce53e72dfeb70c",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/witness.py": {
+        "after": "12b58ee3f88940879f4fd4e2b81846b8193e606158a3998f8c0f12d25e8cf750",
+        "before": "12b58ee3f88940879f4fd4e2b81846b8193e606158a3998f8c0f12d25e8cf750",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/image-attention-source-seam-audit-v1.json": {
+        "after": "ee784a78206a7a0e7148e1a3793d79f2591795c36b47bebf22f03570a8504b45",
+        "before": "ee784a78206a7a0e7148e1a3793d79f2591795c36b47bebf22f03570a8504b45",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/mlx-rotary-cpu-independent-audit-v1.json": {
+        "after": "05f138b3390ea61d8196b03e5eddab8533341663131bcdaa3c1bb9618f0bb9ee",
+        "before": "05f138b3390ea61d8196b03e5eddab8533341663131bcdaa3c1bb9618f0bb9ee",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/mlx-vision-contract-cpu-admission.json": {
+        "after": "098606d84b44afd42f0998bea7d60d50a81f3684c5b941b2da1d3807813c986a",
+        "before": "098606d84b44afd42f0998bea7d60d50a81f3684c5b941b2da1d3807813c986a",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/mlx-vision-contract-cpu.json": {
+        "after": "0e6901ec6e659f2832fb24d89fe652172feff442f305e46f9df4f5b415c88409",
+        "before": "0e6901ec6e659f2832fb24d89fe652172feff442f305e46f9df4f5b415c88409",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/mlx-vision-contract-fix-parent-verification.json": {
+        "after": "c8319e405c43c60e2b2b6f06d94e9dd2ff5fcc3850366f15e760e9e7c93f20a8",
+        "before": "c8319e405c43c60e2b2b6f06d94e9dd2ff5fcc3850366f15e760e9e7c93f20a8",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/mlx-vision-contract-fix-verification.json": {
+        "after": "37c9900cc631c18dc932ca3ec0959c77fdb06f4c4d012e3a44c388743697cb14",
+        "before": "37c9900cc631c18dc932ca3ec0959c77fdb06f4c4d012e3a44c388743697cb14",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/mlx-vision-contract-independent-review-v2.json": {
+        "after": "b2fbb711c7286041ed2c86fa81750a4b44c2f40126201e70bf1d4c70fc2e6ece",
+        "before": "b2fbb711c7286041ed2c86fa81750a4b44c2f40126201e70bf1d4c70fc2e6ece",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/mlx-vision-contract-independent-review.json": {
+        "after": "8f4f61da9d53bb24b81246253519453645e7f08a6845dc8607ba43822f7810fa",
+        "before": "8f4f61da9d53bb24b81246253519453645e7f08a6845dc8607ba43822f7810fa",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/mlx-vision-contract-parent-failure-reproduction.json": {
+        "after": "ffc0bd700161037258c76087488bd692c7f9a11892dd39b49db3ba90c0136e09",
+        "before": "ffc0bd700161037258c76087488bd692c7f9a11892dd39b49db3ba90c0136e09",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/mlx-vision-contract-parent-verification.json": {
+        "after": "0ee2e17c2d247d429cd16316b125955b64f14808bd3f6e943734bf8809b7308d",
+        "before": "0ee2e17c2d247d429cd16316b125955b64f14808bd3f6e943734bf8809b7308d",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-rotary-reference-v1/admission.json": {
+        "after": "2d740466aadf9c6ee52e0d50a689e4d7c8a6fcf073950e60cb6f7d5e6bc966ec",
+        "before": "2d740466aadf9c6ee52e0d50a689e4d7c8a6fcf073950e60cb6f7d5e6bc966ec",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-rotary-reference-v1/parent-disposition.json": {
+        "after": "4cddf75939bafa9fab2802136cd7064def114df5a2db6c05978282c556a9bbee",
+        "before": "4cddf75939bafa9fab2802136cd7064def114df5a2db6c05978282c556a9bbee",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-rotary-reference-v1/probe.py": {
+        "after": "80815cf42c1ca7cc78fd85edf3988a24466245008449a72f7b74bbc06c90876d",
+        "before": "80815cf42c1ca7cc78fd85edf3988a24466245008449a72f7b74bbc06c90876d",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-rotary-reference-v1/requirements-hashed.txt": {
+        "after": "c0e14082b2121beaa5808689d91edbaf9a22012ae54916b0d525187fc1c96b30",
+        "before": "c0e14082b2121beaa5808689d91edbaf9a22012ae54916b0d525187fc1c96b30",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-rotary-reference-v1/result.json": {
+        "after": "7c46bc1559b4e3ec96c722884b12e792bfe71cecc1136f349609225dbde01d4d",
+        "before": "7c46bc1559b4e3ec96c722884b12e792bfe71cecc1136f349609225dbde01d4d",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/qualification-client-cpu-approval.json": {
+        "after": "be63451f33fec8e8e4f05dfbb8dcb25f8cfff97f2cf71b03676c74e53c25e7b7",
+        "before": "be63451f33fec8e8e4f05dfbb8dcb25f8cfff97f2cf71b03676c74e53c25e7b7",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/qualification-client-fix-parent-verification.json": {
+        "after": "66b4f187de7c364642a9401e42dfcbc2b2093876e8df917c94bff5a9ec6be68a",
+        "before": "66b4f187de7c364642a9401e42dfcbc2b2093876e8df917c94bff5a9ec6be68a",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/qualification-client-independent-review-v2.json": {
+        "after": "6d2543ed73c855ab0104a25470e0e9c235d94d54fffa2fa04e89148b68922782",
+        "before": "6d2543ed73c855ab0104a25470e0e9c235d94d54fffa2fa04e89148b68922782",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/qualification-client-independent-review.json": {
+        "after": "90d735e8e50a9e64fa2759a42ac7253a7dc9320bc5d0fe79791ec3a07b77114c",
+        "before": "90d735e8e50a9e64fa2759a42ac7253a7dc9320bc5d0fe79791ec3a07b77114c",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/qualification-mini-deployment-controller.json": {
+        "after": "c5e4b23f1fcbc9ceb2e2c06afc816b2859ce66fda332ea6fa1bcc8025e925436",
+        "before": "c5e4b23f1fcbc9ceb2e2c06afc816b2859ce66fda332ea6fa1bcc8025e925436",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/small-vision-independent-audit.json": {
+        "after": "d8695f1fce7b64396197119bd7a81194472ba283cb3f2872ad8b5d55e777d666",
+        "before": "d8695f1fce7b64396197119bd7a81194472ba283cb3f2872ad8b5d55e777d666",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/small-vision-proof-review.json": {
+        "after": "f31236271e856ac34a86ed09d2836db4781f4670ff43edb2df86ef426bb582aa",
+        "before": "f31236271e856ac34a86ed09d2836db4781f4670ff43edb2df86ef426bb582aa",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/base.py": {
+        "after": "a7cfa38413bea057946c5d56c9edd34dbcceb33f6613529f5201ca2ad5b41120",
+        "before": "a7cfa38413bea057946c5d56c9edd34dbcceb33f6613529f5201ca2ad5b41120",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py": {
+        "after": "6cfeb5e9efee8042e9d82bbc696168d0e15cb95220365613caa84ea2568304a7",
+        "before": "6cfeb5e9efee8042e9d82bbc696168d0e15cb95220365613caa84ea2568304a7",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/rope_utils.py": {
+        "after": "6944f69a03c41cbb9613afbd2f1b54b71c504840aaeb0eade39c6109dbfdd25b",
+        "before": "6944f69a03c41cbb9613afbd2f1b54b71c504840aaeb0eade39c6109dbfdd25b",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/base.py": {
+        "after": "b782b2ac0f55ed8fa9c1afce1f36307d5d8714aad2c0991d63998047f7507174",
+        "before": "b782b2ac0f55ed8fa9c1afce1f36307d5d8714aad2c0991d63998047f7507174",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/cache.py": {
+        "after": "c96cb169fd5e0ec4584a162dd61dc62ab08ccdca03a9850f8a491ce6809145e6",
+        "before": "c96cb169fd5e0ec4584a162dd61dc62ab08ccdca03a9850f8a491ce6809145e6",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py": {
+        "after": "67ca08a4d08cb7be124965e95399735e556f1eaeb21a16bc23cb88d1ac035e11",
+        "before": "67ca08a4d08cb7be124965e95399735e556f1eaeb21a16bc23cb88d1ac035e11",
+        "unchanged": true
+      },
+      "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/rope_utils.py": {
+        "after": "06466d57dfe1ccc1e61ba595c0a8f2dd3a14bcb5c6a1d06c67591dc03128606b",
+        "before": "06466d57dfe1ccc1e61ba595c0a8f2dd3a14bcb5c6a1d06c67591dc03128606b",
+        "unchanged": true
+      }
+    },
+    "scope": "Read-only originals and native source; exclusive scratch copies and one new audit receipt only."
+  },
+  "reported_source_bindings": [
+    {
+      "count": 10,
+      "matches": {
+        "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/probe.py": true,
+        "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/test_binding.py": true,
+        "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/witness.py": true,
+        "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/base.py": true,
+        "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py": true,
+        "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/rope_utils.py": true,
+        "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/base.py": true,
+        "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/cache.py": true,
+        "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py": true,
+        "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/rope_utils.py": true
+      },
+      "report": "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/result.json"
+    },
+    {
+      "count": 10,
+      "matches": {
+        "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/probe-with-mutations.py": true,
+        "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/test_binding.py": true,
+        "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/witness.py": true,
+        "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/base.py": true,
+        "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py": true,
+        "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/rope_utils.py": true,
+        "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/base.py": true,
+        "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/cache.py": true,
+        "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py": true,
+        "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/rope_utils.py": true
+      },
+      "report": "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-cpu-witness-v1/result-with-mutations.json"
+    }
+  ],
+  "schema": "attention-rope-cpu-witness-independent-audit-v1",
+  "scope": "Independent source-bound native CPU synthetic attention/position hook witness only; no broader admission or task closure.",
+  "security_concerns": [
+    {
+      "blocking_for_this_witness": false,
+      "finding": "BoundRope validates equality of bound physical offset and token length only. It retains mutable caller-owned positions and has no exact-type, dtype/rank/position-range, request-identity, freshness, lifecycle, or trusted-loader admission checks. Independent fake-rotary characterization accepted arbitrary positions, bool offset, and numerically equal float token length. Canonical valid fixture inputs are not an untrusted API test.",
+      "id": "EXPERIMENTAL_MUTABLE_CALLBACK_NOT_ADMISSION",
+      "required_before_production": "Separate fail-closed API/loader/security review; no approval granted here.",
+      "severity": "medium_outside_witness_scope"
+    },
+    {
+      "blocking_for_this_witness": false,
+      "finding": "Rerun enforces CPU default before array construction, forces Metal unavailable and _HAS_METAL false, forbids custom Metal kernels, networking, child-process/signal delivery and checkpoint reads, and restricts writes to exclusive scratch. These are Python-level restrictions, not an OS sandbox or independent GPU hardware telemetry. Memory limits are advisory, not hard RSS bounds.",
+      "id": "IN_PROCESS_GUARDS_NOT_OS_SANDBOX",
+      "severity": "informational"
+    },
+    {
+      "blocking_for_this_witness": false,
+      "finding": "AST extraction/exec is applied to local hash-pinned trusted source, not hostile code. Original probe pre-execution expected digests cover three files; its broader sources map records remaining files after use. This audit independently binds all ten reported sources in each report, full selected attention ASTs and current runtime code, and rechecks protected bytes. It is not a general secure loader.",
+      "id": "TRUSTED_SOURCE_EXECUTION_ONLY",
+      "severity": "informational"
+    }
+  ],
+  "tdd_evidence": {
+    "declared_cycles": 2,
+    "disposition": "Two declared test-first cycles only; independently verified present implementation has exactly two passing offset/length protocol tests. No broader TDD claim.",
+    "independent_current_protocol_test_result": {
+      "errors": 0,
+      "failures": 0,
+      "output": "test_wrong_chunk_length_rejected_before_rotary_execution (_independent_binding_tests.BindingTests.test_wrong_chunk_length_rejected_before_rotary_execution) ... ok\ntest_wrong_physical_offset_rejected_before_rotary_execution (_independent_binding_tests.BindingTests.test_wrong_physical_offset_rejected_before_rotary_execution) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.001s\n\nOK\n",
+      "tests_run": 2
+    },
+    "independently_verified_historical_chronology": false,
+    "parent_artifact_sha256": "7bd354e25c2a1955ef86c2098f64e1552bfc027c89ae1d8870c19f2de23cfcb0",
+    "parent_declared_tool_trace": [
+      {
+        "exit": 1,
+        "expected": "BoundRope witness is not implemented",
+        "step": "RED1"
+      },
+      {
+        "exit": 0,
+        "step": "GREEN1",
+        "tests": 1
+      },
+      {
+        "exit": 1,
+        "expected": "wrong chunk length reached native rotary",
+        "step": "RED2"
+      },
+      {
+        "exit": 0,
+        "step": "GREEN2",
+        "tests": 2
+      }
+    ]
+  },
+  "v2_supplementary_read_only_review": {
+    "environment_read_only_findings": {
+      "corrected_smoke_result_passed": true,
+      "environment_footprint_not_independently_measured": true,
+      "fresh_install_or_pip_recheck_by_this_auditor": false,
+      "hash_locked_requirement_rows": 74,
+      "initial_failed_import_result_preserved": true,
+      "pip_check_log_matches_recorded_success": true
+    },
+    "full_import_source_findings": {
+      "class_source_hashes_match_V1_pins": true,
+      "direct_imported_modules": [
+        "mlx_lm.models.base",
+        "mlx_lm.models.cache",
+        "mlx_lm.models.qwen3_next",
+        "mlx_vlm.models.qwen3_5.language",
+        "mlx_vlm.models.rope_utils"
+      ],
+      "native_KVCache_import_retained": true,
+      "own_package_SDPA_imports": {
+        "/Users/jeremylien/Projects/local-agent-dual-mac/.vlm-reference-venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py": [
+          "from .base import BaseModelArgs, create_attention_mask, create_ssm_mask, scaled_dot_product_attention"
+        ],
+        "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py": [
+          "from ..base import LanguageModelOutput, create_attention_mask, scaled_dot_product_attention"
+        ]
+      },
+      "rope_callback_only_instance_replacement": true,
+      "unused_execute_nodes_definition_retained_but_never_called": true
+    },
+    "independent_native_replay_performed": false,
+    "independent_runtime_review_pending": true,
+    "input_hashes": {
+      "/Users/jeremylien/Projects/local-agent-dual-mac/.vlm-reference-venv/lib/python3.13/site-packages/mlx_lm/models/base.py": {
+        "bytes": 3986,
+        "sha256": "b782b2ac0f55ed8fa9c1afce1f36307d5d8714aad2c0991d63998047f7507174"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/.vlm-reference-venv/lib/python3.13/site-packages/mlx_lm/models/cache.py": {
+        "bytes": 58349,
+        "sha256": "c96cb169fd5e0ec4584a162dd61dc62ab08ccdca03a9850f8a491ce6809145e6"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/.vlm-reference-venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py": {
+        "bytes": 17853,
+        "sha256": "67ca08a4d08cb7be124965e95399735e556f1eaeb21a16bc23cb88d1ac035e11"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/.vlm-reference-venv/lib/python3.13/site-packages/mlx_lm/models/rope_utils.py": {
+        "bytes": 12689,
+        "sha256": "06466d57dfe1ccc1e61ba595c0a8f2dd3a14bcb5c6a1d06c67591dc03128606b"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-full-import-cpu-witness-v2/README.md": {
+        "bytes": 2800,
+        "sha256": "4fc4d3537df97f3ada418be6609a35c3ccac4df3f760bc89cfae93285ed830db"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-full-import-cpu-witness-v2/parent-disposition.json": {
+        "bytes": 1235,
+        "sha256": "08ba5fb223a6313b897cb592a202362d3e5b2f5059b2ed30524f6b0aac3b4417"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-full-import-cpu-witness-v2/probe.py": {
+        "bytes": 13567,
+        "sha256": "fa696f5199c9072e8e51e8e32424a675a43be5df2d1ebdf66eacf928ff0523eb"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-full-import-cpu-witness-v2/result.json": {
+        "bytes": 46491,
+        "sha256": "248fed0ed0c80338cac180320c279b721d45a19e8e3b5a3ff59f129392a93f3a"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-full-import-cpu-witness-v2/test_binding.py": {
+        "bytes": 1749,
+        "sha256": "d101697a7d81d8e5ac420affb64c2e56f3e02782ead48aa818ce53e72dfeb70c"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-full-import-cpu-witness-v2/witness.py": {
+        "bytes": 661,
+        "sha256": "12b58ee3f88940879f4fd4e2b81846b8193e606158a3998f8c0f12d25e8cf750"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/admission.json": {
+        "bytes": 25750,
+        "sha256": "bf554c3ad2fd816ee54c4a07a34571efaf9a0888cfa75fc307429a8ef7d8ec2a"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/create-isolated-env.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/import-diagnostic-result.json": {
+        "bytes": 5977,
+        "sha256": "6e8a9ca69abd50a85088a3f25782bba2ac2ae110689fe3905d6def2246a1eac6"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/import-result-v2.json": {
+        "bytes": 1639,
+        "sha256": "8392ca7e25662edb4be80b30a0e0adfbd64481d50a9490f81620b01295f3a9e2"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/import-result.json": {
+        "bytes": 792,
+        "sha256": "a50b5d8bd6e298745756ed8e196c74b327dd511dd903d000631aa69a9a56594e"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/import_diagnostic.py": {
+        "bytes": 4639,
+        "sha256": "5d438c8bf5c068dfacd0fb9611c795d59176f920aa3ed1821245520d66c3070f"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/import_probe.py": {
+        "bytes": 4392,
+        "sha256": "88090e94ddc9b02bb275d374991273ed9ef180b6aa93c1ad0ef49d02a971de84"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/import_probe_v2.py": {
+        "bytes": 5330,
+        "sha256": "13199bee040b144d7f7acca3342771982e41d1ada9ffd0a7f5fa3c3acd3fac62"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/install-locked-wheels.log": {
+        "bytes": 21793,
+        "sha256": "f89b56c28ba68e4c6d2357c93323d12b05ff37f10c6fb1fb465f313c2a8010c7"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/install-result.json": {
+        "bytes": 1450,
+        "sha256": "99424ac94554391d6083da7710c5aeea23622f4f041888cefd07d1bbc28785ee"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/install.py": {
+        "bytes": 3967,
+        "sha256": "74bcf36e622683028805c1c2738c810bfbc11d716516d7ff68e81df90aad5120"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/package-metadata.log": {
+        "bytes": 1675,
+        "sha256": "5db5c0e168a74d2803ce8b1fedec6f76727508dbe3320db15e0d123e375f56d6"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/pip-check.log": {
+        "bytes": 30,
+        "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/requirements-hashed.txt": {
+        "bytes": 16780,
+        "sha256": "0c3b6a121d4edd2a5b715084f2ce37fe6b31b6de9631a99555ea6eece20dcf32"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/base.py": {
+        "bytes": 21702,
+        "sha256": "a7cfa38413bea057946c5d56c9edd34dbcceb33f6613529f5201ca2ad5b41120"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py": {
+        "bytes": 74233,
+        "sha256": "6cfeb5e9efee8042e9d82bbc696168d0e15cb95220365613caa84ea2568304a7"
+      },
+      "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/rope_utils.py": {
+        "bytes": 46863,
+        "sha256": "6944f69a03c41cbb9613afbd2f1b54b71c504840aaeb0eade39c6109dbfdd25b"
+      },
+      "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/base.py": {
+        "bytes": 3986,
+        "sha256": "b782b2ac0f55ed8fa9c1afce1f36307d5d8714aad2c0991d63998047f7507174"
+      },
+      "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/cache.py": {
+        "bytes": 58349,
+        "sha256": "c96cb169fd5e0ec4584a162dd61dc62ab08ccdca03a9850f8a491ce6809145e6"
+      },
+      "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py": {
+        "bytes": 17853,
+        "sha256": "67ca08a4d08cb7be124965e95399735e556f1eaeb21a16bc23cb88d1ac035e11"
+      },
+      "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/rope_utils.py": {
+        "bytes": 12689,
+        "sha256": "06466d57dfe1ccc1e61ba595c0a8f2dd3a14bcb5c6a1d06c67591dc03128606b"
+      }
+    },
+    "limits": [
+      "Parent-supplied V2 has a stronger fixture path: actual full imports and no common helper injection. This supplementary review is read-only; native V2 execution and all raw V2 arrays were not independently replayed. Its recorded values equal independently recomputed V1 values, which is consistency evidence, not proof of V2 runtime provenance.",
+      "Real custom Metal factories are allowed to define/register callables; returned wrappers deny invocation, recorded launch list is empty. No GPU/Metal execution or factory-side-effect security admission follows.",
+      "CPU is selected before full LM/VLM package imports and numerical evaluation, though mlx.nn itself is imported immediately before CPU selection in the reviewed V2 script.",
+      "V2 external guard covers its listed socket/process/signal events, not a general sandbox: no weight-file/mx.load guard is installed by the attention script itself and the event set does not include all exec/killpg paths. Constrained source contains no checkpoint loading, but security approval remains denied.",
+      "No small/full checkpoint, actual pixels, quantized KV/TurboQuant/padding path, GDN, all16-layer model, or physical vision/Metal admission. All V1 callback and aggregate-report limitations still apply."
+    ],
+    "read_only_check_count": 14,
+    "read_only_checks_passed": true,
+    "reported_metrics": {
+      "all_observations_exactly_equal_independently_replayed_V1_mutation_report": true,
+      "atol": 1e-06,
+      "metric_rows": 126,
+      "native_custom_kernel_invocations": [],
+      "native_kernel_factory_names": [
+        "gated_delta_step",
+        "gated_delta_step_mask",
+        "gated_delta_step_vec",
+        "gated_delta_step_vec_mask",
+        "gated_delta_step_xtree",
+        "gated_delta_step_packed_btree",
+        "gated_delta_step",
+        "gated_delta_step_mask",
+        "gated_delta_step_vec",
+        "gated_delta_step_vec_mask",
+        "gated_delta_step_packed_btree",
+        "qwen3_5_gated_delta_with_states",
+        "qwen3_5_gated_delta_with_states_mask",
+        "exact_speculative_verify_gemv",
+        "exact_speculative_verify_switch_gemv"
+      ],
+      "native_kernel_factory_registration_count": 15,
+      "negative_controls": 4,
+      "paired_forward_groups": 42,
+      "rtol": 1e-05,
+      "scalar_controls": 8
+    },
+    "result": {
+      "bytes": 46491,
+      "path": "/Users/jeremylien/Projects/local-agent-dual-mac/results/attention-rope-full-import-cpu-witness-v2/result.json",
+      "sha256": "248fed0ed0c80338cac180320c279b721d45a19e8e3b5a3ff59f129392a93f3a"
+    },
+    "review_mode": "READ_ONLY_SOURCE_REPORT_AND_INPUT_HASH_VERIFICATION",
+    "v1_verdict_not_promoted_to_full_import_runtime_admission": true
+  },
+  "verdict": "PASS_SCOPED_SYNTHETIC_CPU_ATTENTION_WITNESS"
+}

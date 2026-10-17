@@ -1,0 +1,40 @@
+{
+  "schema": "small-vision-independent-review-summary-v1",
+  "delegation_id": "deleg_de6fe8ea",
+  "source": "Completed independent read-only audit delivered to parent; this file preserves its verdict and principal findings, not a new physical trial.",
+  "transcript_path": "/Users/jeremylien/.hermes/cache/delegation/live/deleg_de6fe8ea/task-0.log",
+  "passed": true,
+  "security_concerns": [],
+  "logic_errors": [],
+  "verification": {
+    "evidence_files_fingerprinted": 42,
+    "existing_log_request_response_hash_and_argv_checks": 24,
+    "mismatches": 0,
+    "selected_receipt_sha256": {
+      "native_v2": "bd35ddf590e881e444ff9e7adb0cf5740c73d7a48cb930e539e1eda374a40b73",
+      "dual_v4": "7475a1dfe9fa54f98bc040c63c0fb70020d00a6bc333e19109c7fcabd82c1321",
+      "dual_v4_local_rpc": "06edb76169128d475d9f20c45525e6239ca9692e624f0be09f142d28a0be5d74"
+    },
+    "images_and_requests": "All four selected embedded images match frozen PNGs and receipt hashes; independent CRC/dimension/pixel decoding passed. Each color's complete 889-byte request is identical across native and dual modes and its prompt does not contain the answer.",
+    "outputs": "Both modes return exactly red and blue respectively, stop, 46 prompt/2 completion/48 total/0 cached reported tokens. Each raw response matches its own hash; response bytes differ across modes.",
+    "device_participation": "Mini logs identify Apple M4, MTL0 vision encoding, image-processing events, and local/RPC model/KV/recurrent/compute buffers. Local RPC logs identify Apple M2 Pro and repeated 658-node graph_compute calls. This supports actual two-device work, not enumeration alone.",
+    "model": "Small Qwen3.5-0.8B Q4_K_M plus BF16 projector, frozen publisher revision and 739863648 total component bytes; not the target27B.",
+    "source_and_parser": "Pinned upstream source and selected API build configuration agree with receipts. Immediate left-to-right argument handlers explain why --rpc must register RPC0 before --device resolves it; retained v3/v4 failures/success support the diagnosis.",
+    "cleanup": "Per-run selected mini/RPC receipts record reaped owned processes and closed listeners; server shutdown/deallocation logs agree. Aggregate all-port/final-pressure assertions were not independently recovered or live-repeated by the reviewer.",
+    "hardware_or_network_actions": "None; local read-only artifacts and CPU decoding/hashing/source inspection only. No edits by reviewer."
+  },
+  "suggestions": [
+    "Retain durable full model hashes and build manifests including loaded dylibraries for full-target trials.",
+    "Archive comprehensive parent cleanup/health readback rather than relying on aggregate prose claims.",
+    "Address unauthenticated API/permissive CORS before persistent deployment; loopback alone is not authentication. Keep RPC restricted to the private link.",
+    "Retain exact good-order and bad-order argv in future parser regression receipts."
+  ],
+  "assurance_bounds": [
+    "Pass applies only to archived bounded small-model image-path proof; not full27B, screenshot grounding, actual GUI actions, numerical/cache/token-ID equivalence, latency statistics or unattended operation.",
+    "Reviewer did not independently recompute remote weight files. Selected historical receipts do not bind both complete weight digests.",
+    "Source/executable fingerprints and logs are not cryptographic attestation of every loaded dependency or an independent GPU trace.",
+    "Computed receipt hashes are fingerprints, not independent authentication or an externally signed immutable anchor.",
+    "Future pre-target build snapshots cannot retroactively strengthen the historic process's loaded-artifact attestation.",
+    "Experimental RPC and the historical unauthenticated loopback API are bounded-test risks, not a secure service qualification."
+  ]
+}

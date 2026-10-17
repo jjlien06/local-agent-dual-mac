@@ -1,0 +1,55 @@
+{
+  "role": "Fixed64MiB-only-no-model-no-scaling",
+  "timestamp": 1792204281.795423,
+  "change_from_hold": "Correct distinct roles: mini is CPU RPC-client only, laptop owns fixed64MiB Metal allocation. Server reserve512MiB unchanged; CPU-client reserve128MiB; both require pressure1. OS free-percentage query not treated as allocatable bytes.",
+  "mini": {
+    "pressure": {
+      "exit": 0,
+      "stdout": "1\n"
+    },
+    "swap": {
+      "exit": 0,
+      "stdout": "vm.swapusage: total = 1024.00M  used = 253.12M  free = 770.88M  (encrypted)\n"
+    },
+    "vm_stat": {
+      "exit": 0,
+      "stdout": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     9792.\nPages active:                                 418010.\nPages inactive:                               413742.\nPages speculative:                              5354.\nPages throttled:                                   0.\nPages wired down:                             133736.\nPages purgeable:                                4736.\n\"Translation faults\":                      123344672.\nPages copy-on-write:                         2703407.\nPages zero filled:                          97664227.\nPages reactivated:                           4199039.\nPages purged:                                 690412.\nFile-backed pages:                            663269.\nAnonymous pages:                              173837.\nPages stored in compressor:                   127250.\nPages occupied by compressor:                  33321.\nDecompressions:                             22633780.\nCompressions:                               26106128.\nPageins:                                    46320948.\nPageouts:                                      93970.\nSwapins:                                     1504435.\nSwapouts:                                    1572677.\n"
+    },
+    "route": {
+      "exit": 0,
+      "stdout": "   route to: 169.254.47.213\ndestination: 169.254.47.213\n  interface: bridge0\n      flags: <UP,HOST,DONE,LLINFO,STATIC,b016,WASCLONED>\n recvpipe  sendpipe  ssthresh  rtt,msec    rttvar  hopcount      mtu     expire\n       0         0  42751404         1         0         0      1500      1195 \n"
+    },
+    "worker": {
+      "exit": 1,
+      "stdout": ""
+    },
+    "immediately_free_page_bytes": 160432128,
+    "reserve_role": "RPC client only; no local GPU allocation",
+    "required_free_page_bytes": 134217728
+  },
+  "laptop": {
+    "pressure": {
+      "exit": 0,
+      "stdout": "1\n"
+    },
+    "swap": {
+      "exit": 0,
+      "stdout": "vm.swapusage: total = 4096.00M  used = 3012.50M  free = 1083.50M  (encrypted)\n"
+    },
+    "vm_stat": {
+      "exit": 0,
+      "stdout": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                   113106.\nPages active:                                 311626.\nPages inactive:                               290611.\nPages speculative:                             19855.\nPages throttled:                                   0.\nPages wired down:                             212070.\nPages purgeable:                                8312.\n\"Translation faults\":                    18064097465.\nPages copy-on-write:                      3215793171.\nPages zero filled:                        4899069265.\nPages reactivated:                        2162999182.\nPages purged:                              149140429.\nFile-backed pages:                            205666.\nAnonymous pages:                              416426.\nPages stored in compressor:                   549152.\nPages occupied by compressor:                  59575.\nDecompressions:                           2396755236.\nCompressions:                             2718006185.\nPageins:                                   246145005.\nPageouts:                                    3413323.\nSwapins:                                    39458954.\nSwapouts:                                   47626636.\n"
+    },
+    "route": {
+      "exit": 0,
+      "stdout": "   route to: 169.254.214.155\ndestination: 169.254.214.155\n  interface: bridge0\n      flags: <UP,HOST,DONE,LLINFO,STATIC,b016,WASCLONED>\n recvpipe  sendpipe  ssthresh  rtt,msec    rttvar  hopcount      mtu     expire\n       0         0         0         0         0         0      1500      1002 \n"
+    },
+    "worker": {
+      "exit": 1,
+      "stdout": ""
+    },
+    "immediately_free_page_bytes": 1853128704,
+    "reserve_role": "RPC GPU server; exactly64MiB allocation",
+    "required_free_page_bytes": 536870912
+  }
+}

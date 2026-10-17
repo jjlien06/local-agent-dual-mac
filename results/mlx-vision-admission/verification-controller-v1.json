@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "stdout": "{\n  \"status\": \"whole-shards-and-vision-payloads-verified\",\n  \"error\": null,\n  \"full_tensor_count\": 2180,\n  \"vision_tensor_count\": 333,\n  \"vision_payload_bytes\": 921460192,\n  \"shards_verified\": 3,\n  \"result_sha256\": \"38e9aa04a22b58e957011bdc4bdd097653a4a1a306bbf29cbda34bbc44cf4a56\",\n  \"result_path\": \"/Users/jeremylien/Projects/local-agent-dual-mac/results/mlx-vision-readback-v1/result.json\",\n  \"gpu_execution\": false\n}\n",
+  "stderr": "",
+  "source_sha256": "bd3491fc2666ea66fd99dc479ac751eb45ec701ec52c1c8e189f1e0757d2e8c5",
+  "admission_sha256": "3827166d21cea9e87965c51995528d789e3064575a333cca5316a022c6ae324d"
+}

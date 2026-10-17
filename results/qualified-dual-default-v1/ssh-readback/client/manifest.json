@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "description": "Public synthetic 128x128 RGB control; not a capability benchmark.",
+  "cases": [
+    {
+      "id": "red",
+      "prompt": "Name the color filling this image. Reply with one lowercase word only.",
+      "image": "red.png",
+      "sha256": "9d9f44b8c5762f6b8a53f905a6192f029eb316ff3b19da9b65a4f0c5f6d34f4d",
+      "reference_output": "red"
+    },
+    {
+      "id": "blue",
+      "prompt": "Name the color filling this image. Reply with one lowercase word only.",
+      "image": "blue.png",
+      "sha256": "0dddcdb26c8b4f497b93ad976ff8a477f51049fb9a29d3c69871390674a05809",
+      "reference_output": "blue"
+    },
+    {
+      "id": "split",
+      "prompt": "Name the color on the LEFT half of this image. Reply with one lowercase word only.",
+      "image": "split.png",
+      "sha256": "9a64507579f86cca2db225d1b4c17c591ab05ebd009d167d813a9719a6a127a9",
+      "reference_output": "red"
+    }
+  ]
+}

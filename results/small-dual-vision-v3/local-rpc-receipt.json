@@ -1,0 +1,11 @@
+{
+  "change": "Use discovered CLI device name RPC0, not buffer/backend label RPC0[endpoint]. Retain PID-based readiness.",
+  "source_revision": "ea0c4c2c85fb183ec0fbd30a1af4e4275a18a064",
+  "pid": 83360,
+  "owned_listener": "COMMAND     PID       USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME\nggml-rpc- 83360 jeremylien    3u  IPv4 0x6eaa020a00045acd      0t0  TCP 169.254.47.213:18558 (LISTEN)\n",
+  "remote_exit": 1,
+  "owned_rpc_reaped": true,
+  "rpc_exit": -15,
+  "listener_closed": true,
+  "rpc_log_sha256": "3555259b2e0c053430ddf3ccc34e40a7802000e233f394a2c195cd14c7e3b7fa"
+}

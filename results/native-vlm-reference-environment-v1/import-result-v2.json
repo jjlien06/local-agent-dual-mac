@@ -1,0 +1,51 @@
+{
+  "schema": "actual-pinned-vlm-source-import-cpu-smoke-v1",
+  "status": "passed",
+  "passed": true,
+  "detail": {
+    "package_version": "0.7.8",
+    "package_path": "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/__init__.py",
+    "language_sha256": "6cfeb5e9efee8042e9d82bbc696168d0e15cb95220365613caa84ea2568304a7",
+    "rope_sha256": "6944f69a03c41cbb9613afbd2f1b54b71c504840aaeb0eade39c6109dbfdd25b",
+    "actual_pinned_package_imported": true,
+    "q_shape": [
+      1,
+      24,
+      1,
+      256
+    ],
+    "k_shape": [
+      1,
+      4,
+      1,
+      256
+    ],
+    "tiny_zero_position_native_rotary_exact": true,
+    "fused_metal_disabled": true
+  },
+  "blocked_operations": [],
+  "native_kernel_factories_registered": [
+    "gated_delta_step",
+    "gated_delta_step_mask",
+    "gated_delta_step_vec",
+    "gated_delta_step_vec_mask",
+    "gated_delta_step_packed_btree",
+    "qwen3_5_gated_delta_with_states",
+    "qwen3_5_gated_delta_with_states_mask",
+    "exact_speculative_verify_gemv",
+    "exact_speculative_verify_switch_gemv"
+  ],
+  "native_custom_kernel_invocations": [],
+  "urllib3_ipv6_probe_disabled_in_child_only": true,
+  "device": "Device(cpu, 0)",
+  "model_loaded": false,
+  "gpu_kernel_execution": false,
+  "elapsed_seconds": 1.190150000000358,
+  "maxrss_bytes": 123994112,
+  "numeric_versions": {
+    "mlx": "0.32.4",
+    "mlx-metal": "0.32.4",
+    "numpy": "2.5.3"
+  },
+  "scope": "Actual complete VLM package imports and one tiny all-zero-position CPU rotary smoke only. No encoder/model construction, weights, real image, Metal, full-attention/cache or screenshot admission."
+}

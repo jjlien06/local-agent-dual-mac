@@ -1,0 +1,100 @@
+{
+  "schema": "reviewed-client-laptop-only-policy-control-v1",
+  "status": "BOUNDED_CONTROL_GATE_PASSED",
+  "total_verified_cases": 9,
+  "run_count": 3,
+  "case_ids": [
+    "blue",
+    "red",
+    "split"
+  ],
+  "matching_body_and_answer_fields": [
+    "request_sha256",
+    "output",
+    "finish_reason",
+    "complete_reported_usage"
+  ],
+  "cases": {
+    "red": {
+      "id": "red",
+      "request_sha256": "05484b6e5890056daddd17724d8d01000c47633317e65c9ce5e2bbf457be0b33",
+      "output": "red",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 44,
+        "total_tokens": 46,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      }
+    },
+    "blue": {
+      "id": "blue",
+      "request_sha256": "b33d207e5dc1fef616de0d7880b19f35c02626d80030969421f86ba4d6663665",
+      "output": "blue",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 44,
+        "total_tokens": 46,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      }
+    },
+    "split": {
+      "id": "split",
+      "request_sha256": "214114b356fc23ed0ac27b7f5aabb10a7c282aab0166892bc2ccf3598f7cc892",
+      "output": "red",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 48,
+        "total_tokens": 50,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      }
+    }
+  },
+  "runs": {
+    "qualified-native-default-v1": {
+      "cases": 3,
+      "snapshot_tree_sha256": "51d37c9a7d66682c2d2ba09a7d8d89d5fb32dc5cfde13c06844191df1e28d3aa",
+      "effective_context": 2048,
+      "mini_residency_env_unset": true,
+      "all_sampled_pressure_normal": true,
+      "client_attestation": false,
+      "image_encoding_log_events": 3,
+      "semantic_correct": true
+    },
+    "qualified-dual-default-v1": {
+      "cases": 3,
+      "snapshot_tree_sha256": "51d37c9a7d66682c2d2ba09a7d8d89d5fb32dc5cfde13c06844191df1e28d3aa",
+      "effective_context": 2048,
+      "mini_residency_env_unset": true,
+      "all_sampled_pressure_normal": true,
+      "client_attestation": false,
+      "image_encoding_log_events": 3,
+      "semantic_correct": true,
+      "laptop_residency_property_observed": true,
+      "laptop_shared_buffers_property_observed": true,
+      "remote_graph_call_headers": 16
+    },
+    "qualified-dual-laptop-policy-v1": {
+      "cases": 3,
+      "snapshot_tree_sha256": "51d37c9a7d66682c2d2ba09a7d8d89d5fb32dc5cfde13c06844191df1e28d3aa",
+      "effective_context": 2048,
+      "mini_residency_env_unset": true,
+      "all_sampled_pressure_normal": true,
+      "client_attestation": false,
+      "image_encoding_log_events": 3,
+      "semantic_correct": true,
+      "laptop_residency_property_observed": false,
+      "laptop_shared_buffers_property_observed": true,
+      "remote_graph_call_headers": 16
+    }
+  },
+  "scope": "Fresh same-control native and dual defaults then laptop-only no-residency candidate. Exact request bodies/decoded images/semantics/usage match; immutable reviewed client snapshot84tests passed on miniPython3.13.2. No full-logit/cache/token-ID parity or27B capacity/agent/service/performance admission."
+}

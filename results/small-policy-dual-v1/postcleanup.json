@@ -1,0 +1,39 @@
+{
+  "timestamp": 1792205185.537546,
+  "laptop": {
+    "timestamp": 1792205185.518723,
+    "private_listener_connect_errno": {
+      "18552": 61,
+      "18554": 61,
+      "18555": 61,
+      "18556": 61,
+      "18558": 61,
+      "18560": 61,
+      "18562": 61,
+      "18564": 61,
+      "18566": 61,
+      "18568": 61
+    },
+    "health_raw": "kern.memorystatus_vm_pressure_level: 1\nvm.swapusage: total = 4096.00M  used = 2836.44M  free = 1259.56M  (encrypted)\n",
+    "workers": {
+      "ggml-rpc-server": {
+        "exit": 1,
+        "stdout": ""
+      },
+      "llama-server": {
+        "exit": 1,
+        "stdout": ""
+      }
+    }
+  },
+  "mini": {
+    "timestamp": 1792205136.437484,
+    "health": "kern.memorystatus_vm_pressure_level: 1\nvm.swapusage: total = 1024.00M  used = 253.12M  free = 770.88M  (encrypted)\n",
+    "api_ports_connect_errno": {
+      "18388": 61,
+      "18390": 61
+    },
+    "workers_absent": true
+  },
+  "scope": "Small no-residency policy controls only; all latest owned endpoints closed and workers absent."
+}

@@ -1,0 +1,678 @@
+{
+  "finding_id": "CPU-CONTRACT-001",
+  "artifact_type": "local_cpu_contract_repair_verification_not_independent_approval",
+  "status": "repair_implemented_locally_verified_independent_rereview_pending",
+  "approval_granted": false,
+  "independent_rereview": {
+    "status": "pending",
+    "passed": null
+  },
+  "workspace": "/Users/jeremylien/Projects/local-agent-dual-mac",
+  "python": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python",
+  "original_independent_fail_review": {
+    "path": "results/mlx-vision-contract-independent-review.json",
+    "sha256_before": "8f4f61da9d53bb24b81246253519453645e7f08a6845dc8607ba43822f7810fa",
+    "sha256_after": "8f4f61da9d53bb24b81246253519453645e7f08a6845dc8607ba43822f7810fa",
+    "passed": false,
+    "preserved_byte_exact": true,
+    "not_superseded_by_local_tests": true
+  },
+  "root_cause": "Session omitted exact config_sha256 type validation, accepted an equal-valued mutable zero-dimensional ndarray by dataclass equality, and retained the caller-supplied Request.",
+  "repair": [
+    "Reject any non-exact-str config_sha256 before digest or dataclass equality.",
+    "Reject exact strings that differ from CONFIG_SHA256 before canonical comparison.",
+    "Compare with a newly prepared canonical immutable Request; retain only that fresh canonical object, not the caller-supplied instance."
+  ],
+  "before_after_sha256": {
+    "multimodal_contract/__init__.py": {
+      "before": "dc33ebc3fed629d28fd9b230c03019edec78836f7ee2aeaf7bb37e01bd9fa2ca",
+      "after": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116"
+    },
+    "tests/test_multimodal_contract.py": {
+      "before": "9061dc54b9388fbb50d86ad60a5b3888578b500605725234167218834c83f929",
+      "after": "e52ceb63ae75aef087414e4e187d1e0a5a9ffcdb7b54b5523e54ef863e8e00c3"
+    },
+    "MULTIMODAL-TDD.md": {
+      "before": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d",
+      "after": "b2da4b82b7f56d857ca3773a6e72c1aae4d338a8e386a5121cd6969a5e914da0"
+    },
+    "multimodal_contract/README.md": {
+      "before": "edefc2cd8c6996b20033d7606e13f913a060e79e2b02fcefb89c38843dc7efed",
+      "after": "58c69d3193b1e56b311d38a5fbb3747fe98e748bb1168cc4772f2b0b9eaff8ae"
+    }
+  },
+  "vertical_tdd": {
+    "new_ordered_observed_pairs": [
+      {
+        "red": "RED-REPAIR-1",
+        "green": "GREEN-REPAIR-1",
+        "behavior": "Exact review ndarray payload must be rejected by Session at admission before and after mutation.",
+        "red_production_sha256": "dc33ebc3fed629d28fd9b230c03019edec78836f7ee2aeaf7bb37e01bd9fa2ca",
+        "green_production_sha256": "678fb9b34b49678fb8a5a78ae383c7824b61ad14d0a359adfbaf0f9899e877e6"
+      },
+      {
+        "red": "RED-REPAIR-2",
+        "green": "GREEN-REPAIR-2",
+        "behavior": "Successful Session retains a distinct canonical immutable Request with unchanged positions, manifest and cursor/decode behavior.",
+        "red_production_sha256": "678fb9b34b49678fb8a5a78ae383c7824b61ad14d0a359adfbaf0f9899e877e6",
+        "green_production_sha256": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116"
+      }
+    ],
+    "sequence_asserted_from_execution_log": [
+      "RED-REPAIR-1",
+      "GREEN-REPAIR-1",
+      "RED-REPAIR-2",
+      "GREEN-REPAIR-2"
+    ],
+    "post_green_coverage_not_claimed_as_red_green": [
+      "pinned str subclass",
+      "wrong str subclass with forged equality",
+      "str subclass with comparison traps",
+      "zero-dimensional pinned ndarray",
+      "singleton pinned ndarray",
+      "NumPy string scalar",
+      "wrong exact Python str rejected by explicit pinned-value check"
+    ],
+    "original_historical_tdd_transitions_not_reexecuted_or_rewritten": true
+  },
+  "local_verification": {
+    "all_final_checks_exit_zero": true,
+    "focused_passed": 72,
+    "repair_regressions_passed": 9,
+    "preexisting_cases_deselected_in_repair_selection": 63,
+    "preexisting_test_function_asts_unchanged": true,
+    "production_outside_session_init_byte_identical": true,
+    "final_execution_labels": [
+      "FINAL-REPAIR-REGRESSIONS",
+      "FINAL-REPAIR-FOCUSED-AFTER-FORMAT",
+      "FINAL-REPAIR-RUFF-CHECK",
+      "FINAL-REPAIR-RUFF-FORMAT",
+      "REPAIR-SCOPE-AND-STATIC-SCAN"
+    ],
+    "guarded_cpu_tests": true,
+    "model_runtime_modules_loaded": [],
+    "network_socket_connections_blocked_during_pytest": true,
+    "original_qualification_tests_rerun": false,
+    "local_static_scan_is_not_independent_review": true
+  },
+  "filesystem_verification_before_new_receipt_publication": {
+    "snapshot_existing_files": 5470,
+    "checked_existing_files": 5470,
+    "changed_existing_files": [
+      "MULTIMODAL-TDD.md",
+      "multimodal_contract/README.md",
+      "multimodal_contract/__init__.py",
+      "tests/test_multimodal_contract.py"
+    ],
+    "removed_existing_files": [],
+    "added_files": [],
+    "unexpected_changed_files": [],
+    "unexpected_added_files": [],
+    "historical_json_checked": 198,
+    "historical_json_changed_or_missing": [],
+    "historical_json_sha256_before": {
+      "full-target-assets.json": "7bf094f3340f5290c8137f416401675720ec984b07dce8e17f4d934bc3e7ffa3",
+      "qualification-assets.json": "6fb820ef14657483f1d1f4e4422eec526a53380c2dab76f5f3a7cfedc1768c99",
+      "build-arm64/compile_commands.json": "186a0b26f72b6a1ad76bfb752a5dff6213b5334883e6c6e0e161aa7e3df569d2",
+      "results/mlx-vision-contract-independent-review.json": "8f4f61da9d53bb24b81246253519453645e7f08a6845dc8607ba43822f7810fa",
+      "results/small-vision-proof-review.json": "f31236271e856ac34a86ed09d2836db4781f4670ff43edb2df86ef426bb582aa",
+      "results/qualification-client-cpu-approval.json": "be63451f33fec8e8e4f05dfbb8dcb25f8cfff97f2cf71b03676c74e53c25e7b7",
+      "results/mlx-vision-contract-parent-failure-reproduction.json": "ffc0bd700161037258c76087488bd692c7f9a11892dd39b49db3ba90c0136e09",
+      "results/qualification-mini-deployment-controller.json": "c5e4b23f1fcbc9ceb2e2c06afc816b2859ce66fda332ea6fa1bcc8025e925436",
+      "results/qualification-client-fix-parent-verification.json": "66b4f187de7c364642a9401e42dfcbc2b2093876e8df917c94bff5a9ec6be68a",
+      "results/mlx-vision-contract-parent-verification.json": "0ee2e17c2d247d429cd16316b125955b64f14808bd3f6e943734bf8809b7308d",
+      "results/qualification-client-independent-review-v2.json": "6d2543ed73c855ab0104a25470e0e9c235d94d54fffa2fa04e89148b68922782",
+      "results/small-vision-independent-audit.json": "d8695f1fce7b64396197119bd7a81194472ba283cb3f2872ad8b5d55e777d666",
+      "results/mlx-vision-contract-cpu.json": "0e6901ec6e659f2832fb24d89fe652172feff442f305e46f9df4f5b415c88409",
+      "results/qualification-client-independent-review.json": "90d735e8e50a9e64fa2759a42ac7253a7dc9320bc5d0fe79791ec3a07b77114c",
+      "build-api-arm64/compile_commands.json": "a776a2023a154b1c1dd664bbdf7c1ba34110417807d58ca69a0666d6f8384f75",
+      "qualification/verification.json": "3d0fd3178e6115c73af75fdffb9032877da30f9364486950f28486b0a6f0dbfe",
+      "upstream/llama.cpp/pyrightconfig.json": "1b481b0aa0ddb2990ef34d5defa9375e39ccad183092f24c830d5fde30134891",
+      "upstream/llama.cpp/CMakePresets.json": "cc1209d3ede32fd9697c4ceb6e1026298317073830cbcb4d1e9489ddd63c395a",
+      "upstream/llama.cpp/.gemini/settings.json": "f1b9274d3ea1098f314639c0443048ffdfdc906a5aaa90e3291f596c32b40ac0",
+      "upstream/llama.cpp/benches/dgx-spark/aime25_openai__gpt-oss-120b-high_temp1.0_20251109_094547.json": "ef2c867e05989afc4d9a033dbac55d3f8cd1b4ad9a70f53aa94fd76f8eb7a059",
+      "upstream/llama.cpp/benches/dgx-spark/aime25_openai__gpt-oss-120b-high_temp1.0_20251109_094547_allresults.json": "0ce07eb00561b082aa4d0cddb32c5287a28c193825df1c7954278c5811886bf9",
+      "upstream/llama.cpp/examples/llama.swiftui/llama.swiftui/Assets.xcassets/Contents.json": "0fd49ba3c3585c709678e0046a821c3c60685ec7063720d30d3a3448be3a208b",
+      "upstream/llama.cpp/examples/llama.swiftui/llama.swiftui/Assets.xcassets/AppIcon.appiconset/Contents.json": "554c06afb2bf81e3af423161e55281ea25575759a2d2d8c63229d4981d89bd0b",
+      "upstream/llama.cpp/docs/backend/snapdragon/CMakeUserPresets.json": "ab9bc3f7b69d213fd3043b056dbea5d12d67d917850f0060dfaee4513cc99573",
+      "upstream/llama.cpp/tools/ui/package-lock.json": "075ed9d0b6228075615f82becfbbcafa20015c65aa0179c339bc6de8f058550a",
+      "upstream/llama.cpp/tools/ui/package.json": "46705a2245fcb5d24aee673f17560c496fbb68358b8f2694b6d234ef05662dcb",
+      "upstream/llama.cpp/tools/ui/components.json": "27a9b84e4e065634e504813b9296d6cf2dd0cbab1844f7213ee12e001ea51a25",
+      "upstream/llama.cpp/tools/ui/tsconfig.json": "355feca23bac5d563d1d7dd35753ea7e40fed7a8395465037f76e05e70faa38a",
+      "upstream/llama.cpp/tools/ui/src/lib/vendors/package.json": "5f0740ca9e4c4a7b3feb2979cc2558e9772c0f4e48148cce1b11847b7afae738",
+      "qualification/fixtures/public-cases.json": "de0c054a3df1fcb87ac913a1a2512c208f2071230e5f7d0773b61d99668c9c06",
+      "results/full-target-load-v2/sources.json": "593bd5c408ba559fbd69253c1c9ae0a9f28fb4f39d9e6c1153aefabd105fca09",
+      "results/full-target-load-v2/residency-primary-sources.json": "7faf575f9d721b9078382e44ceb57e3473c8ed992149de8e9e2c21ab619647d1",
+      "results/full-target-load-v2/rpc-argv.json": "184cb2a3000f77986a54fb7516c7717249ea095973537cbf7bea5eee8af2f36e",
+      "results/full-target-load-v2/residency-review-delivered-summary.json": "0b41af178ccdc2f8a66cea2791e3c0dac723dd12712d760137230ee99dddc224",
+      "results/full-target-load-v2/postcleanup.json": "cfb974f88fb4f70d94de00378d5785b798b8f5a3577445e8b67d5fca3ee52971",
+      "results/full-target-load-v2/admitted-config.json": "7fdf10d3c274b999b7f65c63376be1d32ff86cf6090cdd6e6e7c9c7530d6e43d",
+      "results/full-target-load-v2/rpc-started.json": "9f4790325a3556a05e7967ca5cb9d15426ac75d14400587c7543389a0988110f",
+      "results/full-target-load-v2/local-result.json": "5c00f4b1d5b080b7a66327015f846a101edc099aa8894182143647d3ddea819e",
+      "results/qualified-dual-laptop-policy-v1/remote-readback.json": "0a6d671744820133c507959b325eec27ac119ee90cc0218e1782c84210377596",
+      "results/qualified-dual-laptop-policy-v1/rpc-argv.json": "bdbae6b8ccbb46c5ac57a05c4707f92aabb802d85287189b1e1fc515b587cc78",
+      "results/qualified-dual-laptop-policy-v1/comparison.json": "53a4c6984db834c0d946aea67edc144baf9340e7831c8f2c15757b1099ee9fec",
+      "results/qualified-dual-laptop-policy-v1/audit-parent-binding.json": "6ec5520bcd88f0b95e4a202b46f3c83155f07537ae0f9c0e0e3953f5026568fb",
+      "results/qualified-dual-laptop-policy-v1/independent-audit.json": "50fe4bc1c434586b0cbb3b9ce9d12df43776ea2d973aa1ec2fe2d376e13ea61a",
+      "results/qualified-dual-laptop-policy-v1/postcleanup.json": "7b7845d60bdcb2100fc7d6a4a52ff825d3f0fc72ac8f1ecc602cd33472ac508f",
+      "results/qualified-dual-laptop-policy-v1/admitted-config.json": "16e369a1997511410943ca12dc65ac343e9b1a3d7d29fb072b8eeda27edfe921",
+      "results/qualified-dual-laptop-policy-v1/rpc-started.json": "1540843cb25a269b82585b1fbe90a2d54cfc735d6511e0e16e42b786cc344bb0",
+      "results/qualified-dual-laptop-policy-v1/local-result.json": "4ba9f1b5a76cadc12c84858e492a92c6e8bd213f9dae5a746082467909c158a9",
+      "results/small-policy-native-v1/admitted-config.json": "686b03d02161b8bc2fa31e46ef72f462b97b383ce70a7ffc8def1a1187b9bc1a",
+      "results/full-target-load-v3/rpc-argv.json": "0548375716bd6c7940b3b9d7cfb870719153852773613d4811eff437e0d33c91",
+      "results/full-target-load-v3/architecture-decision.json": "3c3bcf0fd4042a92a9f1859034d50efb0bab0e8e01b75da14a4ef20245f239e9",
+      "results/full-target-load-v3/postcleanup.json": "2d681beff8d256ad8bb9272d7932818e135ee1235a6653b1f0ecf88a2d88dc98",
+      "results/full-target-load-v3/rpc-memory-architecture-review.json": "070791e8871bc771a624bb5535b9f6bf54cf28a53ff3535b5a40fcfa746cccf0",
+      "results/full-target-load-v3/admitted-config.json": "53577efefab081a4382ab90cbf049e6e1d707fbe028c2b00ceb432d8c351417b",
+      "results/full-target-load-v3/transfer-progress.json": "6b98066522230c4be9ed77b4606a0afad26a771e182a5b1cfbff1e33007e2052",
+      "results/full-target-load-v3/rpc-started.json": "e5400eb02f4ca7c0c0e98124ae946fe36a5c9df78ad71f878880eeeca049deeb",
+      "results/full-target-load-v3/local-result.json": "ff0a4a61b71f5423b5616d913263d0c15de0dc6b7222f19b14d3a464360de59e",
+      "results/qualified-native-default-v1/admitted-config.json": "c89ed0f4eb166cdbc95e250ad0ac796721aa37d5aabe78e22e2cb90e205ec721",
+      "results/qualified-dual-default-v1/rpc-argv.json": "44f7747805dbe8fdb52fd9373afb29cd4c3bd09fe1ebd150a42eaf8eb7ee2004",
+      "results/qualified-dual-default-v1/admitted-config.json": "c210f41cba32f288c83e43c1ed3fd568bc37119bf97daf10585dfde313b078f6",
+      "results/qualified-dual-default-v1/rpc-started.json": "247d9a12334049d97f2fd8d084e6079f70ae68cc8666e31878dde642c9d525c5",
+      "results/qualified-dual-default-v1/local-result.json": "c20b6386d76241b74659a9d6cd0ac7e0255b863f1a646b6ccf4df1ffc72b48c9",
+      "results/mlx-vision-admission/retained-weight-readback.json": "38e9aa04a22b58e957011bdc4bdd097653a4a1a306bbf29cbda34bbc44cf4a56",
+      "results/mlx-vision-admission/trusted-preflight-inventory.json": "d0996b2023760e7370b939be8509e3091dfc0c9b8b9357c6fc5c01b14ba81d25",
+      "results/mlx-vision-admission/verification-controller-v1.json": "f497531bc4748f0b5e0c463dba6ccb6a4f2cd5b0acdc87e9ae2c171be2fdb107",
+      "results/mlx-vision-admission/retained-weight-readback-binding.json": "e65e457067b5e58d67743c897c07dd3554fdb4e8ac7adb9be5071f29305765c5",
+      "results/mlx-vision-admission/readback-admission.json": "3827166d21cea9e87965c51995528d789e3064575a333cca5316a022c6ae324d",
+      "results/rpc-allocation-64m-v1/rpc-argv.json": "47b978c55af4bb3d32b87c3c93f99329425b6f04b772f3a2bafba02b8c3e5575",
+      "results/rpc-allocation-64m-v1/admitted-config.json": "82026a51a7870236f59ce653271ddcd6419594dd2bfa2a17da5fdeddda0f3446",
+      "results/rpc-allocation-64m-v1/rpc-started.json": "f253cec022a1980d60889d20d7df2740754ccb44ec7f8aa75284205a9e7dc6f0",
+      "results/rpc-allocation-64m-v1/local-result.json": "2b98589fe7b8e6ba958bc8a9ca98f44d004403a6c24e4f602f1bcd211ce66564",
+      "results/rpc-connectivity-diagnostic-v1/result.json": "ac24d5a47080805cbb42112938ffb0019e1fe559988fb7daf19c2a1cfca4ec6b",
+      "results/small-dual-vision-v1/remote-controller-output.json": "1eebe6ef9a6c06c5a0484b79cfc9a5af4ded5bba50de2eee0b3cd72e671fb295",
+      "results/small-dual-vision-v1/local-rpc-receipt.json": "f1155e9af290e3248928fc12b936950041bcb3a66e30418266c6d0e72b1c2e51",
+      "results/full-target-load-v1/cpu-root-cause-review.json": "4fe268891ccffcb5a6e7080581e46369ba620dfdefe7a7d98932ea7eac4a413c",
+      "results/full-target-load-v1/rpc-argv.json": "ea24a6fdd6b8a466fa1c6d74bbf06a71943cc37179a7f94c70f60d5362a69795",
+      "results/full-target-load-v1/postcleanup.json": "46391643cc67758bf8c9f1fe7f44250d3f61e05f03b5c1c41a1d573a7f454747",
+      "results/full-target-load-v1/admitted-config.json": "4837632b7d12eb873a665e33c0d8f68b2fc1f7dbc4894af2f812ffdd0277a57c",
+      "results/full-target-load-v1/rpc-started.json": "8979740a00769ee6229a2218c6c068c9c0e0ecb41b17fc78b249fd1e9b50df00",
+      "results/full-target-load-v1/local-result.json": "ac4256ff1cc6b8fcfb05b9f70b05906bfcff199f8028a4980cca2b76d8d8c073",
+      "results/small-native-vision-v1/inputs.json": "2359949743998240be32a839f02564d31995f32df002e991798984453da05887",
+      "results/full-target-admission/qualification-snapshot-payload.json": "ab7822120972c1639903c906421b86cbec903ec3400f36fea7d0dfa569a43662",
+      "results/full-target-admission/load-v3-proposal.json": "d3bdf4f9ab2f443342d8bc25a5cccb68fb5b593f5589a561b37a0632c4079d2a",
+      "results/full-target-admission/load-preflight-v2.json": "e014bf64bc719bd6aa7c803b189b4d9e2d0adb1a4983c14b4b6def906bfcae0f",
+      "results/full-target-admission/source-placement-reconciliation.json": "0c5f3276475522476ca4af641adedcb399e51a2cfb199d60652e679ce8ee078b",
+      "results/full-target-admission/small-policy-preflight-v1.json": "d54456a87f933b7ea2e98ad7c4a175faec1faaee3aea8449e18b461ebb9464d4",
+      "results/full-target-admission/load-preflight-v3.json": "3eda68869745ccdf3ffb7e24f9e64fafff300750f64ab17ffd0375b1d459a2a0",
+      "results/full-target-admission/allocation-64m-admission-hold.json": "fa0b552d4d637c0a336e8f208f83e3d4e5aa1fb6b776dcd4138f63230aa2c471",
+      "results/full-target-admission/q4-header-budget.json": "7020c052bc8281cc7283be9129d854453a1b3863b46d88c38ae87c1df70062a7",
+      "results/full-target-admission/laptop-build-snapshot.json": "70c25632889f8d83befa127ecd037369f73ce749ce3c4387bb41f67a566c23b2",
+      "results/full-target-admission/q4-capacity-plan.json": "f867dad9770f619836a9d1b5de0112150699ce02662dd335707fa89095efb3f5",
+      "results/full-target-admission/allocation-64m-preflight-v2.json": "ec4c280ecbb53fc7a874f8738b22cce222aaeb3ff2bc0165e312f38b45ea7a2d",
+      "results/full-target-admission/provision-readback.json": "925041e4e8e8f748b3cdfe35d7bf608d9c77c550de93ba4b8f42143361101685",
+      "results/full-target-admission/qualified-policy-preflight-v1.json": "f1a2b43cdac85c1cf2696641cf7112e7fba93abcdd8e7f676d643b6b77fdd098",
+      "results/full-target-admission/system-footprint-query.json": "eed0ae437a2b266f5b061d4769df62037c410a30be95b0b9d8d49d5bfd0fdb20",
+      "results/full-target-admission/load-v2-proposal.json": "6e63b064cbc3c5d5c9722083967ff90fd329efa87a5e9d24c3313fabf8ee694b",
+      "results/full-target-admission/mini-build-snapshot.json": "659bbe82052f8d0702c1f92eebd6c988ce23b3eb7a9a895fe940e2aaba69ed5b",
+      "results/full-target-admission/load-preflight-v1.json": "efbe18251e6cde76267977f36d28967f0d005def286d87ad9c8a06afb2b0773e",
+      "results/small-policy-dual-v1/rpc-argv.json": "aec5a638a3825e5b128970fe5da74590d980276ed09d001f7e733a255c425ddf",
+      "results/small-policy-dual-v1/comparison.json": "5d5b77dd44d3be08eae56df337a65120811acd2a85570c1e3c219a3c5fcaf6fa",
+      "results/small-policy-dual-v1/readback-comparison-inputs.json": "68c4237334f7397eb9095d53af09d862e895c29aecf919dc5bd0b982ec169ebd",
+      "results/small-policy-dual-v1/postcleanup.json": "45fe66027b49dc6bf9500d41fd342fac59cd54d6bb4ccd41728c627ca56ad932",
+      "results/small-policy-dual-v1/admitted-config.json": "0b219305d43ca2a338fdb49b7e2efd40ec098a8a1bf9af38697d256701c6b588",
+      "results/small-policy-dual-v1/rpc-started.json": "d1d8c35a2590b62ecff30f3ed8542540bc13397261f79a0779d68bd1430bc84d",
+      "results/small-policy-dual-v1/local-result.json": "68e3a98a93161b9973e682b6672db17b7aedb67504336bd9e4c805b1c5c36206",
+      "results/small-dual-vision-v2/remote-controller-output.json": "c30bc9fa64c38975ee84fb8b8d4c9b2a11f8132f38fb0e5b2dfd73d445475a24",
+      "results/small-dual-vision-v2/local-rpc-receipt.json": "0ec5d726e365e3fe7b8d518611a2b133d65d733ecb3e5a7eec387c62d69359ae",
+      "results/small-dual-vision-v3/remote-controller-output.json": "efdd9e85a2f7e2efa218d58e11c9d983ce64d63268f7ef9a448d31a844f6a99e",
+      "results/small-dual-vision-v3/local-rpc-receipt.json": "1d4da27ef01189d2e1aaeb5f157c49c39ab774151b1ad0fc0b26efe8b974987b",
+      "results/small-dual-vision-v4/remote-controller-output.json": "e2bcc041b08614d155241d4c7d410870732323ddaeaa84b0c82290086dd4f900",
+      "results/small-dual-vision-v4/local-rpc-receipt.json": "06edb76169128d475d9f20c45525e6239ca9692e624f0be09f142d28a0be5d74",
+      "results/small-dual-vision-v4/ssh-readback/result.json": "7475a1dfe9fa54f98bc040c63c0fb70020d00a6bc333e19109c7fcabd82c1321",
+      "results/small-dual-vision-v4/ssh-readback/red-request.json": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+      "results/small-dual-vision-v4/ssh-readback/red-response.json": "62242b0d91640a13723f852c8f5061ad85d4b0c01aa859bbdff88ff3a3d567f3",
+      "results/small-dual-vision-v4/ssh-readback/blue-request.json": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+      "results/small-dual-vision-v4/ssh-readback/argv.json": "56d06b102ebe3aa9c63ae1ec1edfe57871b4a2b9ca42dc6b73c5b216df8ce044",
+      "results/small-dual-vision-v4/ssh-readback/blue-response.json": "e65a757827c551803487b430fc611bd25635473723887187fa62eb6e148eaded",
+      "results/small-dual-vision-v3/ssh-readback/result.json": "0373417dc0ae0e682ed0e61b4b993c6e3099d2804c83dde18ca267e8c80eb325",
+      "results/small-dual-vision-v3/ssh-readback/argv.json": "24ba91be5ae4d0a2a2b299ef34595a38350838f33af3a8b587de59cb0134bed7",
+      "results/small-policy-dual-v1/ssh-readback-v2/result.json": "440667f9b3c5a26db8b2ded280d5f1dac6223d6f827684e335df23a5c2cc7690",
+      "results/small-policy-dual-v1/ssh-readback-v2/red-request.json": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+      "results/small-policy-dual-v1/ssh-readback-v2/red-response.json": "598a6ff2a366366c861fe513263cd077eb1c9e032eab86320fcd13f083694411",
+      "results/small-policy-dual-v1/ssh-readback-v2/blue-request.json": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+      "results/small-policy-dual-v1/ssh-readback-v2/argv.json": "92c8fa77e58349bc7f73e299f4e2e09ddea3ee8529791af2ef3f3f9499ed93a7",
+      "results/small-policy-dual-v1/ssh-readback-v2/blue-response.json": "359211c77ad78d558b06bfe650227ad1ffbb5c050169e7e5958846cb19330fa4",
+      "results/full-target-admission/inputs/public-cases.json": "dc4190da0e1d870830cc7c4cc21620f6f500dc5ce8f06fd294c7b488d3e75965",
+      "results/full-target-admission/inputs/semantic-expectations.json": "5a90b5e6ea7d4efe252692a625f35f5e2399ce6b79436a1cfb3422766dd987a9",
+      "results/small-native-vision-v1/ssh-readback/result.json": "ef332eab664cd303d60ad70c18b18217d0a4d25f986d8f27846edcb170671347",
+      "results/small-native-vision-v1/ssh-readback/red-request.json": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+      "results/small-native-vision-v1/ssh-readback/red-response.json": "bafbe87092f2de9b54a6d035a80fef05cb6b51a99d0026bb6261ed3188f945e5",
+      "results/small-native-vision-v1/ssh-readback/blue-request.json": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+      "results/small-native-vision-v1/ssh-readback/argv.json": "551826d9162e98e340267625faa0de2ce7db8595c5625c4abaebde89892e7034",
+      "results/small-native-vision-v1/ssh-readback/blue-response.json": "5384a43cc8216880aee59cd0c53ccbb763775e464f499b73b9f9dbc334fca208",
+      "results/full-target-load-v1/ssh-readback/result.json": "dcfe9e0a12633a239dfdd3ff6cae194fb62ecff2803bc650fbaf66d8aa17c667",
+      "results/full-target-load-v1/ssh-readback/started.json": "10af8dbf9f5addcb64bb1dc9546894d3c9284b417c4ef925f6089eebd58d07eb",
+      "results/full-target-load-v1/ssh-readback/readback.json": "2c1639e4232b16f827db3ec461b9bee46d8c7e3bd3530b18e40bd1c2ecfb70a8",
+      "results/full-target-load-v1/ssh-readback/argv.json": "61394635a634b1b376214eff4ec5166376d9b77f8f86b5462b74faefb5e8ac2f",
+      "results/rpc-allocation-64m-v1/ssh-readback/result.json": "aa9ae65a290e956d0bf19035b3fad1a15c8ba73bb0197e8e2abea0da92bf2e37",
+      "results/rpc-allocation-64m-v1/ssh-readback/1-before_alloc.json": "0aec121892f92fa99e3a0e8f223ad76b7d0b211ccb5736d3051a7baaac812d05",
+      "results/rpc-allocation-64m-v1/ssh-readback/readback.json": "d0623191076d887785eb8aaada3e9d2bb7d138a42e220348f18449bac5ef3ff2",
+      "results/rpc-allocation-64m-v1/ssh-readback/2-allocated.json": "ff36f828c075eeb653be249db381bf4d184c2a629d6e185945a309a01eca7366",
+      "results/rpc-allocation-64m-v1/ssh-readback/3-freed.json": "006de44e0f2bb48a6d2a9ce2b66f0327a2f5ebd582e9d8953ddb9de5ba2c82b4",
+      "results/small-native-vision-v2/ssh-readback/result.json": "bd35ddf590e881e444ff9e7adb0cf5740c73d7a48cb930e539e1eda374a40b73",
+      "results/small-native-vision-v2/ssh-readback/red-request.json": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+      "results/small-native-vision-v2/ssh-readback/red-response.json": "1c57c0255994b37686350227da10a01dd6c6eda5936a29ae5de5b351f5d80cac",
+      "results/small-native-vision-v2/ssh-readback/blue-request.json": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+      "results/small-native-vision-v2/ssh-readback/argv.json": "887560d611dc4337a2207e9015ebcba8ac0415d1829bab8418f0c520b3973b67",
+      "results/small-native-vision-v2/ssh-readback/blue-response.json": "5dd02733c38eed736199d3218e9c7426a9f51f58c3d09d3494c23818ee2a0748",
+      "results/qualified-dual-default-v1/ssh-readback/result.json": "d91b1d0e4b753162c3aa32792c4e387d3bcaa0fee15412262eb85c7ff1b07d71",
+      "results/qualified-dual-default-v1/ssh-readback/client-argv.json": "599baaaf21623d3b9ac10c327a86b6829273ca9cfbba7ab6cfd075e9fa74b95e",
+      "results/qualified-dual-default-v1/ssh-readback/started.json": "64cd82d7ea913bc8e14f36ed864ce8ef02e86a0f4ca167def17747c0a8e7b2d6",
+      "results/qualified-dual-default-v1/ssh-readback/argv.json": "bb9de0906a77292f210f7955732ad86581152d9460cf76f11369838daad13f64",
+      "results/qualified-dual-default-v1/ssh-readback/client/0001.request.json": "b33d207e5dc1fef616de0d7880b19f35c02626d80030969421f86ba4d6663665",
+      "results/qualified-dual-default-v1/ssh-readback/client/0000.request.json": "05484b6e5890056daddd17724d8d01000c47633317e65c9ce5e2bbf457be0b33",
+      "results/qualified-dual-default-v1/ssh-readback/client/manifest.json": "de0c054a3df1fcb87ac913a1a2512c208f2071230e5f7d0773b61d99668c9c06",
+      "results/qualified-dual-default-v1/ssh-readback/client/0002.request.json": "214114b356fc23ed0ac27b7f5aabb10a7c282aab0166892bc2ccf3598f7cc892",
+      "results/qualified-dual-default-v1/ssh-readback/client/receipt.json": "435dcdddd2c73255944b47d1c5ed7972bbac1ade3c1f9ab546a81dcdb6964517",
+      "results/qualified-native-default-v1/ssh-readback/result.json": "05b271652b7cf06d85b608deadcb03817fc3bf6403abd77bbb85f6f3a7e81369",
+      "results/qualified-native-default-v1/ssh-readback/client-argv.json": "bffcfd5b58fefea5b7f66c6a1a474eab2224129db26aa56035ca5b7941eb89d0",
+      "results/qualified-native-default-v1/ssh-readback/started.json": "416563fbd5713f164adbdb4870e9ec8d75202381ff00f56e3bb3ff3a7a9762c4",
+      "results/qualified-native-default-v1/ssh-readback/argv.json": "01d7a683080508f52a968905b300a870a661a1fefd3e9c28c0c9edf88f404b89",
+      "results/qualified-native-default-v1/ssh-readback/client/0001.request.json": "b33d207e5dc1fef616de0d7880b19f35c02626d80030969421f86ba4d6663665",
+      "results/qualified-native-default-v1/ssh-readback/client/0000.request.json": "05484b6e5890056daddd17724d8d01000c47633317e65c9ce5e2bbf457be0b33",
+      "results/qualified-native-default-v1/ssh-readback/client/manifest.json": "de0c054a3df1fcb87ac913a1a2512c208f2071230e5f7d0773b61d99668c9c06",
+      "results/qualified-native-default-v1/ssh-readback/client/0002.request.json": "214114b356fc23ed0ac27b7f5aabb10a7c282aab0166892bc2ccf3598f7cc892",
+      "results/qualified-native-default-v1/ssh-readback/client/receipt.json": "d196446c09869e22bba7e6e6d03e9720de61f418c2d6bc5c74850ee2939cf2f7",
+      "results/full-target-load-v3/ssh-readback/result.json": "ec3e89b364f5feda14ebf1246479dff52bcba5bce0287cdfa7f603564cbe2b5d",
+      "results/full-target-load-v3/ssh-readback/started.json": "ddef12a4eb1014d0d0eb81d29a9db14fb40ff37d7ec90783ec68de6e7080fdad",
+      "results/full-target-load-v3/ssh-readback/readback.json": "ed42ccd5afbb989b1608cd6e047042568eb22f6221f32ee29e7a805b6a68d10f",
+      "results/full-target-load-v3/ssh-readback/argv.json": "95baa1c21e0a375c7df99792902e3876113b909070ac8576a574018cd243cce7",
+      "results/small-policy-native-v1/ssh-readback-v2/result.json": "2cba095819013ba612d8960a511f822145129bedf352ce0e01ac80efd4c47856",
+      "results/small-policy-native-v1/ssh-readback-v2/red-request.json": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+      "results/small-policy-native-v1/ssh-readback-v2/red-response.json": "25e3cbd048a83fa4e104be268414995e0f33cdb376452eeba9d58918dd122405",
+      "results/small-policy-native-v1/ssh-readback-v2/blue-request.json": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+      "results/small-policy-native-v1/ssh-readback-v2/argv.json": "aec2404d0e83d78eb625086288fbd05ab2474842165f7d6ef2264ed7634c82a1",
+      "results/small-policy-native-v1/ssh-readback-v2/blue-response.json": "899c9021172b38bfb10a82f9c6f8733ca738db242ec252814403c651144a1cc4",
+      "results/small-policy-native-v1/ssh-readback/result.json": "2cba095819013ba612d8960a511f822145129bedf352ce0e01ac80efd4c47856",
+      "results/small-policy-native-v1/ssh-readback/red-request.json": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+      "results/small-policy-native-v1/ssh-readback/red-response.json": "25e3cbd048a83fa4e104be268414995e0f33cdb376452eeba9d58918dd122405",
+      "results/small-policy-native-v1/ssh-readback/blue-request.json": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+      "results/small-policy-native-v1/ssh-readback/argv.json": "aec2404d0e83d78eb625086288fbd05ab2474842165f7d6ef2264ed7634c82a1",
+      "results/small-policy-native-v1/ssh-readback/blue-response.json": "899c9021172b38bfb10a82f9c6f8733ca738db242ec252814403c651144a1cc4",
+      "results/qualified-dual-laptop-policy-v1/ssh-readback/result.json": "8ee652ace63417de9532bd1243be9ccacf8be6d48cc748f7af102772f3f0b65b",
+      "results/qualified-dual-laptop-policy-v1/ssh-readback/client-argv.json": "45ee187d4d4c345f725499617e0801cc92d3995db03ef8556fdb205d65e00628",
+      "results/qualified-dual-laptop-policy-v1/ssh-readback/started.json": "0f78da6ee61e64ec283aababd232d8daa6bea3c1d56f1cabbfe3c91f0342f22f",
+      "results/qualified-dual-laptop-policy-v1/ssh-readback/argv.json": "c4ef8aa100bda7e6558def940fccab1614a44ff2b4ca0f4bfe829fc74a5f5f4d",
+      "results/qualified-dual-laptop-policy-v1/ssh-readback/client/0001.request.json": "b33d207e5dc1fef616de0d7880b19f35c02626d80030969421f86ba4d6663665",
+      "results/qualified-dual-laptop-policy-v1/ssh-readback/client/0000.request.json": "05484b6e5890056daddd17724d8d01000c47633317e65c9ce5e2bbf457be0b33",
+      "results/qualified-dual-laptop-policy-v1/ssh-readback/client/manifest.json": "de0c054a3df1fcb87ac913a1a2512c208f2071230e5f7d0773b61d99668c9c06",
+      "results/qualified-dual-laptop-policy-v1/ssh-readback/client/0002.request.json": "214114b356fc23ed0ac27b7f5aabb10a7c282aab0166892bc2ccf3598f7cc892",
+      "results/qualified-dual-laptop-policy-v1/ssh-readback/client/receipt.json": "3dc4f583008a1ffec9f1b12cfba6eb65b5113a6670493d70f4a8dbc3143cd8a4",
+      "results/full-target-load-v2/ssh-readback/result.json": "bb2efcf19d5c0928175e219bd4b545c28246666a32064080a53d82f782dac3e3",
+      "results/full-target-load-v2/ssh-readback/started.json": "24bf1dd8cc5556b5a085f12a8bb05d097dbc4c8a2b1f04fb870e22bef8d53615",
+      "results/full-target-load-v2/ssh-readback/readback.json": "0c96e4eea0023b9b7dc9f93636df29e57e1b4d88b5bf0bee007e8fd67bb3e03d",
+      "results/full-target-load-v2/ssh-readback/argv.json": "cc9dbbb692398fa672cc3d061ce39cf6c0bde815f4e16d9382bb3881acd175af",
+      "build-arm64/tools/ui/dist/build.json": "2c1ee143df518aadc08cf1063603bf466638cf50eb6e73be3e4940ea3be837c7",
+      "build-arm64/tools/ui/ui-gzip/_gzip/build.json": "64e8f06ab9743924d2f3ddb254957ce7f5d6ae9d8809715741f0ad031735c120",
+      "build-arm64/tools/ui/ui-gzip/_gzip/_app/version.json": "1d01e37097fb6d6155a76c2fec06f3ca8ecb5728350265b3e2f3e337e215af64",
+      "build-arm64/tools/ui/dist/_app/version.json": "6c5b988a1d5c14abda6f4d608c46426f35ea02775ecf05be7a23bb4d13bb589e"
+    },
+    "owned_sha256_before": {
+      "multimodal_contract/__init__.py": "dc33ebc3fed629d28fd9b230c03019edec78836f7ee2aeaf7bb37e01bd9fa2ca",
+      "tests/test_multimodal_contract.py": "9061dc54b9388fbb50d86ad60a5b3888578b500605725234167218834c83f929",
+      "MULTIMODAL-TDD.md": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d",
+      "multimodal_contract/README.md": "edefc2cd8c6996b20033d7606e13f913a060e79e2b02fcefb89c38843dc7efed"
+    },
+    "owned_sha256_after": {
+      "multimodal_contract/__init__.py": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+      "tests/test_multimodal_contract.py": "e52ceb63ae75aef087414e4e187d1e0a5a9ffcdb7b54b5523e54ef863e8e00c3",
+      "MULTIMODAL-TDD.md": "b2da4b82b7f56d857ca3773a6e72c1aae4d338a8e386a5121cd6969a5e914da0",
+      "multimodal_contract/README.md": "58c69d3193b1e56b311d38a5fbb3747fe98e748bb1168cc4772f2b0b9eaff8ae"
+    },
+    "root_readme_sha256_before": "f25cb25ba536cbcbb6ac5b259fa5198c91d256ac8733f3082e1e53db3af27c64",
+    "root_readme_sha256_after": "f25cb25ba536cbcbb6ac5b259fa5198c91d256ac8733f3082e1e53db3af27c64",
+    "production_outside_session_init_byte_identical": true,
+    "original_test_functions_ast_unchanged": true,
+    "tdd_history_is_byte_exact_prefix": true,
+    "static_scan_added_python_lines": {
+      "patterns": {
+        "hardcoded_credentials": "(api_key|secret|password|passwd)\\s*=\\s*[\\\"\\'][^\\\"\\']{6,}",
+        "shell_injection": "os\\.system\\(|shell\\s*=\\s*True",
+        "dynamic_execution": "\\b(eval|exec)\\(",
+        "unsafe_deserialization": "pickle\\.loads?\\(",
+        "sql_interpolation": "execute\\(f[\\\"\\']"
+      },
+      "findings": [],
+      "independent_review": false
+    }
+  },
+  "exact_executions_in_recorded_order": [
+    {
+      "label": "RED-REPAIR-1",
+      "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py::test_config_sha256_mutable_zero_dimensional_array_rejected_at_admission -q --tb=short",
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac",
+        "TMPDIR": "/Users/jeremylien/.hermes/cache/scratch"
+      },
+      "exit_code": 1,
+      "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___ test_config_sha256_mutable_zero_dimensional_array_rejected_at_admission ____\ntests/test_multimodal_contract.py:352: in test_config_sha256_mutable_zero_dimensional_array_rejected_at_admission\n    with pytest.raises(ValueError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_multimodal_contract.py::test_config_sha256_mutable_zero_dimensional_array_rejected_at_admission\n1 failed in 0.06s\noffline socket guard enabled; model runtime imports: NONE\n",
+      "stderr": "",
+      "owned_sha256": {
+        "multimodal_contract/__init__.py": "dc33ebc3fed629d28fd9b230c03019edec78836f7ee2aeaf7bb37e01bd9fa2ca",
+        "tests/test_multimodal_contract.py": "556e89d9175a6c73d03dbda37c54a699f58d257b9876633f22f2d39f38bb7d9d",
+        "MULTIMODAL-TDD.md": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d",
+        "multimodal_contract/README.md": "edefc2cd8c6996b20033d7606e13f913a060e79e2b02fcefb89c38843dc7efed"
+      }
+    },
+    {
+      "label": "GREEN-REPAIR-1",
+      "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py -q --tb=short",
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac",
+        "TMPDIR": "/Users/jeremylien/.hermes/cache/scratch"
+      },
+      "exit_code": 0,
+      "stdout": "................................................................         [100%]\n64 passed in 0.07s\noffline socket guard enabled; model runtime imports: NONE\n",
+      "stderr": "",
+      "owned_sha256": {
+        "multimodal_contract/__init__.py": "678fb9b34b49678fb8a5a78ae383c7824b61ad14d0a359adfbaf0f9899e877e6",
+        "tests/test_multimodal_contract.py": "556e89d9175a6c73d03dbda37c54a699f58d257b9876633f22f2d39f38bb7d9d",
+        "MULTIMODAL-TDD.md": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d",
+        "multimodal_contract/README.md": "edefc2cd8c6996b20033d7606e13f913a060e79e2b02fcefb89c38843dc7efed"
+      }
+    },
+    {
+      "label": "RED-REPAIR-2",
+      "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py::test_session_retains_fresh_canonical_request_without_changing_positions_or_cursor -q --tb=short",
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac",
+        "TMPDIR": "/Users/jeremylien/.hermes/cache/scratch"
+      },
+      "exit_code": 1,
+      "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_ test_session_retains_fresh_canonical_request_without_changing_positions_or_cursor _\ntests/test_multimodal_contract.py:364: in test_session_retains_fresh_canonical_request_without_changing_positions_or_cursor\n    assert session.request is not request\nE   AssertionError: assert Request(request_id='canonical', token_ids=(7, 248053, 248056, 248056, 248056, 248056, 248056, 248056, 248054, 9), posi...0\\x00\\x00', delta=-3, grid=(1, 4, 6), config_sha256='14b65a0ee06517060a6bbd979bb1a8ff54e7b304b1a1f01d54344b88b8285e85') is not Request(request_id='canonical', token_ids=(7, 248053, 248056, 248056, 248056, 248056, 248056, 248056, 248054, 9), posi...0\\x00\\x00', delta=-3, grid=(1, 4, 6), config_sha256='14b65a0ee06517060a6bbd979bb1a8ff54e7b304b1a1f01d54344b88b8285e85')\nE    +  where Request(request_id='canonical', token_ids=(7, 248053, 248056, 248056, 248056, 248056, 248056, 248056, 248054, 9), posi...0\\x00\\x00', delta=-3, grid=(1, 4, 6), config_sha256='14b65a0ee06517060a6bbd979bb1a8ff54e7b304b1a1f01d54344b88b8285e85') = <multimodal_contract.Session object at 0x10881ee40>.request\n=========================== short test summary info ============================\nFAILED tests/test_multimodal_contract.py::test_session_retains_fresh_canonical_request_without_changing_positions_or_cursor\n1 failed in 0.07s\noffline socket guard enabled; model runtime imports: NONE\n",
+      "stderr": "",
+      "owned_sha256": {
+        "multimodal_contract/__init__.py": "678fb9b34b49678fb8a5a78ae383c7824b61ad14d0a359adfbaf0f9899e877e6",
+        "tests/test_multimodal_contract.py": "2f74883da8f6302bdf9ad1005d49efd1052793b183a82de42bb45f4994061837",
+        "MULTIMODAL-TDD.md": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d",
+        "multimodal_contract/README.md": "edefc2cd8c6996b20033d7606e13f913a060e79e2b02fcefb89c38843dc7efed"
+      }
+    },
+    {
+      "label": "GREEN-REPAIR-2",
+      "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py -q --tb=short",
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac",
+        "TMPDIR": "/Users/jeremylien/.hermes/cache/scratch"
+      },
+      "exit_code": 0,
+      "stdout": ".................................................................        [100%]\n65 passed in 0.07s\noffline socket guard enabled; model runtime imports: NONE\n",
+      "stderr": "",
+      "owned_sha256": {
+        "multimodal_contract/__init__.py": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+        "tests/test_multimodal_contract.py": "2f74883da8f6302bdf9ad1005d49efd1052793b183a82de42bb45f4994061837",
+        "MULTIMODAL-TDD.md": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d",
+        "multimodal_contract/README.md": "edefc2cd8c6996b20033d7606e13f913a060e79e2b02fcefb89c38843dc7efed"
+      }
+    },
+    {
+      "label": "GREEN-REPAIR-REGRESSIONS",
+      "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py -k 'config_sha256 or retains_fresh' -q --tb=short",
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac",
+        "TMPDIR": "/Users/jeremylien/.hermes/cache/scratch"
+      },
+      "exit_code": 0,
+      "stdout": ".........                                                                [100%]\n9 passed, 63 deselected in 0.06s\noffline socket guard enabled; model runtime imports: NONE\n",
+      "stderr": "",
+      "owned_sha256": {
+        "multimodal_contract/__init__.py": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+        "tests/test_multimodal_contract.py": "731c459b2443145e85ff600f15e57c6fff391592916f588aeb0a000c0a5347af",
+        "MULTIMODAL-TDD.md": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d",
+        "multimodal_contract/README.md": "edefc2cd8c6996b20033d7606e13f913a060e79e2b02fcefb89c38843dc7efed"
+      }
+    },
+    {
+      "label": "FINAL-REPAIR-FOCUSED",
+      "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py -q --tb=short",
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac",
+        "TMPDIR": "/Users/jeremylien/.hermes/cache/scratch"
+      },
+      "exit_code": 0,
+      "stdout": "........................................................................ [100%]\n72 passed in 0.08s\noffline socket guard enabled; model runtime imports: NONE\n",
+      "stderr": "",
+      "owned_sha256": {
+        "multimodal_contract/__init__.py": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+        "tests/test_multimodal_contract.py": "731c459b2443145e85ff600f15e57c6fff391592916f588aeb0a000c0a5347af",
+        "MULTIMODAL-TDD.md": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d",
+        "multimodal_contract/README.md": "edefc2cd8c6996b20033d7606e13f913a060e79e2b02fcefb89c38843dc7efed"
+      }
+    },
+    {
+      "label": "REPAIR-RUFF-CHECK",
+      "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m ruff check --no-cache multimodal_contract tests/test_multimodal_contract.py",
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac",
+        "TMPDIR": "/Users/jeremylien/.hermes/cache/scratch"
+      },
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": "",
+      "owned_sha256": {
+        "multimodal_contract/__init__.py": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+        "tests/test_multimodal_contract.py": "731c459b2443145e85ff600f15e57c6fff391592916f588aeb0a000c0a5347af",
+        "MULTIMODAL-TDD.md": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d",
+        "multimodal_contract/README.md": "edefc2cd8c6996b20033d7606e13f913a060e79e2b02fcefb89c38843dc7efed"
+      }
+    },
+    {
+      "label": "REPAIR-RUFF-FORMAT",
+      "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m ruff format --check --no-cache multimodal_contract tests/test_multimodal_contract.py",
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac",
+        "TMPDIR": "/Users/jeremylien/.hermes/cache/scratch"
+      },
+      "exit_code": 1,
+      "stdout": "unformatted: File would be reformatted\n   --> tests/test_multimodal_contract.py:421:37\n    |\n420 |\n    -     request = api().prepare_request(image_ids(), request_id=\"config-types\", grid=(1, 4, 6))\n421 +     request = api().prepare_request(\n422 +         image_ids(), request_id=\"config-types\", grid=(1, 4, 6)\n423 +     )\n424 |     payloads = {\n    |\n\n1 file would be reformatted, 2 files already formatted\n",
+      "stderr": "",
+      "owned_sha256": {
+        "multimodal_contract/__init__.py": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+        "tests/test_multimodal_contract.py": "731c459b2443145e85ff600f15e57c6fff391592916f588aeb0a000c0a5347af",
+        "MULTIMODAL-TDD.md": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d",
+        "multimodal_contract/README.md": "edefc2cd8c6996b20033d7606e13f913a060e79e2b02fcefb89c38843dc7efed"
+      }
+    },
+    {
+      "label": "FINAL-REPAIR-REGRESSIONS",
+      "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py -k 'config_sha256 or retains_fresh' -q --tb=short",
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac",
+        "TMPDIR": "/Users/jeremylien/.hermes/cache/scratch"
+      },
+      "exit_code": 0,
+      "stdout": ".........                                                                [100%]\n9 passed, 63 deselected in 0.07s\noffline socket guard enabled; model runtime imports: NONE\n",
+      "stderr": "",
+      "owned_sha256": {
+        "multimodal_contract/__init__.py": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+        "tests/test_multimodal_contract.py": "e52ceb63ae75aef087414e4e187d1e0a5a9ffcdb7b54b5523e54ef863e8e00c3",
+        "MULTIMODAL-TDD.md": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d",
+        "multimodal_contract/README.md": "58c69d3193b1e56b311d38a5fbb3747fe98e748bb1168cc4772f2b0b9eaff8ae"
+      }
+    },
+    {
+      "label": "FINAL-REPAIR-FOCUSED-AFTER-FORMAT",
+      "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py -q --tb=short",
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac",
+        "TMPDIR": "/Users/jeremylien/.hermes/cache/scratch"
+      },
+      "exit_code": 0,
+      "stdout": "........................................................................ [100%]\n72 passed in 0.08s\noffline socket guard enabled; model runtime imports: NONE\n",
+      "stderr": "",
+      "owned_sha256": {
+        "multimodal_contract/__init__.py": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+        "tests/test_multimodal_contract.py": "e52ceb63ae75aef087414e4e187d1e0a5a9ffcdb7b54b5523e54ef863e8e00c3",
+        "MULTIMODAL-TDD.md": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d",
+        "multimodal_contract/README.md": "58c69d3193b1e56b311d38a5fbb3747fe98e748bb1168cc4772f2b0b9eaff8ae"
+      }
+    },
+    {
+      "label": "FINAL-REPAIR-RUFF-CHECK",
+      "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m ruff check --no-cache multimodal_contract tests/test_multimodal_contract.py",
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac",
+        "TMPDIR": "/Users/jeremylien/.hermes/cache/scratch"
+      },
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": "",
+      "owned_sha256": {
+        "multimodal_contract/__init__.py": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+        "tests/test_multimodal_contract.py": "e52ceb63ae75aef087414e4e187d1e0a5a9ffcdb7b54b5523e54ef863e8e00c3",
+        "MULTIMODAL-TDD.md": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d",
+        "multimodal_contract/README.md": "58c69d3193b1e56b311d38a5fbb3747fe98e748bb1168cc4772f2b0b9eaff8ae"
+      }
+    },
+    {
+      "label": "FINAL-REPAIR-RUFF-FORMAT",
+      "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m ruff format --check --no-cache multimodal_contract tests/test_multimodal_contract.py",
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac",
+        "TMPDIR": "/Users/jeremylien/.hermes/cache/scratch"
+      },
+      "exit_code": 0,
+      "stdout": "3 files already formatted\n",
+      "stderr": "",
+      "owned_sha256": {
+        "multimodal_contract/__init__.py": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+        "tests/test_multimodal_contract.py": "e52ceb63ae75aef087414e4e187d1e0a5a9ffcdb7b54b5523e54ef863e8e00c3",
+        "MULTIMODAL-TDD.md": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d",
+        "multimodal_contract/README.md": "58c69d3193b1e56b311d38a5fbb3747fe98e748bb1168cc4772f2b0b9eaff8ae"
+      }
+    },
+    {
+      "label": "REPAIR-SCOPE-AND-STATIC-SCAN",
+      "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_inspect.py",
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac",
+        "TMPDIR": "/Users/jeremylien/.hermes/cache/scratch"
+      },
+      "exit_code": 0,
+      "stdout": "{\n  \"snapshot_existing_files\": 5470,\n  \"checked_existing_files\": 5470,\n  \"changed_existing_files\": [\n    \"MULTIMODAL-TDD.md\",\n    \"multimodal_contract/README.md\",\n    \"multimodal_contract/__init__.py\",\n    \"tests/test_multimodal_contract.py\"\n  ],\n  \"removed_existing_files\": [],\n  \"added_files\": [],\n  \"unexpected_changed_files\": [],\n  \"unexpected_added_files\": [],\n  \"historical_json_checked\": 198,\n  \"historical_json_changed_or_missing\": [],\n  \"historical_json_sha256_before\": {\n    \"full-target-assets.json\": \"7bf094f3340f5290c8137f416401675720ec984b07dce8e17f4d934bc3e7ffa3\",\n    \"qualification-assets.json\": \"6fb820ef14657483f1d1f4e4422eec526a53380c2dab76f5f3a7cfedc1768c99\",\n    \"build-arm64/compile_commands.json\": \"186a0b26f72b6a1ad76bfb752a5dff6213b5334883e6c6e0e161aa7e3df569d2\",\n    \"results/mlx-vision-contract-independent-review.json\": \"8f4f61da9d53bb24b81246253519453645e7f08a6845dc8607ba43822f7810fa\",\n    \"results/small-vision-proof-review.json\": \"f31236271e856ac34a86ed09d2836db4781f4670ff43edb2df86ef426bb582aa\",\n    \"results/qualification-client-cpu-approval.json\": \"be63451f33fec8e8e4f05dfbb8dcb25f8cfff97f2cf71b03676c74e53c25e7b7\",\n    \"results/mlx-vision-contract-parent-failure-reproduction.json\": \"ffc0bd700161037258c76087488bd692c7f9a11892dd39b49db3ba90c0136e09\",\n    \"results/qualification-mini-deployment-controller.json\": \"c5e4b23f1fcbc9ceb2e2c06afc816b2859ce66fda332ea6fa1bcc8025e925436\",\n    \"results/qualification-client-fix-parent-verification.json\": \"66b4f187de7c364642a9401e42dfcbc2b2093876e8df917c94bff5a9ec6be68a\",\n    \"results/mlx-vision-contract-parent-verification.json\": \"0ee2e17c2d247d429cd16316b125955b64f14808bd3f6e943734bf8809b7308d\",\n    \"results/qualification-client-independent-review-v2.json\": \"6d2543ed73c855ab0104a25470e0e9c235d94d54fffa2fa04e89148b68922782\",\n    \"results/small-vision-independent-audit.json\": \"d8695f1fce7b64396197119bd7a81194472ba283cb3f2872ad8b5d55e777d666\",\n    \"results/mlx-vision-contract-cpu.json\": \"0e6901ec6e659f2832fb24d89fe652172feff442f305e46f9df4f5b415c88409\",\n    \"results/qualification-client-independent-review.json\": \"90d735e8e50a9e64fa2759a42ac7253a7dc9320bc5d0fe79791ec3a07b77114c\",\n    \"build-api-arm64/compile_commands.json\": \"a776a2023a154b1c1dd664bbdf7c1ba34110417807d58ca69a0666d6f8384f75\",\n    \"qualification/verification.json\": \"3d0fd3178e6115c73af75fdffb9032877da30f9364486950f28486b0a6f0dbfe\",\n    \"upstream/llama.cpp/pyrightconfig.json\": \"1b481b0aa0ddb2990ef34d5defa9375e39ccad183092f24c830d5fde30134891\",\n    \"upstream/llama.cpp/CMakePresets.json\": \"cc1209d3ede32fd9697c4ceb6e1026298317073830cbcb4d1e9489ddd63c395a\",\n    \"upstream/llama.cpp/.gemini/settings.json\": \"f1b9274d3ea1098f314639c0443048ffdfdc906a5aaa90e3291f596c32b40ac0\",\n    \"upstream/llama.cpp/benches/dgx-spark/aime25_openai__gpt-oss-120b-high_temp1.0_20251109_094547.json\": \"ef2c867e05989afc4d9a033dbac55d3f8cd1b4ad9a70f53aa94fd76f8eb7a059\",\n    \"upstream/llama.cpp/benches/dgx-spark/aime25_openai__gpt-oss-120b-high_temp1.0_20251109_094547_allresults.json\": \"0ce07eb00561b082aa4d0cddb32c5287a28c193825df1c7954278c5811886bf9\",\n    \"upstream/llama.cpp/examples/llama.swiftui/llama.swiftui/Assets.xcassets/Contents.json\": \"0fd49ba3c3585c709678e0046a821c3c60685ec7063720d30d3a3448be3a208b\",\n    \"upstream/llama.cpp/examples/llama.swiftui/llama.swiftui/Assets.xcassets/AppIcon.appiconset/Contents.json\": \"554c06afb2bf81e3af423161e55281ea25575759a2d2d8c63229d4981d89bd0b\",\n    \"upstream/llama.cpp/docs/backend/snapdragon/CMakeUserPresets.json\": \"ab9bc3f7b69d213fd3043b056dbea5d12d67d917850f0060dfaee4513cc99573\",\n    \"upstream/llama.cpp/tools/ui/package-lock.json\": \"075ed9d0b6228075615f82becfbbcafa20015c65aa0179c339bc6de8f058550a\",\n    \"upstream/llama.cpp/tools/ui/package.json\": \"46705a2245fcb5d24aee673f17560c496fbb68358b8f2694b6d234ef05662dcb\",\n    \"upstream/llama.cpp/tools/ui/components.json\": \"27a9b84e4e065634e504813b9296d6cf2dd0cbab1844f7213ee12e001ea51a25\",\n    \"upstream/llama.cpp/tools/ui/tsconfig.json\": \"355feca23bac5d563d1d7dd35753ea7e40fed7a8395465037f76e05e70faa38a\",\n    \"upstream/llama.cpp/tools/ui/src/lib/vendors/package.json\": \"5f0740ca9e4c4a7b3feb2979cc2558e9772c0f4e48148cce1b11847b7afae738\",\n    \"qualification/fixtures/public-cases.json\": \"de0c054a3df1fcb87ac913a1a2512c208f2071230e5f7d0773b61d99668c9c06\",\n    \"results/full-target-load-v2/sources.json\": \"593bd5c408ba559fbd69253c1c9ae0a9f28fb4f39d9e6c1153aefabd105fca09\",\n    \"results/full-target-load-v2/residency-primary-sources.json\": \"7faf575f9d721b9078382e44ceb57e3473c8ed992149de8e9e2c21ab619647d1\",\n    \"results/full-target-load-v2/rpc-argv.json\": \"184cb2a3000f77986a54fb7516c7717249ea095973537cbf7bea5eee8af2f36e\",\n    \"results/full-target-load-v2/residency-review-delivered-summary.json\": \"0b41af178ccdc2f8a66cea2791e3c0dac723dd12712d760137230ee99dddc224\",\n    \"results/full-target-load-v2/postcleanup.json\": \"cfb974f88fb4f70d94de00378d5785b798b8f5a3577445e8b67d5fca3ee52971\",\n    \"results/full-target-load-v2/admitted-config.json\": \"7fdf10d3c274b999b7f65c63376be1d32ff86cf6090cdd6e6e7c9c7530d6e43d\",\n    \"results/full-target-load-v2/rpc-started.json\": \"9f4790325a3556a05e7967ca5cb9d15426ac75d14400587c7543389a0988110f\",\n    \"results/full-target-load-v2/local-result.json\": \"5c00f4b1d5b080b7a66327015f846a101edc099aa8894182143647d3ddea819e\",\n    \"results/qualified-dual-laptop-policy-v1/remote-readback.json\": \"0a6d671744820133c507959b325eec27ac119ee90cc0218e1782c84210377596\",\n    \"results/qualified-dual-laptop-policy-v1/rpc-argv.json\": \"bdbae6b8ccbb46c5ac57a05c4707f92aabb802d85287189b1e1fc515b587cc78\",\n    \"results/qualified-dual-laptop-policy-v1/comparison.json\": \"53a4c6984db834c0d946aea67edc144baf9340e7831c8f2c15757b1099ee9fec\",\n    \"results/qualified-dual-laptop-policy-v1/audit-parent-binding.json\": \"6ec5520bcd88f0b95e4a202b46f3c83155f07537ae0f9c0e0e3953f5026568fb\",\n    \"results/qualified-dual-laptop-policy-v1/independent-audit.json\": \"50fe4bc1c434586b0cbb3b9ce9d12df43776ea2d973aa1ec2fe2d376e13ea61a\",\n    \"results/qualified-dual-laptop-policy-v1/postcleanup.json\": \"7b7845d60bdcb2100fc7d6a4a52ff825d3f0fc72ac8f1ecc602cd33472ac508f\",\n    \"results/qualified-dual-laptop-policy-v1/admitted-config.json\": \"16e369a1997511410943ca12dc65ac343e9b1a3d7d29fb072b8eeda27edfe921\",\n    \"results/qualified-dual-laptop-policy-v1/rpc-started.json\": \"1540843cb25a269b82585b1fbe90a2d54cfc735d6511e0e16e42b786cc344bb0\",\n    \"results/qualified-dual-laptop-policy-v1/local-result.json\": \"4ba9f1b5a76cadc12c84858e492a92c6e8bd213f9dae5a746082467909c158a9\",\n    \"results/small-policy-native-v1/admitted-config.json\": \"686b03d02161b8bc2fa31e46ef72f462b97b383ce70a7ffc8def1a1187b9bc1a\",\n    \"results/full-target-load-v3/rpc-argv.json\": \"0548375716bd6c7940b3b9d7cfb870719153852773613d4811eff437e0d33c91\",\n    \"results/full-target-load-v3/architecture-decision.json\": \"3c3bcf0fd4042a92a9f1859034d50efb0bab0e8e01b75da14a4ef20245f239e9\",\n    \"results/full-target-load-v3/postcleanup.json\": \"2d681beff8d256ad8bb9272d7932818e135ee1235a6653b1f0ecf88a2d88dc98\",\n    \"results/full-target-load-v3/rpc-memory-architecture-review.json\": \"070791e8871bc771a624bb5535b9f6bf54cf28a53ff3535b5a40fcfa746cccf0\",\n    \"results/full-target-load-v3/admitted-config.json\": \"53577efefab081a4382ab90cbf049e6e1d707fbe028c2b00ceb432d8c351417b\",\n    \"results/full-target-load-v3/transfer-progress.json\": \"6b98066522230c4be9ed77b4606a0afad26a771e182a5b1cfbff1e33007e2052\",\n    \"results/full-target-load-v3/rpc-started.json\": \"e5400eb02f4ca7c0c0e98124ae946fe36a5c9df78ad71f878880eeeca049deeb\",\n    \"results/full-target-load-v3/local-result.json\": \"ff0a4a61b71f5423b5616d913263d0c15de0dc6b7222f19b14d3a464360de59e\",\n    \"results/qualified-native-default-v1/admitted-config.json\": \"c89ed0f4eb166cdbc95e250ad0ac796721aa37d5aabe78e22e2cb90e205ec721\",\n    \"results/qualified-dual-default-v1/rpc-argv.json\": \"44f7747805dbe8fdb52fd9373afb29cd4c3bd09fe1ebd150a42eaf8eb7ee2004\",\n    \"results/qualified-dual-default-v1/admitted-config.json\": \"c210f41cba32f288c83e43c1ed3fd568bc37119bf97daf10585dfde313b078f6\",\n    \"results/qualified-dual-default-v1/rpc-started.json\": \"247d9a12334049d97f2fd8d084e6079f70ae68cc8666e31878dde642c9d525c5\",\n    \"results/qualified-dual-default-v1/local-result.json\": \"c20b6386d76241b74659a9d6cd0ac7e0255b863f1a646b6ccf4df1ffc72b48c9\",\n    \"results/mlx-vision-admission/retained-weight-readback.json\": \"38e9aa04a22b58e957011bdc4bdd097653a4a1a306bbf29cbda34bbc44cf4a56\",\n    \"results/mlx-vision-admission/trusted-preflight-inventory.json\": \"d0996b2023760e7370b939be8509e3091dfc0c9b8b9357c6fc5c01b14ba81d25\",\n    \"results/mlx-vision-admission/verification-controller-v1.json\": \"f497531bc4748f0b5e0c463dba6ccb6a4f2cd5b0acdc87e9ae2c171be2fdb107\",\n    \"results/mlx-vision-admission/retained-weight-readback-binding.json\": \"e65e457067b5e58d67743c897c07dd3554fdb4e8ac7adb9be5071f29305765c5\",\n    \"results/mlx-vision-admission/readback-admission.json\": \"3827166d21cea9e87965c51995528d789e3064575a333cca5316a022c6ae324d\",\n    \"results/rpc-allocation-64m-v1/rpc-argv.json\": \"47b978c55af4bb3d32b87c3c93f99329425b6f04b772f3a2bafba02b8c3e5575\",\n    \"results/rpc-allocation-64m-v1/admitted-config.json\": \"82026a51a7870236f59ce653271ddcd6419594dd2bfa2a17da5fdeddda0f3446\",\n    \"results/rpc-allocation-64m-v1/rpc-started.json\": \"f253cec022a1980d60889d20d7df2740754ccb44ec7f8aa75284205a9e7dc6f0\",\n    \"results/rpc-allocation-64m-v1/local-result.json\": \"2b98589fe7b8e6ba958bc8a9ca98f44d004403a6c24e4f602f1bcd211ce66564\",\n    \"results/rpc-connectivity-diagnostic-v1/result.json\": \"ac24d5a47080805cbb42112938ffb0019e1fe559988fb7daf19c2a1cfca4ec6b\",\n    \"results/small-dual-vision-v1/remote-controller-output.json\": \"1eebe6ef9a6c06c5a0484b79cfc9a5af4ded5bba50de2eee0b3cd72e671fb295\",\n    \"results/small-dual-vision-v1/local-rpc-receipt.json\": \"f1155e9af290e3248928fc12b936950041bcb3a66e30418266c6d0e72b1c2e51\",\n    \"results/full-target-load-v1/cpu-root-cause-review.json\": \"4fe268891ccffcb5a6e7080581e46369ba620dfdefe7a7d98932ea7eac4a413c\",\n    \"results/full-target-load-v1/rpc-argv.json\": \"ea24a6fdd6b8a466fa1c6d74bbf06a71943cc37179a7f94c70f60d5362a69795\",\n    \"results/full-target-load-v1/postcleanup.json\": \"46391643cc67758bf8c9f1fe7f44250d3f61e05f03b5c1c41a1d573a7f454747\",\n    \"results/full-target-load-v1/admitted-config.json\": \"4837632b7d12eb873a665e33c0d8f68b2fc1f7dbc4894af2f812ffdd0277a57c\",\n    \"results/full-target-load-v1/rpc-started.json\": \"8979740a00769ee6229a2218c6c068c9c0e0ecb41b17fc78b249fd1e9b50df00\",\n    \"results/full-target-load-v1/local-result.json\": \"ac4256ff1cc6b8fcfb05b9f70b05906bfcff199f8028a4980cca2b76d8d8c073\",\n    \"results/small-native-vision-v1/inputs.json\": \"2359949743998240be32a839f02564d31995f32df002e991798984453da05887\",\n    \"results/full-target-admission/qualification-snapshot-payload.json\": \"ab7822120972c1639903c906421b86cbec903ec3400f36fea7d0dfa569a43662\",\n    \"results/full-target-admission/load-v3-proposal.json\": \"d3bdf4f9ab2f443342d8bc25a5cccb68fb5b593f5589a561b37a0632c4079d2a\",\n    \"results/full-target-admission/load-preflight-v2.json\": \"e014bf64bc719bd6aa7c803b189b4d9e2d0adb1a4983c14b4b6def906bfcae0f\",\n    \"results/full-target-admission/source-placement-reconciliation.json\": \"0c5f3276475522476ca4af641adedcb399e51a2cfb199d60652e679ce8ee078b\",\n    \"results/full-target-admission/small-policy-preflight-v1.json\": \"d54456a87f933b7ea2e98ad7c4a175faec1faaee3aea8449e18b461ebb9464d4\",\n    \"results/full-target-admission/load-preflight-v3.json\": \"3eda68869745ccdf3ffb7e24f9e64fafff300750f64ab17ffd0375b1d459a2a0\",\n    \"results/full-target-admission/allocation-64m-admission-hold.json\": \"fa0b552d4d637c0a336e8f208f83e3d4e5aa1fb6b776dcd4138f63230aa2c471\",\n    \"results/full-target-admission/q4-header-budget.json\": \"7020c052bc8281cc7283be9129d854453a1b3863b46d88c38ae87c1df70062a7\",\n    \"results/full-target-admission/laptop-build-snapshot.json\": \"70c25632889f8d83befa127ecd037369f73ce749ce3c4387bb41f67a566c23b2\",\n    \"results/full-target-admission/q4-capacity-plan.json\": \"f867dad9770f619836a9d1b5de0112150699ce02662dd335707fa89095efb3f5\",\n    \"results/full-target-admission/allocation-64m-preflight-v2.json\": \"ec4c280ecbb53fc7a874f8738b22cce222aaeb3ff2bc0165e312f38b45ea7a2d\",\n    \"results/full-target-admission/provision-readback.json\": \"925041e4e8e8f748b3cdfe35d7bf608d9c77c550de93ba4b8f42143361101685\",\n    \"results/full-target-admission/qualified-policy-preflight-v1.json\": \"f1a2b43cdac85c1cf2696641cf7112e7fba93abcdd8e7f676d643b6b77fdd098\",\n    \"results/full-target-admission/system-footprint-query.json\": \"eed0ae437a2b266f5b061d4769df62037c410a30be95b0b9d8d49d5bfd0fdb20\",\n    \"results/full-target-admission/load-v2-proposal.json\": \"6e63b064cbc3c5d5c9722083967ff90fd329efa87a5e9d24c3313fabf8ee694b\",\n    \"results/full-target-admission/mini-build-snapshot.json\": \"659bbe82052f8d0702c1f92eebd6c988ce23b3eb7a9a895fe940e2aaba69ed5b\",\n    \"results/full-target-admission/load-preflight-v1.json\": \"efbe18251e6cde76267977f36d28967f0d005def286d87ad9c8a06afb2b0773e\",\n    \"results/small-policy-dual-v1/rpc-argv.json\": \"aec5a638a3825e5b128970fe5da74590d980276ed09d001f7e733a255c425ddf\",\n    \"results/small-policy-dual-v1/comparison.json\": \"5d5b77dd44d3be08eae56df337a65120811acd2a85570c1e3c219a3c5fcaf6fa\",\n    \"results/small-policy-dual-v1/readback-comparison-inputs.json\": \"68c4237334f7397eb9095d53af09d862e895c29aecf919dc5bd0b982ec169ebd\",\n    \"results/small-policy-dual-v1/postcleanup.json\": \"45fe66027b49dc6bf9500d41fd342fac59cd54d6bb4ccd41728c627ca56ad932\",\n    \"results/small-policy-dual-v1/admitted-config.json\": \"0b219305d43ca2a338fdb49b7e2efd40ec098a8a1bf9af38697d256701c6b588\",\n    \"results/small-policy-dual-v1/rpc-started.json\": \"d1d8c35a2590b62ecff30f3ed8542540bc13397261f79a0779d68bd1430bc84d\",\n    \"results/small-policy-dual-v1/local-result.json\": \"68e3a98a93161b9973e682b6672db17b7aedb67504336bd9e4c805b1c5c36206\",\n    \"results/small-dual-vision-v2/remote-controller-output.json\": \"c30bc9fa64c38975ee84fb8b8d4c9b2a11f8132f38fb0e5b2dfd73d445475a24\",\n    \"results/small-dual-vision-v2/local-rpc-receipt.json\": \"0ec5d726e365e3fe7b8d518611a2b133d65d733ecb3e5a7eec387c62d69359ae\",\n    \"results/small-dual-vision-v3/remote-controller-output.json\": \"efdd9e85a2f7e2efa218d58e11c9d983ce64d63268f7ef9a448d31a844f6a99e\",\n    \"results/small-dual-vision-v3/local-rpc-receipt.json\": \"1d4da27ef01189d2e1aaeb5f157c49c39ab774151b1ad0fc0b26efe8b974987b\",\n    \"results/small-dual-vision-v4/remote-controller-output.json\": \"e2bcc041b08614d155241d4c7d410870732323ddaeaa84b0c82290086dd4f900\",\n    \"results/small-dual-vision-v4/local-rpc-receipt.json\": \"06edb76169128d475d9f20c45525e6239ca9692e624f0be09f142d28a0be5d74\",\n    \"results/small-dual-vision-v4/ssh-readback/result.json\": \"7475a1dfe9fa54f98bc040c63c0fb70020d00a6bc333e19109c7fcabd82c1321\",\n    \"results/small-dual-vision-v4/ssh-readback/red-request.json\": \"7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290\",\n    \"results/small-dual-vision-v4/ssh-readback/red-response.json\": \"62242b0d91640a13723f852c8f5061ad85d4b0c01aa859bbdff88ff3a3d567f3\",\n    \"results/small-dual-vision-v4/ssh-readback/blue-request.json\": \"0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc\",\n    \"results/small-dual-vision-v4/ssh-readback/argv.json\": \"56d06b102ebe3aa9c63ae1ec1edfe57871b4a2b9ca42dc6b73c5b216df8ce044\",\n    \"results/small-dual-vision-v4/ssh-readback/blue-response.json\": \"e65a757827c551803487b430fc611bd25635473723887187fa62eb6e148eaded\",\n    \"results/small-dual-vision-v3/ssh-readback/result.json\": \"0373417dc0ae0e682ed0e61b4b993c6e3099d2804c83dde18ca267e8c80eb325\",\n    \"results/small-dual-vision-v3/ssh-readback/argv.json\": \"24ba91be5ae4d0a2a2b299ef34595a38350838f33af3a8b587de59cb0134bed7\",\n    \"results/small-policy-dual-v1/ssh-readback-v2/result.json\": \"440667f9b3c5a26db8b2ded280d5f1dac6223d6f827684e335df23a5c2cc7690\",\n    \"results/small-policy-dual-v1/ssh-readback-v2/red-request.json\": \"7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290\",\n    \"results/small-policy-dual-v1/ssh-readback-v2/red-response.json\": \"598a6ff2a366366c861fe513263cd077eb1c9e032eab86320fcd13f083694411\",\n    \"results/small-policy-dual-v1/ssh-readback-v2/blue-request.json\": \"0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc\",\n    \"results/small-policy-dual-v1/ssh-readback-v2/argv.json\": \"92c8fa77e58349bc7f73e299f4e2e09ddea3ee8529791af2ef3f3f9499ed93a7\",\n    \"results/small-policy-dual-v1/ssh-readback-v2/blue-response.json\": \"359211c77ad78d558b06bfe650227ad1ffbb5c050169e7e5958846cb19330fa4\",\n    \"results/full-target-admission/inputs/public-cases.json\": \"dc4190da0e1d870830cc7c4cc21620f6f500dc5ce8f06fd294c7b488d3e75965\",\n    \"results/full-target-admission/inputs/semantic-expectations.json\": \"5a90b5e6ea7d4efe252692a625f35f5e2399ce6b79436a1cfb3422766dd987a9\",\n    \"results/small-native-vision-v1/ssh-readback/result.json\": \"ef332eab664cd303d60ad70c18b18217d0a4d25f986d8f27846edcb170671347\",\n    \"results/small-native-vision-v1/ssh-readback/red-request.json\": \"7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290\",\n    \"results/small-native-vision-v1/ssh-readback/red-response.json\": \"bafbe87092f2de9b54a6d035a80fef05cb6b51a99d0026bb6261ed3188f945e5\",\n    \"results/small-native-vision-v1/ssh-readback/blue-request.json\": \"0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc\",\n    \"results/small-native-vision-v1/ssh-readback/argv.json\": \"551826d9162e98e340267625faa0de2ce7db8595c5625c4abaebde89892e7034\",\n    \"results/small-native-vision-v1/ssh-readback/blue-response.json\": \"5384a43cc8216880aee59cd0c53ccbb763775e464f499b73b9f9dbc334fca208\",\n    \"results/full-target-load-v1/ssh-readback/result.json\": \"dcfe9e0a12633a239dfdd3ff6cae194fb62ecff2803bc650fbaf66d8aa17c667\",\n    \"results/full-target-load-v1/ssh-readback/started.json\": \"10af8dbf9f5addcb64bb1dc9546894d3c9284b417c4ef925f6089eebd58d07eb\",\n    \"results/full-target-load-v1/ssh-readback/readback.json\": \"2c1639e4232b16f827db3ec461b9bee46d8c7e3bd3530b18e40bd1c2ecfb70a8\",\n    \"results/full-target-load-v1/ssh-readback/argv.json\": \"61394635a634b1b376214eff4ec5166376d9b77f8f86b5462b74faefb5e8ac2f\",\n    \"results/rpc-allocation-64m-v1/ssh-readback/result.json\": \"aa9ae65a290e956d0bf19035b3fad1a15c8ba73bb0197e8e2abea0da92bf2e37\",\n    \"results/rpc-allocation-64m-v1/ssh-readback/1-before_alloc.json\": \"0aec121892f92fa99e3a0e8f223ad76b7d0b211ccb5736d3051a7baaac812d05\",\n    \"results/rpc-allocation-64m-v1/ssh-readback/readback.json\": \"d0623191076d887785eb8aaada3e9d2bb7d138a42e220348f18449bac5ef3ff2\",\n    \"results/rpc-allocation-64m-v1/ssh-readback/2-allocated.json\": \"ff36f828c075eeb653be249db381bf4d184c2a629d6e185945a309a01eca7366\",\n    \"results/rpc-allocation-64m-v1/ssh-readback/3-freed.json\": \"006de44e0f2bb48a6d2a9ce2b66f0327a2f5ebd582e9d8953ddb9de5ba2c82b4\",\n    \"results/small-native-vision-v2/ssh-readback/result.json\": \"bd35ddf590e881e444ff9e7adb0cf5740c73d7a48cb930e539e1eda374a40b73\",\n    \"results/small-native-vision-v2/ssh-readback/red-request.json\": \"7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290\",\n    \"results/small-native-vision-v2/ssh-readback/red-response.json\": \"1c57c0255994b37686350227da10a01dd6c6eda5936a29ae5de5b351f5d80cac\",\n    \"results/small-native-vision-v2/ssh-readback/blue-request.json\": \"0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc\",\n    \"results/small-native-vision-v2/ssh-readback/argv.json\": \"887560d611dc4337a2207e9015ebcba8ac0415d1829bab8418f0c520b3973b67\",\n    \"results/small-native-vision-v2/ssh-readback/blue-response.json\": \"5dd02733c38eed736199d3218e9c7426a9f51f58c3d09d3494c23818ee2a0748\",\n    \"results/qualified-dual-default-v1/ssh-readback/result.json\": \"d91b1d0e4b753162c3aa32792c4e387d3bcaa0fee15412262eb85c7ff1b07d71\",\n    \"results/qualified-dual-default-v1/ssh-readback/client-argv.json\": \"599baaaf21623d3b9ac10c327a86b6829273ca9cfbba7ab6cfd075e9fa74b95e\",\n    \"results/qualified-dual-default-v1/ssh-readback/started.json\": \"64cd82d7ea913bc8e14f36ed864ce8ef02e86a0f4ca167def17747c0a8e7b2d6\",\n    \"results/qualified-dual-default-v1/ssh-readback/argv.json\": \"bb9de0906a77292f210f7955732ad86581152d9460cf76f11369838daad13f64\",\n    \"results/qualified-dual-default-v1/ssh-readback/client/0001.request.json\": \"b33d207e5dc1fef616de0d7880b19f35c02626d80030969421f86ba4d6663665\",\n    \"results/qualified-dual-default-v1/ssh-readback/client/0000.request.json\": \"05484b6e5890056daddd17724d8d01000c47633317e65c9ce5e2bbf457be0b33\",\n    \"results/qualified-dual-default-v1/ssh-readback/client/manifest.json\": \"de0c054a3df1fcb87ac913a1a2512c208f2071230e5f7d0773b61d99668c9c06\",\n    \"results/qualified-dual-default-v1/ssh-readback/client/0002.request.json\": \"214114b356fc23ed0ac27b7f5aabb10a7c282aab0166892bc2ccf3598f7cc892\",\n    \"results/qualified-dual-default-v1/ssh-readback/client/receipt.json\": \"435dcdddd2c73255944b47d1c5ed7972bbac1ade3c1f9ab546a81dcdb6964517\",\n    \"results/qualified-native-default-v1/ssh-readback/result.json\": \"05b271652b7cf06d85b608deadcb03817fc3bf6403abd77bbb85f6f3a7e81369\",\n    \"results/qualified-native-default-v1/ssh-readback/client-argv.json\": \"bffcfd5b58fefea5b7f66c6a1a474eab2224129db26aa56035ca5b7941eb89d0\",\n    \"results/qualified-native-default-v1/ssh-readback/started.json\": \"416563fbd5713f164adbdb4870e9ec8d75202381ff00f56e3bb3ff3a7a9762c4\",\n    \"results/qualified-native-default-v1/ssh-readback/argv.json\": \"01d7a683080508f52a968905b300a870a661a1fefd3e9c28c0c9edf88f404b89\",\n    \"results/qualified-native-default-v1/ssh-readback/client/0001.request.json\": \"b33d207e5dc1fef616de0d7880b19f35c02626d80030969421f86ba4d6663665\",\n    \"results/qualified-native-default-v1/ssh-readback/client/0000.request.json\": \"05484b6e5890056daddd17724d8d01000c47633317e65c9ce5e2bbf457be0b33\",\n    \"results/qualified-native-default-v1/ssh-readback/client/manifest.json\": \"de0c054a3df1fcb87ac913a1a2512c208f2071230e5f7d0773b61d99668c9c06\",\n    \"results/qualified-native-default-v1/ssh-readback/client/0002.request.json\": \"214114b356fc23ed0ac27b7f5aabb10a7c282aab0166892bc2ccf3598f7cc892\",\n    \"results/qualified-native-default-v1/ssh-readback/client/receipt.json\": \"d196446c09869e22bba7e6e6d03e9720de61f418c2d6bc5c74850ee2939cf2f7\",\n    \"results/full-target-load-v3/ssh-readback/result.json\": \"ec3e89b364f5feda14ebf1246479dff52bcba5bce0287cdfa7f603564cbe2b5d\",\n    \"results/full-target-load-v3/ssh-readback/started.json\": \"ddef12a4eb1014d0d0eb81d29a9db14fb40ff37d7ec90783ec68de6e7080fdad\",\n    \"results/full-target-load-v3/ssh-readback/readback.json\": \"ed42ccd5afbb989b1608cd6e047042568eb22f6221f32ee29e7a805b6a68d10f\",\n    \"results/full-target-load-v3/ssh-readback/argv.json\": \"95baa1c21e0a375c7df99792902e3876113b909070ac8576a574018cd243cce7\",\n    \"results/small-policy-native-v1/ssh-readback-v2/result.json\": \"2cba095819013ba612d8960a511f822145129bedf352ce0e01ac80efd4c47856\",\n    \"results/small-policy-native-v1/ssh-readback-v2/red-request.json\": \"7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290\",\n    \"results/small-policy-native-v1/ssh-readback-v2/red-response.json\": \"25e3cbd048a83fa4e104be268414995e0f33cdb376452eeba9d58918dd122405\",\n    \"results/small-policy-native-v1/ssh-readback-v2/blue-request.json\": \"0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc\",\n    \"results/small-policy-native-v1/ssh-readback-v2/argv.json\": \"aec2404d0e83d78eb625086288fbd05ab2474842165f7d6ef2264ed7634c82a1\",\n    \"results/small-policy-native-v1/ssh-readback-v2/blue-response.json\": \"899c9021172b38bfb10a82f9c6f8733ca738db242ec252814403c651144a1cc4\",\n    \"results/small-policy-native-v1/ssh-readback/result.json\": \"2cba095819013ba612d8960a511f822145129bedf352ce0e01ac80efd4c47856\",\n    \"results/small-policy-native-v1/ssh-readback/red-request.json\": \"7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290\",\n    \"results/small-policy-native-v1/ssh-readback/red-response.json\": \"25e3cbd048a83fa4e104be268414995e0f33cdb376452eeba9d58918dd122405\",\n    \"results/small-policy-native-v1/ssh-readback/blue-request.json\": \"0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc\",\n    \"results/small-policy-native-v1/ssh-readback/argv.json\": \"aec2404d0e83d78eb625086288fbd05ab2474842165f7d6ef2264ed7634c82a1\",\n    \"results/small-policy-native-v1/ssh-readback/blue-response.json\": \"899c9021172b38bfb10a82f9c6f8733ca738db242ec252814403c651144a1cc4\",\n    \"results/qualified-dual-laptop-policy-v1/ssh-readback/result.json\": \"8ee652ace63417de9532bd1243be9ccacf8be6d48cc748f7af102772f3f0b65b\",\n    \"results/qualified-dual-laptop-policy-v1/ssh-readback/client-argv.json\": \"45ee187d4d4c345f725499617e0801cc92d3995db03ef8556fdb205d65e00628\",\n    \"results/qualified-dual-laptop-policy-v1/ssh-readback/started.json\": \"0f78da6ee61e64ec283aababd232d8daa6bea3c1d56f1cabbfe3c91f0342f22f\",\n    \"results/qualified-dual-laptop-policy-v1/ssh-readback/argv.json\": \"c4ef8aa100bda7e6558def940fccab1614a44ff2b4ca0f4bfe829fc74a5f5f4d\",\n    \"results/qualified-dual-laptop-policy-v1/ssh-readback/client/0001.request.json\": \"b33d207e5dc1fef616de0d7880b19f35c02626d80030969421f86ba4d6663665\",\n    \"results/qualified-dual-laptop-policy-v1/ssh-readback/client/0000.request.json\": \"05484b6e5890056daddd17724d8d01000c47633317e65c9ce5e2bbf457be0b33\",\n    \"results/qualified-dual-laptop-policy-v1/ssh-readback/client/manifest.json\": \"de0c054a3df1fcb87ac913a1a2512c208f2071230e5f7d0773b61d99668c9c06\",\n    \"results/qualified-dual-laptop-policy-v1/ssh-readback/client/0002.request.json\": \"214114b356fc23ed0ac27b7f5aabb10a7c282aab0166892bc2ccf3598f7cc892\",\n    \"results/qualified-dual-laptop-policy-v1/ssh-readback/client/receipt.json\": \"3dc4f583008a1ffec9f1b12cfba6eb65b5113a6670493d70f4a8dbc3143cd8a4\",\n    \"results/full-target-load-v2/ssh-readback/result.json\": \"bb2efcf19d5c0928175e219bd4b545c28246666a32064080a53d82f782dac3e3\",\n    \"results/full-target-load-v2/ssh-readback/started.json\": \"24bf1dd8cc5556b5a085f12a8bb05d097dbc4c8a2b1f04fb870e22bef8d53615\",\n    \"results/full-target-load-v2/ssh-readback/readback.json\": \"0c96e4eea0023b9b7dc9f93636df29e57e1b4d88b5bf0bee007e8fd67bb3e03d\",\n    \"results/full-target-load-v2/ssh-readback/argv.json\": \"cc9dbbb692398fa672cc3d061ce39cf6c0bde815f4e16d9382bb3881acd175af\",\n    \"build-arm64/tools/ui/dist/build.json\": \"2c1ee143df518aadc08cf1063603bf466638cf50eb6e73be3e4940ea3be837c7\",\n    \"build-arm64/tools/ui/ui-gzip/_gzip/build.json\": \"64e8f06ab9743924d2f3ddb254957ce7f5d6ae9d8809715741f0ad031735c120\",\n    \"build-arm64/tools/ui/ui-gzip/_gzip/_app/version.json\": \"1d01e37097fb6d6155a76c2fec06f3ca8ecb5728350265b3e2f3e337e215af64\",\n    \"build-arm64/tools/ui/dist/_app/version.json\": \"6c5b988a1d5c14abda6f4d608c46426f35ea02775ecf05be7a23bb4d13bb589e\"\n  },\n  \"owned_sha256_before\": {\n    \"multimodal_contract/__init__.py\": \"dc33ebc3fed629d28fd9b230c03019edec78836f7ee2aeaf7bb37e01bd9fa2ca\",\n    \"tests/test_multimodal_contract.py\": \"9061dc54b9388fbb50d86ad60a5b3888578b500605725234167218834c83f929\",\n    \"MULTIMODAL-TDD.md\": \"1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d\",\n    \"multimodal_contract/README.md\": \"edefc2cd8c6996b20033d7606e13f913a060e79e2b02fcefb89c38843dc7efed\"\n  },\n  \"owned_sha256_after\": {\n    \"multimodal_contract/__init__.py\": \"fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116\",\n    \"tests/test_multimodal_contract.py\": \"e52ceb63ae75aef087414e4e187d1e0a5a9ffcdb7b54b5523e54ef863e8e00c3\",\n    \"MULTIMODAL-TDD.md\": \"b2da4b82b7f56d857ca3773a6e72c1aae4d338a8e386a5121cd6969a5e914da0\",\n    \"multimodal_contract/README.md\": \"58c69d3193b1e56b311d38a5fbb3747fe98e748bb1168cc4772f2b0b9eaff8ae\"\n  },\n  \"root_readme_sha256_before\": \"f25cb25ba536cbcbb6ac5b259fa5198c91d256ac8733f3082e1e53db3af27c64\",\n  \"root_readme_sha256_after\": \"f25cb25ba536cbcbb6ac5b259fa5198c91d256ac8733f3082e1e53db3af27c64\",\n  \"production_outside_session_init_byte_identical\": true,\n  \"original_test_functions_ast_unchanged\": true,\n  \"tdd_history_is_byte_exact_prefix\": true,\n  \"static_scan_added_python_lines\": {\n    \"patterns\": {\n      \"hardcoded_credentials\": \"(api_key|secret|password|passwd)\\\\s*=\\\\s*[\\\\\\\"\\\\'][^\\\\\\\"\\\\']{6,}\",\n      \"shell_injection\": \"os\\\\.system\\\\(|shell\\\\s*=\\\\s*True\",\n      \"dynamic_execution\": \"\\\\b(eval|exec)\\\\(\",\n      \"unsafe_deserialization\": \"pickle\\\\.loads?\\\\(\",\n      \"sql_interpolation\": \"execute\\\\(f[\\\\\\\"\\\\']\"\n    },\n    \"findings\": [],\n    \"independent_review\": false\n  }\n}\n",
+      "stderr": "",
+      "owned_sha256": {
+        "multimodal_contract/__init__.py": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+        "tests/test_multimodal_contract.py": "e52ceb63ae75aef087414e4e187d1e0a5a9ffcdb7b54b5523e54ef863e8e00c3",
+        "MULTIMODAL-TDD.md": "b2da4b82b7f56d857ca3773a6e72c1aae4d338a8e386a5121cd6969a5e914da0",
+        "multimodal_contract/README.md": "58c69d3193b1e56b311d38a5fbb3747fe98e748bb1168cc4772f2b0b9eaff8ae"
+      }
+    }
+  ],
+  "owned_file_unified_diffs": {
+    "multimodal_contract/__init__.py": "--- before/multimodal_contract/__init__.py\n+++ after/multimodal_contract/__init__.py\n@@ -120,14 +120,18 @@\n             or type(request.token_ids) is not tuple\n             or type(request.position_bytes) is not bytes\n             or type(request.delta) is not int\n+            or type(request.config_sha256) is not str\n             or (request.grid is not None and type(request.grid) is not tuple)\n         ):\n             raise ValueError(\"request fields must have exact immutable types\")\n-        if request != prepare_request(\n+        if request.config_sha256 != CONFIG_SHA256:\n+            raise ValueError(\"request configuration must match pinned digest\")\n+        canonical = prepare_request(\n             request.token_ids, request_id=request.request_id, grid=request.grid\n-        ):\n+        )\n+        if request != canonical:\n             raise ValueError(\"request does not match canonical configuration/positions\")\n-        self.request = request\n+        self.request = canonical\n         self.cursor = 0\n         self.state = \"active\"\n \n",
+    "tests/test_multimodal_contract.py": "--- before/tests/test_multimodal_contract.py\n+++ after/tests/test_multimodal_contract.py\n@@ -339,6 +339,108 @@\n         api().prepare_request([7], request_id=\"unsupported\", **options)\n \n \n+def test_config_sha256_mutable_zero_dimensional_array_rejected_at_admission():\n+    request = api().prepare_request(\n+        [7, 248053] + [248056] * 6 + [248054, 9],\n+        request_id=\"x\",\n+        grid=(1, 4, 6),\n+    )\n+    digest = np.array(api().CONFIG_SHA256)\n+    assert digest.ndim == 0\n+    assert digest == request.config_sha256\n+    forged = replace(request, config_sha256=digest)\n+    with pytest.raises(ValueError):\n+        api().Session(forged)\n+    digest[()] = \"0\" * 64\n+    with pytest.raises(ValueError):\n+        api().Session(forged)\n+\n+\n+def test_session_retains_fresh_canonical_request_without_changing_positions_or_cursor():\n+    request = api().prepare_request(image_ids(), request_id=\"canonical\", grid=(1, 4, 6))\n+    original_bytes = request.request_bytes\n+    original_hash = request.manifest_hash\n+    session = api().Session(request)\n+    assert session.request is not request\n+    assert type(session.request) is api().Request\n+    assert session.request == request\n+    assert session.request.request_bytes == original_bytes\n+    assert session.request.manifest_hash == original_hash\n+    assert type(session.request.config_sha256) is str\n+    assert session.request.config_sha256 == api().CONFIG_SHA256\n+    np.testing.assert_array_equal(session.request.position_ids, golden())\n+    with pytest.raises(AttributeError):\n+        session.request.config_sha256 = \"0\" * 64\n+    with pytest.raises(ValueError):\n+        session.request.position_ids.setflags(write=True)\n+    assert session.state == \"active\"\n+    assert session.cursor == 0\n+    session.consume(request.chunk(0, 9), actual_cache_offset=0)\n+    assert session.cursor == 9\n+    session.consume(request.chunk(9, 10), actual_cache_offset=9)\n+    assert session.cursor == 10\n+    np.testing.assert_array_equal(session.decode(actual_cache_offset=10), [[[7]]] * 3)\n+    assert session.cursor == 11\n+    session.finish()\n+    assert session.state == \"finished\"\n+    assert session.request is None\n+    assert session.cursor == 0\n+    assert request.request_bytes == original_bytes\n+    assert request.manifest_hash == original_hash\n+\n+\n+@pytest.mark.parametrize(\n+    \"kind\",\n+    [\n+        \"pinned-str-subclass\",\n+        \"lying-wrong-str-subclass\",\n+        \"comparison-trap-str-subclass\",\n+        \"pinned-0d-array\",\n+        \"pinned-singleton-array\",\n+        \"numpy-string\",\n+    ],\n+)\n+def test_config_sha256_nonexact_types_rejected_before_comparison(kind):\n+    class DigestSubclass(str):\n+        pass\n+\n+    class LyingDigest(str):\n+        def __eq__(self, other):\n+            return True\n+\n+        def __ne__(self, other):\n+            return False\n+\n+    class ComparisonTrapDigest(str):\n+        def __eq__(self, other):\n+            raise AssertionError(\"untrusted digest equality must not run\")\n+\n+        def __ne__(self, other):\n+            raise AssertionError(\"untrusted digest inequality must not run\")\n+\n+    request = api().prepare_request(\n+        image_ids(), request_id=\"config-types\", grid=(1, 4, 6)\n+    )\n+    payloads = {\n+        \"pinned-str-subclass\": DigestSubclass(api().CONFIG_SHA256),\n+        \"lying-wrong-str-subclass\": LyingDigest(\"0\" * 64),\n+        \"comparison-trap-str-subclass\": ComparisonTrapDigest(api().CONFIG_SHA256),\n+        \"pinned-0d-array\": np.array(api().CONFIG_SHA256),\n+        \"pinned-singleton-array\": np.array([api().CONFIG_SHA256]),\n+        \"numpy-string\": np.str_(api().CONFIG_SHA256),\n+    }\n+    with pytest.raises(ValueError, match=\"exact immutable types\"):\n+        api().Session(replace(request, config_sha256=payloads[kind]))\n+\n+\n+def test_config_sha256_wrong_exact_string_rejected_by_pinned_value_check():\n+    request = api().prepare_request([1, 2, 3], request_id=\"config-wrong\")\n+    wrong_digest = \"0\" * 64\n+    assert type(wrong_digest) is str\n+    with pytest.raises(ValueError, match=\"configuration must match pinned digest\"):\n+        api().Session(replace(request, config_sha256=wrong_digest))\n+\n+\n def test_mutable_forgery_and_wrong_exact_field_types_fail_closed():\n     request = api().prepare_request([1, 2, 3], request_id=\"immutable\")\n     for forged in (\n",
+    "MULTIMODAL-TDD.md": "--- before/MULTIMODAL-TDD.md\n+++ after/MULTIMODAL-TDD.md\n@@ -234,3 +234,88 @@\n - One still image only; no pixels, processor, encoder, features, full-attention rotary adapter, physical cache ownership, dual-rank transport, per-layer caches/logits, memory admission, throughput or server. Existing scalar-offset FA remains unsuitable for image positions.\n - Padding policy conservatively reserves generation pad/BOS/EOS alias 248044 in prompts; fresh request IDs are a caller obligation. Session reset is terminal; it does not authorize prefix reuse or reset actual caches.\n - Approval remains **pending a separate independent review** and any later physical gates owned solely by the parent.\n+\n+## CPU-CONTRACT-001 repair \u2014 new evidence, independent re-review pending\n+\n+**Not approved.** The original independent review returned FAIL for this finding. This appended section records a later local repair, not a replacement verdict or a rewrite of any historical evidence. The original implementation, parent and FAIL-review JSON receipts remain immutable. Fresh independent re-review follows.\n+\n+### Root cause and narrow repair\n+\n+The authoritative `Session` checked several exact immutable types but omitted `config_sha256`. Dataclass equality accepted a mutable zero-dimensional NumPy string array equal to the pinned digest, and the session retained the caller's object. Subsequent mutation could reach JSON serialization rather than admission rejection. The first new regression uses the exact IDs, identity `x`, grid `(1,4,6)` and `np.array(CONFIG_SHA256)` from the review, requiring rejection at admission both before and after payload mutation.\n+\n+Only `Session.__init__` changed in production: require exact `str` before comparison, require the exact pinned digest, reconstruct and compare a canonical `Request`, then retain only that fresh canonical object. No consume/decode/lifecycle implementation, position arithmetic, limits or GPU integration changed.\n+\n+### Execution environment and evidence capture\n+\n+All commands below ran from `/Users/jeremylien/Projects/local-agent-dual-mac` with this explicit environment, the existing venv Python, and no installs:\n+\n+```text\n+PYTHONDONTWRITEBYTECODE=1\n+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1\n+PYTHONPATH=/Users/jeremylien/Projects/local-agent-dual-mac\n+TMPDIR=/Users/jeremylien/.hermes/cache/scratch\n+```\n+\n+The scratch `cpu_contract_001_guarded_pytest.py` runs pytest with `-p no:cacheprovider`, rejects imports of `mlx`, `mlx_lm`, `mlx_vlm`, `torch` and `transformers`, and blocks socket connection calls. Its source and SHA-256, recorder source/hash, full actual commands, stdout, stderr, exits and per-stage owned-file hashes are embedded in the new `results/mlx-vision-contract-fix-verification.json`. The recorder executes each command with the above environment and records the actual child return code; it does not synthesize test results.\n+\n+### Repair tracer 1 \u2014 mutable digest admission, RED then minimal GREEN\n+\n+Only the exact ndarray regression was added before this RED run; the production module still had SHA-256 `dc33ebc3fed629d28fd9b230c03019edec78836f7ee2aeaf7bb37e01bd9fa2ca`.\n+\n+```sh\n+/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py::test_config_sha256_mutable_zero_dimensional_array_rejected_at_admission -q --tb=short\n+```\n+\n+Observed **exit 1**: `Failed: DID NOT RAISE ValueError`; **1 failed in 0.06s**. This proves the forged mutable payload was accepted by the original `Session`, not merely that a later consume failed.\n+\n+Only the exact-type and pinned-value guards were then added. The original caller-object retention was deliberately left for the next tracer.\n+\n+```sh\n+/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py -q --tb=short\n+```\n+\n+Observed **exit 0**, **64 passed in 0.07s**; offline socket guard enabled, model runtime imports NONE.\n+\n+### Repair tracer 2 \u2014 canonical retention, RED then minimal GREEN\n+\n+Only after tracer 1 was GREEN, a new regression required `session.request is not request`, canonical equality and exact bytes/hash, immutable canonical data, exact independent golden positions, contiguous cursor `0\u21929\u219210`, decode position 7 at physical offset 10, then terminal cleanup. The caller's immutable bytes/hash must remain unchanged.\n+\n+```sh\n+/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py::test_session_retains_fresh_canonical_request_without_changing_positions_or_cursor -q --tb=short\n+```\n+\n+Observed **exit 1**, assertion `session.request is not request` failed; **1 failed in 0.07s**. The type/pin guards remained in place and no canonical-retention production fix existed yet.\n+\n+The already reconstructed canonical request was then named and retained, rather than retaining the supplied instance; comparison remained mandatory.\n+\n+```sh\n+/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py -q --tb=short\n+```\n+\n+Observed **exit 0**, **65 passed in 0.07s**; offline socket guard enabled, model runtime imports NONE.\n+\n+### Post-GREEN coverage and final focused checks\n+\n+Additional coverage was added after both production tracer fixes: pinned string subclass, wrong-valued string subclass with forged equality, string subclass whose comparison raises, pinned zero-dimensional and singleton arrays, NumPy string scalar, and exact wrong Python string. The subclass comparison trap proves exact-type rejection happens before overloaded comparisons. The exact wrong string test identifies the explicit pinned-value rejection. These seven cases are regression/characterization coverage, **not additional claimed RED\u2192GREEN production cycles**. The pre-existing tests continue to cover valid text requests, positions/chunks, cursor poison, caps and terminal behavior.\n+\n+```sh\n+/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py -k 'config_sha256 or retains_fresh' -q --tb=short\n+/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py -q --tb=short\n+/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m ruff check --no-cache multimodal_contract tests/test_multimodal_contract.py\n+/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m ruff format --check --no-cache multimodal_contract tests/test_multimodal_contract.py\n+```\n+\n+Final observed exits were all **0**:\n+\n+- Repair selection: **9 passed, 63 deselected in 0.07s**.\n+- Entire focused suite: **72 passed in 0.08s**; offline socket guard enabled, model runtime imports NONE.\n+- Ruff: **All checks passed!**\n+- Format: **3 files already formatted**.\n+\n+An earlier format check returned **exit 1**, `1 file would be reformatted, 2 files already formatted`, for a newly added long test line. Only that test line was wrapped, and all four final commands above were rerun successfully. The failed check and successful reruns are retained in the new receipt, not discarded.\n+\n+### Repair scope and remaining gates\n+\n+Authorized workspace writes: `multimodal_contract/__init__.py`, `tests/test_multimodal_contract.py`, append-only changes here, status/contract updates in `multimodal_contract/README.md`, and only the new `results/mlx-vision-contract-fix-verification.json`. Scratch harnesses/snapshots remain under the provided scratch directory. The new receipt records before/after hashes, all historical workspace JSON hashes and read-only preservation checks. The parent-owned root README, historical JSON, qualification sources/tests, upstream and baseline were not edited. This workspace is not a git repository; no git or commit claim is made. Original qualification tests were not rerun by this repair.\n+\n+The receipt is local implementation/test evidence, **not self-approval**. Bounds remain **1024 prompt / 256 image / 32 decode / 256 chunk**. No model runtime imports, weights, installs, SSH, networking, GPU work, port/app operations or deployment occurred. No physical-cache, native mRoPE, image encoder, distributed equivalence, autonomy, production readiness or 24x7 approval is established. The parent remains the sole GPU/SSH/deployment owner; fresh independent re-review is pending.\n",
+    "multimodal_contract/README.md": "--- before/multimodal_contract/README.md\n+++ after/multimodal_contract/README.md\n@@ -1,6 +1,6 @@\n # CPU single-image request / position contract\n \n-**This is a bounded NumPy contract, not a visual model runtime or numerical admission. Independent review is pending.** It performs no image processing, feature replacement, cache I/O, MLX import, GPU execution, RPC, SSH, serving or MTP.\n+**This is a bounded NumPy contract, not a visual model runtime or numerical admission. The initial independent review failed on CPU-CONTRACT-001. Its repair is implemented and locally tested; independent re-review is pending. Not approved.** It performs no image processing, feature replacement, cache I/O, MLX import, GPU execution, RPC, SSH, serving or MTP.\n \n ## Accepted inputs and fixed bounds\n \n@@ -58,7 +58,7 @@\n \n ## One-shot lifecycle\n \n-`Session(request)` independently reconstructs the canonical request before accepting it. Its physical cursor begins at **0**. `consume` requires the current observed physical cache offset, exactly contiguous next slice and matching binding; duplicates, skips, out-of-order, stale identities, wrong tokens, poisoned axes/delta and missing axes fail closed. Invalid calls drop the session's request reference, clear cursor to 0, set `state=\"failed\"` and raise `ValueError`.\n+`Request` and `Chunk` are data containers, not validated wire parsers. `Session(request)` is the authoritative admission boundary: it requires an exact Python `str` configuration digest with the exact pinned value before canonical comparison, rejects array/scalar/string-subclass forgeries, independently reconstructs and validates the canonical request, and retains only that fresh immutable canonical object, never the supplied request object. Its physical cursor begins at **0**. `consume` requires the current observed physical cache offset, exactly contiguous next slice and matching binding; duplicates, skips, out-of-order, stale identities, wrong tokens, poisoned axes/delta and missing axes fail closed. Invalid calls on an admitted session drop its request reference, clear cursor to 0, set `state=\"failed\"` and raise `ValueError`; invalid construction raises `ValueError` without admitting a request.\n \n `decode(actual_cache_offset=...)` checks full prompt coverage and the physical offset, returns one `[3,1,1]` position array, and advances the **CPU tracer** cursor by one. This is not a commit/ACK for actual model execution, and it does not ingest generated token IDs. A future adapter must observe real caches and coordinate execution/commit failures itself.\n \n@@ -88,4 +88,6 @@\n PYTHONDONTWRITEBYTECODE=1 /Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m ruff format --check --no-cache multimodal_contract tests/test_multimodal_contract.py\n ```\n \n-Observed: **63 focused tests passed**, Ruff check and format passed, runtime-import guard passed, in-memory axis-swap and dropped-delta mutants were caught. Missing-marker/duplicate/video/padding/cap/cursor/lifecycle tests reject unsupported inputs. See `MULTIMODAL-TDD.md` for actual ordered RED/GREEN commands and the JSON artifact for exact commands/output, source hashes, immutable-source checks and observed concurrent filesystem drift. Original qualification tests were not edited or rerun by this task. Independent review is a separate remaining gate.\n+Historical implementation evidence: **63 focused tests passed**, Ruff check and format passed, runtime-import guard passed, in-memory axis-swap and dropped-delta mutants were caught. Missing-marker/duplicate/video/padding/cap/cursor/lifecycle tests reject unsupported inputs. Those historical receipts are unchanged and do not override the independent FAIL.\n+\n+CPU-CONTRACT-001 repair evidence: **72 focused tests passed**, including **9 repair regression cases**. Two new vertical RED\u2192GREEN cycles demonstrated acceptance of the mutable zero-dimensional digest and retention of the caller's object before their respective minimal fixes. Added post-GREEN coverage rejects string subclasses (including forged equality and comparison traps), NumPy digest arrays/scalars, and an exact wrong string; canonical immutable requests retain their manifest, positions, and physical cursor/decode behavior. See the appended repair section in `MULTIMODAL-TDD.md` and the new `results/mlx-vision-contract-fix-verification.json` for exact commands, exits, outputs and before/after hashes. Original qualification tests were not edited or rerun by this repair. Fresh independent re-review remains a separate gate; no physical-cache, native mRoPE, encoder, autonomy or 24x7 approval is implied.\n"
+  },
+  "scratch_harnesses": {
+    "/Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_repair_runner.py": {
+      "sha256": "fbc14fa380b2c1187044d28e311286ef42b0c178917b5499407d9d0950261f9b",
+      "source": "\"\"\"CPU-only repair command recorder; all generated state stays in scratch.\"\"\"\nimport hashlib\nimport json\nimport os\nfrom pathlib import Path\nimport shlex\nimport subprocess\nimport sys\n\nROOT = Path('/Users/jeremylien/Projects/local-agent-dual-mac')\nSTATE = Path('/Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_repair')\nOWNED = ('multimodal_contract/__init__.py', 'tests/test_multimodal_contract.py', 'MULTIMODAL-TDD.md', 'multimodal_contract/README.md')\nENV = {'PYTHONDONTWRITEBYTECODE': '1', 'PYTEST_DISABLE_PLUGIN_AUTOLOAD': '1', 'PYTHONPATH': str(ROOT), 'TMPDIR': '/Users/jeremylien/.hermes/cache/scratch'}\n\ndef digest(path):\n    h = hashlib.sha256()\n    with path.open('rb') as stream:\n        for part in iter(lambda: stream.read(1024 * 1024), b''):\n            h.update(part)\n    return h.hexdigest()\n\nif sys.argv[1] == 'snapshot':\n    STATE.mkdir(exist_ok=False)\n    files = {str(p.relative_to(ROOT)): digest(p) for p in ROOT.rglob('*') if p.is_file()}\n    (STATE / 'before.json').write_text(json.dumps(files, indent=2) + '\\n')\n    for name in OWNED:\n        dest = STATE / name\n        dest.parent.mkdir(parents=True, exist_ok=True)\n        dest.write_bytes((ROOT / name).read_bytes())\n    print(json.dumps({'snapshot_files': len(files), 'historical_json_files': sum(n.endswith('.json') for n in files), 'state': str(STATE)}, indent=2))\nelse:\n    label, *args = sys.argv[1:]\n    env = dict(os.environ, **ENV)\n    result = subprocess.run(args, cwd=ROOT, env=env, text=True, capture_output=True)\n    row = {'label': label, 'command': shlex.join(args), 'environment': ENV, 'exit_code': result.returncode, 'stdout': result.stdout, 'stderr': result.stderr, 'owned_sha256': {n: digest(ROOT / n) for n in OWNED}}\n    with (STATE / 'executions.jsonl').open('a') as out:\n        out.write(json.dumps(row) + '\\n')\n    print(json.dumps(row, indent=2))\n    raise SystemExit(result.returncode)\n"
+    },
+    "/Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py": {
+      "sha256": "17b5a6169d1e470bfbdeeb343a66c9cadb72fb20033a84fe0463a231c6e2665f",
+      "source": "\"\"\"Run only requested CPU tests, refusing model runtimes and networking.\"\"\"\nimport importlib.abc\nimport socket\nimport sys\n\nFORBIDDEN = frozenset(('mlx', 'mlx_lm', 'mlx_vlm', 'torch', 'transformers'))\n\nclass Guard(importlib.abc.MetaPathFinder):\n    def find_spec(self, fullname, path=None, target=None):\n        if fullname.split('.')[0] in FORBIDDEN:\n            raise RuntimeError('forbidden model runtime: ' + fullname)\n\nsys.meta_path.insert(0, Guard())\n\ndef offline(*args, **kwargs):\n    raise RuntimeError('network forbidden in CPU repair tests')\n\nsocket.socket.connect = offline\nsocket.socket.connect_ex = offline\nsocket.create_connection = offline\nimport pytest\n\ncode = pytest.main(['-p', 'no:cacheprovider', *sys.argv[1:]])\nassert not any(name.split('.')[0] in FORBIDDEN for name in sys.modules)\nprint('offline socket guard enabled; model runtime imports: NONE')\nraise SystemExit(code)\n"
+    },
+    "/Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_inspect.py": {
+      "sha256": "11055bcc372037cf44f794895e0437abdd58210be149c13a317ef527af8ca983",
+      "source": "\"\"\"Read-only source-scope and historical artifact verification.\"\"\"\nimport ast\nimport difflib\nimport hashlib\nimport json\nfrom pathlib import Path\nimport re\n\nROOT = Path('/Users/jeremylien/Projects/local-agent-dual-mac')\nSTATE = Path('/Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_repair')\nOWNED = ('multimodal_contract/__init__.py', 'tests/test_multimodal_contract.py', 'MULTIMODAL-TDD.md', 'multimodal_contract/README.md')\nNEW = 'results/mlx-vision-contract-fix-verification.json'\n\ndef digest(path):\n    h = hashlib.sha256()\n    with path.open('rb') as stream:\n        for part in iter(lambda: stream.read(1024 * 1024), b''):\n            h.update(part)\n    return h.hexdigest()\n\nbefore = json.loads((STATE / 'before.json').read_text())\nafter = {str(p.relative_to(ROOT)): digest(p) for p in ROOT.rglob('*') if p.is_file()}\nchanged = sorted(n for n in before if n in after and before[n] != after[n])\nremoved = sorted(set(before) - set(after))\nadded = sorted(set(after) - set(before))\nhistorical = {n: sha for n, sha in before.items() if n.endswith('.json')}\njson_changed = [n for n, sha in historical.items() if after.get(n) != sha]\n\nold_source = (STATE / OWNED[0]).read_text()\nnew_source = (ROOT / OWNED[0]).read_text()\ndef without_init(source):\n    tree = ast.parse(source)\n    session = next(n for n in tree.body if isinstance(n, ast.ClassDef) and n.name == 'Session')\n    init = next(n for n in session.body if isinstance(n, ast.FunctionDef) and n.name == '__init__')\n    lines = source.splitlines(keepends=True)\n    return ''.join(lines[:init.lineno - 1] + ['<Session.__init__>\\n'] + lines[init.end_lineno:])\n\nold_tests = ast.parse((STATE / OWNED[1]).read_text())\nnew_tests = ast.parse((ROOT / OWNED[1]).read_text())\nold_nodes = {n.name: ast.dump(n) for n in old_tests.body if isinstance(n, (ast.FunctionDef, ast.ClassDef))}\nnew_nodes = {n.name: ast.dump(n) for n in new_tests.body if isinstance(n, (ast.FunctionDef, ast.ClassDef))}\noriginal_tests_unchanged = all(new_nodes.get(name) == node for name, node in old_nodes.items())\n\npatterns = {\n    'hardcoded_credentials': r'(api_key|secret|password|passwd)\\s*=\\s*[\\\"\\'][^\\\"\\']{6,}',\n    'shell_injection': r'os\\.system\\(|shell\\s*=\\s*True',\n    'dynamic_execution': r'\\b(eval|exec)\\(',\n    'unsafe_deserialization': r'pickle\\.loads?\\(',\n    'sql_interpolation': r'execute\\(f[\\\"\\']',\n}\nfindings = []\nfor name in OWNED[:2]:\n    delta = difflib.unified_diff((STATE / name).read_text().splitlines(), (ROOT / name).read_text().splitlines())\n    for line in delta:\n        if line.startswith('+') and not line.startswith('+++'):\n            for category, pattern in patterns.items():\n                if re.search(pattern, line, re.I):\n                    findings.append({'file': name, 'category': category, 'line': line})\n\nreport = {\n    'snapshot_existing_files': len(before),\n    'checked_existing_files': sum(n in after for n in before),\n    'changed_existing_files': changed,\n    'removed_existing_files': removed,\n    'added_files': added,\n    'unexpected_changed_files': [n for n in changed if n not in OWNED],\n    'unexpected_added_files': [n for n in added if n != NEW],\n    'historical_json_checked': len(historical),\n    'historical_json_changed_or_missing': json_changed,\n    'historical_json_sha256_before': historical,\n    'owned_sha256_before': {n: before[n] for n in OWNED},\n    'owned_sha256_after': {n: after[n] for n in OWNED},\n    'root_readme_sha256_before': before['README.md'],\n    'root_readme_sha256_after': after['README.md'],\n    'production_outside_session_init_byte_identical': without_init(old_source) == without_init(new_source),\n    'original_test_functions_ast_unchanged': original_tests_unchanged,\n    'tdd_history_is_byte_exact_prefix': (ROOT / OWNED[2]).read_bytes().startswith((STATE / OWNED[2]).read_bytes()),\n    'static_scan_added_python_lines': {'patterns': patterns, 'findings': findings, 'independent_review': False},\n}\nprint(json.dumps(report, indent=2))\nassert not report['unexpected_changed_files']\nassert not report['unexpected_added_files']\nassert not removed\nassert not json_changed\nassert report['production_outside_session_init_byte_identical']\nassert original_tests_unchanged\nassert report['tdd_history_is_byte_exact_prefix']\nassert not findings\n"
+    },
+    "/Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_build_receipt.py": {
+      "sha256": "0ad83d9510f58a02ed6163e5dc671043ad65cdadaf937dc6051910b083e8ddcc",
+      "source": "\"\"\"Build a new local repair receipt from recorded execution, not predictions.\"\"\"\nimport base64\nimport difflib\nimport hashlib\nimport json\nfrom pathlib import Path\nimport re\nimport zlib\n\nROOT = Path('/Users/jeremylien/Projects/local-agent-dual-mac')\nSTATE = Path('/Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_repair')\nTARGET = ROOT / 'results/mlx-vision-contract-fix-verification.json'\nassert not TARGET.exists(), 'New receipt target must not overwrite an existing artifact'\nrows = [json.loads(line) for line in (STATE / 'executions.jsonl').read_text().splitlines()]\nby_label = {row['label']: row for row in rows}\nsequence = ['RED-REPAIR-1', 'GREEN-REPAIR-1', 'RED-REPAIR-2', 'GREEN-REPAIR-2']\nassert [row['label'] for row in rows[:4]] == sequence\nassert [by_label[label]['exit_code'] for label in sequence] == [1, 0, 1, 0]\nassert 'DID NOT RAISE ValueError' in by_label[sequence[0]]['stdout']\nassert 'assert session.request is not request' in by_label[sequence[2]]['stdout']\nfinal_labels = ['FINAL-REPAIR-REGRESSIONS', 'FINAL-REPAIR-FOCUSED-AFTER-FORMAT', 'FINAL-REPAIR-RUFF-CHECK', 'FINAL-REPAIR-RUFF-FORMAT', 'REPAIR-SCOPE-AND-STATIC-SCAN']\nassert all(by_label[label]['exit_code'] == 0 for label in final_labels)\ninspection = json.loads(by_label['REPAIR-SCOPE-AND-STATIC-SCAN']['stdout'])\nassert not inspection['unexpected_changed_files']\nassert not inspection['unexpected_added_files']\nassert not inspection['removed_existing_files']\nassert not inspection['historical_json_changed_or_missing']\nowned = tuple(inspection['owned_sha256_before'])\n\ndef sha(data):\n    return hashlib.sha256(data).hexdigest()\n\nfor name in owned:\n    assert sha((ROOT / name).read_bytes()) == inspection['owned_sha256_after'][name]\nreview_name = 'results/mlx-vision-contract-independent-review.json'\nreview_sha = sha((ROOT / review_name).read_bytes())\nassert review_sha == '8f4f61da9d53bb24b81246253519453645e7f08a6845dc8607ba43822f7810fa'\nassert json.loads((ROOT / review_name).read_text())['passed'] is False\nfocused = int(re.search(r'(\\d+) passed', by_label[final_labels[1]]['stdout']).group(1))\nregressions = int(re.search(r'(\\d+) passed', by_label[final_labels[0]]['stdout']).group(1))\ndeselected = int(re.search(r'(\\d+) deselected', by_label[final_labels[0]]['stdout']).group(1))\nassert focused == regressions + deselected\nharnesses = {}\nfor name in ('cpu_contract_001_repair_runner.py', 'cpu_contract_001_guarded_pytest.py', 'cpu_contract_001_inspect.py', 'cpu_contract_001_build_receipt.py'):\n    path = STATE.parent / name\n    data = path.read_bytes()\n    harnesses[str(path)] = {'sha256': sha(data), 'source': data.decode()}\ndiffs = {name: ''.join(difflib.unified_diff((STATE / name).read_text().splitlines(keepends=True), (ROOT / name).read_text().splitlines(keepends=True), fromfile='before/' + name, tofile='after/' + name)) for name in owned}\nreceipt = {\n    'finding_id': 'CPU-CONTRACT-001',\n    'artifact_type': 'local_cpu_contract_repair_verification_not_independent_approval',\n    'status': 'repair_implemented_locally_verified_independent_rereview_pending',\n    'approval_granted': False,\n    'independent_rereview': {'status': 'pending', 'passed': None},\n    'workspace': str(ROOT),\n    'python': '/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python',\n    'original_independent_fail_review': {'path': review_name, 'sha256_before': review_sha, 'sha256_after': review_sha, 'passed': False, 'preserved_byte_exact': True, 'not_superseded_by_local_tests': True},\n    'root_cause': 'Session omitted exact config_sha256 type validation, accepted an equal-valued mutable zero-dimensional ndarray by dataclass equality, and retained the caller-supplied Request.',\n    'repair': ['Reject any non-exact-str config_sha256 before digest or dataclass equality.', 'Reject exact strings that differ from CONFIG_SHA256 before canonical comparison.', 'Compare with a newly prepared canonical immutable Request; retain only that fresh canonical object, not the caller-supplied instance.'],\n    'before_after_sha256': {name: {'before': inspection['owned_sha256_before'][name], 'after': inspection['owned_sha256_after'][name]} for name in owned},\n    'vertical_tdd': {\n        'new_ordered_observed_pairs': [\n            {'red': sequence[0], 'green': sequence[1], 'behavior': 'Exact review ndarray payload must be rejected by Session at admission before and after mutation.', 'red_production_sha256': by_label[sequence[0]]['owned_sha256'][owned[0]], 'green_production_sha256': by_label[sequence[1]]['owned_sha256'][owned[0]]},\n            {'red': sequence[2], 'green': sequence[3], 'behavior': 'Successful Session retains a distinct canonical immutable Request with unchanged positions, manifest and cursor/decode behavior.', 'red_production_sha256': by_label[sequence[2]]['owned_sha256'][owned[0]], 'green_production_sha256': by_label[sequence[3]]['owned_sha256'][owned[0]]}\n        ],\n        'sequence_asserted_from_execution_log': sequence,\n        'post_green_coverage_not_claimed_as_red_green': ['pinned str subclass', 'wrong str subclass with forged equality', 'str subclass with comparison traps', 'zero-dimensional pinned ndarray', 'singleton pinned ndarray', 'NumPy string scalar', 'wrong exact Python str rejected by explicit pinned-value check'],\n        'original_historical_tdd_transitions_not_reexecuted_or_rewritten': True\n    },\n    'local_verification': {\n        'all_final_checks_exit_zero': True,\n        'focused_passed': focused,\n        'repair_regressions_passed': regressions,\n        'preexisting_cases_deselected_in_repair_selection': deselected,\n        'preexisting_test_function_asts_unchanged': inspection['original_test_functions_ast_unchanged'],\n        'production_outside_session_init_byte_identical': inspection['production_outside_session_init_byte_identical'],\n        'final_execution_labels': final_labels,\n        'guarded_cpu_tests': True,\n        'model_runtime_modules_loaded': [],\n        'network_socket_connections_blocked_during_pytest': True,\n        'original_qualification_tests_rerun': False,\n        'local_static_scan_is_not_independent_review': True\n    },\n    'filesystem_verification_before_new_receipt_publication': inspection,\n    'exact_executions_in_recorded_order': rows,\n    'owned_file_unified_diffs': diffs,\n    'scratch_harnesses': harnesses,\n    'recorded_nonpassing_commands': [{'label': row['label'], 'exit_code': row['exit_code']} for row in rows if row['exit_code'] != 0],\n    'issues': ['Two expected RED failures prove the missing guards/retention before their respective fixes.', 'Initial format check failed on a new long test line; only that line was wrapped; regression, focused, lint and format checks were rerun and passed.', 'Two receipt transport attempts were abbreviated by the terminal-output middleware, causing base64 decode failures before any receipt write; retried direct subprocess capture with the same required venv Python and verified the exact SHA-256 before publication.', 'Workspace is not a git repository; no git history/diff/commit claim. Unified diffs use byte-snapshotted originals.'],\n    'scope': {\n        'authorized_existing_edits': list(owned),\n        'authorized_new_result_only': str(TARGET.relative_to(ROOT)),\n        'scratch_only_auxiliary_files': str(STATE.parent),\n        'limits': {'prompt_tokens': 1024, 'image_tokens': 256, 'decode_tokens': 32, 'chunk_tokens': 256},\n        'production_change_scope': 'Session.__init__ only; no other implementation edits',\n        'excluded_actions': ['model/VLM/MLX imports', 'weights', 'installs', 'SSH', 'network', 'GPU work', 'ports/apps', 'deployment', 'commits'],\n        'parent_exclusive_ownership': ['GPU', 'SSH', 'deployment'],\n        'no_approval_or_equivalence_claims': ['physical-cache execution or ownership', 'native mRoPE arithmetic', 'image encoder/scatter', 'model logits', 'distributed execution', 'autonomy', '24x7 operation', 'production readiness']\n    }\n}\ntext = json.dumps(receipt, indent=2, ensure_ascii=True) + '\\n'\nencoded = base64.b64encode(zlib.compress(text.encode())).decode()\nprint(json.dumps({'compressed_receipt_base64_chunks': [encoded[i:i+1024] for i in range(0, len(encoded), 1024)], 'summary': {'focused_passed': focused, 'repair_regressions_passed': regressions, 'historical_json_checked': inspection['historical_json_checked'], 'changed_files': inspection['changed_existing_files'], 'status': receipt['status'], 'receipt_bytes': len(text.encode()), 'receipt_sha256': sha(text.encode())}}, indent=2))\n"
+    }
+  },
+  "recorded_nonpassing_commands": [
+    {
+      "label": "RED-REPAIR-1",
+      "exit_code": 1
+    },
+    {
+      "label": "RED-REPAIR-2",
+      "exit_code": 1
+    },
+    {
+      "label": "REPAIR-RUFF-FORMAT",
+      "exit_code": 1
+    }
+  ],
+  "issues": [
+    "Two expected RED failures prove the missing guards/retention before their respective fixes.",
+    "Initial format check failed on a new long test line; only that line was wrapped; regression, focused, lint and format checks were rerun and passed.",
+    "Two receipt transport attempts were abbreviated by the terminal-output middleware, causing base64 decode failures before any receipt write; retried direct subprocess capture with the same required venv Python and verified the exact SHA-256 before publication.",
+    "Workspace is not a git repository; no git history/diff/commit claim. Unified diffs use byte-snapshotted originals."
+  ],
+  "scope": {
+    "authorized_existing_edits": [
+      "multimodal_contract/__init__.py",
+      "tests/test_multimodal_contract.py",
+      "MULTIMODAL-TDD.md",
+      "multimodal_contract/README.md"
+    ],
+    "authorized_new_result_only": "results/mlx-vision-contract-fix-verification.json",
+    "scratch_only_auxiliary_files": "/Users/jeremylien/.hermes/cache/scratch",
+    "limits": {
+      "prompt_tokens": 1024,
+      "image_tokens": 256,
+      "decode_tokens": 32,
+      "chunk_tokens": 256
+    },
+    "production_change_scope": "Session.__init__ only; no other implementation edits",
+    "excluded_actions": [
+      "model/VLM/MLX imports",
+      "weights",
+      "installs",
+      "SSH",
+      "network",
+      "GPU work",
+      "ports/apps",
+      "deployment",
+      "commits"
+    ],
+    "parent_exclusive_ownership": [
+      "GPU",
+      "SSH",
+      "deployment"
+    ],
+    "no_approval_or_equivalence_claims": [
+      "physical-cache execution or ownership",
+      "native mRoPE arithmetic",
+      "image encoder/scatter",
+      "model logits",
+      "distributed execution",
+      "autonomy",
+      "24x7 operation",
+      "production readiness"
+    ]
+  }
+}

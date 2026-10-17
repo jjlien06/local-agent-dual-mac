@@ -1,0 +1,199 @@
+{
+  "passed": true,
+  "security_concerns": [],
+  "logic_errors": [],
+  "suggestions": [],
+  "verification": {
+    "finding_id": "CPU-CONTRACT-001",
+    "outcome": "No remaining blocking fault found in the narrow repair; original mutable digest forgery is rejected at admission before equality both before and after mutation.",
+    "owned_file_sha256": {
+      "multimodal_contract/__init__.py": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+      "tests/test_multimodal_contract.py": "e52ceb63ae75aef087414e4e187d1e0a5a9ffcdb7b54b5523e54ef863e8e00c3",
+      "MULTIMODAL-TDD.md": "b2da4b82b7f56d857ca3773a6e72c1aae4d338a8e386a5121cd6969a5e914da0",
+      "multimodal_contract/README.md": "58c69d3193b1e56b311d38a5fbb3747fe98e748bb1168cc4772f2b0b9eaff8ae"
+    },
+    "original_FAIL_sha256": "8f4f61da9d53bb24b81246253519453645e7f08a6845dc8607ba43822f7810fa",
+    "repair_receipt_sha256": "37c9900cc631c18dc932ca3ec0959c77fdb06f4c4d012e3a44c388743697cb14",
+    "production_outside_session_init_byte_identical": true,
+    "recorded_production_diff_byte_exact": true,
+    "preexisting_test_function_asts_unchanged": true,
+    "historical_tdd_is_byte_exact_prefix": true,
+    "historical_json_checked": 198,
+    "historical_json_changed_or_missing": [],
+    "focused_cpu_tests_passed": 72,
+    "repair_selection_passed": 9,
+    "repair_selection_deselected": 63,
+    "independent_new_boundary_probes_passed": 30,
+    "broad_adversarial_groups_passed": 10,
+    "additional_numpy_reference_comparisons_passed": 4398,
+    "recorded_numpy_reference_cases_rerun": 10,
+    "ruff_check": "All checks passed!",
+    "ruff_format": "3 files already formatted",
+    "boundary_proofs": [
+      "Dataclass __eq__/__ne__ and canonical preparation were replaced with raising traps: exact original 0d mutable digest rejected before/after mutation without reaching traps.",
+      "Wrong exact strings, pinned str subclasses, forged-equality/trapping str subclasses, NumPy scalars, 0d/1d/2d/empty/object/comparison-trap arrays and other non-exact types rejected before canonical comparison.",
+      "Valid text/image Sessions retain a distinct canonical frozen Request with immutable bytes-backed arrays; forced mutation of the caller data record does not affect retained canonical data.",
+      "Malformed IDs, grids and identities; markers/caps; poisoned chunks/axes/delta/endian/type; manifest binding; physical/spatial cursor separation; replay/stale/order/final token; decode caps and terminal fail-closed lifecycle all passed."
+    ],
+    "recorded_execution_log_matches_receipt": true,
+    "repair_red_green_order": [
+      "RED-REPAIR-1",
+      "GREEN-REPAIR-1",
+      "RED-REPAIR-2",
+      "GREEN-REPAIR-2"
+    ],
+    "source_stage_sha256": {
+      "original": "dc33ebc3fed629d28fd9b230c03019edec78836f7ee2aeaf7bb37e01bd9fa2ca",
+      "guard_only": "678fb9b34b49678fb8a5a78ae383c7824b61ad14d0a359adfbaf0f9899e877e6",
+      "final": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+      "tracer1_test_source_sha256": "556e89d9175a6c73d03dbda37c54a699f58d257b9876633f22f2d39f38bb7d9d",
+      "tracer2_test_source_sha256": "2f74883da8f6302bdf9ad1005d49efd1052793b183a82de42bb45f4994061837"
+    },
+    "independent_stage_replay_exits": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "stage_replay_expected_red_failures": [
+      "original: DID NOT RAISE ValueError",
+      "guard-only: session.request is not request"
+    ],
+    "post_green_seven_cases_not_misrepresented_as_seven_extra_red_green_cycles": true,
+    "original_source_config_and_reference_hashes_verified": true,
+    "model_runtime_imports": [],
+    "network_blocked_in_tests_and_probes": true,
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+      "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac",
+      "TMPDIR": "/Users/jeremylien/.hermes/cache/scratch"
+    },
+    "executions": [
+      {
+        "label": "focused_72_cpu_tests",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py -q --tb=short",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout": "........................................................................ [100%]\n72 passed in 0.08s\noffline socket guard enabled; model runtime imports: NONE\n",
+        "stderr": ""
+      },
+      {
+        "label": "repair_9_regressions",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py -k 'config_sha256 or retains_fresh' -q --tb=short",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout": ".........                                                                [100%]\n9 passed, 63 deselected in 0.06s\noffline socket guard enabled; model runtime imports: NONE\n",
+        "stderr": ""
+      },
+      {
+        "label": "fresh_independent_boundary_probes",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py /Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2_tests.py -q --tb=short --rootdir=/Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout": "..............................                                           [100%]\n30 passed in 0.05s\noffline socket guard enabled; model runtime imports: NONE\n",
+        "stderr": ""
+      },
+      {
+        "label": "broad_adversarial_and_4398_numpy_comparisons",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2/broad_probes.py",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout": "{\n  \"checks\": [\n    \"malformed input/marker/grid/unknown-option matrix\",\n    \"forged Request canonical admission\",\n    \"forged Chunk exact type/axis poison/drop delta/dtype matrix\",\n    \"little-endian immutable byte backing/copy isolation\",\n    \"prompt/image/chunk/exact physical offset caps\",\n    \"255/256/257 image-crossing/ragged/final token chunk coverage\",\n    \"physical/spatial separation stale/replay/order/premature/terminal/reset/cancel/decode cap\",\n    \"independent literal bytes/deterministic manifest/domain/config binding\",\n    \"all admitted merged H*W<=256 shapes at three placements vs retrieved NumPy reference\",\n    \"mutable equal-valued ndarray rejected at admission before and after mutation\"\n  ],\n  \"failures\": [],\n  \"reference_comparisons\": 4398,\n  \"known_reproductions\": [\n    {\n      \"admission_rejected_before_mutation\": true,\n      \"admission_rejected_after_mutation\": true\n    }\n  ],\n  \"model_runtime_imports\": [],\n  \"offline\": true\n}\n",
+        "stderr": ""
+      },
+      {
+        "label": "recorded_ten_case_numpy_reference",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2/ten_case_wrapper.py",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout": "{\"passed\": true, \"cases\": [{\"grid\": [1, 4, 6], \"prefix\": 0, \"length\": 9, \"positions_sha256\": \"4b8bd7995793de5b9c0e66e70e26ca6b985d825c56f8cabe610b12ac6bf0e0c9\", \"delta\": [[-3]]}, {\"grid\": [1, 4, 6], \"prefix\": 1, \"length\": 10, \"positions_sha256\": \"f5d5cd0a7401e0455f5dd68070098cc9b18513e965ca6d8d7039520380f73109\", \"delta\": [[-3]]}, {\"grid\": [1, 4, 6], \"prefix\": 252, \"length\": 261, \"positions_sha256\": \"6faa90939e694b059a9c3e2ebdee5684f1ce43d6db35704a244fd31e57fd99b6\", \"delta\": [[-3]]}, {\"grid\": [1, 6, 4], \"prefix\": 0, \"length\": 9, \"positions_sha256\": \"91377c3f893a759e0e5bb6c120a76ba605a3e24d5a0561e0cde15de783e8a019\", \"delta\": [[-3]]}, {\"grid\": [1, 6, 4], \"prefix\": 1, \"length\": 10, \"positions_sha256\": \"a1fc6a39272d768fb3b21b3e7a377590bd47749a06977679e36849d5333c46cc\", \"delta\": [[-3]]}, {\"grid\": [1, 6, 4], \"prefix\": 252, \"length\": 261, \"positions_sha256\": \"9cd9a8c78887a8edc47049aec99f3d173e2356aa5050205ce28ce486b7cba276\", \"delta\": [[-3]]}, {\"text_length\": 3, \"delta\": [[0]]}, {\"text_length\": 255, \"delta\": [[0]]}, {\"text_length\": 256, \"delta\": [[0]]}, {\"text_length\": 257, \"delta\": [[0]]}]}\n",
+        "stderr": ""
+      },
+      {
+        "label": "ruff_check",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m ruff check --no-cache multimodal_contract tests/test_multimodal_contract.py",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout": "All checks passed!\n",
+        "stderr": ""
+      },
+      {
+        "label": "ruff_format",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m ruff format --check --no-cache multimodal_contract tests/test_multimodal_contract.py",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout": "3 files already formatted\n",
+        "stderr": ""
+      },
+      {
+        "label": "independent_replay_original_red",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2/stage_pytest.py /Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2/original_module.py tests/test_multimodal_contract.py::test_config_sha256_mutable_zero_dimensional_array_rejected_at_admission -q --tb=short",
+        "exit_code": 1,
+        "expected_exit_code": 1,
+        "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___ test_config_sha256_mutable_zero_dimensional_array_rejected_at_admission ____\ntests/test_multimodal_contract.py:352: in test_config_sha256_mutable_zero_dimensional_array_rejected_at_admission\n    with pytest.raises(ValueError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_multimodal_contract.py::test_config_sha256_mutable_zero_dimensional_array_rejected_at_admission\n1 failed in 0.04s\noffline socket guard enabled; model runtime imports: NONE\n",
+        "stderr": ""
+      },
+      {
+        "label": "independent_replay_intermediate_green",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2/stage_pytest.py /Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2/intermediate_module.py tests/test_multimodal_contract.py::test_config_sha256_mutable_zero_dimensional_array_rejected_at_admission -q --tb=short",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout": ".                                                                        [100%]\n1 passed in 0.02s\noffline socket guard enabled; model runtime imports: NONE\n",
+        "stderr": ""
+      },
+      {
+        "label": "independent_replay_intermediate_retention_red",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2/stage_pytest.py /Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2/intermediate_module.py tests/test_multimodal_contract.py::test_session_retains_fresh_canonical_request_without_changing_positions_or_cursor -q --tb=short",
+        "exit_code": 1,
+        "expected_exit_code": 1,
+        "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_ test_session_retains_fresh_canonical_request_without_changing_positions_or_cursor _\ntests/test_multimodal_contract.py:364: in test_session_retains_fresh_canonical_request_without_changing_positions_or_cursor\n    assert session.request is not request\nE   AssertionError: assert Request(request_id='canonical', token_ids=(7, 248053, 248056, 248056, 248056, 248056, 248056, 248056, 248054, 9), posi...0\\x00\\x00', delta=-3, grid=(1, 4, 6), config_sha256='14b65a0ee06517060a6bbd979bb1a8ff54e7b304b1a1f01d54344b88b8285e85') is not Request(request_id='canonical', token_ids=(7, 248053, 248056, 248056, 248056, 248056, 248056, 248056, 248054, 9), posi...0\\x00\\x00', delta=-3, grid=(1, 4, 6), config_sha256='14b65a0ee06517060a6bbd979bb1a8ff54e7b304b1a1f01d54344b88b8285e85')\nE    +  where Request(request_id='canonical', token_ids=(7, 248053, 248056, 248056, 248056, 248056, 248056, 248056, 248054, 9), posi...0\\x00\\x00', delta=-3, grid=(1, 4, 6), config_sha256='14b65a0ee06517060a6bbd979bb1a8ff54e7b304b1a1f01d54344b88b8285e85') = <multimodal_contract.Session object at 0x109345940>.request\n=========================== short test summary info ============================\nFAILED tests/test_multimodal_contract.py::test_session_retains_fresh_canonical_request_without_changing_positions_or_cursor\n1 failed in 0.04s\noffline socket guard enabled; model runtime imports: NONE\n",
+        "stderr": ""
+      },
+      {
+        "label": "independent_replay_final_retention_green",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/cpu_contract_001_guarded_pytest.py tests/test_multimodal_contract.py::test_session_retains_fresh_canonical_request_without_changing_positions_or_cursor -q --tb=short",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout": ".                                                                        [100%]\n1 passed in 0.06s\noffline socket guard enabled; model runtime imports: NONE\n",
+        "stderr": ""
+      }
+    ],
+    "files_created_in_workspace": [
+      "results/mlx-vision-contract-independent-review-v2.json"
+    ],
+    "existing_workspace_files_modified": [],
+    "scratch_evidence_directory": "/Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2",
+    "scratch_file_sha256": {
+      "/Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2_tests.py": "8e6e06373ae11771112a6753a80abfed8dec3ec925dacfd09dfa8a8025855fcc",
+      "/Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2_runner.py": "b017056432a1b732d7d3fe8fcf205dae930bbad61b8abda7c465d8f74e7b1528",
+      "/Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2_finalize.py": "bea26ce24d507ecb73bcb4fc3756d9d0c5d12db239f565ac7d250df9449f7022",
+      "/Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2/broad_probe_results.json": "41e72a4864bff541dc4f3cd8247d36ad52afc1b6fa1383dabb0ab54d14fadb3c",
+      "/Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2/broad_probes.py": "05387b7718cc09a09a3f5f190a98f055df49b1b1f96a0be67f5e66899145718f",
+      "/Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2/executions.json": "826a20a660e8349c52d36d4ee03db31997043dabbcf91e585f1420d56cb8f85e",
+      "/Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2/intermediate_module.py": "678fb9b34b49678fb8a5a78ae383c7824b61ad14d0a359adfbaf0f9899e877e6",
+      "/Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2/original_module.py": "dc33ebc3fed629d28fd9b230c03019edec78836f7ee2aeaf7bb37e01bd9fa2ca",
+      "/Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2/stage_pytest.py": "325fd8871bd3d86b7dfe09c8283149d0dd443530dfb3e50f68058ec6438f0260",
+      "/Users/jeremylien/.hermes/cache/scratch/independent_cpu_contract_v2/ten_case_wrapper.py": "6de3d96cc05f2a91b03129957acb119ca14be0e6ab07c367ff17b14cf700fc20"
+    },
+    "issues_encountered": [
+      "Initial review runner completed all 11 CPU/test/lint/replay executions, then an overbroad assertion compared the parent-owned root README against the older repair baseline and failed. Current root README documents later parent verification and pending independent review; no reviewed production/test/hash changed. Finalization retained all actual outputs and rechecked the scoped targets and all 198 historical JSONs. This was a review-harness scope assertion, not a production failure."
+    ],
+    "parent_owned_root_readme": {
+      "sha256_at_repair_receipt": "f25cb25ba536cbcbb6ac5b259fa5198c91d256ac8733f3082e1e53db3af27c64",
+      "sha256_at_rereview": "a6748bc2980f56f1c3427b4226cb9ae3d6d9205fd2d12fc0803adf1e55283a53",
+      "differs_from_repair_receipt": true,
+      "not_modified_by_reviewer": true,
+      "not_treated_as_immutable_historical_json": true
+    }
+  },
+  "limits": [
+    "Approval applies only to the bounded CPU request/position contract and CPU-CONTRACT-001 repair: B=1, text or one unpadded still image, caps 1024 prompt / 256 merged image / 32 decode / 256 chunk tokens.",
+    "No GPU, MLX/VLM/model-runtime imports, encoder/scatter, native rotary adapter, real cache execution/ownership, logits, memory-fit, distributed, autonomy, production-readiness or 24x7 approval.",
+    "No weights, downloads, installs, network, SSH, ports, app operations, signals, deployment, commits or implementation edits. No upstream or ParetoQuant baseline modifications.",
+    "Numerical reference execution uses the previously independently verified pinned function with NumPy substituted for mx and annotations removed; no new source retrieval and no native MLX/rotary numerical equivalence claim.",
+    "Original 84-test qualification suite and whole-workspace/upstream pytest were not run by this reviewer. Parent-reported combined totals are not independent execution.",
+    "Recorded historical RED/GREEN order and hashes were checked against preserved execution logs, and exact source/test-stage hashes were reconstructed. Independent replay proves red-capability now, not retroactive eyewitness verification of historical chronology.",
+    "Frozen Python records are not an adversarial in-process sandbox or authenticated wire parser; hashes do not authenticate image bytes, weights or callers."
+  ]
+}

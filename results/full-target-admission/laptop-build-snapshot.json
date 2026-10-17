@@ -1,0 +1,102 @@
+{
+  "schema": "native-metal-rpc-build-snapshot-v1",
+  "timestamp": 1792202867.0626152,
+  "source_revision": "ea0c4c2c85fb183ec0fbd30a1af4e4275a18a064",
+  "source_worktree_clean": true,
+  "cache": {
+    "CMAKE_BUILD_TYPE": "Release",
+    "CMAKE_OSX_ARCHITECTURES": "arm64",
+    "GGML_METAL": "ON",
+    "GGML_RPC": "ON",
+    "LLAMA_BUILD_UI": "OFF",
+    "LLAMA_USE_PREBUILT_UI": "OFF"
+  },
+  "files": {
+    "ggml-rpc-server": {
+      "bytes": 133136,
+      "sha256": "471b1c4fdb7500febc8a2c43e13f2d3aca9a619ecf257d630f4879c047dcc31f"
+    },
+    "libggml-base.0.27.0.dylib": {
+      "bytes": 751240,
+      "sha256": "58159774c1edcede5b9e62525adc98c91aedf71678b23010aaab7bd84a6fe5eb"
+    },
+    "libggml-blas.0.27.0.dylib": {
+      "bytes": 58776,
+      "sha256": "11b3638d98327bd5dfe7a3bf9a804a1650d5368c34f526c91db8cd1d888631e2"
+    },
+    "libggml-cpu.0.27.0.dylib": {
+      "bytes": 1006944,
+      "sha256": "d67f44d3ba3aa61b55c6c15aef398b77d169f3fd9aab394352e328898ea6be3d"
+    },
+    "libggml-metal.0.27.0.dylib": {
+      "bytes": 5569848,
+      "sha256": "f1cb98e9b9bfac73b8f6091875fa5ef25e38d6a54f5d3805d7a593c2a16b7e9a"
+    },
+    "libggml-rpc.0.27.0.dylib": {
+      "bytes": 242800,
+      "sha256": "ec4b0a4c9badacb36f13ae48dc308906ad98dca591241a42796271f6a0f0a281"
+    },
+    "libggml.0.27.0.dylib": {
+      "bytes": 60016,
+      "sha256": "28d1e76ec207ae7f9950c667ef4267e1d497af1a794f9041dba31bcadc935dbc"
+    },
+    "libllama-common.0.7.0.dylib": {
+      "bytes": 5348808,
+      "sha256": "aa841ea791169643738fd98cbd7752ad8e361a906832cc4a70abec3ac974b93d"
+    },
+    "libllama-server-impl.dylib": {
+      "bytes": 3500408,
+      "sha256": "86212d1b29b593d5e3a7f4dece265ecc2c7d6554bec823fcefb67683efa7b1db"
+    },
+    "libllama.0.7.0.dylib": {
+      "bytes": 3529072,
+      "sha256": "da257f70b7b71989f076a973ee61ca298a32c37692dd03a281d1799f0d97627f"
+    },
+    "libmtmd.0.7.0.dylib": {
+      "bytes": 1458944,
+      "sha256": "183f66c72d1bfa7b4036f94cdf10e0389fe780b574c566d0a6e357b4c2162048"
+    },
+    "llama-mtmd-cli": {
+      "bytes": 103680,
+      "sha256": "bd38d7d8ce2147ba92a135b952cb190fbfe39beb47335f9f2e8455c23a81db25"
+    },
+    "llama-server": {
+      "bytes": 49984,
+      "sha256": "8c8a20cd88854553088a6dac8da2cbaf46b868747f7dfb336ca05f6a3ae660ed"
+    }
+  },
+  "links": {
+    "ggml-rpc-server": "ggml-rpc-server",
+    "libggml-base.0.27.0.dylib": "libggml-base.0.27.0.dylib",
+    "libggml-base.0.dylib": "libggml-base.0.27.0.dylib",
+    "libggml-base.dylib": "libggml-base.0.27.0.dylib",
+    "libggml-blas.0.27.0.dylib": "libggml-blas.0.27.0.dylib",
+    "libggml-blas.0.dylib": "libggml-blas.0.27.0.dylib",
+    "libggml-blas.dylib": "libggml-blas.0.27.0.dylib",
+    "libggml-cpu.0.27.0.dylib": "libggml-cpu.0.27.0.dylib",
+    "libggml-cpu.0.dylib": "libggml-cpu.0.27.0.dylib",
+    "libggml-cpu.dylib": "libggml-cpu.0.27.0.dylib",
+    "libggml-metal.0.27.0.dylib": "libggml-metal.0.27.0.dylib",
+    "libggml-metal.0.dylib": "libggml-metal.0.27.0.dylib",
+    "libggml-metal.dylib": "libggml-metal.0.27.0.dylib",
+    "libggml-rpc.0.27.0.dylib": "libggml-rpc.0.27.0.dylib",
+    "libggml-rpc.0.dylib": "libggml-rpc.0.27.0.dylib",
+    "libggml-rpc.dylib": "libggml-rpc.0.27.0.dylib",
+    "libggml.0.27.0.dylib": "libggml.0.27.0.dylib",
+    "libggml.0.dylib": "libggml.0.27.0.dylib",
+    "libggml.dylib": "libggml.0.27.0.dylib",
+    "libllama-common.0.7.0.dylib": "libllama-common.0.7.0.dylib",
+    "libllama-common.0.dylib": "libllama-common.0.7.0.dylib",
+    "libllama-common.dylib": "libllama-common.0.7.0.dylib",
+    "libllama-server-impl.dylib": "libllama-server-impl.dylib",
+    "libllama.0.7.0.dylib": "libllama.0.7.0.dylib",
+    "libllama.0.dylib": "libllama.0.7.0.dylib",
+    "libllama.dylib": "libllama.0.7.0.dylib",
+    "libmtmd.0.7.0.dylib": "libmtmd.0.7.0.dylib",
+    "libmtmd.0.dylib": "libmtmd.0.7.0.dylib",
+    "libmtmd.dylib": "libmtmd.0.7.0.dylib",
+    "llama-mtmd-cli": "llama-mtmd-cli",
+    "llama-server": "llama-server"
+  },
+  "scope": "Read-only post-smoke/pre-target snapshot; not a cryptographic proof of prior execution."
+}

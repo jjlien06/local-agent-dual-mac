@@ -1,0 +1,102 @@
+{
+  "role": "reviewed-client-small-policy-control",
+  "port": 18402,
+  "rpc": "169.254.47.213:18570",
+  "source_revision": "ea0c4c2c85fb183ec0fbd30a1af4e4275a18a064",
+  "assets": {
+    "schema": "dual-mac-vision-control-assets-v1",
+    "role": "Small same-architecture VLM control only; NOT the final model recommendation",
+    "repo": "unsloth/Qwen3.5-0.8B-GGUF",
+    "revision": "6ab461498e2023f6e3c1baea90a8f0fe38ab64d0",
+    "files": [
+      {
+        "name": "Qwen3.5-0.8B-Q4_K_M.gguf",
+        "bytes": 532517120,
+        "sha256": "bd258782e35f7f458f8aced1adc053e6e92e89bc735ba3be89d38a06121dc517"
+      },
+      {
+        "name": "mmproj-BF16.gguf",
+        "bytes": 207346528,
+        "sha256": "d312c4d02fd46eea7a16e4f3bbb58840e6222209322ca1e33ca03247ad8935d6"
+      }
+    ],
+    "total_bytes": 739863648,
+    "target_model_unchanged": "Qwen/Qwen3.8-27B",
+    "storage_root": "/Volumes/\u65b0\u589e\u78c1\u789f\u5340/local-agent-models",
+    "model_dir": "/Volumes/\u65b0\u589e\u78c1\u789f\u5340/local-agent-models/qwen35-0.8b-control-6ab461498e20"
+  },
+  "server_sha256": "bdcd2f4313fb976247598c05bc734e9eb5186f03bbd7c94d4d53b0acd00cfecb",
+  "build_files": {
+    "ggml-rpc-server": {
+      "bytes": 132912,
+      "sha256": "0292e0afe0d86f08765394e746e5d4e9b3a7cc02c2f98e251444816a9d8c19d3"
+    },
+    "libggml-base.0.27.0.dylib": {
+      "bytes": 774120,
+      "sha256": "0d17252bcd2d8d3abc3faab6e649ee02f9c8d9e811d624927f0d619ee7b1d9bb"
+    },
+    "libggml-blas.0.27.0.dylib": {
+      "bytes": 58664,
+      "sha256": "c2c2e840c0a7dec168b3ae4a6faac6f788de00ad5964daaf26edb8ffb6a30c30"
+    },
+    "libggml-cpu.0.27.0.dylib": {
+      "bytes": 973872,
+      "sha256": "d5420c32e30c32af8bb93e97375cb9a983c5e9a75e415df499108b935812bc70"
+    },
+    "libggml-metal.0.27.0.dylib": {
+      "bytes": 5569720,
+      "sha256": "edba21b62ef9e076ae5bf9f112e6488717b494f555e784a61c8e63d8da3837ff"
+    },
+    "libggml-rpc.0.27.0.dylib": {
+      "bytes": 222304,
+      "sha256": "5f13606548e37df535513aa6ef8364f3ad3eeb8040fd6201e42042c784ad89b8"
+    },
+    "libggml.0.27.0.dylib": {
+      "bytes": 60240,
+      "sha256": "c29d1ff9fc4a803c6a45c844ed920cecd4fb3a16b1aa2cd14786c5ab608eee42"
+    },
+    "libllama-common.0.7.0.dylib": {
+      "bytes": 5327192,
+      "sha256": "0332a0477f9a426ffd3bc365a529cdac226c0dff93ccf3439bbfe6534fda75bf"
+    },
+    "libllama-server-impl.dylib": {
+      "bytes": 3416232,
+      "sha256": "d16db8b8520772269d04d69310274c021cb0e5b8f44a17ce92aaba67348dd670"
+    },
+    "libllama.0.7.0.dylib": {
+      "bytes": 3493488,
+      "sha256": "b6aa7eab56ec1c26963dfa10624a2277fc3c06fe355a403d96609ad4f8bb8ee4"
+    },
+    "libmtmd.0.7.0.dylib": {
+      "bytes": 1443232,
+      "sha256": "8e77f19e8019cb6751a7dff5e58ddbcfa9ac981debcb4b36c2809cafc46e0380"
+    },
+    "llama-mtmd-cli": {
+      "bytes": 87008,
+      "sha256": "130d8d0937ba5f8512a3c1fd52499f318142e0fc4666e6669c912dcb4e5c6380"
+    },
+    "llama-server": {
+      "bytes": 33472,
+      "sha256": "bdcd2f4313fb976247598c05bc734e9eb5186f03bbd7c94d4d53b0acd00cfecb"
+    }
+  },
+  "remote_supervisor_sha256": "25aa0d6baa1d9b3057e0a58e745b00d5aae5cf83949d5ab45d88ea1bc14aaed9",
+  "mode": "dual-default",
+  "run_name": "qualified-dual-default-v1",
+  "snapshot_dir": "/Users/jeremylien/Projects/local-agent-dual-mac/qualification-snapshots/51d37c9a7d66682c2d2ba09a7d8d89d5fb32dc5cfde13c06844191df1e28d3aa",
+  "snapshot_tree_sha256": "51d37c9a7d66682c2d2ba09a7d8d89d5fb32dc5cfde13c06844191df1e28d3aa",
+  "snapshot_files": {
+    "qualification/client.py": "1db5e5abea893a56fed4030086dfffa552bebd7b0e08b8bd7483986b475b5743",
+    "qualification/inputs.py": "95d56795c27b9d385676327fba79e571a4a05da094f04b225e142d8de5717b03",
+    "qualification/transport.py": "8fa7fd97dbf859793f738e256ac8593f1b9c7b2912a948dd9feb0a7f2a7fe004",
+    "qualification/store.py": "645cf425d9918e91b1958c7bdfedec5d4e7a37c7836df485b0f487aaf084b292",
+    "qualification/make_fixtures.py": "41e45b869291598670578921463d55762dd04f02118a5759d2e09dce1aa80077",
+    "qualification/README.md": "6bb38622f3a52d81b31393024dac0953c7185cdfa818809c89bd2a5e56a5c30a",
+    "qualification/fixtures/public-cases.json": "de0c054a3df1fcb87ac913a1a2512c208f2071230e5f7d0773b61d99668c9c06",
+    "qualification/fixtures/red.png": "9d9f44b8c5762f6b8a53f905a6192f029eb316ff3b19da9b65a4f0c5f6d34f4d",
+    "qualification/fixtures/blue.png": "0dddcdb26c8b4f497b93ad976ff8a477f51049fb9a29d3c69871390674a05809",
+    "qualification/fixtures/split.png": "9a64507579f86cca2db225d1b4c17c591ab05ebd009d167d813a9719a6a127a9",
+    "tests/test_qualification.py": "82a8c5b43d536052f8578acc8762dc0581e7cfd60a82649078277d2a2dbc1310"
+  },
+  "client_python": "/Users/jeremylien/Projects/paretoquant-dual-host/.venv/bin/python"
+}

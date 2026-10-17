@@ -1,0 +1,57 @@
+{
+  "schema": "full-target-load-v2-cleanup-v1",
+  "timestamp": 1792204681.247639,
+  "laptop": {
+    "timestamp": 1792204681.2076669,
+    "private_listener_connect_errno": {
+      "18552": 61,
+      "18554": 61,
+      "18555": 61,
+      "18556": 61,
+      "18558": 61,
+      "18560": 61,
+      "18562": 61,
+      "18564": 61,
+      "18566": 61
+    },
+    "health_raw": "kern.memorystatus_vm_pressure_level: 1\nvm.swapusage: total = 4096.00M  used = 2972.50M  free = 1123.50M  (encrypted)\n",
+    "workers": {
+      "ggml-rpc-server": {
+        "exit": 1,
+        "stdout": ""
+      },
+      "llama-server": {
+        "exit": 1,
+        "stdout": ""
+      }
+    }
+  },
+  "mini": {
+    "timestamp": 1792204549.4174342,
+    "loopback_ports_connect_errno": {
+      "18380": 61,
+      "18382": 61,
+      "18386": 61
+    },
+    "health": {
+      "pressure": {
+        "exit": 0,
+        "stdout": "1\n"
+      },
+      "swap": {
+        "exit": 0,
+        "stdout": "vm.swapusage: total = 1024.00M  used = 253.12M  free = 770.88M  (encrypted)\n"
+      },
+      "workers": {
+        "exit": 1,
+        "stdout": ""
+      }
+    },
+    "hashes": {
+      "result.json": "bb2efcf19d5c0928175e219bd4b545c28246666a32064080a53d82f782dac3e3",
+      "argv.json": "cc9dbbb692398fa672cc3d061ce39cf6c0bde815f4e16d9382bb3881acd175af",
+      "started.json": "24bf1dd8cc5556b5a085f12a8bb05d097dbc4c8a2b1f04fb870e22bef8d53615",
+      "server.log": "80215fdfb23ab6b9ef610ee68fb3aad9d7aae14a764f8dc98e3737fc55f022a4"
+    }
+  }
+}

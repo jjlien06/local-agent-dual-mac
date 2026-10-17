@@ -1,0 +1,67 @@
+{
+  "independently_recomputed_from_header": true,
+  "source_rule": "upper_bound on cumulative tensor-split fractions using n_layer_all+1=66; skip MTP index64; head uses slot65; input embedding CPU",
+  "placements": [
+    {
+      "tensor_split": "1,1",
+      "gpu_tensor_payload_bytes": {
+        "mini": 7116214144,
+        "laptop": 8271059072
+      },
+      "main_layer_ranges_inclusive": [
+        [
+          0,
+          32
+        ],
+        [
+          33,
+          63
+        ]
+      ],
+      "mini_cpu_embedding_bytes": 715161600,
+      "unused_MTP_bytes": 351008768,
+      "scope": "Header/source-derived preferred placement, not actual allocation, fallback detection, memory peak or admission."
+    },
+    {
+      "tensor_split": "3,2",
+      "gpu_tensor_payload_bytes": {
+        "mini": 8665073920,
+        "laptop": 6722199296
+      },
+      "main_layer_ranges_inclusive": [
+        [
+          0,
+          39
+        ],
+        [
+          40,
+          63
+        ]
+      ],
+      "mini_cpu_embedding_bytes": 715161600,
+      "unused_MTP_bytes": 351008768,
+      "scope": "Header/source-derived preferred placement, not actual allocation, fallback detection, memory peak or admission."
+    },
+    {
+      "tensor_split": "5,3",
+      "gpu_tensor_payload_bytes": {
+        "mini": 9120038912,
+        "laptop": 6267234304
+      },
+      "main_layer_ranges_inclusive": [
+        [
+          0,
+          41
+        ],
+        [
+          42,
+          63
+        ]
+      ],
+      "mini_cpu_embedding_bytes": 715161600,
+      "unused_MTP_bytes": 351008768,
+      "scope": "Header/source-derived preferred placement, not actual allocation, fallback detection, memory peak or admission."
+    }
+  ],
+  "scope": "Corrects the initial 32/32 intended-placement assumption without rewriting prior planning or failed receipts."
+}

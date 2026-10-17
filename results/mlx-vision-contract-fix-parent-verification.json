@@ -1,0 +1,22 @@
+{
+  "schema": "mlx-vision-contract-fix-parent-verification-v1",
+  "timestamp": 1792209641.3424482,
+  "status": "parent_regression_checks_passed_independent_rereview_pending",
+  "historical_JSON_hashes_reverified": 198,
+  "repair_receipt_sha256": "37c9900cc631c18dc932ca3ec0959c77fdb06f4c4d012e3a44c388743697cb14",
+  "current_source_document_sha256": {
+    "multimodal_contract/__init__.py": "fe0543953c6419de6a7b3af6f20a17b42217ceed0225dfc022fa5f9965c39116",
+    "tests/test_multimodal_contract.py": "e52ceb63ae75aef087414e4e187d1e0a5a9ffcdb7b54b5523e54ef863e8e00c3",
+    "MULTIMODAL-TDD.md": "b2da4b82b7f56d857ca3773a6e72c1aae4d338a8e386a5121cd6969a5e914da0",
+    "multimodal_contract/README.md": "58c69d3193b1e56b311d38a5fbb3747fe98e748bb1168cc4772f2b0b9eaff8ae"
+  },
+  "command": "export TMPDIR=/Users/jeremylien/.hermes/cache/scratch; export PYTHONDONTWRITEBYTECODE=1; /Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -B -m pytest -p no:cacheprovider tests/test_multimodal_contract.py tests/test_qualification.py -q && /Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -B -m ruff check --no-cache multimodal_contract tests/test_multimodal_contract.py && /Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -B -m ruff format --check --no-cache multimodal_contract tests/test_multimodal_contract.py",
+  "execution": {
+    "output": "........................................................................ [ 46%]\n........................................................................ [ 92%]\n............                                                             [100%]\n156 passed in 40.62s\nAll checks passed!\n3 files already formatted",
+    "exit_code": 0,
+    "error": null
+  },
+  "GPU_execution": false,
+  "independent_review": "pending",
+  "scope": "CPUcontract/localqualificationregressions only; no physicalvision/runtimeadmission."
+}

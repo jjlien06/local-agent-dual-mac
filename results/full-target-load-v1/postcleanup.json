@@ -1,0 +1,48 @@
+{
+  "schema": "two-host-load-v1-postcleanup-v1",
+  "laptop": {
+    "timestamp": 1792203710.787179,
+    "private_listener_connect_errno": {
+      "18552": 61,
+      "18554": 61,
+      "18555": 61,
+      "18556": 61,
+      "18558": 61,
+      "18560": 61,
+      "18562": 61
+    },
+    "health_raw": "kern.memorystatus_vm_pressure_level: 1\nvm.swapusage: total = 5120.00M  used = 3906.25M  free = 1213.75M  (encrypted)\n",
+    "workers": {
+      "ggml-rpc-server": {
+        "exit": 1,
+        "stdout": ""
+      },
+      "llama-server": {
+        "exit": 1,
+        "stdout": ""
+      }
+    }
+  },
+  "mini": {
+    "timestamp": 1792203654.174762,
+    "loopback_ports_connect_errno": {
+      "18380": 61,
+      "18382": 61
+    },
+    "health": {
+      "pressure": {
+        "exit": 0,
+        "stdout": "1\n"
+      },
+      "swap": {
+        "exit": 0,
+        "stdout": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)\n"
+      },
+      "workers": {
+        "exit": 1,
+        "stdout": ""
+      }
+    }
+  },
+  "scope": "New explicit post-load cleanup/health readback. Not a retrospective recreation of earlier small-trial aggregate checks."
+}

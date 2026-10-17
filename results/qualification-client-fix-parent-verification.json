@@ -1,0 +1,31 @@
+{
+  "schema": "http-chunk-fix-parent-verification-v1",
+  "scope": "Parent CPU rerun only; independent re-review pending, not physical/model attestation",
+  "interpreter_metadata": {
+    "python": "3.13.2 (main, Feb  4 2025, 14:51:09) [Clang 16.0.0 (clang-1600.0.26.6)]",
+    "files": {
+      "qualification/transport.py": "8fa7fd97dbf859793f738e256ac8593f1b9c7b2912a948dd9feb0a7f2a7fe004",
+      "qualification/client.py": "1db5e5abea893a56fed4030086dfffa552bebd7b0e08b8bd7483986b475b5743",
+      "qualification/inputs.py": "95d56795c27b9d385676327fba79e571a4a05da094f04b225e142d8de5717b03",
+      "qualification/store.py": "645cf425d9918e91b1958c7bdfedec5d4e7a37c7836df485b0f487aaf084b292",
+      "tests/test_qualification.py": "82a8c5b43d536052f8578acc8762dc0581e7cfd60a82649078277d2a2dbc1310",
+      "TDD.md": "e3239a4d3a4ff062942fe2c4912c7b9cb5bc0ba39cd7c62e9f1e7503e883f226",
+      "qualification/README.md": "6bb38622f3a52d81b31393024dac0953c7185cdfa818809c89bd2a5e56a5c30a"
+    },
+    "failed_review_preserved": true
+  },
+  "commands": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 /Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m pytest tests/test_qualification.py -q -p no:cacheprovider",
+      "output": "84 passed in 39.66s",
+      "exit_code": 0
+    },
+    {
+      "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m ruff check --no-cache qualification tests",
+      "output": "All checks passed!",
+      "exit_code": 0
+    }
+  ],
+  "approval_status": "NOT_APPROVED_PENDING_INDEPENDENT_REREVIEW",
+  "source_diff": "/Users/jeremylien/.hermes/cache/scratch/chunk-framing-xva05035/chunk-framing.patch"
+}

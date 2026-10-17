@@ -1,0 +1,22 @@
+[
+  "/Users/jeremylien/Projects/paretoquant-dual-host/.venv/bin/python",
+  "-B",
+  "-m",
+  "qualification.client",
+  "--endpoint",
+  "http://127.0.0.1:18402",
+  "--manifest",
+  "/Users/jeremylien/Projects/local-agent-dual-mac/qualification-snapshots/51d37c9a7d66682c2d2ba09a7d8d89d5fb32dc5cfde13c06844191df1e28d3aa/qualification/fixtures/public-cases.json",
+  "--output",
+  "/Users/jeremylien/Projects/local-agent-dual-mac/results/qualified-dual-default-v1/client",
+  "--model",
+  "qwen35-vision-control",
+  "--timeout",
+  "45",
+  "--deadline",
+  "150",
+  "--max-response-bytes",
+  "1048576",
+  "--max-tokens",
+  "32"
+]

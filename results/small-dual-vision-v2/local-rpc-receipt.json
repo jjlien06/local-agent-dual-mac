@@ -1,0 +1,11 @@
+{
+  "change": "Readiness uses owned listening PID, not an empty protocol connection; network diagnostic proved private TCP reachable. No firewall changes.",
+  "source_revision": "ea0c4c2c85fb183ec0fbd30a1af4e4275a18a064",
+  "pid": 81568,
+  "owned_listener": "COMMAND     PID       USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME\nggml-rpc- 81568 jeremylien    3u  IPv4 0x4a2991007608378b      0t0  TCP 169.254.47.213:18556 (LISTEN)\n",
+  "remote_exit": 1,
+  "owned_rpc_reaped": true,
+  "rpc_exit": -15,
+  "listener_closed": true,
+  "rpc_log_sha256": "457819b6df04f4abca49656e65f31fc841f761821e68822465b9c049cb2ed5a1"
+}

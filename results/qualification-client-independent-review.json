@@ -1,0 +1,95 @@
+{
+  "passed": false,
+  "security_concerns": [],
+  "logic_errors": [
+    {
+      "id": "HTTP-CHUNK-FRAMING",
+      "severity": "medium",
+      "location": "qualification/transport.py:51-78",
+      "issue": "Malformed or truncated chunked responses are classified as complete successful exchanges. Header checks validate Transfer-Encoding but delegate chunk delimiter/trailer validation to http.client, whose read1 accepts non-CRLF bytes after a chunk and EOF immediately after the zero-size chunk line.",
+      "evidence": "Independent real 127.0.0.1 HTTP fixture probes returned exit 0, success true, completed_cases 3, and response.complete true both for a JSON chunk followed by XX instead of CRLF and for a response ending at 0\\r\\n without the required final CRLF. The unchanged production client/transport was exercised with an in-memory artifact sink; a valid chunked control also passed, and a missing nonterminal chunk separator correctly failed.",
+      "impact": "The receipt can assert complete validated HTTP success for invalid/truncated framing, contradicting the documented fail-closed transport/completeness guarantee.",
+      "recommendation": "Strictly validate chunk data delimiters and the terminal trailer-section CRLF, retaining existing absolute watchdog/body limits. Add regression tests for these exact wire forms and require nonzero exit, success false and complete false."
+    }
+  ],
+  "suggestions": [
+    "Consider an explicit finish_reason policy: the client currently accepts nonempty text with finish_reason tool_calls even when no action-call payload is present; document that finish_reason is observation-only or reject action-only termination reasons.",
+    "Add strict manifest version typing if version 1 is intended to exclude JSON true and 1.0; equality currently accepts those values."
+  ],
+  "test_results": {
+    "interpreter": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python",
+    "python_version": "3.13.2",
+    "focused_pytest": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -B -m pytest tests/test_qualification.py -q --tb=short -p no:cacheprovider --basetemp <automatically-cleaned-scratch-directory>/pytest",
+      "exit_code": 0,
+      "passed": 61,
+      "duration_seconds": 27.62
+    },
+    "lint": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 /Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -B -m ruff check --no-cache qualification tests/test_qualification.py",
+      "exit_code": 0,
+      "output": "All checks passed!"
+    },
+    "independent_transport_probes": [
+      {
+        "name": "valid_chunked_control",
+        "client_exit_code": 0,
+        "success": true,
+        "completed_cases": 3
+      },
+      {
+        "name": "missing_terminal_crlf",
+        "client_exit_code": 0,
+        "success": true,
+        "response_complete": true,
+        "completed_cases": 3,
+        "expected_rejection": true
+      },
+      {
+        "name": "missing_chunk_separator",
+        "client_exit_code": 1,
+        "success": false,
+        "response_complete": false,
+        "expected_rejection": true
+      },
+      {
+        "name": "invalid_chunk_separator_XX",
+        "client_exit_code": 0,
+        "success": true,
+        "response_complete": true,
+        "completed_cases": 3,
+        "expected_rejection": true
+      },
+      {
+        "name": "action_finish_reason_observation",
+        "client_exit_code": 0,
+        "success": true,
+        "completed_cases": 3
+      }
+    ],
+    "reviewed_files": [
+      "qualification/client.py",
+      "qualification/transport.py",
+      "qualification/inputs.py",
+      "qualification/store.py",
+      "qualification/make_fixtures.py",
+      "qualification/README.md",
+      "TDD.md",
+      "tests/test_qualification.py"
+    ],
+    "verified_boundaries": [
+      "Literal IPv4/IPv6 loopback endpoints; direct sockets ignore proxy environment; redirects not followed.",
+      "Frozen PNG/hash checks, bounded decompression and input byte/pixel counts; no-follow component walk and relative image paths.",
+      "Absolute socket-shutdown watchdog handles trickled headers/bodies and shared request deadline.",
+      "Exclusive output directory, fd-relative artifacts and atomic unsuccessful checkpoints; existing-output and pathname-symlink tests pass.",
+      "Nonempty assistant text, usage/model type checks and rejection of populated action calls; semantic reference-answer correctness intentionally not claimed.",
+      "attestation remains false; no model, GPU, physical-host, token-equivalence or performance attestation inferred."
+    ],
+    "limitations": [
+      "CPU/client review only; no GPU imports, model calls, SSH, downloads, installs, commits or unrelated runtime/source inspection.",
+      "Tests used automatically removed scratch fixtures; no source/document/benchmark files were edited. Bytecode, pytest cache and Ruff cache were disabled.",
+      "Workspace is not a Git repository; git status could not be used. This did not block direct source review or tests."
+    ]
+  },
+  "summary": "FAIL: all 61 focused CPU tests and Ruff pass, but independent real-loopback probes prove malformed/truncated chunked HTTP can receive successful complete receipts; no implementation edits made."
+}

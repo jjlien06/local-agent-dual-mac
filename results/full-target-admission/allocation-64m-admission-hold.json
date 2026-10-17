@@ -1,0 +1,32 @@
+{
+  "role": "Fixed64MiB-only; NOT LAUNCHED",
+  "timestamp": 1792204177.9851909,
+  "initial_failed_free_page_bytes": 117030912,
+  "required_immediately_free_page_bytes": 536870912,
+  "reread": {
+    "pressure": {
+      "exit": 0,
+      "stdout": "1\n"
+    },
+    "swap": {
+      "exit": 0,
+      "stdout": "vm.swapusage: total = 1024.00M  used = 253.12M  free = 770.88M  (encrypted)\n"
+    },
+    "vm_stat": {
+      "exit": 0,
+      "stdout": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     7940.\nPages active:                                 418586.\nPages inactive:                               411147.\nPages speculative:                              9072.\nPages throttled:                                   0.\nPages wired down:                             133807.\nPages purgeable:                                4451.\n\"Translation faults\":                      123308369.\nPages copy-on-write:                         2700518.\nPages zero filled:                          97605329.\nPages reactivated:                           4199017.\nPages purged:                                 690217.\nFile-backed pages:                            666967.\nAnonymous pages:                              171838.\nPages stored in compressor:                   127267.\nPages occupied by compressor:                  33324.\nDecompressions:                             22633763.\nCompressions:                               26106128.\nPageins:                                    46320828.\nPageouts:                                      93970.\nSwapins:                                     1504435.\nSwapouts:                                    1572677.\n"
+    },
+    "route": {
+      "exit": 0,
+      "stdout": "   route to: 169.254.47.213\ndestination: 169.254.47.213\n  interface: bridge0\n      flags: <UP,HOST,DONE,LLINFO,STATIC,b016,WASCLONED>\n recvpipe  sendpipe  ssthresh  rtt,msec    rttvar  hopcount      mtu     expire\n       0         0  42751404         1         0         0      1500      1195 \n"
+    },
+    "worker": {
+      "exit": 1,
+      "stdout": ""
+    },
+    "immediately_free_page_bytes": 130088960,
+    "reserve_gate_bytes": 536870912,
+    "free_page_reserve_passed": false
+  },
+  "scope": "Free page count is not total reclaimable/available memory; a failed conservative free-page precondition does not prove model infeasibility. No allocator call occurred. No automatic fallback, scaling or system changes."
+}

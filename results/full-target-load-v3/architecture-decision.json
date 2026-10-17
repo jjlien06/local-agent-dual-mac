@@ -1,0 +1,38 @@
+{
+  "schema": "post-three-rpc-failures-architecture-decision-v1",
+  "timestamp": 1792208270.518018,
+  "decision": "Pause full27B GGUF-RPC admission. Investigate exactcheckpoint MLX multimodal extension, preserving original validated textbaseline. Do not modify RPC backend or run fourth full load.",
+  "rationale": [
+    "Chunking bounds permessage transient staging but does not remove resident destination weights; current evidence does not establish enough peak savings.",
+    "Full27B distributed MLX text execution already exists; trained BF16vision payloads and textquantization can be retained without substituting checkpoint.",
+    "MLX visual compatibility/mRoPE and endtoend peakmemory still require fresh CPU, physicalsmall, fulltarget admission."
+  ],
+  "report_sha256": {
+    "results/full-target-load-v3/rpc-memory-architecture-review.json": "070791e8871bc771a624bb5535b9f6bf54cf28a53ff3535b5a40fcfa746cccf0",
+    "results/full-target-load-v3/mlx-vision-architecture-review.md": "5cf36d9896a6a838a450de36e980aad0ad9055f8e24df0bf8fc2c96ba70b1496",
+    "results/mlx-vision-admission/retained-weight-readback.json": "38e9aa04a22b58e957011bdc4bdd097653a4a1a306bbf29cbda34bbc44cf4a56",
+    "results/mlx-vision-admission/readback-admission.json": "3827166d21cea9e87965c51995528d789e3064575a333cca5316a022c6ae324d"
+  },
+  "parent_verification": {
+    "failed_trial_bound_logs_rehashed": 18,
+    "v3_received_tensors": 239,
+    "v3_received_payload_bytes": 4970537216,
+    "v3_remaining_tensors": 81,
+    "v3_remaining_payload_bytes": 1751662080,
+    "mlx_current_all_three_shards_match_publisher_SHA256": true,
+    "mlx_current_full_tensors": 2180,
+    "mlx_current_vision_tensors": 333,
+    "mlx_current_BF16_vision_bytes": 921460192,
+    "GPU_execution_in_new_readback": false
+  },
+  "in_progress": "Isolated singleimage CPU position/request/cursor contract implementation with strictverticalTDD; noGPU/SSH delegated.",
+  "next_admission": [
+    "Independent failclosed CPUcontract review and parent tests.",
+    "Sourcebound minimalnative-vs-adapted physicalsmallQwen3.5 VLM logits/positions/allKVandGDNstates on eachGPU, thenbothranks.",
+    "New perhost peakmemory budget including encoder+workspace; normalpressure only.",
+    "Only afterthese gates: exact27B visual fulltarget admission.",
+    "Then realistic screenshot/tooltasks, recovery and24\u201348h soak."
+  ],
+  "service_ready": false,
+  "persistent_service_installed": false
+}

@@ -1,0 +1,13 @@
+{
+  "mini": {
+    "output": "{\"exit\": 0, \"stdout\": \"======================================================================\\npython [12278]: 64-bit    Footprint: 9372080 B (16384 bytes per page)\\n======================================================================\\n\\nAuxiliary data:\\n    phys_footprint: 9404848 B\\n    phys_footprint_peak: 9404848 B\\n\\n\\nSystem auxiliary data:\\n    boot_carveout:         547831808 B\\n    sys_wired:            2266382336 B\\n    sys_unwired:          4067459072 B\\n    ---------------------------------------\\n    sys_footprint:        6881673216 B\\n\\n\", \"stderr\": \"\"}",
+    "exit_code": 0,
+    "error": null
+  },
+  "laptop": {
+    "output": "{\"exit\": 0, \"stdout\": \"======================================================================\\nPython [5931]: 64-bit    Footprint: 8290688 B (16384 bytes per page)\\n======================================================================\\n\\nAuxiliary data:\\n    phys_footprint: 8323456 B\\n    phys_footprint_peak: 8323456 B\\n\\n\\nSystem auxiliary data:\\n    boot_carveout:         676429824 B\\n    sys_wired:            3483402240 B\\n    sys_unwired:         18394791936 B\\n    ---------------------------------------\\n    sys_footprint:       22554624000 B\\n\\n\", \"stderr\": \"\"}",
+    "exit_code": 0,
+    "error": null
+  },
+  "scope": "Read-only system footprint query with only the query process selected. An unavailable counter must not be replaced by interpreting memory_pressure -Q percentage as allocatable bytes."
+}

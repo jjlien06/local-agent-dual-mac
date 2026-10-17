@@ -1,0 +1,6 @@
+GET /health HTTP/1.1
+Host: 127.0.0.1:18402
+Connection: close
+Accept: application/json
+Accept-Encoding: identity
+

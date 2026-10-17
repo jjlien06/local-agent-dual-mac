@@ -1,0 +1,64 @@
+{
+  "schema": "actual-pinned-vlm-source-import-cpu-smoke-v1",
+  "status": "failed",
+  "passed": false,
+  "detail": {
+    "error_type": "RuntimeError",
+    "error": "Metal custom kernels and model loads forbidden in import probe",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/import_diagnostic.py\", line 47, in main\n    import mlx_vlm.models.qwen3_5.language as language\n  File \"/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/__init__.py\", line 4, in <module>\n    from .qwen3_5 import LanguageModel, Model, VisionModel\n  File \"/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/qwen3_5.py\", line 11, in <module>\n    from .language import LanguageModel\n  File \"/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py\", line 20, in <module>\n    from .gated_delta import gated_delta_update\n  File \"/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/gated_delta.py\", line 244, in <module>\n    _gated_delta_kernel = _make_gated_delta_kernel(has_mask=False, vectorized=False)\n  File \"/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/gated_delta.py\", line 114, in _make_gated_delta_kernel\n    return mx.fast.metal_kernel(\n           ~~~~~~~~~~~~~~~~~~~~^\n        name=f\"gated_delta_step{suffix}\",\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<2 lines>...\n        source=source,\n        ^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/import_diagnostic.py\", line 39, in forbidden\n    raise RuntimeError('Metal custom kernels and model loads forbidden in import probe')\nRuntimeError: Metal custom kernels and model loads forbidden in import probe\n",
+    "actual_pinned_package_imported": false
+  },
+  "blocked_operations": [
+    {
+      "event": "socket.bind",
+      "stack": [
+        "  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n",
+        "  File \"<frozen importlib._bootstrap_external>\", line 1026, in exec_module\n",
+        "  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n",
+        "  File \"/Users/jeremylien/Projects/local-agent-dual-mac/.vlm-reference-venv/lib/python3.13/site-packages/urllib3/util/__init__.py\", line 4, in <module>\n    from .connection import is_connection_dropped\n",
+        "  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n",
+        "  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n",
+        "  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n",
+        "  File \"<frozen importlib._bootstrap_external>\", line 1026, in exec_module\n",
+        "  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n",
+        "  File \"/Users/jeremylien/Projects/local-agent-dual-mac/.vlm-reference-venv/lib/python3.13/site-packages/urllib3/util/connection.py\", line 137, in <module>\n    HAS_IPV6 = _has_ipv6(\"::1\")\n",
+        "  File \"/Users/jeremylien/Projects/local-agent-dual-mac/.vlm-reference-venv/lib/python3.13/site-packages/urllib3/util/connection.py\", line 127, in _has_ipv6\n    sock.bind((host, 0))\n",
+        "  File \"/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/import_diagnostic.py\", line 30, in audit\n    blocked.append({'event':event,'stack':traceback.format_stack(limit=12)})\n"
+      ]
+    },
+    {
+      "event": "metal_factory_or_model_load",
+      "stack": [
+        "  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n",
+        "  File \"<frozen importlib._bootstrap_external>\", line 1026, in exec_module\n",
+        "  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n",
+        "  File \"/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py\", line 20, in <module>\n    from .gated_delta import gated_delta_update\n",
+        "  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n",
+        "  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n",
+        "  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n",
+        "  File \"<frozen importlib._bootstrap_external>\", line 1026, in exec_module\n",
+        "  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n",
+        "  File \"/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/gated_delta.py\", line 244, in <module>\n    _gated_delta_kernel = _make_gated_delta_kernel(has_mask=False, vectorized=False)\n",
+        "  File \"/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/gated_delta.py\", line 114, in _make_gated_delta_kernel\n    return mx.fast.metal_kernel(\n",
+        "  File \"/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/import_diagnostic.py\", line 38, in forbidden\n    blocked.append({'event':'metal_factory_or_model_load','stack':traceback.format_stack(limit=12),'keyword_names':list(kwargs)})\n"
+      ],
+      "keyword_names": [
+        "name",
+        "input_names",
+        "output_names",
+        "source"
+      ]
+    }
+  ],
+  "device": "Device(cpu, 0)",
+  "model_loaded": false,
+  "gpu_kernel_execution": false,
+  "elapsed_seconds": 1.1884284170009778,
+  "maxrss_bytes": 125485056,
+  "numeric_versions": {
+    "mlx": "0.32.4",
+    "mlx-metal": "0.32.4",
+    "numpy": "2.5.3"
+  },
+  "scope": "Actual complete VLM package imports and one tiny all-zero-position CPU rotary smoke only. No encoder/model construction, weights, real image, Metal, full-attention/cache or screenshot admission."
+}

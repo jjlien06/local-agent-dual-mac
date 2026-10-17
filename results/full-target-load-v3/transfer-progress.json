@@ -1,0 +1,17 @@
+{
+  "schema": "full-target-load-v3-observed-transfer-progress-v1",
+  "status": "NOT_ADMITTED_WARNING_PRESSURE_STOP",
+  "no_model_completion_or_image_request": true,
+  "observed_SET_TENSOR_handler_entries": 239,
+  "unique_names": 239,
+  "sum_exact_publisher_tensor_bytes_for_observed_names": 4970537216,
+  "sum_GiB": 4.629173517227173,
+  "output_weight_handler_observed": true,
+  "output_weight_exact_bytes": 1042944000,
+  "last_observed_tensor": "blk.57.ssm_out.weight",
+  "laptop_first_non_normal_sample_seconds_after_controller_start": 55.21443200111389,
+  "laptop_non_normal_level": 2,
+  "resource_policy_observed": "laptop residencyfalse/sharedtrue; mini explicitlyunset flag",
+  "scope": "Progress count derived from handler logs + exactheader inventory, not rawremoteparameterhash attestation or completed full load. No speed/performance comparison.",
+  "architecture_status": "Third full load failed; pause parameter trials and compare boundedRPCstaging architecture with existingMLXtext+vision route."
+}

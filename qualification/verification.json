@@ -1,0 +1,37 @@
+{
+  "scope": "CPU/local HTTP tests only; no physical model or GPU attestation",
+  "commands": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 /Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m pytest tests/test_qualification.py -q -p no:cacheprovider",
+      "result": {
+        "output": ".............................................................            [100%]\n61 passed in 27.29s",
+        "exit_code": 0,
+        "error": null
+      }
+    },
+    {
+      "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m ruff check --no-cache qualification tests",
+      "result": {
+        "output": "All checks passed!",
+        "exit_code": 0,
+        "error": null
+      }
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 /Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m qualification.client --help",
+      "result": {
+        "output": "usage: client.py [-h] --endpoint ENDPOINT --manifest MANIFEST --output OUTPUT\n                 --model MODEL [--timeout TIMEOUT] [--deadline DEADLINE]\n                 [--max-response-bytes MAX_RESPONSE_BYTES]\n                 [--max-tokens MAX_TOKENS] [--max-image-bytes MAX_IMAGE_BYTES]\n                 [--max-image-pixels MAX_IMAGE_PIXELS]\n\nBounded loopback multimodal qualification; never executes model output.\n\noptions:\n  -h, --help            show this help message and exit\n  --endpoint ENDPOINT   HTTP origin at literal 127.0.0.1 or [::1]; no path,\n                        auth, or redirects (default: None)\n  --manifest MANIFEST   Existing frozen version-1 public cases JSON (relative\n                        PNG paths and exact SHA-256) (default: None)\n  --output OUTPUT       NEW exclusive output directory; parent must already\n                        exist without symlinks (default: None)\n  --model MODEL         Explicit server model ID/alias; recorded, not attested\n                        (default: None)\n  --timeout TIMEOUT     Absolute time budget in seconds per HTTP exchange,\n                        including trickle traffic (max 3600) (default: 30)\n  --deadline DEADLINE   Shared run budget in seconds from argument parsing; no\n                        new network work after expiry (max 86400) (default:\n                        300)\n  --max-response-bytes MAX_RESPONSE_BYTES\n                        Maximum decoded HTTP entity-body bytes retained per\n                        exchange (max 16777216) (default: 1048576)\n  --max-tokens MAX_TOKENS\n                        Explicit completion budget; use 1 for a separate\n                        first-token control (max 32768) (default: 32)\n  --max-image-bytes MAX_IMAGE_BYTES\n                        Maximum bytes per PNG (max 16777216) (default:\n                        4194304)\n  --max-image-pixels MAX_IMAGE_PIXELS\n                        Maximum width*height per PNG (max 16777216) (default:\n                        1048576)",
+        "exit_code": 0,
+        "error": null
+      }
+    },
+    {
+      "command": "shasum -a 256 qualification/fixtures/public-cases.json qualification/fixtures/red.png qualification/fixtures/blue.png qualification/fixtures/split.png",
+      "result": {
+        "output": "de0c054a3df1fcb87ac913a1a2512c208f2071230e5f7d0773b61d99668c9c06  qualification/fixtures/public-cases.json\n9d9f44b8c5762f6b8a53f905a6192f029eb316ff3b19da9b65a4f0c5f6d34f4d  qualification/fixtures/red.png\n0dddcdb26c8b4f497b93ad976ff8a477f51049fb9a29d3c69871390674a05809  qualification/fixtures/blue.png\n9a64507579f86cca2db225d1b4c17c591ab05ebd009d167d813a9719a6a127a9  qualification/fixtures/split.png",
+        "exit_code": 0,
+        "error": null
+      }
+    }
+  ]
+}

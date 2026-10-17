@@ -1,0 +1,8 @@
+{
+  "review_sha256": "8f4f61da9d53bb24b81246253519453645e7f08a6845dc8607ba43822f7810fa",
+  "forgery_accepted": true,
+  "exception_type": "TypeError",
+  "exception": "Object of type ndarray is not JSON serializable",
+  "state": "active",
+  "request_released": false
+}

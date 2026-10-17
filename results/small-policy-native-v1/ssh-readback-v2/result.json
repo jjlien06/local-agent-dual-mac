@@ -1,0 +1,111 @@
+{
+  "schema": "small-native-vision-smoke-v1",
+  "status": "success",
+  "role": "Qwen3.5-0.8B architecture control only, not final27B",
+  "requests": [
+    {
+      "case_id": "red",
+      "image_sha256": "9b5d2bc0516a2749576352b9c38c6e9f88d2db423d8a187c1c003034b2136b3c",
+      "request_sha256": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+      "response_sha256": "25e3cbd048a83fa4e104be268414995e0f33cdb376452eeba9d58918dd122405",
+      "content": "red",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "wall_seconds": 0.07685808400856331,
+      "expected": "red",
+      "color_match": true
+    },
+    {
+      "case_id": "blue",
+      "image_sha256": "32cba78a00615c233d68cbde61d1cb07763e3c7524b1cea9ca0756b336843e86",
+      "request_sha256": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+      "response_sha256": "899c9021172b38bfb10a82f9c6f8733ca738db242ec252814403c651144a1cc4",
+      "content": "blue",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "wall_seconds": 0.07496191599057056,
+      "expected": "blue",
+      "color_match": true
+    }
+  ],
+  "source_revision": "ea0c4c2c85fb183ec0fbd30a1af4e4275a18a064",
+  "model_revision": "6ab461498e2023f6e3c1baea90a8f0fe38ab64d0",
+  "argv": [
+    "/Users/jeremylien/Projects/local-agent-dual-mac/build-api-arm64/bin/llama-server",
+    "-m",
+    "/Volumes/\u65b0\u589e\u78c1\u789f\u5340/local-agent-models/qwen35-0.8b-control-6ab461498e20/Qwen3.5-0.8B-Q4_K_M.gguf",
+    "--mmproj",
+    "/Volumes/\u65b0\u589e\u78c1\u789f\u5340/local-agent-models/qwen35-0.8b-control-6ab461498e20/mmproj-BF16.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "18388",
+    "--alias",
+    "qwen35-vision-control",
+    "--ctx-size",
+    "2048",
+    "--parallel",
+    "1",
+    "--batch-size",
+    "256",
+    "--ubatch-size",
+    "256",
+    "--gpu-layers",
+    "99",
+    "--device",
+    "MTL0",
+    "--mmproj-device",
+    "MTL0",
+    "--split-mode",
+    "none",
+    "--image-max-tokens",
+    "256",
+    "--no-warmup",
+    "--no-cont-batching",
+    "--reasoning",
+    "off",
+    "--predict",
+    "32",
+    "--seed",
+    "42",
+    "-lv",
+    "4"
+  ],
+  "binary_sha256": "bdcd2f4313fb976247598c05bc734e9eb5186f03bbd7c94d4d53b0acd00cfecb",
+  "pid": 12412,
+  "exit_code": 0,
+  "owned_process_reaped": true,
+  "post_pressure": 1,
+  "resource_policy": {
+    "GGML_METAL_NO_RESIDENCY": "1"
+  },
+  "asset_hashes_verified": [
+    {
+      "name": "Qwen3.5-0.8B-Q4_K_M.gguf",
+      "bytes": 532517120,
+      "sha256": "bd258782e35f7f458f8aced1adc053e6e92e89bc735ba3be89d38a06121dc517"
+    },
+    {
+      "name": "mmproj-BF16.gguf",
+      "bytes": 207346528,
+      "sha256": "d312c4d02fd46eea7a16e4f3bbb58840e6222209322ca1e33ca03247ad8935d6"
+    }
+  ],
+  "listener_closed": true,
+  "server_log_sha256": "1566eebeb19d2c5fb5e546ee5a41fa8be233e4609594f6224dd7c808ab3169fa",
+  "result_dir": "/Users/jeremylien/Projects/local-agent-dual-mac/results/small-policy-native-v1"
+}

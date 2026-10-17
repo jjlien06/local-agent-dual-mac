@@ -1,0 +1,123 @@
+{
+  "role": "full-target-load-only",
+  "status": "failed",
+  "observations": [
+    {
+      "timestamp": 1792203570.300234,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  86640 00:01",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1743.69M  free = 1328.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203572.3719199,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  86672 00:03",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1743.69M  free = 1328.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203574.45227,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  86672 00:05",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1743.69M  free = 1328.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203576.542249,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  86176 00:07",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1743.69M  free = 1328.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203578.644638,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  86176 00:09",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1743.69M  free = 1328.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203580.728487,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  86176 00:11",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1743.69M  free = 1328.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203582.814486,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  86176 00:13",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1743.69M  free = 1328.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203584.855426,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  86176 00:15",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1743.69M  free = 1328.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203586.8830888,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  86176 00:17",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1743.69M  free = 1328.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203588.9822469,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  51248 00:19",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1743.69M  free = 1328.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203591.072934,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  51248 00:22",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1743.69M  free = 1328.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203593.121322,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  51248 00:24",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1727.69M  free = 1344.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203595.2195048,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  51248 00:26",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1727.69M  free = 1344.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203597.316757,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  51200 00:28",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1727.69M  free = 1344.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203599.393452,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  45312 00:30",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1727.69M  free = 1344.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203601.488205,
+      "pressure": 1,
+      "process_ps_rss_KiB": "95890  45312 00:32",
+      "swap": "vm.swapusage: total = 3072.00M  used = 1727.69M  free = 1344.31M  (encrypted)"
+    },
+    {
+      "timestamp": 1792203603.623893,
+      "pressure": 4,
+      "process_ps_rss_KiB": "95890  45072 00:34",
+      "swap": "vm.swapusage: total = 3072.00M  used = 2825.44M  free = 246.56M  (encrypted)"
+    }
+  ],
+  "started_at": 1792203569.9578612,
+  "inference_executed": false,
+  "rpc_pid": 95890,
+  "owned_listener": "COMMAND     PID       USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME\nggml-rpc- 95890 jeremylien    3u  IPv4 0xaf44fb11724cc71d      0t0  TCP 169.254.47.213:18562 (LISTEN)\n",
+  "remote_controller_exit": 1,
+  "error": {
+    "type": "AssertionError",
+    "message": "local pressure or log guard triggered"
+  },
+  "owned_rpc_reaped": true,
+  "rpc_exit": -15,
+  "rpc_listener_closed": true,
+  "finished_at": 1792203607.522487,
+  "local-rpc.log_sha256": "179188bbc5327a50108950dfb860c85413fcd7b45c17a8b8bae8ca4aa023033e",
+  "remote-controller.log_sha256": "ebd968fc97369ded99f8c23218bc73d52887d8066f4575eda456dbdb307236f1"
+}

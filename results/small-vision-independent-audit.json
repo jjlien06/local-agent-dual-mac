@@ -1,0 +1,1378 @@
+{
+  "passed": true,
+  "verdict": "PASS_SCOPED_RETAINED_EVIDENCE_CONSISTENCY",
+  "security_concerns": [],
+  "logic_errors": [],
+  "scope": "Read-only CPU audit of the retained small Qwen3.5-0.8B physical smoke-test artifacts, separate from the HTTP qualification client review. No hardware execution, SSH, network/listener probes, GPU imports or model calls.",
+  "summary": "Retained native-M4 and dual-M4/M2Pro artifacts are internally hash-consistent. Byte-identical per-color requests yield red/blue text, stop and identical reported 46 prompt / 2 completion / 48 total tokens. Retained M4 logs record actual vision encoding and M2Pro RPC logs record remote graph computation; this supports the bounded image-path smoke-test claim only.",
+  "checks_passed": 56,
+  "check_count": 56,
+  "checks": [
+    {
+      "check": "small-native-vision-v2 argv matches receipt",
+      "passed": true,
+      "actual": [
+        "/Users/jeremylien/Projects/local-agent-dual-mac/build-api-arm64/bin/llama-server",
+        "-m",
+        "/Volumes/新增磁碟區/local-agent-models/qwen35-0.8b-control-6ab461498e20/Qwen3.5-0.8B-Q4_K_M.gguf",
+        "--mmproj",
+        "/Volumes/新增磁碟區/local-agent-models/qwen35-0.8b-control-6ab461498e20/mmproj-BF16.gguf",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "18380",
+        "--alias",
+        "qwen35-vision-control",
+        "--ctx-size",
+        "2048",
+        "--parallel",
+        "1",
+        "--batch-size",
+        "256",
+        "--ubatch-size",
+        "256",
+        "--gpu-layers",
+        "99",
+        "--device",
+        "MTL0",
+        "--mmproj-device",
+        "MTL0",
+        "--split-mode",
+        "none",
+        "--image-max-tokens",
+        "256",
+        "--no-warmup",
+        "--no-cont-batching",
+        "--reasoning",
+        "off",
+        "--predict",
+        "32",
+        "--seed",
+        "42",
+        "-lv",
+        "4"
+      ],
+      "expected": [
+        "/Users/jeremylien/Projects/local-agent-dual-mac/build-api-arm64/bin/llama-server",
+        "-m",
+        "/Volumes/新增磁碟區/local-agent-models/qwen35-0.8b-control-6ab461498e20/Qwen3.5-0.8B-Q4_K_M.gguf",
+        "--mmproj",
+        "/Volumes/新增磁碟區/local-agent-models/qwen35-0.8b-control-6ab461498e20/mmproj-BF16.gguf",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "18380",
+        "--alias",
+        "qwen35-vision-control",
+        "--ctx-size",
+        "2048",
+        "--parallel",
+        "1",
+        "--batch-size",
+        "256",
+        "--ubatch-size",
+        "256",
+        "--gpu-layers",
+        "99",
+        "--device",
+        "MTL0",
+        "--mmproj-device",
+        "MTL0",
+        "--split-mode",
+        "none",
+        "--image-max-tokens",
+        "256",
+        "--no-warmup",
+        "--no-cont-batching",
+        "--reasoning",
+        "off",
+        "--predict",
+        "32",
+        "--seed",
+        "42",
+        "-lv",
+        "4"
+      ]
+    },
+    {
+      "check": "small-native-vision-v2 server log hash",
+      "passed": true,
+      "actual": "b78f8b92311726d8b821acc9262998a64f38476e7756332c0e90b8fdd04c3847",
+      "expected": "b78f8b92311726d8b821acc9262998a64f38476e7756332c0e90b8fdd04c3847"
+    },
+    {
+      "check": "small-native-vision-v2 red request_hash",
+      "passed": true,
+      "actual": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+      "expected": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290"
+    },
+    {
+      "check": "small-native-vision-v2 red response_hash",
+      "passed": true,
+      "actual": "1c57c0255994b37686350227da10a01dd6c6eda5936a29ae5de5b351f5d80cac",
+      "expected": "1c57c0255994b37686350227da10a01dd6c6eda5936a29ae5de5b351f5d80cac"
+    },
+    {
+      "check": "small-native-vision-v2 red image_hash",
+      "passed": true,
+      "actual": "9b5d2bc0516a2749576352b9c38c6e9f88d2db423d8a187c1c003034b2136b3c",
+      "expected": "9b5d2bc0516a2749576352b9c38c6e9f88d2db423d8a187c1c003034b2136b3c"
+    },
+    {
+      "check": "small-native-vision-v2 red content",
+      "passed": true,
+      "actual": "red",
+      "expected": "red"
+    },
+    {
+      "check": "small-native-vision-v2 red finish_reason",
+      "passed": true,
+      "actual": "stop",
+      "expected": "stop"
+    },
+    {
+      "check": "small-native-vision-v2 red usage",
+      "passed": true,
+      "actual": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "expected": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "check": "small-native-vision-v2 red expected_color",
+      "passed": true,
+      "actual": "red",
+      "expected": "red"
+    },
+    {
+      "check": "small-native-vision-v2 red solid_image",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "check": "small-native-vision-v2 blue request_hash",
+      "passed": true,
+      "actual": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+      "expected": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc"
+    },
+    {
+      "check": "small-native-vision-v2 blue response_hash",
+      "passed": true,
+      "actual": "5dd02733c38eed736199d3218e9c7426a9f51f58c3d09d3494c23818ee2a0748",
+      "expected": "5dd02733c38eed736199d3218e9c7426a9f51f58c3d09d3494c23818ee2a0748"
+    },
+    {
+      "check": "small-native-vision-v2 blue image_hash",
+      "passed": true,
+      "actual": "32cba78a00615c233d68cbde61d1cb07763e3c7524b1cea9ca0756b336843e86",
+      "expected": "32cba78a00615c233d68cbde61d1cb07763e3c7524b1cea9ca0756b336843e86"
+    },
+    {
+      "check": "small-native-vision-v2 blue content",
+      "passed": true,
+      "actual": "blue",
+      "expected": "blue"
+    },
+    {
+      "check": "small-native-vision-v2 blue finish_reason",
+      "passed": true,
+      "actual": "stop",
+      "expected": "stop"
+    },
+    {
+      "check": "small-native-vision-v2 blue usage",
+      "passed": true,
+      "actual": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "expected": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "check": "small-native-vision-v2 blue expected_color",
+      "passed": true,
+      "actual": "blue",
+      "expected": "blue"
+    },
+    {
+      "check": "small-native-vision-v2 blue solid_image",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "check": "small-native-vision-v2 vision encode event count",
+      "passed": true,
+      "actual": 2,
+      "expected": 2
+    },
+    {
+      "check": "small-native-vision-v2 image token batch count",
+      "passed": true,
+      "actual": 2,
+      "expected": 2
+    },
+    {
+      "check": "small-native-vision-v2 M4 CLIP backend",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "check": "small-dual-vision-v4 argv matches receipt",
+      "passed": true,
+      "actual": [
+        "/Users/jeremylien/Projects/local-agent-dual-mac/build-api-arm64/bin/llama-server",
+        "--rpc",
+        "169.254.47.213:18560",
+        "-m",
+        "/Volumes/新增磁碟區/local-agent-models/qwen35-0.8b-control-6ab461498e20/Qwen3.5-0.8B-Q4_K_M.gguf",
+        "--mmproj",
+        "/Volumes/新增磁碟區/local-agent-models/qwen35-0.8b-control-6ab461498e20/mmproj-BF16.gguf",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "18380",
+        "--alias",
+        "qwen35-vision-control",
+        "--ctx-size",
+        "2048",
+        "--parallel",
+        "1",
+        "--batch-size",
+        "256",
+        "--ubatch-size",
+        "256",
+        "--gpu-layers",
+        "99",
+        "--device",
+        "MTL0,RPC0",
+        "--mmproj-device",
+        "MTL0",
+        "--split-mode",
+        "layer",
+        "--tensor-split",
+        "1,1",
+        "--image-max-tokens",
+        "256",
+        "--no-warmup",
+        "--no-cont-batching",
+        "--reasoning",
+        "off",
+        "--predict",
+        "32",
+        "--seed",
+        "42",
+        "-lv",
+        "4"
+      ],
+      "expected": [
+        "/Users/jeremylien/Projects/local-agent-dual-mac/build-api-arm64/bin/llama-server",
+        "--rpc",
+        "169.254.47.213:18560",
+        "-m",
+        "/Volumes/新增磁碟區/local-agent-models/qwen35-0.8b-control-6ab461498e20/Qwen3.5-0.8B-Q4_K_M.gguf",
+        "--mmproj",
+        "/Volumes/新增磁碟區/local-agent-models/qwen35-0.8b-control-6ab461498e20/mmproj-BF16.gguf",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "18380",
+        "--alias",
+        "qwen35-vision-control",
+        "--ctx-size",
+        "2048",
+        "--parallel",
+        "1",
+        "--batch-size",
+        "256",
+        "--ubatch-size",
+        "256",
+        "--gpu-layers",
+        "99",
+        "--device",
+        "MTL0,RPC0",
+        "--mmproj-device",
+        "MTL0",
+        "--split-mode",
+        "layer",
+        "--tensor-split",
+        "1,1",
+        "--image-max-tokens",
+        "256",
+        "--no-warmup",
+        "--no-cont-batching",
+        "--reasoning",
+        "off",
+        "--predict",
+        "32",
+        "--seed",
+        "42",
+        "-lv",
+        "4"
+      ]
+    },
+    {
+      "check": "small-dual-vision-v4 server log hash",
+      "passed": true,
+      "actual": "fe161cf61c89775a3a72bed8fe30a4a7a99f66cbb6f0debd645b4a6b0c6c6a0f",
+      "expected": "fe161cf61c89775a3a72bed8fe30a4a7a99f66cbb6f0debd645b4a6b0c6c6a0f"
+    },
+    {
+      "check": "small-dual-vision-v4 red request_hash",
+      "passed": true,
+      "actual": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+      "expected": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290"
+    },
+    {
+      "check": "small-dual-vision-v4 red response_hash",
+      "passed": true,
+      "actual": "62242b0d91640a13723f852c8f5061ad85d4b0c01aa859bbdff88ff3a3d567f3",
+      "expected": "62242b0d91640a13723f852c8f5061ad85d4b0c01aa859bbdff88ff3a3d567f3"
+    },
+    {
+      "check": "small-dual-vision-v4 red image_hash",
+      "passed": true,
+      "actual": "9b5d2bc0516a2749576352b9c38c6e9f88d2db423d8a187c1c003034b2136b3c",
+      "expected": "9b5d2bc0516a2749576352b9c38c6e9f88d2db423d8a187c1c003034b2136b3c"
+    },
+    {
+      "check": "small-dual-vision-v4 red content",
+      "passed": true,
+      "actual": "red",
+      "expected": "red"
+    },
+    {
+      "check": "small-dual-vision-v4 red finish_reason",
+      "passed": true,
+      "actual": "stop",
+      "expected": "stop"
+    },
+    {
+      "check": "small-dual-vision-v4 red usage",
+      "passed": true,
+      "actual": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "expected": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "check": "small-dual-vision-v4 red expected_color",
+      "passed": true,
+      "actual": "red",
+      "expected": "red"
+    },
+    {
+      "check": "small-dual-vision-v4 red solid_image",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "check": "small-dual-vision-v4 blue request_hash",
+      "passed": true,
+      "actual": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+      "expected": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc"
+    },
+    {
+      "check": "small-dual-vision-v4 blue response_hash",
+      "passed": true,
+      "actual": "e65a757827c551803487b430fc611bd25635473723887187fa62eb6e148eaded",
+      "expected": "e65a757827c551803487b430fc611bd25635473723887187fa62eb6e148eaded"
+    },
+    {
+      "check": "small-dual-vision-v4 blue image_hash",
+      "passed": true,
+      "actual": "32cba78a00615c233d68cbde61d1cb07763e3c7524b1cea9ca0756b336843e86",
+      "expected": "32cba78a00615c233d68cbde61d1cb07763e3c7524b1cea9ca0756b336843e86"
+    },
+    {
+      "check": "small-dual-vision-v4 blue content",
+      "passed": true,
+      "actual": "blue",
+      "expected": "blue"
+    },
+    {
+      "check": "small-dual-vision-v4 blue finish_reason",
+      "passed": true,
+      "actual": "stop",
+      "expected": "stop"
+    },
+    {
+      "check": "small-dual-vision-v4 blue usage",
+      "passed": true,
+      "actual": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "expected": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "check": "small-dual-vision-v4 blue expected_color",
+      "passed": true,
+      "actual": "blue",
+      "expected": "blue"
+    },
+    {
+      "check": "small-dual-vision-v4 blue solid_image",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "check": "small-dual-vision-v4 vision encode event count",
+      "passed": true,
+      "actual": 2,
+      "expected": 2
+    },
+    {
+      "check": "small-dual-vision-v4 image token batch count",
+      "passed": true,
+      "actual": 2,
+      "expected": 2
+    },
+    {
+      "check": "small-dual-vision-v4 M4 CLIP backend",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "check": "red cross-run request_sha256",
+      "passed": true,
+      "actual": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+      "expected": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290"
+    },
+    {
+      "check": "red cross-run content",
+      "passed": true,
+      "actual": "red",
+      "expected": "red"
+    },
+    {
+      "check": "red cross-run finish_reason",
+      "passed": true,
+      "actual": "stop",
+      "expected": "stop"
+    },
+    {
+      "check": "red cross-run usage",
+      "passed": true,
+      "actual": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "expected": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "check": "blue cross-run request_sha256",
+      "passed": true,
+      "actual": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+      "expected": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc"
+    },
+    {
+      "check": "blue cross-run content",
+      "passed": true,
+      "actual": "blue",
+      "expected": "blue"
+    },
+    {
+      "check": "blue cross-run finish_reason",
+      "passed": true,
+      "actual": "stop",
+      "expected": "stop"
+    },
+    {
+      "check": "blue cross-run usage",
+      "passed": true,
+      "actual": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "expected": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      }
+    },
+    {
+      "check": "local RPC log hash",
+      "passed": true,
+      "actual": "bbd798548c5f849e9c2225049917053ce8e0c46551f99d92334d33118f2ca1ca",
+      "expected": "bbd798548c5f849e9c2225049917053ce8e0c46551f99d92334d33118f2ca1ca"
+    },
+    {
+      "check": "M2 Pro Metal device recorded",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "check": "remote graph execution rather than enumeration",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "check": "RPC model buffer allocation recorded",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "check": "controller output result matches retained result",
+      "passed": true,
+      "actual": {
+        "parser_regression": {
+          "bad_order_exit": 1,
+          "bad_order_stderr": "error while handling argument \"--device\": invalid device: RPC0\n\nusage:\n-dev,  --device <dev1,dev2,..>          comma-separated list of devices to use for offloading (none = don't\n                                        offload)\n                                        use --list-devices to see a list of available devices\n                                        (env: LLAMA_ARG_DEVICE)\n\n\nto show complete usage, run with -h\n",
+          "good_order_exit": 0
+        },
+        "listed_devices": "Available devices:\n  MTL0: Apple M4 (12124 MiB, 12123 MiB free)\n  BLAS: Accelerate (0 MiB, 0 MiB free)\n  RPC0: 169.254.47.213:18560 (12124 MiB, 12123 MiB free)\n",
+        "schema": "small-dual-vision-smoke-v1",
+        "status": "success",
+        "role": "Qwen3.5-0.8B architecture control only, not final27B",
+        "requests": [
+          {
+            "case_id": "red",
+            "image_sha256": "9b5d2bc0516a2749576352b9c38c6e9f88d2db423d8a187c1c003034b2136b3c",
+            "request_sha256": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+            "response_sha256": "62242b0d91640a13723f852c8f5061ad85d4b0c01aa859bbdff88ff3a3d567f3",
+            "content": "red",
+            "finish_reason": "stop",
+            "usage": {
+              "completion_tokens": 2,
+              "prompt_tokens": 46,
+              "total_tokens": 48,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            "wall_seconds": 0.679627082994557,
+            "expected": "red",
+            "color_match": true
+          },
+          {
+            "case_id": "blue",
+            "image_sha256": "32cba78a00615c233d68cbde61d1cb07763e3c7524b1cea9ca0756b336843e86",
+            "request_sha256": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+            "response_sha256": "e65a757827c551803487b430fc611bd25635473723887187fa62eb6e148eaded",
+            "content": "blue",
+            "finish_reason": "stop",
+            "usage": {
+              "completion_tokens": 2,
+              "prompt_tokens": 46,
+              "total_tokens": 48,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            "wall_seconds": 0.1109141670021927,
+            "expected": "blue",
+            "color_match": true
+          }
+        ],
+        "source_revision": "ea0c4c2c85fb183ec0fbd30a1af4e4275a18a064",
+        "model_revision": "6ab461498e2023f6e3c1baea90a8f0fe38ab64d0",
+        "argv": [
+          "/Users/jeremylien/Projects/local-agent-dual-mac/build-api-arm64/bin/llama-server",
+          "--rpc",
+          "169.254.47.213:18560",
+          "-m",
+          "/Volumes/新增磁碟區/local-agent-models/qwen35-0.8b-control-6ab461498e20/Qwen3.5-0.8B-Q4_K_M.gguf",
+          "--mmproj",
+          "/Volumes/新增磁碟區/local-agent-models/qwen35-0.8b-control-6ab461498e20/mmproj-BF16.gguf",
+          "--host",
+          "127.0.0.1",
+          "--port",
+          "18380",
+          "--alias",
+          "qwen35-vision-control",
+          "--ctx-size",
+          "2048",
+          "--parallel",
+          "1",
+          "--batch-size",
+          "256",
+          "--ubatch-size",
+          "256",
+          "--gpu-layers",
+          "99",
+          "--device",
+          "MTL0,RPC0",
+          "--mmproj-device",
+          "MTL0",
+          "--split-mode",
+          "layer",
+          "--tensor-split",
+          "1,1",
+          "--image-max-tokens",
+          "256",
+          "--no-warmup",
+          "--no-cont-batching",
+          "--reasoning",
+          "off",
+          "--predict",
+          "32",
+          "--seed",
+          "42",
+          "-lv",
+          "4"
+        ],
+        "binary_sha256": "bdcd2f4313fb976247598c05bc734e9eb5186f03bbd7c94d4d53b0acd00cfecb",
+        "pid": 11974,
+        "exit_code": 0,
+        "owned_process_reaped": true,
+        "listener_closed": true,
+        "server_log_sha256": "fe161cf61c89775a3a72bed8fe30a4a7a99f66cbb6f0debd645b4a6b0c6c6a0f",
+        "result_dir": "/Users/jeremylien/Projects/local-agent-dual-mac/results/dual-control-v4"
+      },
+      "expected": {
+        "parser_regression": {
+          "bad_order_exit": 1,
+          "bad_order_stderr": "error while handling argument \"--device\": invalid device: RPC0\n\nusage:\n-dev,  --device <dev1,dev2,..>          comma-separated list of devices to use for offloading (none = don't\n                                        offload)\n                                        use --list-devices to see a list of available devices\n                                        (env: LLAMA_ARG_DEVICE)\n\n\nto show complete usage, run with -h\n",
+          "good_order_exit": 0
+        },
+        "listed_devices": "Available devices:\n  MTL0: Apple M4 (12124 MiB, 12123 MiB free)\n  BLAS: Accelerate (0 MiB, 0 MiB free)\n  RPC0: 169.254.47.213:18560 (12124 MiB, 12123 MiB free)\n",
+        "schema": "small-dual-vision-smoke-v1",
+        "status": "success",
+        "role": "Qwen3.5-0.8B architecture control only, not final27B",
+        "requests": [
+          {
+            "case_id": "red",
+            "image_sha256": "9b5d2bc0516a2749576352b9c38c6e9f88d2db423d8a187c1c003034b2136b3c",
+            "request_sha256": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+            "response_sha256": "62242b0d91640a13723f852c8f5061ad85d4b0c01aa859bbdff88ff3a3d567f3",
+            "content": "red",
+            "finish_reason": "stop",
+            "usage": {
+              "completion_tokens": 2,
+              "prompt_tokens": 46,
+              "total_tokens": 48,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            "wall_seconds": 0.679627082994557,
+            "expected": "red",
+            "color_match": true
+          },
+          {
+            "case_id": "blue",
+            "image_sha256": "32cba78a00615c233d68cbde61d1cb07763e3c7524b1cea9ca0756b336843e86",
+            "request_sha256": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+            "response_sha256": "e65a757827c551803487b430fc611bd25635473723887187fa62eb6e148eaded",
+            "content": "blue",
+            "finish_reason": "stop",
+            "usage": {
+              "completion_tokens": 2,
+              "prompt_tokens": 46,
+              "total_tokens": 48,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            "wall_seconds": 0.1109141670021927,
+            "expected": "blue",
+            "color_match": true
+          }
+        ],
+        "source_revision": "ea0c4c2c85fb183ec0fbd30a1af4e4275a18a064",
+        "model_revision": "6ab461498e2023f6e3c1baea90a8f0fe38ab64d0",
+        "argv": [
+          "/Users/jeremylien/Projects/local-agent-dual-mac/build-api-arm64/bin/llama-server",
+          "--rpc",
+          "169.254.47.213:18560",
+          "-m",
+          "/Volumes/新增磁碟區/local-agent-models/qwen35-0.8b-control-6ab461498e20/Qwen3.5-0.8B-Q4_K_M.gguf",
+          "--mmproj",
+          "/Volumes/新增磁碟區/local-agent-models/qwen35-0.8b-control-6ab461498e20/mmproj-BF16.gguf",
+          "--host",
+          "127.0.0.1",
+          "--port",
+          "18380",
+          "--alias",
+          "qwen35-vision-control",
+          "--ctx-size",
+          "2048",
+          "--parallel",
+          "1",
+          "--batch-size",
+          "256",
+          "--ubatch-size",
+          "256",
+          "--gpu-layers",
+          "99",
+          "--device",
+          "MTL0,RPC0",
+          "--mmproj-device",
+          "MTL0",
+          "--split-mode",
+          "layer",
+          "--tensor-split",
+          "1,1",
+          "--image-max-tokens",
+          "256",
+          "--no-warmup",
+          "--no-cont-batching",
+          "--reasoning",
+          "off",
+          "--predict",
+          "32",
+          "--seed",
+          "42",
+          "-lv",
+          "4"
+        ],
+        "binary_sha256": "bdcd2f4313fb976247598c05bc734e9eb5186f03bbd7c94d4d53b0acd00cfecb",
+        "pid": 11974,
+        "exit_code": 0,
+        "owned_process_reaped": true,
+        "listener_closed": true,
+        "server_log_sha256": "fe161cf61c89775a3a72bed8fe30a4a7a99f66cbb6f0debd645b4a6b0c6c6a0f",
+        "result_dir": "/Users/jeremylien/Projects/local-agent-dual-mac/results/dual-control-v4"
+      }
+    },
+    {
+      "check": "controller process exit",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    }
+  ],
+  "file_inventory": {
+    "SMALL-VISION-CHECKPOINT.md": {
+      "bytes": 6228,
+      "sha256": "2a360b8a7d4face24f31e4be4940669a661de06d845e10ffd9303b754c616960"
+    },
+    "small-native-vision-v2/ssh-readback/result.json": {
+      "bytes": 2851,
+      "sha256": "bd35ddf590e881e444ff9e7adb0cf5740c73d7a48cb930e539e1eda374a40b73"
+    },
+    "small-native-vision-v2/ssh-readback/argv.json": {
+      "bytes": 808,
+      "sha256": "887560d611dc4337a2207e9015ebcba8ac0415d1829bab8418f0c520b3973b67"
+    },
+    "small-native-vision-v2/ssh-readback/server.log": {
+      "bytes": 29867,
+      "sha256": "b78f8b92311726d8b821acc9262998a64f38476e7756332c0e90b8fdd04c3847"
+    },
+    "small-native-vision-v2/ssh-readback/red-request.json": {
+      "bytes": 889,
+      "sha256": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290"
+    },
+    "small-native-vision-v2/ssh-readback/red-response.json": {
+      "bytes": 614,
+      "sha256": "1c57c0255994b37686350227da10a01dd6c6eda5936a29ae5de5b351f5d80cac"
+    },
+    "small-native-vision-v2/ssh-readback/blue-request.json": {
+      "bytes": 889,
+      "sha256": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc"
+    },
+    "small-native-vision-v2/ssh-readback/blue-response.json": {
+      "bytes": 618,
+      "sha256": "5dd02733c38eed736199d3218e9c7426a9f51f58c3d09d3494c23818ee2a0748"
+    },
+    "small-dual-vision-v4/ssh-readback/result.json": {
+      "bytes": 3656,
+      "sha256": "7475a1dfe9fa54f98bc040c63c0fb70020d00a6bc333e19109c7fcabd82c1321"
+    },
+    "small-dual-vision-v4/ssh-readback/argv.json": {
+      "bytes": 880,
+      "sha256": "56d06b102ebe3aa9c63ae1ec1edfe57871b4a2b9ca42dc6b73c5b216df8ce044"
+    },
+    "small-dual-vision-v4/ssh-readback/server.log": {
+      "bytes": 31153,
+      "sha256": "fe161cf61c89775a3a72bed8fe30a4a7a99f66cbb6f0debd645b4a6b0c6c6a0f"
+    },
+    "small-dual-vision-v4/ssh-readback/red-request.json": {
+      "bytes": 889,
+      "sha256": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290"
+    },
+    "small-dual-vision-v4/ssh-readback/red-response.json": {
+      "bytes": 608,
+      "sha256": "62242b0d91640a13723f852c8f5061ad85d4b0c01aa859bbdff88ff3a3d567f3"
+    },
+    "small-dual-vision-v4/ssh-readback/blue-request.json": {
+      "bytes": 889,
+      "sha256": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc"
+    },
+    "small-dual-vision-v4/ssh-readback/blue-response.json": {
+      "bytes": 618,
+      "sha256": "e65a757827c551803487b430fc611bd25635473723887187fa62eb6e148eaded"
+    },
+    "small-dual-vision-v4/local-rpc.log": {
+      "bytes": 26582,
+      "sha256": "bbd798548c5f849e9c2225049917053ce8e0c46551f99d92334d33118f2ca1ca"
+    },
+    "small-dual-vision-v4/local-rpc-receipt.json": {
+      "bytes": 611,
+      "sha256": "06edb76169128d475d9f20c45525e6239ca9692e624f0be09f142d28a0be5d74"
+    },
+    "small-dual-vision-v4/remote-controller-output.json": {
+      "bytes": 4073,
+      "sha256": "e2bcc041b08614d155241d4c7d410870732323ddaeaa84b0c82290086dd4f900"
+    }
+  },
+  "runs": {
+    "small-native-vision-v2": {
+      "cases": [
+        {
+          "case_id": "red",
+          "request_sha256": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+          "response_sha256": "1c57c0255994b37686350227da10a01dd6c6eda5936a29ae5de5b351f5d80cac",
+          "image_sha256": "9b5d2bc0516a2749576352b9c38c6e9f88d2db423d8a187c1c003034b2136b3c",
+          "dimensions": [
+            128,
+            128
+          ],
+          "request_without_image": {
+            "model": "qwen35-vision-control",
+            "temperature": 0,
+            "seed": 42,
+            "max_tokens": 32,
+            "stream": false,
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            },
+            "messages": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "What is the dominant color in this image? Answer with exactly one color word."
+                  },
+                  {
+                    "type": "image_url",
+                    "image_url": {
+                      "url": "<exact PNG independently hashed>"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "content": "red",
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 2,
+            "prompt_tokens": 46,
+            "total_tokens": 48,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "case_id": "blue",
+          "request_sha256": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+          "response_sha256": "5dd02733c38eed736199d3218e9c7426a9f51f58c3d09d3494c23818ee2a0748",
+          "image_sha256": "32cba78a00615c233d68cbde61d1cb07763e3c7524b1cea9ca0756b336843e86",
+          "dimensions": [
+            128,
+            128
+          ],
+          "request_without_image": {
+            "model": "qwen35-vision-control",
+            "temperature": 0,
+            "seed": 42,
+            "max_tokens": 32,
+            "stream": false,
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            },
+            "messages": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "What is the dominant color in this image? Answer with exactly one color word."
+                  },
+                  {
+                    "type": "image_url",
+                    "image_url": {
+                      "url": "<exact PNG independently hashed>"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "content": "blue",
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 2,
+            "prompt_tokens": 46,
+            "total_tokens": 48,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        }
+      ],
+      "server_log_excerpts": [
+        {
+          "line": 5,
+          "text": "0.00.028.654 I cmn  common_param:   - MTL0    : Apple M4 (12124 MiB, 12123 MiB free)"
+        },
+        {
+          "line": 7,
+          "text": "0.00.028.661 I cmn  common_param:   - CPU     : Apple M4 (16384 MiB, 16384 MiB free)"
+        },
+        {
+          "line": 14,
+          "text": "0.00.053.318 I ggml_metal_init: found device: Apple M4"
+        },
+        {
+          "line": 15,
+          "text": "0.00.053.320 I ggml_metal_init: picking default device: Apple M4"
+        },
+        {
+          "line": 25,
+          "text": "0.00.232.448 I common_memory_breakdown_print: |   - MTL0 (Apple M4)    | 12124 = 12104 + ( 566 =   497 +      43 +      25) +        -546 |"
+        },
+        {
+          "line": 87,
+          "text": "0.00.316.556 I llama_prepare_model_devices: using device MTL0 (Apple M4) (unknown id) - 12123 MiB free"
+        },
+        {
+          "line": 195,
+          "text": "0.00.429.577 I ggml_metal_init: found device: Apple M4"
+        },
+        {
+          "line": 196,
+          "text": "0.00.429.579 I ggml_metal_init: picking default device: Apple M4"
+        },
+        {
+          "line": 225,
+          "text": "0.00.436.891 I clip_model_loader: has vision encoder"
+        },
+        {
+          "line": 227,
+          "text": "0.00.437.020 I ggml_metal_init: found device: Apple M4"
+        },
+        {
+          "line": 228,
+          "text": "0.00.437.022 I ggml_metal_init: picking default device: Apple M4"
+        },
+        {
+          "line": 232,
+          "text": "0.00.437.032 I clip_ctx: CLIP using MTL0 backend"
+        },
+        {
+          "line": 233,
+          "text": "0.00.437.092 W load_hparams: Qwen-VL models require at minimum 1024 image tokens to function correctly on grounding tasks"
+        },
+        {
+          "line": 286,
+          "text": "0.00.494.043 I srv  llama_server: listening on http://127.0.0.1:18380"
+        },
+        {
+          "line": 305,
+          "text": "0.00.636.857 I slot encode_mtmd_: id  0 | task 0 | encoding mtmd batch from idx = 20, n_chunks = 1"
+        },
+        {
+          "line": 310,
+          "text": "0.00.659.914 I decoding image batch 1/1, n_tokens_batch = 16"
+        },
+        {
+          "line": 313,
+          "text": "0.00.663.179 I image decoded (batch 1/1) in 3 ms"
+        },
+        {
+          "line": 345,
+          "text": "0.00.716.459 I slot   operator(): id  0 | task 5 | forcing full prompt re-processing due to lack of cache data (likely due to SWA or hybrid/recurrent memory, see https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055)"
+        },
+        {
+          "line": 349,
+          "text": "0.00.718.338 I slot encode_mtmd_: id  0 | task 5 | encoding mtmd batch from idx = 20, n_chunks = 1"
+        },
+        {
+          "line": 350,
+          "text": "0.00.741.246 I decoding image batch 1/1, n_tokens_batch = 16"
+        },
+        {
+          "line": 353,
+          "text": "0.00.743.140 I image decoded (batch 1/1) in 2 ms"
+        },
+        {
+          "line": 368,
+          "text": "0.00.786.288 I common_memory_breakdown_print: |   - MTL0 (Apple M4)    | 12124 = 11354 + ( 566 =   497 +      43 +      25) +         203 |"
+        }
+      ]
+    },
+    "small-dual-vision-v4": {
+      "cases": [
+        {
+          "case_id": "red",
+          "request_sha256": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+          "response_sha256": "62242b0d91640a13723f852c8f5061ad85d4b0c01aa859bbdff88ff3a3d567f3",
+          "image_sha256": "9b5d2bc0516a2749576352b9c38c6e9f88d2db423d8a187c1c003034b2136b3c",
+          "dimensions": [
+            128,
+            128
+          ],
+          "request_without_image": {
+            "model": "qwen35-vision-control",
+            "temperature": 0,
+            "seed": 42,
+            "max_tokens": 32,
+            "stream": false,
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            },
+            "messages": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "What is the dominant color in this image? Answer with exactly one color word."
+                  },
+                  {
+                    "type": "image_url",
+                    "image_url": {
+                      "url": "<exact PNG independently hashed>"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "content": "red",
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 2,
+            "prompt_tokens": 46,
+            "total_tokens": 48,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "case_id": "blue",
+          "request_sha256": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+          "response_sha256": "e65a757827c551803487b430fc611bd25635473723887187fa62eb6e148eaded",
+          "image_sha256": "32cba78a00615c233d68cbde61d1cb07763e3c7524b1cea9ca0756b336843e86",
+          "dimensions": [
+            128,
+            128
+          ],
+          "request_without_image": {
+            "model": "qwen35-vision-control",
+            "temperature": 0,
+            "seed": 42,
+            "max_tokens": 32,
+            "stream": false,
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            },
+            "messages": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "What is the dominant color in this image? Answer with exactly one color word."
+                  },
+                  {
+                    "type": "image_url",
+                    "image_url": {
+                      "url": "<exact PNG independently hashed>"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "content": "blue",
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 2,
+            "prompt_tokens": 46,
+            "total_tokens": 48,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        }
+      ],
+      "server_log_excerpts": [
+        {
+          "line": 5,
+          "text": "0.00.034.314 I cmn  common_param:   - MTL0    : Apple M4 (12124 MiB, 12123 MiB free)"
+        },
+        {
+          "line": 7,
+          "text": "0.00.034.318 I cmn  common_param:   - CPU     : Apple M4 (16384 MiB, 16384 MiB free)"
+        },
+        {
+          "line": 15,
+          "text": "0.00.063.927 I ggml_metal_init: found device: Apple M4"
+        },
+        {
+          "line": 16,
+          "text": "0.00.063.929 I ggml_metal_init: picking default device: Apple M4"
+        },
+        {
+          "line": 26,
+          "text": "0.00.279.733 I common_memory_breakdown_print: |   - MTL0 (Apple M4)             | 12124 = 12113 + ( 210 =   162 +      22 +      25) +        -198 |"
+        },
+        {
+          "line": 30,
+          "text": "0.00.296.003 I common_params_fit_impl:   - MTL0 (Apple M4)            :  12124 total,    210 used,  11902 free vs. target of   1221"
+        },
+        {
+          "line": 92,
+          "text": "0.00.366.016 I llama_prepare_model_devices: using device MTL0 (Apple M4) (unknown id) - 12123 MiB free"
+        },
+        {
+          "line": 180,
+          "text": "0.00.636.463 I load_tensors: RPC0[169.254.47.213:18560] model buffer size =   335.37 MiB"
+        },
+        {
+          "line": 202,
+          "text": "0.01.026.326 I ggml_metal_init: found device: Apple M4"
+        },
+        {
+          "line": 203,
+          "text": "0.01.026.328 I ggml_metal_init: picking default device: Apple M4"
+        },
+        {
+          "line": 209,
+          "text": "0.01.027.709 I llama_kv_cache: RPC0[169.254.47.213:18560] KV buffer size =    12.00 MiB"
+        },
+        {
+          "line": 214,
+          "text": "0.01.028.921 I llama_memory_recurrent: RPC0[169.254.47.213:18560] RS buffer size =     8.56 MiB"
+        },
+        {
+          "line": 223,
+          "text": "0.01.035.614 I sched_reserve: RPC0[169.254.47.213:18560] compute buffer size =    23.35 MiB"
+        },
+        {
+          "line": 235,
+          "text": "0.01.035.888 I clip_model_loader: has vision encoder"
+        },
+        {
+          "line": 237,
+          "text": "0.01.036.015 I ggml_metal_init: found device: Apple M4"
+        },
+        {
+          "line": 238,
+          "text": "0.01.036.017 I ggml_metal_init: picking default device: Apple M4"
+        },
+        {
+          "line": 242,
+          "text": "0.01.036.029 I clip_ctx: CLIP using MTL0 backend"
+        },
+        {
+          "line": 243,
+          "text": "0.01.036.099 W load_hparams: Qwen-VL models require at minimum 1024 image tokens to function correctly on grounding tasks"
+        },
+        {
+          "line": 296,
+          "text": "0.01.384.576 I srv  llama_server: listening on http://127.0.0.1:18380"
+        },
+        {
+          "line": 315,
+          "text": "0.01.506.215 I slot encode_mtmd_: id  0 | task 0 | encoding mtmd batch from idx = 20, n_chunks = 1"
+        },
+        {
+          "line": 320,
+          "text": "0.01.518.786 I decoding image batch 1/1, n_tokens_batch = 16"
+        },
+        {
+          "line": 323,
+          "text": "0.01.676.011 I image decoded (batch 1/1) in 157 ms"
+        },
+        {
+          "line": 355,
+          "text": "0.02.174.738 I slot   operator(): id  0 | task 5 | forcing full prompt re-processing due to lack of cache data (likely due to SWA or hybrid/recurrent memory, see https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055)"
+        },
+        {
+          "line": 359,
+          "text": "0.02.192.629 I slot encode_mtmd_: id  0 | task 5 | encoding mtmd batch from idx = 20, n_chunks = 1"
+        },
+        {
+          "line": 360,
+          "text": "0.02.201.420 I decoding image batch 1/1, n_tokens_batch = 16"
+        },
+        {
+          "line": 363,
+          "text": "0.02.209.996 I image decoded (batch 1/1) in 8 ms"
+        },
+        {
+          "line": 378,
+          "text": "0.02.267.751 I common_memory_breakdown_print: |   - MTL0 (Apple M4)             | 12124 = 11710 + ( 210 =   162 +      22 +      25) +         203 |"
+        }
+      ]
+    }
+  },
+  "rpc": {
+    "log_sha256": "bbd798548c5f849e9c2225049917053ce8e0c46551f99d92334d33118f2ca1ca",
+    "graph_compute_event_count": 11,
+    "graph_compute_events": [
+      {
+        "line": 186,
+        "text": "[graph_compute] device: 0, uid: 60, n_nodes: 658, n_tensors: 834"
+      },
+      {
+        "line": 245,
+        "text": "[graph_compute] device: 0, uid: 64, n_nodes: 658, n_tensors: 834"
+      },
+      {
+        "line": 264,
+        "text": "[graph_compute] device: 0, uid: 72, n_nodes: 658, n_tensors: 834"
+      },
+      {
+        "line": 285,
+        "text": "[graph_compute] device: 0, uid: 76, n_nodes: 658, n_tensors: 834"
+      },
+      {
+        "line": 296,
+        "text": "[graph_compute] device: 0, uid: 80, n_nodes: 658, n_tensors: 834"
+      },
+      {
+        "line": 297,
+        "text": "[graph_compute] device: 0, uid: 84, n_nodes: 658, n_tensors: 834"
+      },
+      {
+        "line": 304,
+        "text": "[graph_compute] device: 0, uid: 88, n_nodes: 658, n_tensors: 834"
+      },
+      {
+        "line": 305,
+        "text": "[graph_compute] device: 0, uid: 94, n_nodes: 658, n_tensors: 834"
+      },
+      {
+        "line": 306,
+        "text": "[graph_compute] device: 0, uid: 98, n_nodes: 658, n_tensors: 834"
+      },
+      {
+        "line": 307,
+        "text": "[graph_compute] device: 0, uid: 102, n_nodes: 658, n_tensors: 834"
+      },
+      {
+        "line": 308,
+        "text": "[graph_compute] device: 0, uid: 106, n_nodes: 658, n_tensors: 834"
+      }
+    ],
+    "device_and_allocation_excerpts": [
+      {
+        "line": 48,
+        "text": "ggml_metal_device_init: GPU name:   MTL0 (Apple M2 Pro)"
+      },
+      {
+        "line": 60,
+        "text": "  endpoint       : 169.254.47.213:18560"
+      },
+      {
+        "line": 63,
+        "text": "  MTL0: Apple M2 Pro (12124 MiB, 12123 MiB free)"
+      },
+      {
+        "line": 71,
+        "text": "[create_server] listening on 169.254.47.213:18560"
+      },
+      {
+        "line": 146,
+        "text": "[alloc_buffer] device: 0, size: 8.56 MiB -> remote_ptr: 0x105061e00, remote_size: 8.56 MiB"
+      },
+      {
+        "line": 182,
+        "text": "[alloc_buffer] device: 0, size: 335.37 MiB -> remote_ptr: 0x105061e00, remote_size: 335.37 MiB"
+      },
+      {
+        "line": 183,
+        "text": "[alloc_buffer] device: 0, size: 12.00 MiB -> remote_ptr: 0xa20d38000, remote_size: 12.00 MiB"
+      },
+      {
+        "line": 184,
+        "text": "[alloc_buffer] device: 0, size: 8.56 MiB -> remote_ptr: 0xa20d38080, remote_size: 8.56 MiB"
+      },
+      {
+        "line": 185,
+        "text": "[alloc_buffer] device: 0, size: 23.35 MiB -> remote_ptr: 0xa20d38100, remote_size: 23.35 MiB"
+      }
+    ]
+  },
+  "limits": [
+    "Hashes bind the retained bytes to retained receipts, not to an independent signed hardware attestation. Existing binary/model hashes are reported by the receipts; model/binary files were not reread or independently verified in this scope.",
+    "Matching text, stop reasons and reported usage are not token-ID, full-vocabulary/logit, KV-cache, recurrent-cache or numerical equivalence. Prompt-cache metadata is not cache-state equality.",
+    "Only two 128x128 solid-color inputs per mode; no 27B model loading, 6-bit qualification, GUI/screenshot grounding, coding/tool-use or autonomy proof.",
+    "Logs record a 256-image-token cap and actual 16-image-token batches; the retained grounding warning calls for at least 1024 image tokens, so this does not qualify realistic screenshots.",
+    "No performance equivalence or reliable latency claim from these two trivial outputs.",
+    "RPC logs explicitly warn that the protocol is experimental/insecure and record binding to 169.254.47.213:18560; API logs record loopback binding and a no-API-key/permissive-CORS warning. This audit did not independently test network isolation or current cleanup/listener state.",
+    "Historical cleanup/reaped/listener-closed receipt fields are retained claims, not freshly probed system state. Build provenance, upstream source, earlier failed runs and publisher/model hashes were outside this bounded artifact audit.",
+    "The physical smoke tests predate and do not exercise or qualify the new qualification HTTP client; its independent client verdict is separate and failed."
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "parser_regression": {
+    "bad_order_exit": 1,
+    "bad_order_stderr": "error while handling argument \"--device\": invalid device: RPC0\n\nusage:\n-dev,  --device <dev1,dev2,..>          comma-separated list of devices to use for offloading (none = don't\n                                        offload)\n                                        use --list-devices to see a list of available devices\n                                        (env: LLAMA_ARG_DEVICE)\n\n\nto show complete usage, run with -h\n",
+    "good_order_exit": 0
+  },
+  "listed_devices": "Available devices:\n  MTL0: Apple M4 (12124 MiB, 12123 MiB free)\n  BLAS: Accelerate (0 MiB, 0 MiB free)\n  RPC0: 169.254.47.213:18568 (12124 MiB, 12123 MiB free)\n",
+  "schema": "small-dual-vision-smoke-v1",
+  "status": "success",
+  "role": "Qwen3.5-0.8B architecture control only, not final27B",
+  "requests": [
+    {
+      "case_id": "red",
+      "image_sha256": "9b5d2bc0516a2749576352b9c38c6e9f88d2db423d8a187c1c003034b2136b3c",
+      "request_sha256": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+      "response_sha256": "598a6ff2a366366c861fe513263cd077eb1c9e032eab86320fcd13f083694411",
+      "content": "red",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "wall_seconds": 0.11602750000020023,
+      "expected": "red",
+      "color_match": true
+    },
+    {
+      "case_id": "blue",
+      "image_sha256": "32cba78a00615c233d68cbde61d1cb07763e3c7524b1cea9ca0756b336843e86",
+      "request_sha256": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+      "response_sha256": "359211c77ad78d558b06bfe650227ad1ffbb5c050169e7e5958846cb19330fa4",
+      "content": "blue",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "wall_seconds": 0.0927599170099711,
+      "expected": "blue",
+      "color_match": true
+    }
+  ],
+  "source_revision": "ea0c4c2c85fb183ec0fbd30a1af4e4275a18a064",
+  "model_revision": "6ab461498e2023f6e3c1baea90a8f0fe38ab64d0",
+  "argv": [
+    "/Users/jeremylien/Projects/local-agent-dual-mac/build-api-arm64/bin/llama-server",
+    "--rpc",
+    "169.254.47.213:18568",
+    "-m",
+    "/Volumes/\u65b0\u589e\u78c1\u789f\u5340/local-agent-models/qwen35-0.8b-control-6ab461498e20/Qwen3.5-0.8B-Q4_K_M.gguf",
+    "--mmproj",
+    "/Volumes/\u65b0\u589e\u78c1\u789f\u5340/local-agent-models/qwen35-0.8b-control-6ab461498e20/mmproj-BF16.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "18390",
+    "--alias",
+    "qwen35-vision-control",
+    "--ctx-size",
+    "2048",
+    "--parallel",
+    "1",
+    "--batch-size",
+    "256",
+    "--ubatch-size",
+    "256",
+    "--gpu-layers",
+    "99",
+    "--device",
+    "MTL0,RPC0",
+    "--mmproj-device",
+    "MTL0",
+    "--split-mode",
+    "layer",
+    "--tensor-split",
+    "1,1",
+    "--image-max-tokens",
+    "256",
+    "--no-warmup",
+    "--no-cont-batching",
+    "--reasoning",
+    "off",
+    "--predict",
+    "32",
+    "--seed",
+    "42",
+    "-lv",
+    "4"
+  ],
+  "binary_sha256": "bdcd2f4313fb976247598c05bc734e9eb5186f03bbd7c94d4d53b0acd00cfecb",
+  "pid": 12437,
+  "exit_code": 0,
+  "owned_process_reaped": true,
+  "post_pressure": 1,
+  "resource_policy": {
+    "GGML_METAL_NO_RESIDENCY": "1"
+  },
+  "asset_hashes_verified": [
+    {
+      "name": "Qwen3.5-0.8B-Q4_K_M.gguf",
+      "bytes": 532517120,
+      "sha256": "bd258782e35f7f458f8aced1adc053e6e92e89bc735ba3be89d38a06121dc517"
+    },
+    {
+      "name": "mmproj-BF16.gguf",
+      "bytes": 207346528,
+      "sha256": "d312c4d02fd46eea7a16e4f3bbb58840e6222209322ca1e33ca03247ad8935d6"
+    }
+  ],
+  "listener_closed": true,
+  "server_log_sha256": "88ed67c3ca4c587337854aeea12817f50639f3776135133ae6b894c510ba8405",
+  "result_dir": "/Users/jeremylien/Projects/local-agent-dual-mac/results/small-policy-dual-v1"
+}

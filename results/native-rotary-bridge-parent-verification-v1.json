@@ -1,0 +1,19 @@
+{
+  "schema": "native-rotary-bridge-parent-verification-v1",
+  "verified_at": "2026-10-17T22:53:49.769698+00:00",
+  "implementation_artifact_sha256": {
+    "multimodal_native_cpu/__init__.py": "1085b1568ebddcc05203b59682d5bba046580dc43fb4b7f929811c6ba26d8d78",
+    "multimodal_native_cpu/README.md": "5e315c9a90cac7e2da765b8b0530637dab58756f3ea03dad97bfc090c654f421",
+    "tests/test_multimodal_native_cpu.py": "560243e4d7038f1f35a0ff5e1b4ddd3742d1f2762f383531e3c9ca65b989515a",
+    "results/native-rotary-bridge-implementation-v1.json": "33d72f8bb53b424d37a288d601403661ebc93855d771341f10952bf7eb5883ca"
+  },
+  "parent_unittest_command": "PYTHONDONTWRITEBYTECODE=1 .vision-venv/bin/python -B -m unittest discover -s tests -p test_multimodal_native_cpu.py -v",
+  "parent_unittest_exit_code": 0,
+  "parent_unittest_passed": 12,
+  "parent_unittest_seconds": 1.713,
+  "previous_native_numpy_failures_preserved": 5,
+  "previous_native_numpy_probe_sha256": "7c46bc1559b4e3ec96c722884b12e792bfe71cecc1136f349609225dbde01d4d",
+  "independent_review_status": "dispatched",
+  "independent_review_delegation": "deleg_8e50b601",
+  "scope": "Parent verifiedfourartifacthashes and reranall12realCPUunittests. No Metal/model/attention/vision admission; implementation28comparison claims subject to independent review."
+}

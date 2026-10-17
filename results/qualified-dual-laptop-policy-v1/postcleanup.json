@@ -1,0 +1,42 @@
+{
+  "timestamp": 1792206829.3036742,
+  "laptop": {
+    "timestamp": 1792206829.26911,
+    "private_listener_connect_errno": {
+      "18552": 61,
+      "18554": 61,
+      "18555": 61,
+      "18556": 61,
+      "18558": 61,
+      "18560": 61,
+      "18562": 61,
+      "18564": 61,
+      "18566": 61,
+      "18568": 61,
+      "18570": 61,
+      "18572": 61
+    },
+    "health_raw": "kern.memorystatus_vm_pressure_level: 1\nvm.swapusage: total = 3072.00M  used = 1868.62M  free = 1203.38M  (encrypted)\n",
+    "workers": {
+      "ggml-rpc-server": {
+        "exit": 1,
+        "stdout": ""
+      },
+      "llama-server": {
+        "exit": 1,
+        "stdout": ""
+      }
+    }
+  },
+  "mini": {
+    "timestamp": 1792206789.4078772,
+    "total_artifact_bytes": 1465698,
+    "loopback_ports_connect_errno": {
+      "18400": 61,
+      "18402": 61,
+      "18404": 61
+    },
+    "workers_absent": true,
+    "health": "kern.memorystatus_vm_pressure_level: 1\nvm.swapusage: total = 1024.00M  used = 245.12M  free = 778.88M  (encrypted)\n"
+  }
+}

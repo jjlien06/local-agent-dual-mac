@@ -1,0 +1,43 @@
+{
+  "schema": "parent-attention-witness-disposition-v1",
+  "passed": true,
+  "scope": "CPU synthetic shape witness only; not model or GPU admission.",
+  "native_metrics_passed": 126,
+  "native_forward_steps": 42,
+  "metric_parts": [
+    "output",
+    "live_keys",
+    "live_values"
+  ],
+  "stock_scalar_text_control_metrics": 8,
+  "negative_position_controls_detected": 4,
+  "tdd": [
+    {
+      "step": "RED1",
+      "exit": 1,
+      "expected": "BoundRope witness is not implemented"
+    },
+    {
+      "step": "GREEN1",
+      "exit": 0,
+      "tests": 1
+    },
+    {
+      "step": "RED2",
+      "exit": 1,
+      "expected": "wrong chunk length reached native rotary"
+    },
+    {
+      "step": "GREEN2",
+      "exit": 0,
+      "tests": 2
+    }
+  ],
+  "probe_preflight_failure_preserved": "preflight-failure.json",
+  "result_sha256": "f5c0c4995c9ba1df17b25bbb8b3875ad454950814080d4d92a4f37d1f4a4a5c2",
+  "result_with_mutations_sha256": "75198147b68a9169cb22223e06a4052bb09136f8edb95b33a60b8f9cb8a87687",
+  "native_reference_rejections_elsewhere_preserved": true,
+  "protected_runtime_modified": false,
+  "attention_hook_installed_in_model_runtime": false,
+  "independent_review": "pending"
+}

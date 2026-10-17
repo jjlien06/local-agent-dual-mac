@@ -1,0 +1,31 @@
+{
+  "timestamp": 1792204981.68358,
+  "mini": {
+    "pressure": {
+      "exit_code": 0,
+      "output": "1\n"
+    },
+    "swap": {
+      "exit_code": 0,
+      "output": "vm.swapusage: total = 1024.00M  used = 253.12M  free = 770.88M  (encrypted)\n"
+    },
+    "disk": {
+      "exit_code": 0,
+      "output": "Filesystem      Size    Used   Avail Capacity iused ifree %iused  Mounted on\n/dev/disk3s5   228Gi   128Gi    78Gi    63%    703k  813M    0%   /System/Volumes/Data\n/dev/disk4s2   863Gi    17Gi   846Gi     2%       1     0  100%   /Volumes/\u65b0\u589e\u78c1\u789f\u5340\n"
+    },
+    "route": {
+      "exit_code": 0,
+      "output": "   route to: 169.254.47.213\ndestination: 169.254.47.213\n  interface: bridge0\n      flags: <UP,HOST,DONE,LLINFO,STATIC,b016,WASCLONED>\n recvpipe  sendpipe  ssthresh  rtt,msec    rttvar  hopcount      mtu     expire\n       0         0  42751404         1         0         0      1500      1181 \n"
+    },
+    "workers": {
+      "exit_code": 1,
+      "output": ""
+    }
+  },
+  "laptop": {
+    "output": "kern.memorystatus_vm_pressure_level: 1\nvm.swapusage: total = 4096.00M  used = 2844.44M  free = 1251.56M  (encrypted)\n   route to: 169.254.214.155\ndestination: 169.254.214.155\n  interface: bridge0\n      flags: <UP,HOST,DONE,LLINFO,STATIC,b016,WASCLONED>\n recvpipe  sendpipe  ssthresh  rtt,msec    rttvar  hopcount      mtu     expire\n       0         0         0         0         0         0      1500       690",
+    "exit_code": 1,
+    "error": null
+  },
+  "role": "small0.8Bcontrolonly; policyflag isolated, no27B retry"
+}

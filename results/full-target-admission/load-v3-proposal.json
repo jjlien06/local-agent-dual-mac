@@ -1,0 +1,49 @@
+{
+  "schema": "full27b-laptop-only-policy-load-admission-v3",
+  "timestamp": 1792206898.890314,
+  "status": "MARGINAL_BOUNDED_DIAGNOSTIC_ONLY_NOT_SERVICE_ADMISSION",
+  "required_small_control_gate": "results/qualified-dual-laptop-policy-v1/comparison.json",
+  "control_cases_verified": 9,
+  "model": "Exact existing full27B UD-Q4_K_M + matching BF16projector, digests unchanged",
+  "only_effective_policy_change": "laptop RPC worker sets GGML_METAL_NO_RESIDENCY=1; mini explicitly unsets it. Same40/24 placement, mmap, fit-off, context8192, image1024 and normal-pressure gates asv2.",
+  "host_budgets": [
+    {
+      "host": "mini",
+      "preferred_GPU_tensor_bytes": 8665073920,
+      "expected_CPU_embedding_bytes": 715161600,
+      "vision_file_bytes": 931146432,
+      "full_attention_layers": 10,
+      "estimated_KV_bytes": 335544320,
+      "recurrent_state_planning_allowance_bytes": 268435456,
+      "workspace_allocator_planning_allowance_bytes": 2147483648,
+      "estimated_model_stack_GiB": 12.165722787380219,
+      "known_largest_tensor_staging_bytes": 1042944000,
+      "conservative_stack_plus_full_stage_GiB": 13.137040078639984,
+      "scope": "Model-accounting estimate, not measured residency or available RAM. Staging and all runtime buffers need not coexist, but are retained as a conservative risk. OS/apps/driver add demand; no blind subtraction from global footprint."
+    },
+    {
+      "host": "laptop",
+      "preferred_GPU_tensor_bytes": 6722199296,
+      "expected_CPU_embedding_bytes": 0,
+      "vision_file_bytes": 0,
+      "full_attention_layers": 6,
+      "estimated_KV_bytes": 201326592,
+      "recurrent_state_planning_allowance_bytes": 268435456,
+      "workspace_allocator_planning_allowance_bytes": 2147483648,
+      "estimated_model_stack_GiB": 8.698035955429077,
+      "known_largest_tensor_staging_bytes": 1042944000,
+      "conservative_stack_plus_full_stage_GiB": 9.669353246688843,
+      "scope": "Model-accounting estimate, not measured residency or available RAM. Staging and all runtime buffers need not coexist, but are retained as a conservative risk. OS/apps/driver add demand; no blind subtraction from global footprint."
+    }
+  ],
+  "memory_policy": "Do not claim these estimates fit with ordinary applications. One guard-bounded load-only diagnostic, no prompt generation, no automatic retry/scaling or inference/service promotion. Stop on either pressure!=1, deadline/log errors or cleanup uncertainty.",
+  "anticipated_phase_risks": [
+    "Mini whole-file prefetch/mapped resource overlap",
+    "Laptop allocation vs first write vs first graph may shift pressure",
+    "Full output-head RPC hash/message/destination overlap",
+    "Vision/cache initialization may exceed estimates",
+    "Default no-residency performance not assumed"
+  ],
+  "resource_identity_limits": "Backend recommended-free and process RSS/footprint are not total host capacity. Source-derived bytes are exact payloads, reserves are estimates. Physical result decides admission.",
+  "stop_after_repeated_failure": "If this third full-model diagnostic also fails, preserve it and reassess the serving architecture rather than another blind parameter retry."
+}

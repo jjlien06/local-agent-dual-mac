@@ -1,0 +1,27 @@
+{
+  "timestamp": 1792203654.174762,
+  "loopback_ports_connect_errno": {
+    "18380": 61,
+    "18382": 61
+  },
+  "health": {
+    "pressure": {
+      "exit": 0,
+      "stdout": "1\n"
+    },
+    "swap": {
+      "exit": 0,
+      "stdout": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)\n"
+    },
+    "workers": {
+      "exit": 1,
+      "stdout": ""
+    }
+  },
+  "hashes": {
+    "result.json": "dcfe9e0a12633a239dfdd3ff6cae194fb62ecff2803bc650fbaf66d8aa17c667",
+    "argv.json": "61394635a634b1b376214eff4ec5166376d9b77f8f86b5462b74faefb5e8ac2f",
+    "started.json": "10af8dbf9f5addcb64bb1dc9546894d3c9284b417c4ef925f6089eebd58d07eb",
+    "server.log": "88593d3e20f5805f5cbafc60e7d5aa46e8aa55fc10365b3aeab0aa810974196f"
+  }
+}

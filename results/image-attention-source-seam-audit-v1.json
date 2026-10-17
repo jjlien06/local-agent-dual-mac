@@ -1,0 +1,144 @@
+{
+  "schema": "qwen38-image-attention-source-seam-audit-v1",
+  "passed": true,
+  "scope": "Static AST/source compatibility only. No actual attention/cache/model execution or visual admission.",
+  "created_at": "2026-10-17T22:38:38.192761+00:00",
+  "source_sha256": {
+    "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py": "67ca08a4d08cb7be124965e95399735e556f1eaeb21a16bc23cb88d1ac035e11",
+    "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_5.py": "10c59a71d8d739b8cdff38c7e9c7345deb9a9688e821ac37cb774d3086cac42e",
+    "/Users/jeremylien/Projects/local-agent-dual-mac/upstream/mlx-vlm/mlx_vlm/models/qwen3_5/language.py": "6cfeb5e9efee8042e9d82bbc696168d0e15cb95220365613caa84ea2568304a7",
+    "/Users/jeremylien/Projects/paretoquant-metal/spikes/025-qwen38-overlapped-prefill/phased_decode.py": "7e586790b59ce3d1613452b378d7ce3309c5c54e169226d48b3aea1f117ed2aa",
+    "/Users/jeremylien/Projects/paretoquant-metal/models/qwen3.8-27b-4bit-tokenizer-only/config.json": "14b65a0ee06517060a6bbd979bb1a8ff54e7b304b1a1f01d54344b88b8285e85"
+  },
+  "checks": [
+    {
+      "invariant": "constructor self.num_key_value_heads",
+      "passed": true
+    },
+    {
+      "invariant": "constructor self.num_attention_heads",
+      "passed": true
+    },
+    {
+      "invariant": "constructor self.head_dim",
+      "passed": true
+    },
+    {
+      "invariant": "constructor self.scale",
+      "passed": true
+    },
+    {
+      "invariant": "constructor self.q_proj",
+      "passed": true
+    },
+    {
+      "invariant": "constructor self.k_proj",
+      "passed": true
+    },
+    {
+      "invariant": "constructor self.v_proj",
+      "passed": true
+    },
+    {
+      "invariant": "constructor self.o_proj",
+      "passed": true
+    },
+    {
+      "invariant": "constructor self.q_norm",
+      "passed": true
+    },
+    {
+      "invariant": "constructor self.k_norm",
+      "passed": true
+    },
+    {
+      "invariant": "projected (queries, gate)",
+      "passed": true
+    },
+    {
+      "invariant": "projected gate",
+      "passed": true
+    },
+    {
+      "invariant": "projected queries",
+      "passed": true
+    },
+    {
+      "invariant": "projected values",
+      "passed": true
+    },
+    {
+      "invariant": "projected keys normalization",
+      "passed": true
+    },
+    {
+      "invariant": "same cache.update_and_fetch(keys, values)",
+      "passed": true
+    },
+    {
+      "invariant": "same output projection and sigmoid gate",
+      "passed": true
+    },
+    {
+      "invariant": "scalar-offset original attention versus joint explicit-position VLM seam located",
+      "passed": true
+    }
+  ],
+  "check_count": 18,
+  "full_attention_original_layers": [
+    3,
+    7,
+    11,
+    15,
+    19,
+    23,
+    27,
+    31,
+    35,
+    39,
+    43,
+    47,
+    51,
+    55,
+    59,
+    63
+  ],
+  "m2_rank0_layers": [
+    39,
+    43,
+    47,
+    51,
+    55,
+    59,
+    63
+  ],
+  "m4_rank1_layers": [
+    3,
+    7,
+    11,
+    15,
+    19,
+    23,
+    27,
+    31,
+    35
+  ],
+  "linear_recurrent_layers_unchanged_required": 48,
+  "candidate_seam": {
+    "location": "Replace only an opt-in attention.rope module in a future isolated runtime, retaining original Qwen3NextAttention forward; no installation made by this audit.",
+    "actual_signature": "rope(x, offset=cache.offset) for each of Q and K; original forward has no position_ids argument.",
+    "requirements": [
+      "Bind each rope call to authoritative request/chunk3-axis positions and independently observed physical cache offset.",
+      "Never infer physical cursor from maximum spatial coordinate; preserve continuation delta.",
+      "Cover all16 full-attention layers on both ranks, including grouped evaluation.",
+      "Supply Q and K correct positions; preserve normalization, gating, attention, cache append and all48 recurrent layers.",
+      "Gate scalar-text parity and image positions on tiny CPU/Metal fixtures, then actual small/full checkpoint logits and every cache component before a visual request.",
+      "Initial image path native width1, batch1, one still image; no padding/DeepStack/video/MTP until separately admitted.",
+      "Native-vlm fused versus eager arithmetic and scalar-rope parity remain unproven; source similarity is not admission."
+    ]
+  },
+  "runtime_modified": false,
+  "checkpoint_loaded": false,
+  "gpu_executed": false,
+  "audit_script_issue_corrected": "AST tuple assignment keys include parentheses; read actual keys before comparison. No source/evidence changes resulted."
+}

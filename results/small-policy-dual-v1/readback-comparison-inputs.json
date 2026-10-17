@@ -1,0 +1,119 @@
+{
+  "timestamp": 1792205136.437484,
+  "health": "kern.memorystatus_vm_pressure_level: 1\nvm.swapusage: total = 1024.00M  used = 253.12M  free = 770.88M  (encrypted)\n",
+  "api_ports_connect_errno": {
+    "18388": 61,
+    "18390": 61
+  },
+  "workers_absent": true,
+  "runs": {
+    "small-policy-native-v1": {
+      "hashes": {
+        "result.json": "2cba095819013ba612d8960a511f822145129bedf352ce0e01ac80efd4c47856",
+        "argv.json": "aec2404d0e83d78eb625086288fbd05ab2474842165f7d6ef2264ed7634c82a1",
+        "server.log": "1566eebeb19d2c5fb5e546ee5a41fa8be233e4609594f6224dd7c808ab3169fa",
+        "red-request.json": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+        "red-response.json": "25e3cbd048a83fa4e104be268414995e0f33cdb376452eeba9d58918dd122405",
+        "blue-request.json": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+        "blue-response.json": "899c9021172b38bfb10a82f9c6f8733ca738db242ec252814403c651144a1cc4"
+      },
+      "requests": [
+        {
+          "case_id": "red",
+          "image_sha256": "9b5d2bc0516a2749576352b9c38c6e9f88d2db423d8a187c1c003034b2136b3c",
+          "request_sha256": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+          "response_sha256": "25e3cbd048a83fa4e104be268414995e0f33cdb376452eeba9d58918dd122405",
+          "content": "red",
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 2,
+            "prompt_tokens": 46,
+            "total_tokens": 48,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "wall_seconds": 0.07685808400856331,
+          "expected": "red",
+          "color_match": true
+        },
+        {
+          "case_id": "blue",
+          "image_sha256": "32cba78a00615c233d68cbde61d1cb07763e3c7524b1cea9ca0756b336843e86",
+          "request_sha256": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+          "response_sha256": "899c9021172b38bfb10a82f9c6f8733ca738db242ec252814403c651144a1cc4",
+          "content": "blue",
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 2,
+            "prompt_tokens": 46,
+            "total_tokens": 48,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "wall_seconds": 0.07496191599057056,
+          "expected": "blue",
+          "color_match": true
+        }
+      ],
+      "resource_policy": {
+        "GGML_METAL_NO_RESIDENCY": "1"
+      }
+    },
+    "small-policy-dual-v1": {
+      "hashes": {
+        "result.json": "440667f9b3c5a26db8b2ded280d5f1dac6223d6f827684e335df23a5c2cc7690",
+        "argv.json": "92c8fa77e58349bc7f73e299f4e2e09ddea3ee8529791af2ef3f3f9499ed93a7",
+        "server.log": "88ed67c3ca4c587337854aeea12817f50639f3776135133ae6b894c510ba8405",
+        "red-request.json": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+        "red-response.json": "598a6ff2a366366c861fe513263cd077eb1c9e032eab86320fcd13f083694411",
+        "blue-request.json": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+        "blue-response.json": "359211c77ad78d558b06bfe650227ad1ffbb5c050169e7e5958846cb19330fa4"
+      },
+      "requests": [
+        {
+          "case_id": "red",
+          "image_sha256": "9b5d2bc0516a2749576352b9c38c6e9f88d2db423d8a187c1c003034b2136b3c",
+          "request_sha256": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+          "response_sha256": "598a6ff2a366366c861fe513263cd077eb1c9e032eab86320fcd13f083694411",
+          "content": "red",
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 2,
+            "prompt_tokens": 46,
+            "total_tokens": 48,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "wall_seconds": 0.11602750000020023,
+          "expected": "red",
+          "color_match": true
+        },
+        {
+          "case_id": "blue",
+          "image_sha256": "32cba78a00615c233d68cbde61d1cb07763e3c7524b1cea9ca0756b336843e86",
+          "request_sha256": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+          "response_sha256": "359211c77ad78d558b06bfe650227ad1ffbb5c050169e7e5958846cb19330fa4",
+          "content": "blue",
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 2,
+            "prompt_tokens": 46,
+            "total_tokens": 48,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "wall_seconds": 0.0927599170099711,
+          "expected": "blue",
+          "color_match": true
+        }
+      ],
+      "resource_policy": {
+        "GGML_METAL_NO_RESIDENCY": "1"
+      }
+    }
+  }
+}

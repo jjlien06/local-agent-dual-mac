@@ -1,0 +1,374 @@
+{
+  "schema": "native-vision-reference-dependency-probe-v1",
+  "started_at": 1792210389.092864,
+  "status": "source-staged-and-isolated-dependencies-resolved-not-installed",
+  "operations": [
+    {
+      "label": "source-init",
+      "exit_code": 0,
+      "seconds": 0.05763101577758789,
+      "log": "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vision-dependencies-v1/source-init.log",
+      "log_sha256": "48f9ca91611a7de446b495fa75eb0291fe6b310181d591346b23fd4ea0c12d12"
+    },
+    {
+      "label": "source-remote",
+      "exit_code": 0,
+      "seconds": 0.019843101501464844,
+      "log": "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vision-dependencies-v1/source-remote.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "source-fetch",
+      "exit_code": 0,
+      "seconds": 2.109257936477661,
+      "log": "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vision-dependencies-v1/source-fetch.log",
+      "log_sha256": "29dcca0c77b8997796c71a2c6782cdc342aa54d385e82f0f45c5de493f598c2f"
+    },
+    {
+      "label": "source-checkout",
+      "exit_code": 0,
+      "seconds": 0.39695310592651367,
+      "log": "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vision-dependencies-v1/source-checkout.log",
+      "log_sha256": "6de461cd402584ae31b7912f0ea3214f336c43cfae2458a8ff566ee4592ef5a5"
+    },
+    {
+      "label": "isolated-venv",
+      "exit_code": 0,
+      "seconds": 2.5436758995056152,
+      "log": "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vision-dependencies-v1/isolated-venv.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "environment-prefix",
+      "exit_code": 0,
+      "seconds": 0.05012392997741699,
+      "log": "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vision-dependencies-v1/environment-prefix.log",
+      "log_sha256": "ca21a4a83ca475cf44db7981ffa6838cd5d0b1d0007efb967e2beb9b5bb0a4f8"
+    },
+    {
+      "label": "resolve-only",
+      "exit_code": 0,
+      "seconds": 16.139182806015015,
+      "log": "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vision-dependencies-v1/resolve-only.log",
+      "log_sha256": "1bf6c6a0cf21cb810c361f1f603dd153a8d66490d68515467a312a6f3c9bb4e1"
+    }
+  ],
+  "packages_installed": false,
+  "model_imported": false,
+  "gpu_execution": false,
+  "source_revision": "b8bf04c6dd7f3bd3a2a5033bbfecef6375c3bfb0",
+  "language_source_sha256": "6cfeb5e9efee8042e9d82bbc696168d0e15cb95220365613caa84ea2568304a7",
+  "requirements_text": "mlx>=0.32.4\ntransformers>=5.14.0\ndatasets>=4.0.0\njinja2>=3.1.0\nsentencepiece>=0.2.0\nminiaudio>=1.59\ntqdm>=4.66.2\nPillow>=10.3.0\nrequests>=2.31.0\nllguidance>=1.7.0\nmlx-audio>=0.5.2\nopencv-python>=4.12.0.88\nfastapi>=0.95.1\npython-multipart>=0.0.9\nstarlette>=1.0.1\nuvicorn\nwebsockets>=14.0\nnumpy\ncryptography>=43.0.0\n",
+  "resolved_packages": [
+    {
+      "name": "mlx",
+      "version": "0.32.4"
+    },
+    {
+      "name": "mlx-lm",
+      "version": "0.32.0"
+    },
+    {
+      "name": "transformers",
+      "version": "5.18.0"
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.3"
+    },
+    {
+      "name": "mlx-metal",
+      "version": "0.32.4"
+    },
+    {
+      "name": "mlx-vlm",
+      "version": "0.7.8"
+    },
+    {
+      "name": "cryptography",
+      "version": "50.0.2"
+    },
+    {
+      "name": "datasets",
+      "version": "5.1.0"
+    },
+    {
+      "name": "fastapi",
+      "version": "0.143.3"
+    },
+    {
+      "name": "huggingface_hub",
+      "version": "2.2.0"
+    },
+    {
+      "name": "Jinja2",
+      "version": "3.1.6"
+    },
+    {
+      "name": "llguidance",
+      "version": "1.9.1"
+    },
+    {
+      "name": "miniaudio",
+      "version": "1.71"
+    },
+    {
+      "name": "mlx-audio",
+      "version": "0.5.9"
+    },
+    {
+      "name": "opencv-python",
+      "version": "5.0.0.93"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3"
+    },
+    {
+      "name": "pillow",
+      "version": "13.0.0"
+    },
+    {
+      "name": "python-multipart",
+      "version": "0.0.32"
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3"
+    },
+    {
+      "name": "regex",
+      "version": "2026.9.29"
+    },
+    {
+      "name": "requests",
+      "version": "2.34.2"
+    },
+    {
+      "name": "safetensors",
+      "version": "0.8.0"
+    },
+    {
+      "name": "sentencepiece",
+      "version": "0.2.2"
+    },
+    {
+      "name": "starlette",
+      "version": "1.8.0"
+    },
+    {
+      "name": "tokenizers",
+      "version": "0.23.3"
+    },
+    {
+      "name": "tqdm",
+      "version": "4.70.1"
+    },
+    {
+      "name": "websockets",
+      "version": "17.2"
+    },
+    {
+      "name": "protobuf",
+      "version": "7.36.2"
+    },
+    {
+      "name": "typer",
+      "version": "0.27.3"
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.54.0"
+    },
+    {
+      "name": "annotated-doc",
+      "version": "0.0.5"
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.7.22"
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1"
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.2"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0"
+    },
+    {
+      "name": "dill",
+      "version": "0.4.1"
+    },
+    {
+      "name": "filelock",
+      "version": "4.2.0"
+    },
+    {
+      "name": "fsspec",
+      "version": "2026.7.0"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0"
+    },
+    {
+      "name": "hf-xet",
+      "version": "1.7.0"
+    },
+    {
+      "name": "httpx2",
+      "version": "2.13.1"
+    },
+    {
+      "name": "httpcore2",
+      "version": "2.13.1"
+    },
+    {
+      "name": "idna",
+      "version": "3.20"
+    },
+    {
+      "name": "MarkupSafe",
+      "version": "3.0.4"
+    },
+    {
+      "name": "multiprocess",
+      "version": "0.70.19"
+    },
+    {
+      "name": "opentelemetry-api",
+      "version": "1.45.1"
+    },
+    {
+      "name": "pyarrow",
+      "version": "26.0.0"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.1"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.50.1"
+    },
+    {
+      "name": "rich",
+      "version": "15.0.0"
+    },
+    {
+      "name": "scipy",
+      "version": "1.18.1"
+    },
+    {
+      "name": "shellingham",
+      "version": "1.5.4"
+    },
+    {
+      "name": "sounddevice",
+      "version": "0.5.6"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4"
+    },
+    {
+      "name": "urllib3",
+      "version": "2.8.0"
+    },
+    {
+      "name": "pandas",
+      "version": "3.0.6"
+    },
+    {
+      "name": "xxhash",
+      "version": "4.0.1"
+    },
+    {
+      "name": "aiohttp",
+      "version": "3.14.5"
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0"
+    },
+    {
+      "name": "markdown-it-py",
+      "version": "4.2.0"
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0"
+    },
+    {
+      "name": "python-dateutil",
+      "version": "2.9.0.post0"
+    },
+    {
+      "name": "truststore",
+      "version": "0.10.5"
+    },
+    {
+      "name": "pycparser",
+      "version": "3.11"
+    },
+    {
+      "name": "aiohappyeyeballs",
+      "version": "2.7.1"
+    },
+    {
+      "name": "aiosignal",
+      "version": "1.4.0"
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0"
+    },
+    {
+      "name": "frozenlist",
+      "version": "1.8.0"
+    },
+    {
+      "name": "mdurl",
+      "version": "0.1.2"
+    },
+    {
+      "name": "multidict",
+      "version": "7.1.0"
+    },
+    {
+      "name": "propcache",
+      "version": "0.5.4"
+    },
+    {
+      "name": "six",
+      "version": "1.17.0"
+    },
+    {
+      "name": "yarl",
+      "version": "1.25.1"
+    }
+  ],
+  "protected_language_source_hashes_before": {
+    "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_5.py": "10c59a71d8d739b8cdff38c7e9c7345deb9a9688e821ac37cb774d3086cac42e",
+    "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py": "67ca08a4d08cb7be124965e95399735e556f1eaeb21a16bc23cb88d1ac035e11"
+  },
+  "protected_language_source_hashes_after": {
+    "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_5.py": "10c59a71d8d739b8cdff38c7e9c7345deb9a9688e821ac37cb774d3086cac42e",
+    "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py": "67ca08a4d08cb7be124965e95399735e556f1eaeb21a16bc23cb88d1ac035e11"
+  },
+  "protected_language_sources_unchanged": true,
+  "finished_at": 1792210410.4431481
+}

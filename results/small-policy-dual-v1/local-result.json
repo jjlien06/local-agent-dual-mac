@@ -1,0 +1,29 @@
+{
+  "role": "small-no-residency-vision-only",
+  "status": "remote-load-diagnostic-returned-success",
+  "observations": [
+    {
+      "timestamp": 1792205015.459253,
+      "pressure": 1,
+      "process_ps_rss_KiB": "11277  86016 00:00",
+      "swap": "vm.swapusage: total = 4096.00M  used = 2844.44M  free = 1251.56M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [11277]: 64-bit    Footprint: 43205232 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 43238000 B\n    phys_footprint_peak: 43238000 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                   150147.\nPages active:                                 293518.\nPages inactive:                               267625.\nPages speculative:                             24885.\nPages throttled:                                   0.\nPages wired down:                             223789.\nPages purgeable:                                9731.\n\"Translation faults\":                    18072288673.\nPages copy-on-write:                      3216465779.\nPages zero filled:                        4903031478.\nPages reactivated:                        2163324454.\nPages purged:                              149161252.\nFile-backed pages:                            191728.\nAnonymous pages:                              394300.\nPages stored in compressor:                   439720.\nPages occupied by compressor:                  46836.\nDecompressions:                           2397094511.\nCompressions:                             2718444309.\nPageins:                                   246334067.\nPageouts:                                    3413815.\nSwapins:                                    39469268.\nSwapouts:                                   47626636.\n"
+    }
+  ],
+  "started_at": 1792205015.146698,
+  "inference_executed": false,
+  "rpc_pid": 11277,
+  "owned_listener": "COMMAND     PID       USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME\nggml-rpc- 11277 jeremylien    3u  IPv4 0xf85bec78b2f16c6a      0t0  TCP 169.254.47.213:18568 (LISTEN)\n",
+  "remote_controller_exit": 0,
+  "owned_rpc_reaped": true,
+  "rpc_exit": -15,
+  "rpc_listener_closed": true,
+  "finished_at": 1792205017.576459,
+  "local-rpc.log_sha256": "03d8114d824e938f8401642c27c6f7a94a25567ba00e5b0af373bb859ff39d7f",
+  "remote-controller.log_sha256": "3f2d3e1fee1cb52ac4a12592b7005056816860af57738d2e97d408eb0fface8b"
+}

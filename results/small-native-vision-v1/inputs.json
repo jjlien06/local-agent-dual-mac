@@ -1,0 +1,25 @@
+{
+  "schema": "synthetic-image-control-v1",
+  "cases": [
+    {
+      "case_id": "red",
+      "image_file": "/Users/jeremylien/Projects/local-agent-dual-mac/results/small-native-vision-v1/inputs/red.png",
+      "sha256": "9b5d2bc0516a2749576352b9c38c6e9f88d2db423d8a187c1c003034b2136b3c",
+      "expected_dominant_color": "red",
+      "bytes": 403,
+      "width": 128,
+      "height": 128
+    },
+    {
+      "case_id": "blue",
+      "image_file": "/Users/jeremylien/Projects/local-agent-dual-mac/results/small-native-vision-v1/inputs/blue.png",
+      "sha256": "32cba78a00615c233d68cbde61d1cb07763e3c7524b1cea9ca0756b336843e86",
+      "expected_dominant_color": "blue",
+      "bytes": 403,
+      "width": 128,
+      "height": 128
+    }
+  ],
+  "prompt": "What is the dominant color in this image? Answer with exactly one color word.",
+  "role": "Color-conditioned image-path smoke test, not coding or GUI qualification."
+}

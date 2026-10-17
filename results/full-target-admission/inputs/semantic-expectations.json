@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "grounding": [
+    {
+      "id": "dashboard-a",
+      "width": 1024,
+      "height": 768,
+      "expected_status": "READY 27",
+      "target_bbox": [
+        240,
+        540,
+        440,
+        610
+      ],
+      "scope": "A correct answer is a point strictly inside target bbox AND exact badge text. No GUI action executed; not an OSWorld score."
+    },
+    {
+      "id": "dashboard-b",
+      "width": 1024,
+      "height": 768,
+      "expected_status": "HOLD 64",
+      "target_bbox": [
+        740,
+        540,
+        940,
+        610
+      ],
+      "scope": "A correct answer is a point strictly inside target bbox AND exact badge text. No GUI action executed; not an OSWorld score."
+    }
+  ],
+  "role": "Independent scorer truth; never included in HTTP model request."
+}

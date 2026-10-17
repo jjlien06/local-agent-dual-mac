@@ -1,0 +1,23 @@
+{
+  "hypotheses": [
+    "New unsigned RPC binary inbound blocked by M2 application firewall",
+    "Incorrect or stale bridge route/address",
+    "RPC protocol/startup defect rather than TCP reachability"
+  ],
+  "local_firewall": "enabled; read-only observation",
+  "mini_firewall": "disabled; read-only observation",
+  "owned_rpc_listener": "COMMAND     PID       USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME\nggml-rpc- 78598 jeremylien    3u  IPv4 0x93bf33a1d64880ad      0t0  TCP 169.254.47.213:18554 (LISTEN)\n",
+  "remote_connect_tests": [
+    {
+      "port": 18554,
+      "connect_errno": 0,
+      "elapsed": 0.0012719579972326756
+    },
+    {
+      "port": 18555,
+      "connect_errno": 0,
+      "elapsed": 0.000523957991390489
+    }
+  ],
+  "rpc_reaped": true
+}

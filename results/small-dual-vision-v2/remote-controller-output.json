@@ -1,0 +1,5 @@
+{
+  "output": "Traceback (most recent call last):\n  File \"<string>\", line 5, in <module>\n    assert list_result.returncode==0 and 'RPC0[169.254.47.213:18556]' in list_result.stdout,list_result.stdout+list_result.stderr\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Available devices:\n  MTL0: Apple M4 (12124 MiB, 12123 MiB free)\n  BLAS: Accelerate (0 MiB, 0 MiB free)\n  RPC0: 169.254.47.213:18556 (12124 MiB, 12123 MiB free)",
+  "exit_code": 1,
+  "error": null
+}

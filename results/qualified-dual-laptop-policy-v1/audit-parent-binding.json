@@ -1,0 +1,16 @@
+{
+  "schema": "fresh-policy-control-audit-parent-binding-v1",
+  "timestamp": 1792207291.633992,
+  "report_sha256": "50fe4bc1c434586b0cbb3b9ce9d12df43776ea2d973aa1ec2fe2d376e13ea61a",
+  "passed": true,
+  "check_labels_recounted": 340,
+  "cases_recounted": 9,
+  "all_reviewed_source_and_evidence_hashes_match": true,
+  "historical_sources_preserved": true,
+  "nonblocking_future_hardening": [
+    "Validate exact mode/run/port tuple in a new generalized supervisor, not independent allowlists",
+    "Use explicit admission failures or reject optimized Python execution before launch",
+    "Correct inherited330-second comment to actual235-second alarm only in future source version; do not rewrite executed frozen sources"
+  ],
+  "scope": "Only completed small0.8B isolated policy-control evidence; full27Bloadv3 remains failed and unadmitted."
+}

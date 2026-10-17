@@ -1,0 +1,40 @@
+{
+  "schema": "isolated-native-vlm-environment-install-v1",
+  "status": "installed-dependencies-verified-source-import-not-yet-exercised",
+  "passed": true,
+  "stages": [
+    {
+      "label": "create-isolated-env",
+      "exit_code": 0,
+      "seconds": 1.4559440829998493,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "install-locked-wheels",
+      "exit_code": 0,
+      "seconds": 23.105156084000555,
+      "log_sha256": "f89b56c28ba68e4c6d2357c93323d12b05ff37f10c6fb1fb465f313c2a8010c7"
+    },
+    {
+      "label": "pip-check",
+      "exit_code": 0,
+      "seconds": 0.5493561669991323,
+      "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "label": "package-metadata",
+      "exit_code": 0,
+      "seconds": 0.10559937500147498,
+      "log_sha256": "5db5c0e168a74d2803ce8b1fedec6f76727508dbe3320db15e0d123e375f56d6"
+    }
+  ],
+  "elapsed_seconds": 25.217118665999806,
+  "environment": "/Users/jeremylien/Projects/local-agent-dual-mac/.vlm-reference-venv",
+  "dependency_wheels": 74,
+  "packages_installed": true,
+  "protected_language_sources_unchanged": true,
+  "existing_numeric_environment_modified": false,
+  "model_imported": false,
+  "gpu_execution": false,
+  "scope": "Dependency installation and metadata verification only; pinned source must still be imported and tested. Not VLM inference or capacity admission."
+}

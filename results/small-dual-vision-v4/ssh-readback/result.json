@@ -1,0 +1,105 @@
+{
+  "parser_regression": {
+    "bad_order_exit": 1,
+    "bad_order_stderr": "error while handling argument \"--device\": invalid device: RPC0\n\nusage:\n-dev,  --device <dev1,dev2,..>          comma-separated list of devices to use for offloading (none = don't\n                                        offload)\n                                        use --list-devices to see a list of available devices\n                                        (env: LLAMA_ARG_DEVICE)\n\n\nto show complete usage, run with -h\n",
+    "good_order_exit": 0
+  },
+  "listed_devices": "Available devices:\n  MTL0: Apple M4 (12124 MiB, 12123 MiB free)\n  BLAS: Accelerate (0 MiB, 0 MiB free)\n  RPC0: 169.254.47.213:18560 (12124 MiB, 12123 MiB free)\n",
+  "schema": "small-dual-vision-smoke-v1",
+  "status": "success",
+  "role": "Qwen3.5-0.8B architecture control only, not final27B",
+  "requests": [
+    {
+      "case_id": "red",
+      "image_sha256": "9b5d2bc0516a2749576352b9c38c6e9f88d2db423d8a187c1c003034b2136b3c",
+      "request_sha256": "7fffa7485756196c6b034a1ce11dd97eae6fe8512ec8256b5524bec7d8556290",
+      "response_sha256": "62242b0d91640a13723f852c8f5061ad85d4b0c01aa859bbdff88ff3a3d567f3",
+      "content": "red",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "wall_seconds": 0.679627082994557,
+      "expected": "red",
+      "color_match": true
+    },
+    {
+      "case_id": "blue",
+      "image_sha256": "32cba78a00615c233d68cbde61d1cb07763e3c7524b1cea9ca0756b336843e86",
+      "request_sha256": "0560fab2c6595374903297ab59d5a27c94345de18f4283929727339a71b21ffc",
+      "response_sha256": "e65a757827c551803487b430fc611bd25635473723887187fa62eb6e148eaded",
+      "content": "blue",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 46,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "wall_seconds": 0.1109141670021927,
+      "expected": "blue",
+      "color_match": true
+    }
+  ],
+  "source_revision": "ea0c4c2c85fb183ec0fbd30a1af4e4275a18a064",
+  "model_revision": "6ab461498e2023f6e3c1baea90a8f0fe38ab64d0",
+  "argv": [
+    "/Users/jeremylien/Projects/local-agent-dual-mac/build-api-arm64/bin/llama-server",
+    "--rpc",
+    "169.254.47.213:18560",
+    "-m",
+    "/Volumes/\u65b0\u589e\u78c1\u789f\u5340/local-agent-models/qwen35-0.8b-control-6ab461498e20/Qwen3.5-0.8B-Q4_K_M.gguf",
+    "--mmproj",
+    "/Volumes/\u65b0\u589e\u78c1\u789f\u5340/local-agent-models/qwen35-0.8b-control-6ab461498e20/mmproj-BF16.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "18380",
+    "--alias",
+    "qwen35-vision-control",
+    "--ctx-size",
+    "2048",
+    "--parallel",
+    "1",
+    "--batch-size",
+    "256",
+    "--ubatch-size",
+    "256",
+    "--gpu-layers",
+    "99",
+    "--device",
+    "MTL0,RPC0",
+    "--mmproj-device",
+    "MTL0",
+    "--split-mode",
+    "layer",
+    "--tensor-split",
+    "1,1",
+    "--image-max-tokens",
+    "256",
+    "--no-warmup",
+    "--no-cont-batching",
+    "--reasoning",
+    "off",
+    "--predict",
+    "32",
+    "--seed",
+    "42",
+    "-lv",
+    "4"
+  ],
+  "binary_sha256": "bdcd2f4313fb976247598c05bc734e9eb5186f03bbd7c94d4d53b0acd00cfecb",
+  "pid": 11974,
+  "exit_code": 0,
+  "owned_process_reaped": true,
+  "listener_closed": true,
+  "server_log_sha256": "fe161cf61c89775a3a72bed8fe30a4a7a99f66cbb6f0debd645b4a6b0c6c6a0f",
+  "result_dir": "/Users/jeremylien/Projects/local-agent-dual-mac/results/dual-control-v4"
+}

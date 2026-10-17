@@ -1,0 +1,10 @@
+{
+  "postcleanup_health": "kern.memorystatus_vm_pressure_level: 1\nvm.swapusage: total = 1024.00M  used = 253.12M  free = 770.88M  (encrypted)\n",
+  "timestamp": 1792204324.383678,
+  "hashes": {
+    "result.json": "aa9ae65a290e956d0bf19035b3fad1a15c8ba73bb0197e8e2abea0da92bf2e37",
+    "1-before_alloc.json": "0aec121892f92fa99e3a0e8f223ad76b7d0b211ccb5736d3051a7baaac812d05",
+    "2-allocated.json": "ff36f828c075eeb653be249db381bf4d184c2a629d6e185945a309a01eca7366",
+    "3-freed.json": "006de44e0f2bb48a6d2a9ce2b66f0327a2f5ebd582e9d8953ddb9de5ba2c82b4"
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "role": "full-target-load-only",
+  "status": "failed",
+  "observations": [
+    {
+      "timestamp": 1792204445.9995751,
+      "pressure": 1,
+      "process_ps_rss_KiB": "7002  86752 00:00",
+      "swap": "vm.swapusage: total = 4096.00M  used = 3004.50M  free = 1091.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [7002]: 64-bit    Footprint: 44122784 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 44155552 B\n    phys_footprint_peak: 44155552 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                   101138.\nPages active:                                 319123.\nPages inactive:                               293735.\nPages speculative:                             24257.\nPages throttled:                                   0.\nPages wired down:                             210979.\nPages purgeable:                                9471.\n\"Translation faults\":                    18065656542.\nPages copy-on-write:                      3215943245.\nPages zero filled:                        4899630484.\nPages reactivated:                        2162999862.\nPages purged:                              149141071.\nFile-backed pages:                            216688.\nAnonymous pages:                              420427.\nPages stored in compressor:                   543857.\nPages occupied by compressor:                  57684.\nDecompressions:                           2396759075.\nCompressions:                             2718006185.\nPageins:                                   246160615.\nPageouts:                                    3413323.\nSwapins:                                    39459490.\nSwapouts:                                   47626636.\n"
+    },
+    {
+      "timestamp": 1792204448.0660028,
+      "pressure": 1,
+      "process_ps_rss_KiB": "7002  86800 00:03",
+      "swap": "vm.swapusage: total = 4096.00M  used = 3004.50M  free = 1091.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [7002]: 64-bit    Footprint: 43762336 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 43795104 B\n    phys_footprint_peak: 44171936 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                   101322.\nPages active:                                 319030.\nPages inactive:                               293615.\nPages speculative:                             24257.\nPages throttled:                                   0.\nPages wired down:                             210942.\nPages purgeable:                                9494.\n\"Translation faults\":                    18065665511.\nPages copy-on-write:                      3215943949.\nPages zero filled:                        4899634873.\nPages reactivated:                        2162999862.\nPages purged:                              149141071.\nFile-backed pages:                            216688.\nAnonymous pages:                              420214.\nPages stored in compressor:                   543854.\nPages occupied by compressor:                  57684.\nDecompressions:                           2396759078.\nCompressions:                             2718006185.\nPageins:                                   246160625.\nPageouts:                                    3413323.\nSwapins:                                    39459490.\nSwapouts:                                   47626636.\n"
+    },
+    {
+      "timestamp": 1792204450.1782541,
+      "pressure": 1,
+      "process_ps_rss_KiB": "7002  86800 00:05",
+      "swap": "vm.swapusage: total = 4096.00M  used = 3004.50M  free = 1091.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [7002]: 64-bit    Footprint: 43762336 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 43795104 B\n    phys_footprint_peak: 44171936 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                   100974.\nPages active:                                 319221.\nPages inactive:                               293742.\nPages speculative:                             24257.\nPages throttled:                                   0.\nPages wired down:                             210942.\nPages purgeable:                                9492.\n\"Translation faults\":                    18065672844.\nPages copy-on-write:                      3215944563.\nPages zero filled:                        4899639532.\nPages reactivated:                        2162999862.\nPages purged:                              149141071.\nFile-backed pages:                            216689.\nAnonymous pages:                              420531.\nPages stored in compressor:                   543854.\nPages occupied by compressor:                  57684.\nDecompressions:                           2396759078.\nCompressions:                             2718006185.\nPageins:                                   246160633.\nPageouts:                                    3413323.\nSwapins:                                    39459490.\nSwapouts:                                   47626636.\n"
+    },
+    {
+      "timestamp": 1792204452.274923,
+      "pressure": 1,
+      "process_ps_rss_KiB": "7002  86272 00:07",
+      "swap": "vm.swapusage: total = 4096.00M  used = 3004.50M  free = 1091.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [7002]: 64-bit    Footprint: 43205280 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 43238048 B\n    phys_footprint_peak: 44171936 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                   102827.\nPages active:                                 317514.\nPages inactive:                               292765.\nPages speculative:                             24259.\nPages throttled:                                   0.\nPages wired down:                             211810.\nPages purgeable:                                9415.\n\"Translation faults\":                    18065690040.\nPages copy-on-write:                      3215946864.\nPages zero filled:                        4899645082.\nPages reactivated:                        2162999862.\nPages purged:                              149141135.\nFile-backed pages:                            216689.\nAnonymous pages:                              417849.\nPages stored in compressor:                   543854.\nPages occupied by compressor:                  57684.\nDecompressions:                           2396759079.\nCompressions:                             2718006185.\nPageins:                                   246160653.\nPageouts:                                    3413323.\nSwapins:                                    39459490.\nSwapouts:                                   47626636.\n"
+    },
+    {
+      "timestamp": 1792204454.338887,
+      "pressure": 1,
+      "process_ps_rss_KiB": "7002  86272 00:09",
+      "swap": "vm.swapusage: total = 4096.00M  used = 3004.50M  free = 1091.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [7002]: 64-bit    Footprint: 43205280 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 43238048 B\n    phys_footprint_peak: 44171936 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                   103451.\nPages active:                                 317855.\nPages inactive:                               292764.\nPages speculative:                             24259.\nPages throttled:                                   0.\nPages wired down:                             210927.\nPages purgeable:                                9428.\n\"Translation faults\":                    18065698510.\nPages copy-on-write:                      3215947470.\nPages zero filled:                        4899649263.\nPages reactivated:                        2162999862.\nPages purged:                              149141135.\nFile-backed pages:                            216690.\nAnonymous pages:                              418188.\nPages stored in compressor:                   543849.\nPages occupied by compressor:                  57681.\nDecompressions:                           2396759081.\nCompressions:                             2718006185.\nPageins:                                   246160662.\nPageouts:                                    3413323.\nSwapins:                                    39459490.\nSwapouts:                                   47626636.\n"
+    },
+    {
+      "timestamp": 1792204456.4233441,
+      "pressure": 1,
+      "process_ps_rss_KiB": "7002  86272 00:11",
+      "swap": "vm.swapusage: total = 4096.00M  used = 3004.50M  free = 1091.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [7002]: 64-bit    Footprint: 43205280 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 43238048 B\n    phys_footprint_peak: 44171936 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                   103327.\nPages active:                                 317875.\nPages inactive:                               292758.\nPages speculative:                             24261.\nPages throttled:                                   0.\nPages wired down:                             210927.\nPages purgeable:                                9428.\n\"Translation faults\":                    18065705448.\nPages copy-on-write:                      3215948076.\nPages zero filled:                        4899653386.\nPages reactivated:                        2162999862.\nPages purged:                              149141135.\nFile-backed pages:                            216695.\nAnonymous pages:                              418199.\nPages stored in compressor:                   543843.\nPages occupied by compressor:                  57678.\nDecompressions:                           2396759087.\nCompressions:                             2718006185.\nPageins:                                   246160675.\nPageouts:                                    3413323.\nSwapins:                                    39459490.\nSwapouts:                                   47626636.\n"
+    },
+    {
+      "timestamp": 1792204458.4861739,
+      "pressure": 1,
+      "process_ps_rss_KiB": "7002  86272 00:13",
+      "swap": "vm.swapusage: total = 4096.00M  used = 3004.50M  free = 1091.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [7002]: 64-bit    Footprint: 43205280 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 43238048 B\n    phys_footprint_peak: 44171936 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                   103710.\nPages active:                                 317527.\nPages inactive:                               292755.\nPages speculative:                             24264.\nPages throttled:                                   0.\nPages wired down:                             210928.\nPages purgeable:                                9428.\n\"Translation faults\":                    18065712750.\nPages copy-on-write:                      3215948769.\nPages zero filled:                        4899657581.\nPages reactivated:                        2162999986.\nPages purged:                              149141135.\nFile-backed pages:                            216696.\nAnonymous pages:                              417850.\nPages stored in compressor:                   543840.\nPages occupied by compressor:                  57680.\nDecompressions:                           2396759090.\nCompressions:                             2718006185.\nPageins:                                   246160685.\nPageouts:                                    3413323.\nSwapins:                                    39459494.\nSwapouts:                                   47626636.\n"
+    },
+    {
+      "timestamp": 1792204460.557673,
+      "pressure": 1,
+      "process_ps_rss_KiB": "7002  86272 00:15",
+      "swap": "vm.swapusage: total = 4096.00M  used = 3004.50M  free = 1091.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [7002]: 64-bit    Footprint: 43205280 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 43238048 B\n    phys_footprint_peak: 44171936 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                   106335.\nPages active:                                 314852.\nPages inactive:                               292730.\nPages speculative:                             24264.\nPages throttled:                                   0.\nPages wired down:                             210873.\nPages purgeable:                                9427.\n\"Translation faults\":                    18065719792.\nPages copy-on-write:                      3215949374.\nPages zero filled:                        4899661839.\nPages reactivated:                        2162999988.\nPages purged:                              149141135.\nFile-backed pages:                            216437.\nAnonymous pages:                              415409.\nPages stored in compressor:                   543839.\nPages occupied by compressor:                  57684.\nDecompressions:                           2396759091.\nCompressions:                             2718006185.\nPageins:                                   246160707.\nPageouts:                                    3413323.\nSwapins:                                    39459498.\nSwapouts:                                   47626636.\n"
+    },
+    {
+      "timestamp": 1792204462.6801012,
+      "pressure": 1,
+      "process_ps_rss_KiB": "7002  86272 00:17",
+      "swap": "vm.swapusage: total = 4096.00M  used = 2996.50M  free = 1099.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [7002]: 64-bit    Footprint: 43205280 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 43238048 B\n    phys_footprint_peak: 44171936 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                    96686.\nPages active:                                 320569.\nPages inactive:                               295226.\nPages speculative:                             24333.\nPages throttled:                                   0.\nPages wired down:                             213165.\nPages purgeable:                                8905.\n\"Translation faults\":                    18065768296.\nPages copy-on-write:                      3215951042.\nPages zero filled:                        4899681706.\nPages reactivated:                        2162999990.\nPages purged:                              149141135.\nFile-backed pages:                            217701.\nAnonymous pages:                              422427.\nPages stored in compressor:                   540759.\nPages occupied by compressor:                  56950.\nDecompressions:                           2396760632.\nCompressions:                             2718006185.\nPageins:                                   246162107.\nPageouts:                                    3413323.\nSwapins:                                    39459638.\nSwapouts:                                   47626636.\n"
+    },
+    {
+      "timestamp": 1792204464.7634401,
+      "pressure": 1,
+      "process_ps_rss_KiB": "7002  86272 00:19",
+      "swap": "vm.swapusage: total = 4096.00M  used = 2988.50M  free = 1107.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [7002]: 64-bit    Footprint: 43205280 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 43238048 B\n    phys_footprint_peak: 44171936 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                    94958.\nPages active:                                 322880.\nPages inactive:                               298253.\nPages speculative:                             24331.\nPages throttled:                                   0.\nPages wired down:                             210993.\nPages purgeable:                                9558.\n\"Translation faults\":                    18065785594.\nPages copy-on-write:                      3215951675.\nPages zero filled:                        4899686723.\nPages reactivated:                        2162999990.\nPages purged:                              149141135.\nFile-backed pages:                            217700.\nAnonymous pages:                              427764.\nPages stored in compressor:                   537437.\nPages occupied by compressor:                  55458.\nDecompressions:                           2396763806.\nCompressions:                             2718006185.\nPageins:                                   246162115.\nPageouts:                                    3413323.\nSwapins:                                    39459801.\nSwapouts:                                   47626636.\n"
+    },
+    {
+      "timestamp": 1792204466.857367,
+      "pressure": 1,
+      "process_ps_rss_KiB": "7002  86272 00:21",
+      "swap": "vm.swapusage: total = 4096.00M  used = 2988.50M  free = 1107.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [7002]: 64-bit    Footprint: 43205280 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 43238048 B\n    phys_footprint_peak: 44171936 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                    95339.\nPages active:                                 322564.\nPages inactive:                               298212.\nPages speculative:                             24339.\nPages throttled:                                   0.\nPages wired down:                             210989.\nPages purgeable:                                9558.\n\"Translation faults\":                    18065792663.\nPages copy-on-write:                      3215952308.\nPages zero filled:                        4899690888.\nPages reactivated:                        2162999990.\nPages purged:                              149141135.\nFile-backed pages:                            217708.\nAnonymous pages:                              427407.\nPages stored in compressor:                   537432.\nPages occupied by compressor:                  55454.\nDecompressions:                           2396763811.\nCompressions:                             2718006185.\nPageins:                                   246162123.\nPageouts:                                    3413323.\nSwapins:                                    39459801.\nSwapouts:                                   47626636.\n"
+    },
+    {
+      "timestamp": 1792204468.964323,
+      "pressure": 1,
+      "process_ps_rss_KiB": "7002  86272 00:23",
+      "swap": "vm.swapusage: total = 4096.00M  used = 2988.50M  free = 1107.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [7002]: 64-bit    Footprint: 43205280 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 43238048 B\n    phys_footprint_peak: 44171936 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                    92401.\nPages active:                                 324734.\nPages inactive:                               298913.\nPages speculative:                             24349.\nPages throttled:                                   0.\nPages wired down:                             211059.\nPages purgeable:                                9220.\n\"Translation faults\":                    18065833527.\nPages copy-on-write:                      3215955639.\nPages zero filled:                        4899699020.\nPages reactivated:                        2162999992.\nPages purged:                              149141135.\nFile-backed pages:                            217980.\nAnonymous pages:                              430016.\nPages stored in compressor:                   537423.\nPages occupied by compressor:                  55451.\nDecompressions:                           2396763823.\nCompressions:                             2718006185.\nPageins:                                   246162430.\nPageouts:                                    3413323.\nSwapins:                                    39459801.\nSwapouts:                                   47626636.\n"
+    },
+    {
+      "timestamp": 1792204471.078544,
+      "pressure": 1,
+      "process_ps_rss_KiB": "7002  86272 00:26",
+      "swap": "vm.swapusage: total = 4096.00M  used = 2988.50M  free = 1107.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [7002]: 64-bit    Footprint: 43205280 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 43238048 B\n    phys_footprint_peak: 44171936 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                    94374.\nPages active:                                 322928.\nPages inactive:                               298808.\nPages speculative:                             24367.\nPages throttled:                                   0.\nPages wired down:                             210998.\nPages purgeable:                                9558.\n\"Translation faults\":                    18065840951.\nPages copy-on-write:                      3215956251.\nPages zero filled:                        4899703263.\nPages reactivated:                        2162999992.\nPages purged:                              149141135.\nFile-backed pages:                            217840.\nAnonymous pages:                              428263.\nPages stored in compressor:                   537418.\nPages occupied by compressor:                  55450.\nDecompressions:                           2396763828.\nCompressions:                             2718006185.\nPageins:                                   246162521.\nPageouts:                                    3413323.\nSwapins:                                    39459801.\nSwapouts:                                   47626636.\n"
+    },
+    {
+      "timestamp": 1792204473.1582358,
+      "pressure": 1,
+      "process_ps_rss_KiB": "7002  46944 00:28",
+      "swap": "vm.swapusage: total = 4096.00M  used = 2988.50M  free = 1107.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [7002]: 64-bit    Footprint: 43205280 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 43238048 B\n    phys_footprint_peak: 44171936 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     3098.\nPages active:                                 138647.\nPages inactive:                               128055.\nPages speculative:                              9042.\nPages throttled:                                   0.\nPages wired down:                             554998.\nPages purgeable:                                   0.\n\"Translation faults\":                    18065856179.\nPages copy-on-write:                      3215956860.\nPages zero filled:                        4900051469.\nPages reactivated:                        2163154132.\nPages purged:                              149145570.\nFile-backed pages:                            146135.\nAnonymous pages:                              129610.\nPages stored in compressor:                   794021.\nPages occupied by compressor:                 173001.\nDecompressions:                           2396769308.\nCompressions:                             2718273621.\nPageins:                                   246162568.\nPageouts:                                    3413376.\nSwapins:                                    39459805.\nSwapouts:                                   47626636.\n"
+    },
+    {
+      "timestamp": 1792204475.3089259,
+      "pressure": 2,
+      "process_ps_rss_KiB": "7002  46416 00:30",
+      "swap": "vm.swapusage: total = 4096.00M  used = 2988.50M  free = 1107.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 0,
+        "stdout": "======================================================================\nggml-rpc-server [7002]: 64-bit    Footprint: 37323424 B (16384 bytes per page)\n======================================================================\n\nAuxiliary data:\n    phys_footprint: 37356192 B\n    phys_footprint_peak: 44171936 B\n\n",
+        "stderr": ""
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     3922.\nPages active:                                  90427.\nPages inactive:                                85400.\nPages speculative:                              3877.\nPages throttled:                                   0.\nPages wired down:                             621611.\nPages purgeable:                                   2.\n\"Translation faults\":                    18065927576.\nPages copy-on-write:                      3215957469.\nPages zero filled:                        4900122393.\nPages reactivated:                        2163174951.\nPages purged:                              149145669.\nFile-backed pages:                            119927.\nAnonymous pages:                               59777.\nPages stored in compressor:                   860432.\nPages occupied by compressor:                 201558.\nDecompressions:                           2396810167.\nCompressions:                             2718383086.\nPageins:                                   246162597.\nPageouts:                                    3413376.\nSwapins:                                    39459812.\nSwapouts:                                   47626636.\n"
+    },
+    {
+      "timestamp": 1792204477.393843,
+      "pressure": 1,
+      "process_ps_rss_KiB": "",
+      "swap": "vm.swapusage: total = 4096.00M  used = 2988.50M  free = 1107.50M  (encrypted)",
+      "owned_rpc_footprint": {
+        "exit_code": 66,
+        "stdout": "",
+        "stderr": "footprint: Unable to find pid for process matching '7002'\nfootprint: Unable to find any processes matching the supplied process names or pids (try as root?)\n"
+      },
+      "global_vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                   407967.\nPages active:                                  96988.\nPages inactive:                                91757.\nPages speculative:                              4057.\nPages throttled:                                   0.\nPages wired down:                             210891.\nPages purgeable:                                 172.\n\"Translation faults\":                    18065955274.\nPages copy-on-write:                      3215958289.\nPages zero filled:                        4900127281.\nPages reactivated:                        2163174951.\nPages purged:                              149145669.\nFile-backed pages:                            120117.\nAnonymous pages:                               72685.\nPages stored in compressor:                   846030.\nPages occupied by compressor:                 195145.\nDecompressions:                           2396822340.\nCompressions:                             2718383086.\nPageins:                                   246162652.\nPageouts:                                    3413376.\nSwapins:                                    39459812.\nSwapouts:                                   47626636.\n"
+    }
+  ],
+  "started_at": 1792204445.730338,
+  "inference_executed": false,
+  "rpc_pid": 7002,
+  "owned_listener": "COMMAND    PID       USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME\nggml-rpc- 7002 jeremylien    3u  IPv4 0x24b4b7cb18b23885      0t0  TCP 169.254.47.213:18566 (LISTEN)\n",
+  "remote_controller_exit": 1,
+  "error": {
+    "type": "AssertionError",
+    "message": "local pressure or log guard triggered"
+  },
+  "owned_rpc_reaped": true,
+  "rpc_exit": -15,
+  "rpc_listener_closed": true,
+  "finished_at": 1792204479.445802,
+  "local-rpc.log_sha256": "b47a6803c8543e685d3b68d46a1a911bc100b9f4ad6971efb76473012937732f",
+  "remote-controller.log_sha256": "1368ac678b665f767c7c652340317fd496cc01862dfcc12c869998640bf03cfe"
+}

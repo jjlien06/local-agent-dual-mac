@@ -1,0 +1,24 @@
+{
+  "schema": "actual-pinned-vlm-source-import-cpu-smoke-v1",
+  "status": "failed",
+  "passed": false,
+  "detail": {
+    "error_type": "RuntimeError",
+    "error": "Metal custom kernels and model loads forbidden in import probe",
+    "actual_pinned_package_imported": false
+  },
+  "blocked_operations": [
+    "socket.bind"
+  ],
+  "device": "Device(cpu, 0)",
+  "model_loaded": false,
+  "gpu_kernel_execution": false,
+  "elapsed_seconds": 5.023119541998312,
+  "maxrss_bytes": 121438208,
+  "numeric_versions": {
+    "mlx": "0.32.4",
+    "mlx-metal": "0.32.4",
+    "numpy": "2.5.3"
+  },
+  "scope": "Actual complete VLM package imports and one tiny all-zero-position CPU rotary smoke only. No encoder/model construction, weights, real image, Metal, full-attention/cache or screenshot admission."
+}

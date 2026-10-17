@@ -1,0 +1,255 @@
+{
+  "passed": false,
+  "security_concerns": [],
+  "logic_errors": [
+    {
+      "id": "CPU-CONTRACT-001",
+      "blocking": true,
+      "location": "multimodal_contract/__init__.py:117-130,165-168",
+      "problem": "Authoritative Session accepts and retains a forged Request containing a mutable non-string config_sha256 because dataclass value equality is used without checking that field's exact type. A zero-dimensional NumPy string array equal to CONFIG_SHA256 passes canonical comparison. Mutating it changes the admitted configuration field. Consuming an otherwise valid canonical Chunk then raises TypeError during manifest serialization and leaves the session active with the forged request retained, rather than failing closed.",
+      "reproduction": "r=prepare_request(valid_ids, request_id=\"x\", grid=(1,4,6)); digest=np.array(CONFIG_SHA256); s=Session(dataclasses.replace(r,config_sha256=digest)); digest[()]=\"0\"*64; s.consume(r.chunk(0,r.prompt_length), actual_cache_offset=0)",
+      "observed": {
+        "accepted_mutable_config": true,
+        "retained_original_forgery": true,
+        "config_type": "<class 'numpy.ndarray'>",
+        "digest_mutated_after_admission": true,
+        "exception": "TypeError",
+        "message": "Object of type ndarray is not JSON serializable",
+        "state_after_exception": "active",
+        "request_released": false,
+        "cursor_after_exception": 0
+      },
+      "required_resolution": "Reject non-exact-str config_sha256 before equality, validate exact pinned value, and/or retain the newly reconstructed immutable canonical request rather than the supplied instance; add this forged-request regression. No repair performed."
+    }
+  ],
+  "suggestions": [
+    "Keep dataclasses documented as data containers, not a wire parser. The authoritative Session boundary must enforce every immutable field, including config_sha256.",
+    "Future physical adapter must independently observe real cache state and commit/abort execution; this CPU tracer is not an ACK and hashes do not authenticate images/weights/callers.",
+    "Maintain the explicit distinction between recorded historical TDD evidence and independently rerun present tests; historical RED/GREEN transitions cannot be independently reconstructed from final files."
+  ],
+  "verification": {
+    "scope": "Read-only source/tests/docs/evidence/config review; only scratch probes plus this optional new independent JSON receipt written; no implementation changes or self-repair.",
+    "owned_file_sha256": {
+      "multimodal_contract/__init__.py": "dc33ebc3fed629d28fd9b230c03019edec78836f7ee2aeaf7bb37e01bd9fa2ca",
+      "tests/test_multimodal_contract.py": "9061dc54b9388fbb50d86ad60a5b3888578b500605725234167218834c83f929",
+      "multimodal_contract/README.md": "edefc2cd8c6996b20033d7606e13f913a060e79e2b02fcefb89c38843dc7efed",
+      "MULTIMODAL-TDD.md": "1429be5955aa038152257a6263ad24cdca5f1544a11f2a5133b45d6d6d2b1d2d",
+      "results/mlx-vision-contract-cpu.json": "0e6901ec6e659f2832fb24d89fe652172feff442f305e46f9df4f5b415c88409"
+    },
+    "scratch_probe_sha256": {
+      "/Users/jeremylien/.hermes/cache/scratch/independent_mm_review.py": "d6d8d2c7b7f1b759dd532201b5fde8dfaedacf89356fbdd7f889c00cc6a59f4b",
+      "/Users/jeremylien/.hermes/cache/scratch/independent_mm_probes.py": "52a1bbad23ba7250645eb7d8ceead07db379a019ecb8ed566bb947577229d7b6",
+      "/Users/jeremylien/.hermes/cache/scratch/independent_mm_recorded_reference.py": "b7cc75624dbca208572dc9b13e816a896ab0fcbe31a87fb3f80c5126904c746f",
+      "/Users/jeremylien/.hermes/cache/scratch/independent_mm_upstream_function.txt": "7941460bac85b33c0f59abda8dbf6f47c33f92fd829a3428688be4b6a32e8a51"
+    },
+    "historical_owned_hash_matches": {
+      "multimodal_contract/__init__.py": true,
+      "tests/test_multimodal_contract.py": true,
+      "multimodal_contract/README.md": true,
+      "MULTIMODAL-TDD.md": true,
+      "architecture_review": true,
+      "exact_target_config": true
+    },
+    "known_parent_readme_doc_only_repair": {
+      "historical_sha256": "ab4b2f7e3e0ca3275f8cf8e7320023d7cfbc84e75abac6da7d82fcc51ea8b05b",
+      "current_sha256": "edefc2cd8c6996b20033d7606e13f913a060e79e2b02fcefb89c38843dc7efed",
+      "reversing_exact_documented_newline_reproduces_historical_digest": true,
+      "format_command_current": "3 files already formatted",
+      "pre_repair_directory_format_exit": 1,
+      "not_unexplained_tampering": true
+    },
+    "original_evidence_json_preserved": true,
+    "exact_config_and_architecture_sha256": {
+      "/Users/jeremylien/Projects/local-agent-dual-mac/results/full-target-load-v3/mlx-vision-architecture-review.md": "5cf36d9896a6a838a450de36e980aad0ad9055f8e24df0bf8fc2c96ba70b1496",
+      "/Users/jeremylien/Projects/paretoquant-metal/models/qwen3.8-27b-4bit-tokenizer-only/config.json": "14b65a0ee06517060a6bbd979bb1a8ff54e7b304b1a1f01d54344b88b8285e85"
+    },
+    "config_semantics_checked": {
+      "image_token_id": 248056,
+      "video_token_id": 248057,
+      "vision_start_token_id": 248053,
+      "vision_end_token_id": 248054,
+      "generation_pad_bos_eos_alias": 248044,
+      "additional_eos_not_padding": 248046,
+      "vocabulary_size": 248320,
+      "spatial_merge_size": 2,
+      "mrope_interleaved": true,
+      "mrope_section": [
+        11,
+        11,
+        10
+      ],
+      "rotary_theta": 10000000,
+      "partial_rotary_factor": 0.25,
+      "head_dim": 256,
+      "deepstack_visual_indexes": [],
+      "native_rotary_arithmetic_executed": false
+    },
+    "focused_tests": {
+      "passed": 63,
+      "offline_socket_guard": true,
+      "forbidden_runtime_import_guard": true
+    },
+    "independent_probes": {
+      "checks": [
+        "malformed input/marker/grid/unknown-option matrix",
+        "forged Request canonical admission",
+        "forged Chunk exact type/axis poison/drop delta/dtype matrix",
+        "little-endian immutable byte backing/copy isolation",
+        "prompt/image/chunk/exact physical offset caps",
+        "255/256/257 image-crossing/ragged/final token chunk coverage",
+        "physical/spatial separation stale/replay/order/premature/terminal/reset/cancel/decode cap",
+        "independent literal bytes/deterministic manifest/domain/config binding",
+        "all admitted merged H*W<=256 shapes at three placements vs retrieved NumPy reference"
+      ],
+      "failures": [
+        {
+          "name": "mutable equal-valued ndarray config must be rejected by authoritative Session",
+          "type": "AssertionError",
+          "error": "malformed input was accepted"
+        }
+      ],
+      "reference_comparisons": 4398,
+      "known_reproductions": [
+        {
+          "accepted_mutable_config": true,
+          "retained_original_forgery": true,
+          "config_type": "<class 'numpy.ndarray'>",
+          "digest_mutated_after_admission": true,
+          "exception": "TypeError",
+          "message": "Object of type ndarray is not JSON serializable",
+          "state_after_exception": "active",
+          "request_released": false,
+          "cursor_after_exception": 0
+        }
+      ],
+      "model_runtime_imports": [],
+      "offline": true
+    },
+    "externally_retrieved_reference": {
+      "source_sha256": "6cfeb5e9efee8042e9d82bbc696168d0e15cb95220365613caa84ea2568304a7",
+      "source_bytes": 74233,
+      "function_lines": [
+        1459,
+        1642
+      ],
+      "function_sha256": "7941460bac85b33c0f59abda8dbf6f47c33f92fd829a3428688be4b6a32e8a51",
+      "url": "https://raw.githubusercontent.com/Blaizzy/mlx-vlm/b8bf04c6dd7f3bd3a2a5033bbfecef6375c3bfb0/mlx_vlm/models/qwen3_5/language.py",
+      "PINNED-REFERENCE": {
+        "embedded_source_matches": true,
+        "command_length": 10160,
+        "literal_truncated": false
+      },
+      "FINAL-PINNED-REFERENCE": {
+        "embedded_source_matches": true,
+        "command_length": 10160,
+        "literal_truncated": false
+      },
+      "FINAL-PINNED-REFERENCE-10-CASES": {
+        "embedded_source_matches": true,
+        "command_length": 10764,
+        "literal_truncated": false
+      },
+      "original_ten_cases_independently_rerun": true,
+      "additional_exact_numpy_comparisons": 4398,
+      "not_native_mlx": true,
+      "separate_from_offline_unit_tests": true
+    },
+    "historical_tdd_evidence": {
+      "recorded_red_green_pairs": 9,
+      "ordered_labels": [
+        "RED-1",
+        "GREEN-1",
+        "RED-2",
+        "GREEN-2",
+        "RED-3",
+        "GREEN-3",
+        "RED-4",
+        "GREEN-4",
+        "RED-5",
+        "GREEN-5",
+        "RED-6",
+        "GREEN-6",
+        "RED-7",
+        "GREEN-7",
+        "RED-8",
+        "GREEN-8",
+        "RED-9",
+        "GREEN-9"
+      ],
+      "full_embedded_reference_commands_parsed_without_truncation": true,
+      "historical_transitions_independently_rerun": false
+    },
+    "probe_harness_issue": "Initial exhaustive grid loop accidentally included 257 merged tokens; corrected scratch-only bound to 256, reran, all 4398 reference comparisons passed. This was not an implementation defect.",
+    "executions": [
+      {
+        "label": "offline_focused_pytest",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -c 'import importlib.abc, socket, sys\nclass Guard(importlib.abc.MetaPathFinder):\n def find_spec(self, fullname, path=None, target=None):\n  if fullname.split('\"'\"'.'\"'\"')[0] in ('\"'\"'mlx'\"'\"','\"'\"'mlx_lm'\"'\"','\"'\"'mlx_vlm'\"'\"'): raise RuntimeError('\"'\"'forbidden model runtime: '\"'\"'+fullname)\nsys.meta_path.insert(0,Guard())\ndef offline(*args,**kwargs): raise RuntimeError('\"'\"'network forbidden in offline tests'\"'\"')\nsocket.socket.connect=offline\nsocket.create_connection=offline\nimport pytest\ncode=pytest.main(['\"'\"'-p'\"'\"','\"'\"'no:cacheprovider'\"'\"','\"'\"'tests/test_multimodal_contract.py'\"'\"','\"'\"'-q'\"'\"'])\nassert not any(k.split('\"'\"'.'\"'\"')[0] in ('\"'\"'mlx'\"'\"','\"'\"'mlx_lm'\"'\"','\"'\"'mlx_vlm'\"'\"') for k in sys.modules)\nprint('\"'\"'offline socket guard enabled; model runtime imports: NONE'\"'\"')\nraise SystemExit(code)\n'",
+        "environment": {
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+          "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac"
+        },
+        "exit_code": 0,
+        "stdout": "...............................................................          [100%]\n63 passed in 0.07s\noffline socket guard enabled; model runtime imports: NONE\n",
+        "stderr": ""
+      },
+      {
+        "label": "ruff_check",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m ruff check --no-cache multimodal_contract tests/test_multimodal_contract.py",
+        "environment": {
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+          "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac"
+        },
+        "exit_code": 0,
+        "stdout": "All checks passed!\n",
+        "stderr": ""
+      },
+      {
+        "label": "ruff_directory_format",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python -m ruff format --check --no-cache multimodal_contract tests/test_multimodal_contract.py",
+        "environment": {
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+          "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac"
+        },
+        "exit_code": 0,
+        "stdout": "3 files already formatted\n",
+        "stderr": ""
+      },
+      {
+        "label": "independent_adversarial_probes",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/independent_mm_probes.py",
+        "environment": {
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+          "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac"
+        },
+        "exit_code": 1,
+        "stdout": "{\n  \"checks\": [\n    \"malformed input/marker/grid/unknown-option matrix\",\n    \"forged Request canonical admission\",\n    \"forged Chunk exact type/axis poison/drop delta/dtype matrix\",\n    \"little-endian immutable byte backing/copy isolation\",\n    \"prompt/image/chunk/exact physical offset caps\",\n    \"255/256/257 image-crossing/ragged/final token chunk coverage\",\n    \"physical/spatial separation stale/replay/order/premature/terminal/reset/cancel/decode cap\",\n    \"independent literal bytes/deterministic manifest/domain/config binding\",\n    \"all admitted merged H*W<=256 shapes at three placements vs retrieved NumPy reference\"\n  ],\n  \"failures\": [\n    {\n      \"name\": \"mutable equal-valued ndarray config must be rejected by authoritative Session\",\n      \"type\": \"AssertionError\",\n      \"error\": \"malformed input was accepted\"\n    }\n  ],\n  \"reference_comparisons\": 4398,\n  \"known_reproductions\": [\n    {\n      \"accepted_mutable_config\": true,\n      \"retained_original_forgery\": true,\n      \"config_type\": \"<class 'numpy.ndarray'>\",\n      \"digest_mutated_after_admission\": true,\n      \"exception\": \"TypeError\",\n      \"message\": \"Object of type ndarray is not JSON serializable\",\n      \"state_after_exception\": \"active\",\n      \"request_released\": false,\n      \"cursor_after_exception\": 0\n    }\n  ],\n  \"model_runtime_imports\": [],\n  \"offline\": true\n}\n",
+        "stderr": ""
+      },
+      {
+        "label": "recorded_ten_case_numpy_reference",
+        "command": "/Users/jeremylien/Projects/paretoquant-metal/.venv/bin/python /Users/jeremylien/.hermes/cache/scratch/independent_mm_recorded_reference.py",
+        "environment": {
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+          "PYTHONPATH": "/Users/jeremylien/Projects/local-agent-dual-mac"
+        },
+        "exit_code": 0,
+        "stdout": "{\"passed\": true, \"cases\": [{\"grid\": [1, 4, 6], \"prefix\": 0, \"length\": 9, \"positions_sha256\": \"4b8bd7995793de5b9c0e66e70e26ca6b985d825c56f8cabe610b12ac6bf0e0c9\", \"delta\": [[-3]]}, {\"grid\": [1, 4, 6], \"prefix\": 1, \"length\": 10, \"positions_sha256\": \"f5d5cd0a7401e0455f5dd68070098cc9b18513e965ca6d8d7039520380f73109\", \"delta\": [[-3]]}, {\"grid\": [1, 4, 6], \"prefix\": 252, \"length\": 261, \"positions_sha256\": \"6faa90939e694b059a9c3e2ebdee5684f1ce43d6db35704a244fd31e57fd99b6\", \"delta\": [[-3]]}, {\"grid\": [1, 6, 4], \"prefix\": 0, \"length\": 9, \"positions_sha256\": \"91377c3f893a759e0e5bb6c120a76ba605a3e24d5a0561e0cde15de783e8a019\", \"delta\": [[-3]]}, {\"grid\": [1, 6, 4], \"prefix\": 1, \"length\": 10, \"positions_sha256\": \"a1fc6a39272d768fb3b21b3e7a377590bd47749a06977679e36849d5333c46cc\", \"delta\": [[-3]]}, {\"grid\": [1, 6, 4], \"prefix\": 252, \"length\": 261, \"positions_sha256\": \"9cd9a8c78887a8edc47049aec99f3d173e2356aa5050205ce28ce486b7cba276\", \"delta\": [[-3]]}, {\"text_length\": 3, \"delta\": [[0]]}, {\"text_length\": 255, \"delta\": [[0]]}, {\"text_length\": 256, \"delta\": [[0]]}, {\"text_length\": 257, \"delta\": [[0]]}]}\n",
+        "stderr": ""
+      }
+    ]
+  },
+  "limits": [
+    "Verdict is false for the narrow CPU contract because of one demonstrated immutable-canonicalization/fail-closed defect; coordinate/reference/cursor/lifecycle checks otherwise passed.",
+    "No native MLX/VLM imports, GPU work, weights, installs, SSH, signalling, live app operations, model runs or commits. No fourth RPC load.",
+    "Ten recorded and 4398 additional comparisons execute only the pinned original function body with NumPy substituted for mx, annotations removed. They do not establish native MLX, rotary floating-point arithmetic, image encoder/scatter, logits, caches or distributed equivalence.",
+    "Bounds 1024 prompt / 256 image / 32 decode / 256 chunk are small CPU-control limits, not full-target 8192 context / 1024 image admission.",
+    "Single unpadded still image or text only; no video, multiple images, DeepStack, prefix reuse or MTP required or admitted.",
+    "Original qualification suite was not rerun by this reviewer; parent-reported 147 combined tests are not presented as independent execution.",
+    "No GPU/vision/autonomy/24x7 approval. No throughput, memory capacity or production readiness claim."
+  ]
+}

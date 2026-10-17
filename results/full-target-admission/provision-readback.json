@@ -1,0 +1,63 @@
+{
+  "schema": "full-target-provision-readback-v1",
+  "timestamp": 1792203238.348286,
+  "receipt": {
+    "status": "downloaded-and-hash-verified",
+    "role": "Full Qwen3.8-27B target, different quantization/format from the archived MLX baseline; native comparison must use this exact GGUF",
+    "repo": "unsloth/Qwen3.8-27B-GGUF",
+    "revision": "4ca720788d1e01f1bff70c033e0d0028fd02e502",
+    "files": [
+      {
+        "file": "/Volumes/\u65b0\u589e\u78c1\u789f\u5340/local-agent-models/qwen38-27b-ud-q4km-4ca720788d1e/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "bytes": 16464440224,
+        "sha256": "322e194ff79741c7baa497c240f677f54b201b0efab44ca8e50f122b39123482"
+      },
+      {
+        "file": "/Volumes/\u65b0\u589e\u78c1\u789f\u5340/local-agent-models/qwen38-27b-ud-q4km-4ca720788d1e/mmproj-BF16.gguf",
+        "bytes": 931146432,
+        "sha256": "83ee4f4f205fa514161778c41df1ea14144faa0f713510893b63c2395f5c2d53"
+      }
+    ],
+    "inference_executed": false,
+    "timestamp": 1792203159.395534
+  },
+  "receipt_sha256": "16bffd807c2b5bdc83644d9af7381f72d96b111d9322b567b67d0e2b6d38883f",
+  "files": [
+    {
+      "name": "Qwen3.8-27B-UD-Q4_K_M.gguf",
+      "bytes": 16464440224,
+      "sha256_from_completed_full_hash": "322e194ff79741c7baa497c240f677f54b201b0efab44ca8e50f122b39123482",
+      "mtime_ns": 1792203140440000000
+    },
+    {
+      "name": "mmproj-BF16.gguf",
+      "bytes": 931146432,
+      "sha256_from_completed_full_hash": "83ee4f4f205fa514161778c41df1ea14144faa0f713510893b63c2395f5c2d53",
+      "mtime_ns": 1792202861680000000
+    }
+  ],
+  "prefix_sha256": "70816fe106916b128db40924d4143b2f8eb1bbafee271727454daa1b16c4db67",
+  "health": {
+    "pressure": {
+      "exit": 0,
+      "stdout": "1\n"
+    },
+    "swap": {
+      "exit": 0,
+      "stdout": "vm.swapusage: total = 1024.00M  used = 261.12M  free = 762.88M  (encrypted)\n"
+    },
+    "boot_disk": {
+      "exit": 0,
+      "stdout": "Filesystem      Size    Used   Avail Capacity iused ifree %iused  Mounted on\n/dev/disk3s5   228Gi   128Gi    78Gi    63%    703k  813M    0%   /System/Volumes/Data\n"
+    },
+    "external_disk": {
+      "exit": 0,
+      "stdout": "Filesystem      Size    Used   Avail Capacity iused ifree %iused  Mounted on\n/dev/disk4s2   863Gi    17Gi   846Gi     2%       1     0  100%   /Volumes/\u65b0\u589e\u78c1\u789f\u5340\n"
+    },
+    "workers": {
+      "exit": 1,
+      "stdout": ""
+    }
+  },
+  "inference_executed": false
+}

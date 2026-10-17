@@ -1,0 +1,49 @@
+{
+  "schema": "full-target-q4-capacity-plan-v1",
+  "model": "Qwen3.8-27B",
+  "quant_file": "Qwen3.8-27B-UD-Q4_K_M.gguf",
+  "decoder_layers": 64,
+  "nextn_predict_layers": 1,
+  "file_bytes": 16464440224,
+  "matching_projector_bytes": 931146432,
+  "download_bytes": 17395586656,
+  "download_GiB": 16.200902551412582,
+  "proposed_initial_context": 8192,
+  "proposed_image_min_tokens": 1024,
+  "proposed_image_max_tokens": 1024,
+  "per_host": [
+    {
+      "host": "mini",
+      "main_layers": [
+        0,
+        32
+      ],
+      "owned_decoder_tensor_bytes": 6895285248,
+      "conservative_all_global_tensors_bytes": 1758126080,
+      "conservative_mtp_tensor_bytes": 351008768,
+      "vision_file_bytes": 931146432,
+      "full_attention_layers": 8,
+      "estimated_f16_kv_bytes_at8192": 268435456,
+      "unmeasured_workspace_state_reserve_bytes": 2147483648,
+      "conservative_planning_GiB": 11.50321739912033,
+      "note": "Counts global/MTP storage on BOTH hosts conservatively, not actual placement. 2GiB state/workspace allowance is planning only, not measured residency."
+    },
+    {
+      "host": "laptop",
+      "main_layers": [
+        32,
+        64
+      ],
+      "owned_decoder_tensor_bytes": 7449023488,
+      "conservative_all_global_tensors_bytes": 1758126080,
+      "conservative_mtp_tensor_bytes": 351008768,
+      "vision_file_bytes": 0,
+      "full_attention_layers": 8,
+      "estimated_f16_kv_bytes_at8192": 268435456,
+      "unmeasured_workspace_state_reserve_bytes": 2147483648,
+      "conservative_planning_GiB": 11.151728630065918,
+      "note": "Counts global/MTP storage on BOTH hosts conservatively, not actual placement. 2GiB state/workspace allowance is planning only, not measured residency."
+    }
+  ],
+  "scope": "Capacity-plausible before download; actual fit, layer placement, context, image tokens and memory must be verified from physical engine receipts. Do not auto-reduce context/CPU-offload and call it admitted."
+}

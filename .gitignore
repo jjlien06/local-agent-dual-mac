@@ -1,0 +1,14 @@
+.build-venv/
+.venv/
+upstream/
+build*/
+models/
+me/
+*.log
+__pycache__/
+.pytest_cache/
+.vision-venv/
+.vlm-reference-venv/
+.ruff_cache/
+# GGUF weight-prefix slice used only for header inspection (model-derived bytes)
+results/full-target-admission/Q4_K_M-prefix.bin

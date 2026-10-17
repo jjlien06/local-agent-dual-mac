@@ -1,0 +1,23 @@
+{
+  "schema": "bounded-private-rpc-smoke-v1",
+  "argv": [
+    "/Users/jeremylien/Projects/local-agent-dual-mac/build-api-arm64/bin/ggml-rpc-server",
+    "--host",
+    "169.254.47.213",
+    "--port",
+    "18552",
+    "--device",
+    "MTL0"
+  ],
+  "source_revision": "ea0c4c2c85fb183ec0fbd30a1af4e4275a18a064",
+  "binary_sha256": "471b1c4fdb7500febc8a2c43e13f2d3aca9a619ecf257d630f4879c047dcc31f",
+  "transport": "TCP on bridge0 only; no public listener",
+  "initial_memory_pressure": 1,
+  "pid": 78237,
+  "owned_listener": "COMMAND     PID       USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME\nggml-rpc- 78237 jeremylien    3u  IPv4 0xfd88b9b6429d7739      0t0  TCP 169.254.47.213:18552 (LISTEN)\n",
+  "remote_controller_exit": 1,
+  "owned_rpc_reaped": true,
+  "exit_code": -15,
+  "rpc_listener_closed": true,
+  "rpc_log_sha256": "7dc33d0f6381e01f82c9500b681e5c7449718d8625fdb5ebceaf34278afc8233"
+}

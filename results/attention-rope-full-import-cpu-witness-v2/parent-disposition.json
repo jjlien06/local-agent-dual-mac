@@ -1,0 +1,20 @@
+{
+  "schema": "actual-package-attention-cpu-witness-parent-v2",
+  "passed": true,
+  "result_sha256": "248fed0ed0c80338cac180320c279b721d45a19e8e3b5a3ff59f129392a93f3a",
+  "native_metric_count": 126,
+  "native_forward_steps": 42,
+  "scalar_text_controls": 8,
+  "negative_position_controls": 4,
+  "actual_full_package_imports": true,
+  "native_custom_kernel_invocations": 0,
+  "checkpoint_loaded": false,
+  "independent_review": "pending",
+  "protected_text_sources_unchanged": {
+    "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_5.py": "10c59a71d8d739b8cdff38c7e9c7345deb9a9688e821ac37cb774d3086cac42e",
+    "/Users/jeremylien/Projects/paretoquant-metal/.venv/lib/python3.13/site-packages/mlx_lm/models/qwen3_next.py": "67ca08a4d08cb7be124965e95399735e556f1eaeb21a16bc23cb88d1ac035e11"
+  },
+  "documentation_sha256": "4fc4d3537df97f3ada418be6609a35c3ccac4df3f760bc89cfae93285ed830db",
+  "environment_install_result": "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/install-result.json",
+  "environment_import_result": "/Users/jeremylien/Projects/local-agent-dual-mac/results/native-vlm-reference-environment-v1/import-result-v2.json"
+}
